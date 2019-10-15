@@ -11,7 +11,7 @@ import static java.util.Arrays.asList;
 
 @Profile({"language_fixed_sample_data_provider", "default"})
 @Service
-public class FixedLanguageSampleDataProvider implements LanguageSampleDataProvider {
+public class FixedLanguageSampleDataProvider extends LanguageSampleDataProvider {
 
     @Override
     public List<Language> getSampleItems() {

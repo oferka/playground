@@ -14,13 +14,11 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 @Profile("book_fixed_sample_data_provider")
 @Service
-public class FixedBookSampleDataProvider implements BookSampleDataProvider {
-
-    private List<Language> loadedLanguages;
+public class FixedBookSampleDataProvider extends BookSampleDataProvider {
 
     @Override
-    public List<Book> getSampleItems(List<Language> loadedLanguages) {
-        this.loadedLanguages = loadedLanguages;
+    public List<Book> getSampleItems() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         return asList(
                 Book.builder()
                         .title("Java")
@@ -54,6 +52,7 @@ public class FixedBookSampleDataProvider implements BookSampleDataProvider {
 
     @Override
     public Book getSampleItem() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         return Book.builder()
                 .title("Java")
                 .datePublished(LocalDate.of(2005, 6, 12))

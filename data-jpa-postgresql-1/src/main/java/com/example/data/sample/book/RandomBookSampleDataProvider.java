@@ -18,13 +18,11 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 @Profile({"book_random_sample_data_provider", "default"})
 @Service
-public class RandomBookSampleDataProvider implements BookSampleDataProvider {
-
-    private List<Language> loadedLanguages;
+public class RandomBookSampleDataProvider extends BookSampleDataProvider {
 
     @Override
-    public List<Book> getSampleItems(List<Language> loadedLanguages) {
-        this.loadedLanguages = loadedLanguages;
+    public List<Book> getSampleItems() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         List<Book> books = new ArrayList<>();
         for(int i=0; i<100; i++) {
             books.add(generateRandomBook());
@@ -38,6 +36,7 @@ public class RandomBookSampleDataProvider implements BookSampleDataProvider {
     }
 
     public Book generateRandomBook() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         return Book.builder()
                 .title(generateRandomBookTitle())
                 .datePublished(generateRandomBookDatePublished())

@@ -13,7 +13,7 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 @Profile({"language_random_sample_data_provider"})
 @Service
-public class RandomLanguageSampleDataProvider implements LanguageSampleDataProvider {
+public class RandomLanguageSampleDataProvider extends LanguageSampleDataProvider {
 
     @Override
     public List<Language> getSampleItems() {

@@ -13,13 +13,11 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 @Profile("keyword_fixed_sample_data_provider")
 @Service
-public class FixedKeywordSampleDataProvider implements KeywordSampleDataProvider {
-
-    private List<Language> loadedLanguages;
+public class FixedKeywordSampleDataProvider extends KeywordSampleDataProvider {
 
     @Override
-    public List<Keyword> getSampleItems(List<Language> loadedLanguages) {
-        this.loadedLanguages = loadedLanguages;
+    public List<Keyword> getSampleItems() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         return asList(
                 Keyword.builder()
                         .text("Programing")
@@ -51,6 +49,7 @@ public class FixedKeywordSampleDataProvider implements KeywordSampleDataProvider
 
     @Override
     public Keyword getSampleItem() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         return Keyword.builder()
                 .text("Budget")
                 .dateDefined(LocalDate.of(2003, 9, 8))

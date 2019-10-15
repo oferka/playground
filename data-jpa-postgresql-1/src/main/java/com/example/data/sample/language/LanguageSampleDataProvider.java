@@ -1,12 +1,14 @@
 package com.example.data.sample.language;
 
+import com.example.data.sample.SampleDataProvider;
 import com.example.model.language.Language;
+import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
-public interface LanguageSampleDataProvider {
+@Data
+public abstract class LanguageSampleDataProvider implements SampleDataProvider<Language> {
 
-    List<Language> getSampleItems();
-
-    Language getSampleItem();
+    private Map<Class, List> dependencies;
 }

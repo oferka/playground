@@ -14,13 +14,11 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 @Profile({"keyword_random_sample_data_provider", "default"})
 @Service
-public class RandomKeywordSampleDataProvider implements KeywordSampleDataProvider {
-
-    private List<Language> loadedLanguages;
+public class RandomKeywordSampleDataProvider extends KeywordSampleDataProvider {
 
     @Override
-    public List<Keyword> getSampleItems(List<Language> loadedLanguages) {
-        this.loadedLanguages = loadedLanguages;
+    public List<Keyword> getSampleItems() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         List<Keyword> keywords = new ArrayList<>();
         for(int i=0; i<120; i++) {
             keywords.add(generateRandomKeyword());
@@ -34,6 +32,7 @@ public class RandomKeywordSampleDataProvider implements KeywordSampleDataProvide
     }
 
     private Keyword generateRandomKeyword() {
+        List<Language> loadedLanguages = getDependencies().get(Language.class);
         return Keyword.builder()
                 .text(generateRandomKeywordText())
                 .dateDefined(generateRandomKeywordDateDefined())

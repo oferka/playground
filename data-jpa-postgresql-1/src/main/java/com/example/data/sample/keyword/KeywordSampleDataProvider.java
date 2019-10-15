@@ -1,13 +1,14 @@
 package com.example.data.sample.keyword;
 
+import com.example.data.sample.SampleDataProvider;
 import com.example.model.keyword.Keyword;
-import com.example.model.language.Language;
+import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
-public interface KeywordSampleDataProvider {
+@Data
+public abstract class KeywordSampleDataProvider implements SampleDataProvider<Keyword> {
 
-    List<Keyword> getSampleItems(List<Language> loadedLanguages);
-
-    Keyword getSampleItem();
+    private Map<Class, List> dependencies;
 }

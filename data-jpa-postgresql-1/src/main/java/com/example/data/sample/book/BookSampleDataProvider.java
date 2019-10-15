@@ -1,13 +1,14 @@
 package com.example.data.sample.book;
 
+import com.example.data.sample.SampleDataProvider;
 import com.example.model.book.Book;
-import com.example.model.language.Language;
+import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
-public interface BookSampleDataProvider {
+@Data
+public abstract class BookSampleDataProvider implements SampleDataProvider<Book> {
 
-    List<Book> getSampleItems(List<Language> loadedLanguages);
-
-    Book getSampleItem();
+    private Map<Class, List> dependencies;
 }
