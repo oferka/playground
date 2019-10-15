@@ -6,8 +6,181 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="playground" />
+        <module name="eureka-1-server" />
+        <module name="sorted-set-1" />
+        <module name="faker-1" />
+        <module name="basic-1" />
+        <module name="security-1" />
+        <module name="filebeat-1" />
+        <module name="admin-server-2-client" />
+        <module name="async-1" />
+        <module name="stream-1" />
+        <module name="zuul-1-book" />
+        <module name="centralized-configuration-1-client" />
+        <module name="transaction-1" />
+        <module name="gemfire-1" />
+        <module name="jquery-1" />
+        <module name="profile-1" />
+        <module name="list-1" />
+        <module name="library-1-library" />
+        <module name="gateway-1" />
+        <module name="data-mongodb-1" />
+        <module name="form-submission-1" />
+        <module name="logging-1" />
+        <module name="centralized-configuration-1-server" />
+        <module name="hal-browser-1" />
+        <module name="docker-1" />
+        <module name="form-validation-1" />
+        <module name="testing-1" />
+        <module name="logstash-2" />
+        <module name="logstash-1" />
+        <module name="zuul-1-gateway" />
+        <module name="configuration-properties-1" />
+        <module name="data-rest-gemfire-1" />
+        <module name="batch-3" />
+        <module name="batch-2" />
+        <module name="batch-1" />
+        <module name="rabbitmq-1" />
+        <module name="rest-template-1" />
+        <module name="eureka-1-client" />
+        <module name="ldap-1" />
+        <module name="validation-1" />
+        <module name="ribbon-1-client" />
+        <module name="jms-1" />
+        <module name="hystrix-1-reading" />
+        <module name="admin-server-2-eureka-server" />
+        <module name="rest-2" />
+        <module name="rest-1" />
+        <module name="integration-1" />
+        <module name="scheduling-1" />
+        <module name="easy-random-1" />
+        <module name="bean-validation-1" />
+        <module name="data-jpa-postgresql-1" />
+        <module name="data-rest-neo4j-1" />
+        <module name="rest-hateoas" />
+        <module name="vaadin-2" />
+        <module name="vaadin-1" />
+        <module name="jdbc-template-1" />
+        <module name="elasticsearch-1" />
+        <module name="admin-server-1-server" />
+        <module name="reactive-1-server" />
+        <module name="angular-1" />
+        <module name="hystrix-1-bookstore" />
+        <module name="admin-server-2-server" />
+        <module name="rest-test-1" />
+        <module name="restdocs-1" />
+        <module name="admin-server-1-client" />
+        <module name="reactive-1-client" />
+        <module name="websocket-stomp-1" />
+        <module name="command-line-runner-1" />
+        <module name="data-rest-jpa-h2-1" />
+        <module name="file-upload-1" />
+        <module name="data-jpa-mysql-1" />
+        <module name="file-copy-1" />
+        <module name="cache-1" />
+        <module name="redis-1" />
+        <module name="cli-1" />
+        <module name="cors-1" />
+        <module name="neo4j-1" />
+        <module name="ribbon-1-server" />
+        <module name="data-rest-mongodb-1" />
+        <module name="blocking-queue-1" />
+        <module name="actuator-1" />
+        <module name="library-1-application" />
+        <module name="avro-1" />
+        <module name="data-jpa-h2-1" />
+        <module name="thymeleaf-1" />
+        <module name="junit-assumptions-1" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="actuator-1" options="-parameters" />
+      <module name="admin-server-1-client" options="-parameters" />
+      <module name="admin-server-1-server" options="-parameters" />
+      <module name="admin-server-2-client" options="-parameters" />
+      <module name="admin-server-2-eureka-server" options="-parameters" />
+      <module name="admin-server-2-server" options="-parameters" />
+      <module name="angular-1" options="-parameters" />
+      <module name="async-1" options="-parameters" />
+      <module name="avro-1" options="-parameters" />
+      <module name="basic-1" options="-parameters" />
+      <module name="batch-1" options="-parameters" />
+      <module name="batch-2" options="-parameters" />
+      <module name="batch-3" options="-parameters" />
+      <module name="bean-validation-1" options="-parameters" />
+      <module name="blocking-queue-1" options="-parameters" />
+      <module name="cache-1" options="-parameters" />
+      <module name="centralized-configuration-1-client" options="-parameters" />
+      <module name="centralized-configuration-1-server" options="-parameters" />
+      <module name="cli-1" options="-parameters" />
+      <module name="command-line-runner-1" options="-parameters" />
+      <module name="configuration-properties-1" options="-parameters" />
+      <module name="cors-1" options="-parameters" />
+      <module name="data-jpa-h2-1" options="-parameters" />
+      <module name="data-jpa-mysql-1" options="-parameters" />
+      <module name="data-jpa-postgresql-1" options="-parameters" />
+      <module name="data-mongodb-1" options="-parameters" />
+      <module name="data-rest-gemfire-1" options="-parameters" />
+      <module name="data-rest-jpa-h2-1" options="-parameters" />
+      <module name="data-rest-mongodb-1" options="-parameters" />
+      <module name="data-rest-neo4j-1" options="-parameters" />
+      <module name="docker-1" options="-parameters" />
+      <module name="easy-random-1" options="-parameters" />
+      <module name="elasticsearch-1" options="-parameters" />
+      <module name="eureka-1-client" options="-parameters" />
+      <module name="eureka-1-server" options="-parameters" />
+      <module name="faker-1" options="-parameters" />
+      <module name="file-copy-1" options="-parameters" />
+      <module name="file-upload-1" options="-parameters" />
+      <module name="filebeat-1" options="-parameters" />
+      <module name="form-submission-1" options="-parameters" />
+      <module name="form-validation-1" options="-parameters" />
+      <module name="gateway-1" options="-parameters" />
+      <module name="gemfire-1" options="-parameters" />
+      <module name="hal-browser-1" options="-parameters" />
+      <module name="hystrix-1-bookstore" options="-parameters" />
+      <module name="hystrix-1-reading" options="-parameters" />
+      <module name="integration-1" options="-parameters" />
+      <module name="jdbc-template-1" options="-parameters" />
+      <module name="jms-1" options="-parameters" />
+      <module name="jquery-1" options="-parameters" />
+      <module name="junit-assumptions-1" options="-parameters" />
+      <module name="ldap-1" options="-parameters" />
+      <module name="library-1-application" options="-parameters" />
+      <module name="library-1-library" options="-parameters" />
+      <module name="list-1" options="-parameters" />
+      <module name="logging-1" options="-parameters" />
+      <module name="logstash-1" options="-parameters" />
+      <module name="logstash-2" options="-parameters" />
+      <module name="neo4j-1" options="-parameters" />
+      <module name="profile-1" options="-parameters" />
+      <module name="rabbitmq-1" options="-parameters" />
+      <module name="reactive-1-client" options="-parameters" />
+      <module name="reactive-1-server" options="-parameters" />
+      <module name="redis-1" options="-parameters" />
+      <module name="rest-1" options="-parameters" />
+      <module name="rest-2" options="-parameters" />
+      <module name="rest-hateoas" options="-parameters" />
+      <module name="rest-template-1" options="-parameters" />
+      <module name="rest-test-1" options="-parameters" />
+      <module name="restdocs-1" options="-parameters" />
+      <module name="ribbon-1-client" options="-parameters" />
+      <module name="ribbon-1-server" options="-parameters" />
+      <module name="scheduling-1" options="-parameters" />
+      <module name="security-1" options="-parameters" />
+      <module name="sorted-set-1" options="-parameters" />
+      <module name="stream-1" options="-parameters" />
+      <module name="testing-1" options="-parameters" />
+      <module name="thymeleaf-1" options="-parameters" />
+      <module name="transaction-1" options="-parameters" />
+      <module name="vaadin-1" options="-parameters" />
+      <module name="vaadin-2" options="-parameters" />
+      <module name="validation-1" options="-parameters" />
+      <module name="websocket-stomp-1" options="-parameters" />
+      <module name="zuul-1-book" options="-parameters" />
+      <module name="zuul-1-gateway" options="-parameters" />
+    </option>
   </component>
 </project>

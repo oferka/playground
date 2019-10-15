@@ -1,0 +1,16 @@
+{
+  "name": "Vaadin App",
+  "short_name": "Vaadin",
+  "theme_color": "#00b4f0",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "./frontend/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}

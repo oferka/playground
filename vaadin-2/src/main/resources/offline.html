@@ -1,0 +1,18 @@
+<style>
+    .container {
+        font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<div class="container">
+    <img src="./frontend/images/icon.png" alt="Offline reindeer">
+    <h1>Vaadin Chat is offline</h1>
+    <p>We'll reconnect when we're back online.</p>
+</div>
+<script>
+    window.addEventListener('online', () => location.reload());
+</script>
