@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static com.example.data.sample.language.RandomLanguageSampleDataProvider.generateRandomLanguage;
+import static com.example.data.sample.language.RandomLanguageSampleDataProviderUtils.generateRandomLanguage;
 import static com.example.model.language.Language.NAME_MAX_LENGTH;
 import static com.example.model.language.Language.NAME_MIN_LENGTH;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;

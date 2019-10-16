@@ -4,14 +4,12 @@ import com.example.model.AbstractModelTests;
 import com.example.model.language.Language;
 import com.example.repository.keyword.KeywordRepository;
 import lombok.Getter;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.example.data.sample.keyword.RandomKeywordSampleDataProvider.generateRandomKeywordDateDefined;
 import static com.example.model.book.Book.TITLE_MAX_LENGTH;
 import static com.example.model.book.Book.TITLE_MIN_LENGTH;
 import static java.time.LocalDate.now;
@@ -215,7 +213,7 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
     private LocalDate getNonExistingItemDateDefined() throws Exception {
         LocalDate result = null;
         while ((result == null) || (!getItemsByDateDefined(result).isEmpty())) {
-            result = generateRandomKeywordDateDefined();
+            result = LocalDate.now().minusDays(nextInt(0, 10000));
         }
         return result;
     }
@@ -223,7 +221,7 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
     private String getNonExistingItemLanguageName() throws Exception {
         String result = null;
         while ((result == null) || (!getItemsByLanguageName(result).isEmpty())) {
-            result = RandomStringUtils.randomAlphabetic(6);
+            result = randomAlphabetic(6);
         }
         return result;
     }

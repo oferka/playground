@@ -3,6 +3,7 @@ package com.example.model.book;
 import com.example.model.AbstractModelTests;
 import com.example.model.language.Language;
 import com.example.repository.book.BookRepository;
+import com.github.javafaker.Faker;
 import lombok.Getter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
@@ -11,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.example.data.sample.book.RandomBookSampleDataProvider.*;
 import static com.example.model.book.Book.*;
 import static java.time.LocalDate.now;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.apache.commons.lang3.RandomUtils.nextBoolean;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.Assert.*;
@@ -414,7 +415,7 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     private LocalDate getNonExistingItemDatePublished() throws Exception {
         LocalDate result = null;
         while ((result == null) || (!getItemsByDatePublished(result).isEmpty())) {
-            result = generateRandomBookDatePublished();
+            result = LocalDate.now().minusDays(nextInt(0, 10000));
         }
         return result;
     }
@@ -422,7 +423,7 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     private Integer getNonExistingItemNumberOfPages() throws Exception {
         Integer result = null;
         while ((result == null) || (!getItemsByNumberOfPages(result).isEmpty())) {
-            result = generateRandomBookNumberOfPages();
+            result = nextInt(NUMBER_OF_PAGES_MIN, NUMBER_OF_PAGES_MAX);
         }
         return result;
     }
@@ -430,7 +431,7 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     private String getNonExistingItemIsbn() throws Exception {
         String result = null;
         while ((result == null) || (!getItemsByIsbn(result).isEmpty())) {
-            result = generateRandomBookIsbn();
+            result = (nextBoolean()? (new Faker().code().isbn10(nextBoolean())) : (new Faker().code().isbn13(nextBoolean())));
         }
         return result;
     }
