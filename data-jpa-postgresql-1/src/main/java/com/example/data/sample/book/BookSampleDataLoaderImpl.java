@@ -1,6 +1,7 @@
 package com.example.data.sample.book;
 
 import com.example.model.book.Book;
+import com.example.model.keyword.Keyword;
 import com.example.model.language.Language;
 import com.example.repository.book.BookRepository;
 import lombok.Data;
@@ -26,10 +27,11 @@ public class BookSampleDataLoaderImpl implements BookSampleDataLoader {
     }
 
     @Override
-    public List<Book> load(List<Language> loadedLanguages) {
+    public List<Book> load(List<Language> loadedLanguages, List<Keyword> loadedKeywords) {
         log.info("Sample data load - books load - started");
         Map<Class, List> dependencies = new HashMap<>();
         dependencies.put(Language.class, loadedLanguages);
+        dependencies.put(Keyword.class, loadedKeywords);
         bookSampleDataProvider.setDependencies(dependencies);
         List<Book> itemsToBeLoaded = bookSampleDataProvider.getSampleItems();
         List<Book> loadedItems = bookRepository.saveAll(itemsToBeLoaded);

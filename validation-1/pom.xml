@@ -35,8 +35,8 @@
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
+            <artifactId>jakarta.el</artifactId>
+            <version>${jakarta.el.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

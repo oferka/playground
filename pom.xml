@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.9.RELEASE</version>
+        <version>2.2.0.RELEASE</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,7 +31,7 @@
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>3.0.0</javax.el.version>
+        <jakarta.el.version>3.0.3</jakarta.el.version>
         <opencsv.version>4.6</opencsv.version>
     </properties>
     <scm>
@@ -77,7 +77,6 @@
         <module>data-rest-jpa-h2-1</module>
         <module>data-rest-neo4j-1</module>
         <module>data-rest-mongodb-1</module>
-        <module>data-rest-gemfire-1</module>
         <module>cache-1</module>
         <module>docker-1</module>
         <module>vaadin-1</module>

@@ -1,11 +1,14 @@
 package com.example.data.sample.book;
 
 import com.example.model.book.Book;
+import com.example.model.keyword.Keyword;
 import com.example.model.language.Language;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.example.model.book.Book.NUMBER_OF_PAGES_MAX;
 import static com.example.model.book.Book.NUMBER_OF_PAGES_MIN;
@@ -14,7 +17,7 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 public class RandomBookSampleDataProviderUtils {
 
-    public static Book generateRandomBook(List<Language> loadedLanguages) {
+    public static Book generateRandomBook(List<Language> loadedLanguages, List<Keyword> loadedKeywords) {
         return Book.builder()
                 .title(generateRandomBookTitle())
                 .datePublished(generateRandomBookDatePublished())
@@ -23,6 +26,7 @@ public class RandomBookSampleDataProviderUtils {
                 .isbn(generateRandomBookIsbn())
                 .format(generateRandomBookFormat())
                 .language(loadedLanguages.get(nextInt(0, loadedLanguages.size())))
+                .keywords(generateKeywordsSet(loadedKeywords))
                 .build();
     }
 
@@ -49,5 +53,14 @@ public class RandomBookSampleDataProviderUtils {
     private static Book.Format generateRandomBookFormat() {
         Book.Format[] formats = Book.Format.values();
         return formats[nextInt(0, formats.length)];
+    }
+
+    private static Set<Keyword> generateKeywordsSet(List<Keyword> loadedKeywords) { //todo
+        Set<Keyword> result = new HashSet<>();
+        result.add(loadedKeywords.get(0));
+        result.add(loadedKeywords.get(1));
+        result.add(loadedKeywords.get(2));
+        result.add(loadedKeywords.get(3));
+        return result;
     }
 }

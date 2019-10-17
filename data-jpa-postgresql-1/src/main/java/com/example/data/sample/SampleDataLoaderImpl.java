@@ -32,7 +32,7 @@ public class SampleDataLoaderImpl implements SampleDataLoader {
         log.info("Sample data load - started");
         List<Language> loadedLanguages = languageSampleDataLoader.load();
         List<Keyword> loadedKeywords = keywordSampleDataLoader.load(loadedLanguages);
-        List<Book> loadedBooks = bookSampleDataLoader.load(loadedLanguages);
+        List<Book> loadedBooks = bookSampleDataLoader.load(loadedLanguages, loadedKeywords);
         log.info("Sample data load - completed");
     }
 

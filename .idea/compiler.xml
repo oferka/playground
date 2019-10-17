@@ -36,7 +36,6 @@
         <module name="logstash-1" />
         <module name="zuul-1-gateway" />
         <module name="configuration-properties-1" />
-        <module name="data-rest-gemfire-1" />
         <module name="batch-3" />
         <module name="batch-2" />
         <module name="batch-1" />
@@ -93,6 +92,9 @@
         <module name="junit-assumptions-1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="data-rest-gemfire-1" target="10" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

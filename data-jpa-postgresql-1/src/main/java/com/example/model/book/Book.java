@@ -1,6 +1,7 @@
 package com.example.model.book;
 
 import com.example.model.Identifiable;
+import com.example.model.keyword.Keyword;
 import com.example.model.language.Language;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -16,6 +17,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @Builder
@@ -70,6 +72,11 @@ public class Book implements Identifiable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
+
+    @NotNull
+    @ManyToMany
+    @JoinTable(schema = "demo")
+    private Set<Keyword> keywords;
 
     public enum Format {
         AUDIO_BOOK,
