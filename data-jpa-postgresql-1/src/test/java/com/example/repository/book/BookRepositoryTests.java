@@ -12,6 +12,7 @@ import org.springframework.transaction.TransactionSystemException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.Assert.assertTrue;
@@ -126,7 +127,7 @@ public class BookRepositoryTests extends AbstractBookTests {
             fail();
         }
         catch (TransactionSystemException e) {
-            assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
+            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
         }
     }
 
