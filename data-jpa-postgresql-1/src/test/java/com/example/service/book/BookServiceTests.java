@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -130,7 +129,7 @@ public class BookServiceTests extends AbstractBookTests {
             fail();
         }
         catch (ConstraintViolationException e) {
-            assertTrue(!e.getConstraintViolations().isEmpty());
+            assertFalse(e.getConstraintViolations().isEmpty());
         }
     }
 
@@ -151,7 +150,7 @@ public class BookServiceTests extends AbstractBookTests {
             fail();
         }
         catch (ConstraintViolationException e) {
-            assertTrue(!e.getConstraintViolations().isEmpty());
+            assertFalse(e.getConstraintViolations().isEmpty());
         }
     }
 

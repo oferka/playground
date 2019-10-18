@@ -85,32 +85,32 @@ public class BookRepositoryTests extends AbstractBookTests {
     }
 
     @Override
-    protected List<Book> getItemsByKeywordsId(Long value) throws Exception {
+    protected List<Book> getItemsByKeywordsId(Long value) {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsId(value));
     }
 
     @Override
-    protected List<Book> getItemsByKeywordsText(String value) throws Exception {
+    protected List<Book> getItemsByKeywordsText(String value) {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsText(value));
     }
 
     @Override
-    protected List<Book> getItemsByKeywordsDateDefined(LocalDate value) throws Exception {
+    protected List<Book> getItemsByKeywordsDateDefined(LocalDate value) {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsDateDefined(value));
     }
 
     @Override
-    protected List<Book> getItemsByKeywordsLanguageId(Long value) throws Exception {
+    protected List<Book> getItemsByKeywordsLanguageId(Long value) {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageId(value));
     }
 
     @Override
-    protected List<Book> getItemsByKeywordsLanguageName(String value) throws Exception {
+    protected List<Book> getItemsByKeywordsLanguageName(String value) {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageName(value));
     }
 
     @Override
-    protected List<Book> getItemsByKeywordsLanguageCode(Code value) throws Exception {
+    protected List<Book> getItemsByKeywordsLanguageCode(Code value) {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageCode(value));
     }
 
