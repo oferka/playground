@@ -301,7 +301,8 @@ public class BookSystemTests extends AbstractBookTests {
         RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
         ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        Map<String, String> responseBody = responseEntity.getBody();
+        Map responseBody = responseEntity.getBody();
+        assertNotNull(responseBody);
         assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
     }
 
@@ -330,7 +331,8 @@ public class BookSystemTests extends AbstractBookTests {
         RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.PUT, uri);
         ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        Map<String, String> responseBody = responseEntity.getBody();
+        Map responseBody = responseEntity.getBody();
+        assertNotNull(responseBody);
         assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
     }
 

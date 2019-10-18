@@ -45,7 +45,7 @@ public class BookController {
     static final String FIND_BY_KEYWORDS_LANGUAGE_ID_PATH = "findByKeywordsLanguageId";
     static final String FIND_BY_KEYWORDS_LANGUAGE_NAME_PATH = "findByKeywordsLanguageName";
     static final String FIND_BY_KEYWORDS_LANGUAGE_CODE_PATH = "findByKeywordsLanguageCode";
-    static final String BOOK_ID_PARAM_NAME = "bookId";
+    private static final String BOOK_ID_PARAM_NAME = "bookId";
     static final String BOOK_TITLE_PARAM_NAME = "title";
     static final String BOOK_DATE_PUBLISHED_PARAM_NAME = "datePublished";
     static final String BOOK_NUMBER_OF_PAGES_PARAM_NAME = "numberOfPages";
@@ -166,7 +166,7 @@ public class BookController {
     @PutMapping(path="/{" + BOOK_ID_PARAM_NAME + "}")
     public ResponseEntity<Void> updateItem(@RequestBody @Valid Book item, @PathVariable Long bookId) {
         Optional<Book> savedItem = bookService.findItemById(bookId);
-        if(!savedItem.isPresent()) {
+        if(savedItem.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         item.setId(savedItem.get().getId());
