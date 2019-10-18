@@ -2,9 +2,9 @@ package com.example;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
-class Greeting extends ResourceSupport {
+class Greeting extends RepresentationModel {
 
     private final String content;
 
