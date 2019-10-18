@@ -222,10 +222,24 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     }
 
     @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingKeywordsId() throws Exception {
+        Long nonExistingItemValue = getNonExistingItemKeywordsId();
+        List<Book> items = getItemsByKeywordsId(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
     public void shouldFindItemsByKeywordsText() throws Exception {
         String existingItemValue = getExistingItemKeywordText();
         List<Book> items = getItemsByKeywordsText(existingItemValue);
         verifyItemsKeywordsTextAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingKeywordsText() throws Exception {
+        String nonExistingItemValue = getNonExistingItemKeywordsText();
+        List<Book> items = getItemsByKeywordsText(nonExistingItemValue);
+        assertTrue(items.isEmpty());
     }
 
     @Test
@@ -236,6 +250,13 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     }
 
     @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingKeywordsDateDefined() throws Exception {
+        LocalDate nonExistingItemValue = getNonExistingItemKeywordsDateDefined();
+        List<Book> items = getItemsByKeywordsDateDefined(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
     public void shouldFindItemsByKeywordsLanguageId() throws Exception {
         Long existingItemValue = getExistingItemKeywordLanguageId();
         List<Book> items = getItemsByKeywordsLanguageId(existingItemValue);
@@ -243,10 +264,24 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     }
 
     @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingKeywordsLanguageId() throws Exception {
+        Long nonExistingItemValue = getNonExistingItemKeywordsLanguageId();
+        List<Book> items = getItemsByKeywordsLanguageId(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
     public void shouldFindItemsByKeywordsLanguageName() throws Exception {
         String existingItemValue = getExistingItemKeywordLanguageName();
         List<Book> items = getItemsByKeywordsLanguageName(existingItemValue);
         verifyItemsKeywordsLanguageNameAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingKeywordsLanguageName() throws Exception {
+        String nonExistingItemValue = getNonExistingItemKeywordsLanguageName();
+        List<Book> items = getItemsByKeywordsLanguageName(nonExistingItemValue);
+        assertTrue(items.isEmpty());
     }
 
     @Test
@@ -477,20 +512,60 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         return getExistingItemKeyword().getId();
     }
 
+    private Long getNonExistingItemKeywordsId() throws Exception {
+        Long result = null;
+        while ((result == null) || (!getItemsByKeywordsId(result).isEmpty())) {
+            result = nextLong(1, Long.MAX_VALUE);
+        }
+        return result;
+    }
+
     private String getExistingItemKeywordText() {
         return getExistingItemKeyword().getText();
+    }
+
+    private String getNonExistingItemKeywordsText() throws Exception {
+        String result = null;
+        while ((result == null) || (!getItemsByKeywordsText(result).isEmpty())) {
+            result = randomAlphabetic(16);
+        }
+        return result;
     }
 
     private LocalDate getExistingItemKeywordDateDefined() {
         return getExistingItemKeyword().getDateDefined();
     }
 
+    private LocalDate getNonExistingItemKeywordsDateDefined() throws Exception {
+        LocalDate result = null;
+        while ((result == null) || (!getItemsByKeywordsDateDefined(result).isEmpty())) {
+            result = LocalDate.now().minusDays(nextInt(0, 10000));
+        }
+        return result;
+    }
+
     private Long getExistingItemKeywordLanguageId() {
         return getExistingItemKeyword().getLanguage().getId();
     }
 
+    private Long getNonExistingItemKeywordsLanguageId() throws Exception {
+        Long result = null;
+        while ((result == null) || (!getItemsByKeywordsLanguageId(result).isEmpty())) {
+            result = nextLong(1, Long.MAX_VALUE);
+        }
+        return result;
+    }
+
     private String getExistingItemKeywordLanguageName() {
         return getExistingItemKeyword().getLanguage().getName();
+    }
+
+    private String getNonExistingItemKeywordsLanguageName() throws Exception {
+        String result = null;
+        while ((result == null) || (!getItemsByKeywordsLanguageName(result).isEmpty())) {
+            result = RandomStringUtils.randomAlphabetic(6);
+        }
+        return result;
     }
 
     private Code getExistingItemKeywordLanguageCode() {
