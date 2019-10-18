@@ -2,6 +2,7 @@ package com.example.controller.api.rest.book;
 
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 import com.example.service.book.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,15 @@ public class BookController {
     static final String FIND_BY_FAMILY_FRIENDLY_PATH = "findByFamilyFriendly";
     static final String FIND_BY_ISBN_PATH = "findByIsbn";
     static final String FIND_BY_FORMAT_PATH = "findByFormat";
+    static final String FIND_BY_LANGUAGE_ID_PATH = "findByLanguageId";
     static final String FIND_BY_LANGUAGE_NAME_PATH = "findByLanguageName";
+    static final String FIND_BY_LANGUAGE_CODE_PATH = "findByLanguageCode";
+    static final String FIND_BY_KEYWORDS_ID_PATH = "findByKeywordsId";
+    static final String FIND_BY_KEYWORDS_TEXT_PATH = "findByKeywordsText";
+    static final String FIND_BY_KEYWORDS_DATE_DEFINED_PATH = "findByKeywordsDateDefined";
+    static final String FIND_BY_KEYWORDS_LANGUAGE_ID_PATH = "findByKeywordsLanguageId";
+    static final String FIND_BY_KEYWORDS_LANGUAGE_NAME_PATH = "findByKeywordsLanguageName";
+    static final String FIND_BY_KEYWORDS_LANGUAGE_CODE_PATH = "findByKeywordsLanguageCode";
     static final String BOOK_ID_PARAM_NAME = "bookId";
     static final String BOOK_TITLE_PARAM_NAME = "title";
     static final String BOOK_DATE_PUBLISHED_PARAM_NAME = "datePublished";
@@ -43,7 +52,15 @@ public class BookController {
     static final String BOOK_FAMILY_FRIENDLY_PARAM_NAME = "familyFriendly";
     static final String BOOK_ISBN_PARAM_NAME = "isbn";
     static final String BOOK_FORMAT_PARAM_NAME = "format";
+    static final String BOOK_LANGUAGE_ID_PARAM_NAME = "id";
     static final String BOOK_LANGUAGE_NAME_PARAM_NAME = "name";
+    static final String BOOK_LANGUAGE_CODE_PARAM_NAME = "code";
+    static final String BOOK_KEYWORDS_ID_PARAM_NAME = "id";
+    static final String BOOK_KEYWORDS_TEXT_PARAM_NAME = "text";
+    static final String BOOK_KEYWORDS_DATE_DEFINED_PARAM_NAME = "dateDefined";
+    static final String BOOK_KEYWORDS_LANGUAGE_ID_PARAM_NAME = "id";
+    static final String BOOK_KEYWORDS_LANGUAGE_NAME_PARAM_NAME = "name";
+    static final String BOOK_KEYWORDS_LANGUAGE_CODE_PARAM_NAME = "code";
     static final String INVALID_REQUEST_ARGUMENT_REASON = "Request data validation error. The provided data violates the validation constraints defined for a Book";
 
     private final BookService bookService;
@@ -94,9 +111,49 @@ public class BookController {
         return ResponseEntity.ok(bookService.findItemsByFormat(format));
     }
 
+    @GetMapping(path="/" + FIND_BY_LANGUAGE_ID_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByLanguageId(@RequestParam(name = BOOK_LANGUAGE_ID_PARAM_NAME) Long id) {
+        return ResponseEntity.ok(bookService.findItemsByLanguageId(id));
+    }
+
     @GetMapping(path="/" + FIND_BY_LANGUAGE_NAME_PATH)
     public ResponseEntity<Iterable<Book>> findItemsByLanguageName(@RequestParam(name = BOOK_LANGUAGE_NAME_PARAM_NAME) String name) {
         return ResponseEntity.ok(bookService.findItemsByLanguageName(name));
+    }
+
+    @GetMapping(path="/" + FIND_BY_LANGUAGE_CODE_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByLanguageCode(@RequestParam(name = BOOK_LANGUAGE_CODE_PARAM_NAME) Code code) {
+        return ResponseEntity.ok(bookService.findItemsByLanguageCode(code));
+    }
+
+    @GetMapping(path="/" + FIND_BY_KEYWORDS_ID_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByKeywordsId(@RequestParam(name = BOOK_KEYWORDS_ID_PARAM_NAME) Long id) {
+        return ResponseEntity.ok(bookService.findItemsByKeywordsId(id));
+    }
+
+    @GetMapping(path="/" + FIND_BY_KEYWORDS_TEXT_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByKeywordsText(@RequestParam(name = BOOK_KEYWORDS_TEXT_PARAM_NAME) String text) {
+        return ResponseEntity.ok(bookService.findItemsByKeywordsText(text));
+    }
+
+    @GetMapping(path="/" + FIND_BY_KEYWORDS_DATE_DEFINED_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByKeywordsDateDefined(@RequestParam(name = BOOK_KEYWORDS_DATE_DEFINED_PARAM_NAME) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateDefined) {
+        return ResponseEntity.ok(bookService.findItemsByKeywordsDateDefined(dateDefined));
+    }
+
+    @GetMapping(path="/" + FIND_BY_KEYWORDS_LANGUAGE_ID_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByKeywordsLanguageId(@RequestParam(name = BOOK_KEYWORDS_LANGUAGE_ID_PARAM_NAME) Long id) {
+        return ResponseEntity.ok(bookService.findItemsByKeywordsLanguageId(id));
+    }
+
+    @GetMapping(path="/" + FIND_BY_KEYWORDS_LANGUAGE_NAME_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByKeywordsLanguageName(@RequestParam(name = BOOK_KEYWORDS_LANGUAGE_NAME_PARAM_NAME) String name) {
+        return ResponseEntity.ok(bookService.findItemsByKeywordsLanguageName(name));
+    }
+
+    @GetMapping(path="/" + FIND_BY_KEYWORDS_LANGUAGE_CODE_PATH)
+    public ResponseEntity<Iterable<Book>> findItemsByKeywordsLanguageCode(@RequestParam(name = BOOK_KEYWORDS_LANGUAGE_CODE_PARAM_NAME) Code code) {
+        return ResponseEntity.ok(bookService.findItemsByKeywordsLanguageCode(code));
     }
 
     @PostMapping(path=EMPTY)

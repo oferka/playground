@@ -3,6 +3,7 @@ package com.example.repository.book;
 import com.example.model.book.AbstractBookTests;
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -69,8 +70,48 @@ public class BookRepositoryTests extends AbstractBookTests {
     }
 
     @Override
+    protected List<Book> getItemsByLanguageId(Long value) {
+        return getItemListFromItemIterable(getRepository().findByLanguageId(value));
+    }
+
+    @Override
     protected List<Book> getItemsByLanguageName(String value) {
         return getItemListFromItemIterable(getRepository().findByLanguageName(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByLanguageCode(Code value) {
+        return getItemListFromItemIterable(getRepository().findByLanguageCode(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsId(Long value) throws Exception {
+        return getItemListFromItemIterable(getRepository().findAllByKeywordsId(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsText(String value) throws Exception {
+        return getItemListFromItemIterable(getRepository().findAllByKeywordsText(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsDateDefined(LocalDate value) throws Exception {
+        return getItemListFromItemIterable(getRepository().findAllByKeywordsDateDefined(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageId(Long value) throws Exception {
+        return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageId(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageName(String value) throws Exception {
+        return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageName(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageCode(Code value) throws Exception {
+        return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageCode(value));
     }
 
     @Override

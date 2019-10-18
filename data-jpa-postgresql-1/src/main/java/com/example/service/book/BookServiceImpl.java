@@ -2,6 +2,7 @@ package com.example.service.book;
 
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 import com.example.repository.book.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +62,48 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Iterable<Book> findItemsByLanguageId(Long languageId) {
+        return repository.findByLanguageId(languageId);
+    }
+
+    @Override
     public Iterable<Book> findItemsByLanguageName(String name) {
         return repository.findByLanguageName(name);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByLanguageCode(Code code) {
+        return repository.findByLanguageCode(code);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByKeywordsId(Long keywordId) {
+        return repository.findAllByKeywordsId(keywordId);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByKeywordsText(String keywordText) {
+        return repository.findAllByKeywordsText(keywordText);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByKeywordsDateDefined(LocalDate keywordDateDefined) {
+        return repository.findAllByKeywordsDateDefined(keywordDateDefined);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByKeywordsLanguageId(Long keywordLanguageId) {
+        return repository.findAllByKeywordsLanguageId(keywordLanguageId);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByKeywordsLanguageName(String keywordLanguageName) {
+        return repository.findAllByKeywordsLanguageName(keywordLanguageName);
+    }
+
+    @Override
+    public Iterable<Book> findItemsByKeywordsLanguageCode(Code keywordLanguageCode) {
+        return repository.findAllByKeywordsLanguageCode(keywordLanguageCode);
     }
 
     @Override

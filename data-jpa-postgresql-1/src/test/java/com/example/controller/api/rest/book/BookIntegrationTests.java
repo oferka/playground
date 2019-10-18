@@ -3,6 +3,7 @@ package com.example.controller.api.rest.book;
 import com.example.model.book.AbstractBookTests;
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,8 +122,88 @@ public class BookIntegrationTests extends AbstractBookTests {
     }
 
     @Override
+    protected List<Book> getItemsByLanguageId(Long value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_LANGUAGE_ID_PATH).param(BOOK_LANGUAGE_ID_PARAM_NAME, value.toString()))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
     protected List<Book> getItemsByLanguageName(String value) throws Exception {
         MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_LANGUAGE_NAME_PATH).param(BOOK_LANGUAGE_NAME_PARAM_NAME, value))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByLanguageCode(Code value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_LANGUAGE_CODE_PATH).param(BOOK_LANGUAGE_CODE_PARAM_NAME, value.toString()))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsId(Long value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_KEYWORDS_ID_PATH).param(BOOK_KEYWORDS_ID_PARAM_NAME, value.toString()))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsText(String value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_KEYWORDS_TEXT_PATH).param(BOOK_KEYWORDS_TEXT_PARAM_NAME, value))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsDateDefined(LocalDate value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_KEYWORDS_DATE_DEFINED_PATH).param(BOOK_KEYWORDS_DATE_DEFINED_PARAM_NAME, value.toString()))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageId(Long value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_KEYWORDS_LANGUAGE_ID_PATH).param(BOOK_KEYWORDS_LANGUAGE_ID_PARAM_NAME, value.toString()))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageName(String value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_KEYWORDS_LANGUAGE_NAME_PATH).param(BOOK_KEYWORDS_LANGUAGE_NAME_PARAM_NAME, value))
+                .andDo(log())
+                .andExpect(status().isOk())
+                .andReturn();
+        Book[] returnedItems = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(), Book[].class);
+        return asList(returnedItems);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageCode(Code value) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_KEYWORDS_LANGUAGE_CODE_PATH).param(BOOK_KEYWORDS_LANGUAGE_CODE_PARAM_NAME, value.toString()))
                 .andDo(log())
                 .andExpect(status().isOk())
                 .andReturn();

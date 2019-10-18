@@ -74,7 +74,7 @@ public class Book implements Identifiable {
     private Language language;
 
     @NotNull
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(schema = "demo")
     private Set<Keyword> keywords;
 

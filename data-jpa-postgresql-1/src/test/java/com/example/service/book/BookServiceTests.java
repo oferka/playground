@@ -3,6 +3,7 @@ package com.example.service.book;
 import com.example.model.book.AbstractBookTests;
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -73,8 +74,48 @@ public class BookServiceTests extends AbstractBookTests {
     }
 
     @Override
+    protected List<Book> getItemsByLanguageId(Long value) {
+        return getItemListFromItemIterable(service.findItemsByLanguageId(value));
+    }
+
+    @Override
     protected List<Book> getItemsByLanguageName(String value) {
         return getItemListFromItemIterable(service.findItemsByLanguageName(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByLanguageCode(Code value) {
+        return getItemListFromItemIterable(service.findItemsByLanguageCode(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsId(Long value) {
+        return getItemListFromItemIterable(service.findItemsByKeywordsId(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsText(String value) {
+        return getItemListFromItemIterable(service.findItemsByKeywordsText(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsDateDefined(LocalDate value) {
+        return getItemListFromItemIterable(service.findItemsByKeywordsDateDefined(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageId(Long value) {
+        return getItemListFromItemIterable(service.findItemsByKeywordsLanguageId(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageName(String value) {
+        return getItemListFromItemIterable(service.findItemsByKeywordsLanguageName(value));
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageCode(Code value) {
+        return getItemListFromItemIterable(service.findItemsByKeywordsLanguageCode(value));
     }
 
     @Override

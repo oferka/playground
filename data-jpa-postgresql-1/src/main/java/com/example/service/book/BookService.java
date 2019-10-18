@@ -2,6 +2,7 @@ package com.example.service.book;
 
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -23,7 +24,23 @@ public interface BookService {
 
     Iterable<Book> findItemsByFormat(Format format);
 
+    Iterable<Book> findItemsByLanguageId(Long languageId);
+
     Iterable<Book> findItemsByLanguageName(String name);
+
+    Iterable<Book> findItemsByLanguageCode(Code code);
+
+    Iterable<Book> findItemsByKeywordsId(Long keywordId);
+
+    Iterable<Book> findItemsByKeywordsText(String keywordText);
+
+    Iterable<Book> findItemsByKeywordsDateDefined(LocalDate keywordText);
+
+    Iterable<Book> findItemsByKeywordsLanguageId(Long keywordLanguageId);
+
+    Iterable<Book> findItemsByKeywordsLanguageName(String keywordLanguageName);
+
+    Iterable<Book> findItemsByKeywordsLanguageCode(Code keywordLanguageCode);
 
     Book createItem(@Valid Book item);
 

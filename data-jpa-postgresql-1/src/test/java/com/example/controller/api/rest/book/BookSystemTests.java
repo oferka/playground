@@ -3,6 +3,7 @@ package com.example.controller.api.rest.book;
 import com.example.model.book.AbstractBookTests;
 import com.example.model.book.Book;
 import com.example.model.book.Book.Format;
+import com.example.model.language.Language.Code;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -159,10 +160,122 @@ public class BookSystemTests extends AbstractBookTests {
     }
 
     @Override
+    protected List<Book> getItemsByLanguageId(Long value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_LANGUAGE_ID_PARAM_NAME, value.toString());
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_LANGUAGE_ID_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
     protected List<Book> getItemsByLanguageName(String value) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add(BOOK_LANGUAGE_NAME_PARAM_NAME, value);
         UriComponents uriComponents = generateUriComponents("/" + FIND_BY_LANGUAGE_NAME_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByLanguageCode(Code value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_LANGUAGE_CODE_PARAM_NAME, value.toString());
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_LANGUAGE_CODE_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsId(Long value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_KEYWORDS_ID_PARAM_NAME, value.toString());
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_KEYWORDS_ID_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsText(String value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_KEYWORDS_TEXT_PARAM_NAME, value);
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_KEYWORDS_TEXT_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsDateDefined(LocalDate value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_KEYWORDS_DATE_DEFINED_PARAM_NAME, value.toString());
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_KEYWORDS_DATE_DEFINED_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageId(Long value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_KEYWORDS_LANGUAGE_ID_PARAM_NAME, value.toString());
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_KEYWORDS_LANGUAGE_ID_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageName(String value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_KEYWORDS_LANGUAGE_NAME_PARAM_NAME, value);
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_KEYWORDS_LANGUAGE_NAME_PATH, params);
+        URI uri = uriComponents.toUri();
+        RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
+        ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        Book[] items = responseEntity.getBody();
+        assertNotNull(items);
+        return asList(items);
+    }
+
+    @Override
+    protected List<Book> getItemsByKeywordsLanguageCode(Code value) {
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add(BOOK_KEYWORDS_LANGUAGE_CODE_PARAM_NAME, value.toString());
+        UriComponents uriComponents = generateUriComponents("/" + FIND_BY_KEYWORDS_LANGUAGE_CODE_PATH, params);
         URI uri = uriComponents.toUri();
         RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
         ResponseEntity<Book[]> responseEntity = testRestTemplate.exchange(requestEntity, Book[].class);

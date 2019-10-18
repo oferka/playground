@@ -1,7 +1,9 @@
 package com.example.model.book;
 
 import com.example.model.AbstractModelTests;
+import com.example.model.keyword.Keyword;
 import com.example.model.language.Language;
+import com.example.model.language.Language.Code;
 import com.example.repository.book.BookRepository;
 import com.github.javafaker.Faker;
 import lombok.Getter;
@@ -15,8 +17,7 @@ import java.util.List;
 import static com.example.model.book.Book.*;
 import static java.time.LocalDate.now;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.apache.commons.lang3.RandomUtils.nextBoolean;
-import static org.apache.commons.lang3.RandomUtils.nextInt;
+import static org.apache.commons.lang3.RandomUtils.*;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.Assert.*;
 
@@ -26,89 +27,7 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     @Autowired
     private BookRepository repository;
 
-    @Test
-    public void shouldFindItemsByTitle() throws Exception {
-        String existingItemValue = getExistingItemTitle();
-        List<Book> items = getItemsByTitle(existingItemValue);
-        verifyItemsTitleAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldReturnEmptyResultForFindItemsByNonExistingTitle() throws Exception {
-        String nonExistingItemValue = getNonExistingItemTitle();
-        List<Book> items = getItemsByTitle(nonExistingItemValue);
-        assertTrue(items.isEmpty());
-    }
-
-    @Test
-    public void shouldFindItemsByDatePublished() throws Exception {
-        LocalDate existingItemValue = getExistingItemDatePublished();
-        List<Book> items = getItemsByDatePublished(existingItemValue);
-        verifyItemsDatePublishedAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldReturnEmptyResultForFindItemsByNonExistingDatePublished() throws Exception {
-        LocalDate nonExistingItemValue = getNonExistingItemDatePublished();
-        List<Book> items = getItemsByDatePublished(nonExistingItemValue);
-        assertTrue(items.isEmpty());
-    }
-
-    @Test
-    public void shouldFindItemsByNumberOfPages() throws Exception {
-        int existingItemValue = getExistingItemNumberOfPages();
-        List<Book> items = getItemsByNumberOfPages(existingItemValue);
-        verifyItemsNumberOfPagesAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldReturnEmptyResultForFindItemsByNonExistingNumberOfPages() throws Exception {
-        int nonExistingItemValue = getNonExistingItemNumberOfPages();
-        List<Book> items = getItemsByNumberOfPages(nonExistingItemValue);
-        assertTrue(items.isEmpty());
-    }
-
-    @Test
-    public void shouldFindItemsByFamilyFriendly() throws Exception {
-        boolean existingItemValue = getExistingItemFamilyFriendly();
-        List<Book> items = getItemsByFamilyFriendly(existingItemValue);
-        verifyItemsFamilyFriendlyAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldFindItemsByIsbn() throws Exception {
-        String existingItemValue = getExistingItemIsbn();
-        List<Book> items = getItemsByIsbn(existingItemValue);
-        verifyItemsIsbnAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldReturnEmptyResultForFindItemsByNonExistingIsbn() throws Exception {
-        String nonExistingItemValue = getNonExistingItemIsbn();
-        List<Book> items = getItemsByIsbn(nonExistingItemValue);
-        assertTrue(items.isEmpty());
-    }
-
-    @Test
-    public void shouldFindItemsByFormat() throws Exception {
-        Format existingItemValue = getExistingItemFormat();
-        List<Book> items = getItemsByFormat(existingItemValue);
-        verifyItemsFormatAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldFindItemsByLanguageName() throws Exception {
-        String existingItemValue = getExistingItemLanguageName();
-        List<Book> items = getItemsByLanguageName(existingItemValue);
-        verifyItemsLanguageNameAsSpecified(items, existingItemValue);
-    }
-
-    @Test
-    public void shouldReturnEmptyResultForFindItemsByNonExistingLanguageName() throws Exception {
-        String nonExistingItemValue = getNonExistingItemLanguageName();
-        List<Book> items = getItemsByLanguageName(nonExistingItemValue);
-        assertTrue(items.isEmpty());
-    }
+    //Create tests:
 
     @Test
     public void shouldFailValidationForCreateItemWithNullTitle() throws Exception {
@@ -188,6 +107,157 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         createItemWithInvalidItem(getItemWithInvalidLanguage(invalidValue));
     }
 
+    //Read tests:
+
+    @Test
+    public void shouldFindItemsByTitle() throws Exception {
+        String existingItemValue = getExistingItemTitle();
+        List<Book> items = getItemsByTitle(existingItemValue);
+        verifyItemsTitleAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingTitle() throws Exception {
+        String nonExistingItemValue = getNonExistingItemTitle();
+        List<Book> items = getItemsByTitle(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
+    public void shouldFindItemsByDatePublished() throws Exception {
+        LocalDate existingItemValue = getExistingItemDatePublished();
+        List<Book> items = getItemsByDatePublished(existingItemValue);
+        verifyItemsDatePublishedAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingDatePublished() throws Exception {
+        LocalDate nonExistingItemValue = getNonExistingItemDatePublished();
+        List<Book> items = getItemsByDatePublished(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
+    public void shouldFindItemsByNumberOfPages() throws Exception {
+        int existingItemValue = getExistingItemNumberOfPages();
+        List<Book> items = getItemsByNumberOfPages(existingItemValue);
+        verifyItemsNumberOfPagesAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingNumberOfPages() throws Exception {
+        int nonExistingItemValue = getNonExistingItemNumberOfPages();
+        List<Book> items = getItemsByNumberOfPages(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
+    public void shouldFindItemsByFamilyFriendly() throws Exception {
+        boolean existingItemValue = getExistingItemFamilyFriendly();
+        List<Book> items = getItemsByFamilyFriendly(existingItemValue);
+        verifyItemsFamilyFriendlyAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByIsbn() throws Exception {
+        String existingItemValue = getExistingItemIsbn();
+        List<Book> items = getItemsByIsbn(existingItemValue);
+        verifyItemsIsbnAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingIsbn() throws Exception {
+        String nonExistingItemValue = getNonExistingItemIsbn();
+        List<Book> items = getItemsByIsbn(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
+    public void shouldFindItemsByFormat() throws Exception {
+        Format existingItemValue = getExistingItemFormat();
+        List<Book> items = getItemsByFormat(existingItemValue);
+        verifyItemsFormatAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByLanguageId() throws Exception {
+        Long existingItemValue = getExistingItemLanguageId();
+        List<Book> items = getItemsByLanguageId(existingItemValue);
+        verifyItemsLanguageIdAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingLanguageId() throws Exception {
+        Long nonExistingItemValue = getNonExistingItemLanguageId();
+        List<Book> items = getItemsByLanguageId(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
+    public void shouldFindItemsByLanguageName() throws Exception {
+        String existingItemValue = getExistingItemLanguageName();
+        List<Book> items = getItemsByLanguageName(existingItemValue);
+        verifyItemsLanguageNameAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldReturnEmptyResultForFindItemsByNonExistingLanguageName() throws Exception {
+        String nonExistingItemValue = getNonExistingItemLanguageName();
+        List<Book> items = getItemsByLanguageName(nonExistingItemValue);
+        assertTrue(items.isEmpty());
+    }
+
+    @Test
+    public void shouldFindItemsByLanguageCode() throws Exception {
+        Code existingItemValue = getExistingItemLanguageCode();
+        List<Book> items = getItemsByLanguageCode(existingItemValue);
+        verifyItemsLanguageCodeAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByKeywordsId() throws Exception {
+        Long existingItemValue = getExistingItemKeywordId();
+        List<Book> items = getItemsByKeywordsId(existingItemValue);
+        verifyItemsKeywordsIdAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByKeywordsText() throws Exception {
+        String existingItemValue = getExistingItemKeywordText();
+        List<Book> items = getItemsByKeywordsText(existingItemValue);
+        verifyItemsKeywordsTextAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByKeywordsDateDefined() throws Exception {
+        LocalDate existingItemValue = getExistingItemKeywordDateDefined();
+        List<Book> items = getItemsByKeywordsDateDefined(existingItemValue);
+        verifyItemsKeywordsDateDefinedAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByKeywordsLanguageId() throws Exception {
+        Long existingItemValue = getExistingItemKeywordLanguageId();
+        List<Book> items = getItemsByKeywordsLanguageId(existingItemValue);
+        verifyItemsKeywordsLanguageIdAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByKeywordsLanguageName() throws Exception {
+        String existingItemValue = getExistingItemKeywordLanguageName();
+        List<Book> items = getItemsByKeywordsLanguageName(existingItemValue);
+        verifyItemsKeywordsLanguageNameAsSpecified(items, existingItemValue);
+    }
+
+    @Test
+    public void shouldFindItemsByKeywordsLanguageCode() throws Exception {
+        Code existingItemValue = getExistingItemKeywordLanguageCode();
+        List<Book> items = getItemsByKeywordsLanguageCode(existingItemValue);
+        verifyItemsKeywordsLanguageCodeAsSpecified(items, existingItemValue);
+    }
+
+    //Update tests:
+
     @Test
     public void shouldFailValidationForUpdateItemWithNullTitle() throws Exception {
         updateItemWithInvalidItem(getItemWithInvalidTitle(null));
@@ -263,6 +333,60 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         updateItemWithInvalidItem(getItemWithInvalidLanguage(null));
     }
 
+    //Delete tests:
+
+    //Overridden methods:
+
+    @Override
+    protected Book getItemToBeCreated() {
+        return getValidItem();
+    }
+
+    @Override
+    protected Book getUpdatedItem(Book item) {
+        String updateValue = getUpdatedItemAttributeValue(item.getTitle());
+        item.setTitle(updateValue);
+        return item;
+    }
+
+    //Abstract methods:
+
+    protected abstract List<Book> getItemsByTitle(String value) throws Exception;
+
+    protected abstract List<Book> getItemsByDatePublished(LocalDate value) throws Exception;
+
+    protected abstract List<Book> getItemsByNumberOfPages(Integer value) throws Exception;
+
+    protected abstract List<Book> getItemsByFamilyFriendly(Boolean value) throws Exception;
+
+    protected abstract List<Book> getItemsByIsbn(String value) throws Exception;
+
+    protected abstract List<Book> getItemsByFormat(Format value) throws Exception;
+
+    protected abstract List<Book> getItemsByLanguageId(Long id) throws Exception;
+
+    protected abstract List<Book> getItemsByLanguageName(String value) throws Exception;
+
+    protected abstract List<Book> getItemsByLanguageCode(Code value) throws Exception;
+
+    protected abstract List<Book> getItemsByKeywordsId(Long value) throws Exception;
+
+    protected abstract List<Book> getItemsByKeywordsText(String value) throws Exception;
+
+    protected abstract List<Book> getItemsByKeywordsDateDefined(LocalDate value) throws Exception;
+
+    protected abstract List<Book> getItemsByKeywordsLanguageId(Long value) throws Exception;
+
+    protected abstract List<Book> getItemsByKeywordsLanguageName(String value) throws Exception;
+
+    protected abstract List<Book> getItemsByKeywordsLanguageCode(Code value) throws Exception;
+
+    //Helper methods:
+
+    private Book getValidItem() {
+        return getSampleDataLoader().getBookSampleDataLoader().getBookSampleDataProvider().getSampleItem();
+    }
+
     private Book getItemWithInvalidTitle(String value) {
         Book result = getValidItem();
         result.setTitle(value);
@@ -305,8 +429,120 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         return result;
     }
 
-    private Book getValidItem() {
-        return getSampleDataLoader().getBookSampleDataLoader().getBookSampleDataProvider().getSampleItem();
+    private String getExistingItemTitle() {
+        return getExistingItem().getTitle();
+    }
+
+    private LocalDate getExistingItemDatePublished() {
+        return getExistingItem().getDatePublished();
+    }
+
+    private Integer getExistingItemNumberOfPages() {
+        return getExistingItem().getNumberOfPages();
+    }
+
+    private Boolean getExistingItemFamilyFriendly() {
+        return getExistingItem().getFamilyFriendly();
+    }
+
+    private String getExistingItemIsbn() {
+        return getExistingItem().getIsbn();
+    }
+
+    private Format getExistingItemFormat() {
+        return getExistingItem().getFormat();
+    }
+
+    private Language getExistingItemLanguage() {
+        return getExistingItem().getLanguage();
+    }
+
+    private Long getExistingItemLanguageId() {
+        return getExistingItemLanguage().getId();
+    }
+
+    private String getExistingItemLanguageName() {
+        return getExistingItemLanguage().getName();
+    }
+
+    private Code getExistingItemLanguageCode() {
+        return getExistingItemLanguage().getCode();
+    }
+
+    private Keyword getExistingItemKeyword() {
+        return getExistingItem().getKeywords().iterator().next();
+    }
+
+    private Long getExistingItemKeywordId() {
+        return getExistingItemKeyword().getId();
+    }
+
+    private String getExistingItemKeywordText() {
+        return getExistingItemKeyword().getText();
+    }
+
+    private LocalDate getExistingItemKeywordDateDefined() {
+        return getExistingItemKeyword().getDateDefined();
+    }
+
+    private Long getExistingItemKeywordLanguageId() {
+        return getExistingItemKeyword().getLanguage().getId();
+    }
+
+    private String getExistingItemKeywordLanguageName() {
+        return getExistingItemKeyword().getLanguage().getName();
+    }
+
+    private Code getExistingItemKeywordLanguageCode() {
+        return getExistingItemKeyword().getLanguage().getCode();
+    }
+
+    private String getNonExistingItemTitle() throws Exception {
+        String result = null;
+        while ((result == null) || (!getItemsByTitle(result).isEmpty())) {
+            result = randomAlphabetic(16);
+        }
+        return result;
+    }
+
+    private LocalDate getNonExistingItemDatePublished() throws Exception {
+        LocalDate result = null;
+        while ((result == null) || (!getItemsByDatePublished(result).isEmpty())) {
+            result = LocalDate.now().minusDays(nextInt(0, 10000));
+        }
+        return result;
+    }
+
+    private Integer getNonExistingItemNumberOfPages() throws Exception {
+        Integer result = null;
+        while ((result == null) || (!getItemsByNumberOfPages(result).isEmpty())) {
+            result = nextInt(NUMBER_OF_PAGES_MIN, NUMBER_OF_PAGES_MAX);
+        }
+        return result;
+    }
+
+    private String getNonExistingItemIsbn() throws Exception {
+        String result = null;
+        while ((result == null) || (!getItemsByIsbn(result).isEmpty())) {
+            result = (nextBoolean()? (new Faker().code().isbn10(nextBoolean())) : (new Faker().code().isbn13(nextBoolean())));
+        }
+        return result;
+    }
+
+    private Long getNonExistingItemLanguageId() throws Exception {
+        Long result = null;
+        while ((result == null) || (!getItemsByLanguageId(result).isEmpty())) {
+            result = nextLong(1, Long.MAX_VALUE);
+        }
+        return result;
+    }
+
+    private String getNonExistingItemLanguageName() throws Exception {
+        String result = null;
+        while ((result == null) || (!getItemsByLanguageName(result).isEmpty())) {
+            result = RandomStringUtils.randomAlphabetic(6);
+        }
+        return result;
     }
 
     private void verifyItemsTitleAsSpecified(List<Book> items, String expectedValue) {
@@ -351,6 +587,13 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         }
     }
 
+    private void verifyItemsLanguageIdAsSpecified(List<Book> items, Long expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getLanguage().getId());
+        }
+    }
+
     private void verifyItemsLanguageNameAsSpecified(List<Book> items, String expectedValue) {
         assertFalse(items.isEmpty());
         for (Book item : items) {
@@ -358,101 +601,52 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         }
     }
 
-    protected abstract List<Book> getItemsByTitle(String value) throws Exception;
-
-    protected abstract List<Book> getItemsByDatePublished(LocalDate value) throws Exception;
-
-    protected abstract List<Book> getItemsByNumberOfPages(Integer value) throws Exception;
-
-    protected abstract List<Book> getItemsByFamilyFriendly(Boolean value) throws Exception;
-
-    protected abstract List<Book> getItemsByIsbn(String value) throws Exception;
-
-    protected abstract List<Book> getItemsByFormat(Format value) throws Exception;
-
-    protected abstract List<Book> getItemsByLanguageName(String value) throws Exception;
-
-    private String getExistingItemTitle() {
-        return getExistingItem().getTitle();
-    }
-
-    private LocalDate getExistingItemDatePublished() {
-        return getExistingItem().getDatePublished();
-    }
-
-    private Integer getExistingItemNumberOfPages() {
-        return getExistingItem().getNumberOfPages();
-    }
-
-    private Boolean getExistingItemFamilyFriendly() {
-        return getExistingItem().getFamilyFriendly();
-    }
-
-    private String getExistingItemIsbn() {
-        return getExistingItem().getIsbn();
-    }
-
-    private Format getExistingItemFormat() {
-        return getExistingItem().getFormat();
-    }
-
-    private Language getExistingItemLanguage() {
-        return getExistingItem().getLanguage();
-    }
-
-    private String getExistingItemLanguageName() {
-        return getExistingItemLanguage().getName();
-    }
-
-    private String getNonExistingItemTitle() throws Exception {
-        String result = null;
-        while ((result == null) || (!getItemsByTitle(result).isEmpty())) {
-            result = randomAlphabetic(16);
+    private void verifyItemsLanguageCodeAsSpecified(List<Book> items, Code expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getLanguage().getCode());
         }
-        return result;
     }
 
-    private LocalDate getNonExistingItemDatePublished() throws Exception {
-        LocalDate result = null;
-        while ((result == null) || (!getItemsByDatePublished(result).isEmpty())) {
-            result = LocalDate.now().minusDays(nextInt(0, 10000));
+    private void verifyItemsKeywordsIdAsSpecified(List<Book> items, Long expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getKeywords().iterator().next().getId());
         }
-        return result;
     }
 
-    private Integer getNonExistingItemNumberOfPages() throws Exception {
-        Integer result = null;
-        while ((result == null) || (!getItemsByNumberOfPages(result).isEmpty())) {
-            result = nextInt(NUMBER_OF_PAGES_MIN, NUMBER_OF_PAGES_MAX);
+    private void verifyItemsKeywordsTextAsSpecified(List<Book> items, String expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getKeywords().iterator().next().getText());
         }
-        return result;
     }
 
-    private String getNonExistingItemIsbn() throws Exception {
-        String result = null;
-        while ((result == null) || (!getItemsByIsbn(result).isEmpty())) {
-            result = (nextBoolean()? (new Faker().code().isbn10(nextBoolean())) : (new Faker().code().isbn13(nextBoolean())));
+    private void verifyItemsKeywordsDateDefinedAsSpecified(List<Book> items, LocalDate expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getKeywords().iterator().next().getDateDefined());
         }
-        return result;
     }
 
-    private String getNonExistingItemLanguageName() throws Exception {
-        String result = null;
-        while ((result == null) || (!getItemsByLanguageName(result).isEmpty())) {
-            result = RandomStringUtils.randomAlphabetic(6);
+    private void verifyItemsKeywordsLanguageIdAsSpecified(List<Book> items, Long expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getKeywords().iterator().next().getLanguage().getId());
         }
-        return result;
     }
 
-    @Override
-    protected Book getItemToBeCreated() {
-        return getValidItem();
+    private void verifyItemsKeywordsLanguageNameAsSpecified(List<Book> items, String expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getKeywords().iterator().next().getLanguage().getName());
+        }
     }
 
-    @Override
-    protected Book getUpdatedItem(Book item) {
-        String updateValue = getUpdatedItemAttributeValue(item.getTitle());
-        item.setTitle(updateValue);
-        return item;
+    private void verifyItemsKeywordsLanguageCodeAsSpecified(List<Book> items, Code expectedValue) {
+        assertFalse(items.isEmpty());
+        for (Book item : items) {
+            assertEquals(expectedValue, item.getKeywords().iterator().next().getLanguage().getCode());
+        }
     }
 }
