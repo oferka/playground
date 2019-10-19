@@ -41,6 +41,31 @@ public class BookSystemTests extends AbstractBookTests {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
+    //Create methods:
+
+    @Override
+    protected void createItem(Book item) {
+        UriComponents uriComponents = generateUriComponents();
+        URI uri = uriComponents.toUri();
+        RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
+        ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Book item) {
+        UriComponents uriComponents = generateUriComponents();
+        URI uri = uriComponents.toUri();
+        RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
+        ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        Map responseBody = responseEntity.getBody();
+        assertNotNull(responseBody);
+        assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
+    }
+
+    //Read methods:
+
     @Override
     protected List<Book> getAllItems() {
         UriComponents uriComponents = generateUriComponents();
@@ -285,26 +310,7 @@ public class BookSystemTests extends AbstractBookTests {
         return asList(items);
     }
 
-    @Override
-    protected void createItem(Book item) {
-        UriComponents uriComponents = generateUriComponents();
-        URI uri = uriComponents.toUri();
-        RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
-        ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
-        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Book item) {
-        UriComponents uriComponents = generateUriComponents();
-        URI uri = uriComponents.toUri();
-        RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
-        ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
-        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        Map responseBody = responseEntity.getBody();
-        assertNotNull(responseBody);
-        assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Book item) {
@@ -336,6 +342,8 @@ public class BookSystemTests extends AbstractBookTests {
         assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
     }
 
+    //Delete methods:
+
     @Override
     protected void deleteById(Long id) {
         UriComponents uriComponents = generateUriComponents("/" + id);
@@ -353,6 +361,8 @@ public class BookSystemTests extends AbstractBookTests {
         ResponseEntity responseEntity = testRestTemplate.exchange(requestEntity, Void.class);
         assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
     }
+
+    //Helper methods:
 
     private UriComponents generateUriComponents() {
         return generateUriComponents(EMPTY, null);

@@ -32,86 +32,86 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
 
     @Test
     public void shouldFailValidationForCreateItemWithNullTitle() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidTitle(null));
+        createItemWithInvalidItem(getExistingItemWithInvalidTitleValue(null));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithBlankTitle() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidTitle(EMPTY));
+        createItemWithInvalidItem(getExistingItemWithInvalidTitleValue(EMPTY));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithTitleShorterThanMin() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidTitle(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
+        createItemWithInvalidItem(getExistingItemWithInvalidTitleValue(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithTitleLongerThanMax() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidTitle(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
+        createItemWithInvalidItem(getExistingItemWithInvalidTitleValue(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullDatePublished() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidDatePublished(null));
+        createItemWithInvalidItem(getExistingItemWithInvalidDatePublishedValue(null));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithFutureDatePublished() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidDatePublished(now().plusDays(nextInt(1,100))));
+        createItemWithInvalidItem(getExistingItemWithInvalidDatePublishedValue(now().plusDays(nextInt(1,100))));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullNumberOfPages() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidNumberOfPages(null));
+        createItemWithInvalidItem(getExistingItemWithInvalidNumberOfPagesValue(null));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNumberOfPagesBelowMin() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidNumberOfPages(NUMBER_OF_PAGES_MIN - 1));
+        createItemWithInvalidItem(getExistingItemWithInvalidNumberOfPagesValue(NUMBER_OF_PAGES_MIN - 1));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNumberOfPagesAboveMax() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidNumberOfPages(NUMBER_OF_PAGES_MAX + 1));
+        createItemWithInvalidItem(getExistingItemWithInvalidNumberOfPagesValue(NUMBER_OF_PAGES_MAX + 1));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullFamilyFriendly() throws Exception {
         Boolean invalidValue = null;
-        createItemWithInvalidItem(getExistingItemWithInvalidFamilyFriendly(invalidValue));
+        createItemWithInvalidItem(getExistingItemWithInvalidFamilyFriendlyValue(invalidValue));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullIsbn() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidIsbn(null));
+        createItemWithInvalidItem(getExistingItemWithInvalidIsbnValue(null));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithBlankIsbn() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidIsbn(EMPTY));
+        createItemWithInvalidItem(getExistingItemWithInvalidIsbnValue(EMPTY));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithBadFormatIsbn() throws Exception {
-        createItemWithInvalidItem(getExistingItemWithInvalidIsbn(randomAlphabetic(15)));
+        createItemWithInvalidItem(getExistingItemWithInvalidIsbnValue(randomAlphabetic(15)));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullFormat() throws Exception {
         Format invalidValue = null;
-        createItemWithInvalidItem(getExistingItemWithInvalidFormat(invalidValue));
+        createItemWithInvalidItem(getExistingItemWithInvalidFormatValue(invalidValue));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullLanguage() throws Exception {
         Language invalidValue = null;
-        createItemWithInvalidItem(getExistingItemWithInvalidLanguage(invalidValue));
+        createItemWithInvalidItem(getExistingItemWithInvalidLanguageValue(invalidValue));
     }
 
     @Test
     public void shouldFailValidationForCreateItemWithNullKeywords() throws Exception {
         Set<Keyword> invalidValue = null;
-        createItemWithInvalidItem(getExistingItemWithInvalidKeywords(invalidValue));
+        createItemWithInvalidItem(getExistingItemWithInvalidKeywordsValue(invalidValue));
     }
 
     //Read tests:
@@ -302,91 +302,92 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullTitle() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidTitle(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidTitleValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithBlankTitle() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidTitle(EMPTY));
+        updateItemWithInvalidItem(getExistingItemWithInvalidTitleValue(EMPTY));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithTitleShorterThanMin() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidTitle(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
+        updateItemWithInvalidItem(getExistingItemWithInvalidTitleValue(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithTitleLongerThanMax() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidTitle(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
+        updateItemWithInvalidItem(getExistingItemWithInvalidTitleValue(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullDatePublished() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidDatePublished(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidDatePublishedValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithFutureDatePublished() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidDatePublished(now().plusDays(nextInt(1, 100))));
+        updateItemWithInvalidItem(getExistingItemWithInvalidDatePublishedValue(now().plusDays(nextInt(1, 100))));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullNumberOfPages() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidNumberOfPages(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidNumberOfPagesValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNumberOfPagesBelowMin() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidNumberOfPages(NUMBER_OF_PAGES_MIN - 1));
+        updateItemWithInvalidItem(getExistingItemWithInvalidNumberOfPagesValue(NUMBER_OF_PAGES_MIN - 1));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNumberOfPagesAboveMax() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidTitle(randomAlphabetic(NUMBER_OF_PAGES_MAX + 1)));
+        updateItemWithInvalidItem(getExistingItemWithInvalidTitleValue(randomAlphabetic(NUMBER_OF_PAGES_MAX + 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullFamilyFriendly() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidFamilyFriendly(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidFamilyFriendlyValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullIsbn() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidIsbn(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidIsbnValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithBlankIsbn() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidIsbn(EMPTY));
+        updateItemWithInvalidItem(getExistingItemWithInvalidIsbnValue(EMPTY));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithBadFormatIsbn() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidIsbn(randomAlphabetic(15)));
+        updateItemWithInvalidItem(getExistingItemWithInvalidIsbnValue(randomAlphabetic(15)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullFormat() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidFormat(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidFormatValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullLanguage() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidLanguage(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidLanguageValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullKeywords() throws Exception {
-        updateItemWithInvalidItem(getExistingItemWithInvalidKeywords(null));
+        updateItemWithInvalidItem(getExistingItemWithInvalidKeywordsValue(null));
     }
-
-    //Delete tests:
 
     //Overridden methods:
 
     @Override
-    protected Book getItemToBeCreated() {
-        return getSampleDataLoader().getBookSampleDataLoader().getBookSampleDataProvider().getSampleItem();
+    protected Book getItemToBeCreated() throws Exception {
+        Book result = getExistingItem();
+        result.setId(null);
+        result.setIsbn(getNonExistingItemIsbn()); //isbn must be unique
+        return result;
     }
 
     @Override
@@ -430,49 +431,49 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
 
     //Helper methods:
 
-    private Book getExistingItemWithInvalidTitle(String value) {
+    private Book getExistingItemWithInvalidTitleValue(String value) {
         Book result = getExistingItem();
         result.setTitle(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidDatePublished(LocalDate value) {
+    private Book getExistingItemWithInvalidDatePublishedValue(LocalDate value) {
         Book result = getExistingItem();
         result.setDatePublished(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidNumberOfPages(Integer value) {
+    private Book getExistingItemWithInvalidNumberOfPagesValue(Integer value) {
         Book result = getExistingItem();
         result.setNumberOfPages(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidFamilyFriendly(Boolean value) {
+    private Book getExistingItemWithInvalidFamilyFriendlyValue(Boolean value) {
         Book result = getExistingItem();
         result.setFamilyFriendly(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidIsbn(String value) {
+    private Book getExistingItemWithInvalidIsbnValue(String value) {
         Book result = getExistingItem();
         result.setIsbn(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidFormat(Format value) {
+    private Book getExistingItemWithInvalidFormatValue(Format value) {
         Book result = getExistingItem();
         result.setFormat(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidLanguage(Language value) {
+    private Book getExistingItemWithInvalidLanguageValue(Language value) {
         Book result = getExistingItem();
         result.setLanguage(value);
         return result;
     }
 
-    private Book getExistingItemWithInvalidKeywords(Set<Keyword> value) {
+    private Book getExistingItemWithInvalidKeywordsValue(Set<Keyword> value) {
         Book result = getExistingItem();
         result.setKeywords(value);
         return result;

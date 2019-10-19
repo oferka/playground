@@ -30,6 +30,32 @@ public class LanguageIntegrationTests extends AbstractLanguageTests {
     @Autowired
     private MockMvc mockMvc;
 
+    //Create methods:
+
+    @Override
+    protected void createItem(Language item) throws Exception {
+        mockMvc.perform(post("/" + LANGUAGES_PATH)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(item))
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(log())
+                .andExpect(status().isCreated())
+                .andReturn();
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Language item) throws Exception {
+        mockMvc.perform(post("/" + LANGUAGES_PATH)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(item))
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(log())
+                .andExpect(status().isBadRequest())
+                .andReturn();
+    }
+
+    //Read methods:
+
     @Override
     protected List<Language> getAllItems() throws Exception {
         MvcResult mvcResult = mockMvc.perform(get("/" + LANGUAGES_PATH))
@@ -79,27 +105,7 @@ public class LanguageIntegrationTests extends AbstractLanguageTests {
         return asList(returnedItems);
     }
 
-    @Override
-    protected void createItem(Language item) throws Exception {
-        mockMvc.perform(post("/" + LANGUAGES_PATH)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(item))
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(log())
-                .andExpect(status().isCreated())
-                .andReturn();
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Language item) throws Exception {
-        mockMvc.perform(post("/" + LANGUAGES_PATH)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(item))
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(log())
-                .andExpect(status().isBadRequest())
-                .andReturn();
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Language item) throws Exception {
@@ -130,6 +136,8 @@ public class LanguageIntegrationTests extends AbstractLanguageTests {
                 .andExpect(status().isBadRequest())
                 .andReturn();
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) throws Exception {

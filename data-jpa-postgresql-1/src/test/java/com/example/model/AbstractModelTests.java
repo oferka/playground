@@ -21,6 +21,8 @@ public abstract class AbstractModelTests<T extends Identifiable> {
     @Autowired
     private SampleDataLoader sampleDataLoader;
 
+    //Lifecycle methods:
+
     @Before
     public void deleteAllAndLoadSampleDataBeforeTests() {
         sampleDataLoader.clean();
@@ -31,6 +33,17 @@ public abstract class AbstractModelTests<T extends Identifiable> {
     public void deleteAllAfterTests() {
         sampleDataLoader.clean();
     }
+
+    //Create tests:
+
+    @Test
+    public void shouldCreateItem() throws Exception {
+        T itemToBeCreated = getItemToBeCreated();
+        createItem(itemToBeCreated);
+        verifyItemCreation(itemToBeCreated);
+    }
+
+    //Read tests:
 
     @Test
     public void shouldFindAllItems() throws Exception {
@@ -53,12 +66,7 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         assertTrue(item.isEmpty());
     }
 
-    @Test
-    public void shouldCreateItem() throws Exception {
-        T itemToBeCreated = getItemToBeCreated();
-        createItem(itemToBeCreated);
-        verifyItemCreation(itemToBeCreated);
-    }
+    //Update tests:
 
     @Test
     public void shouldUpdateItem() throws Exception {
@@ -77,6 +85,8 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         verifyItemUpdateForNonExistingItem(item);
     }
 
+    //Delete tests:
+
     @Test
     public void shouldDeleteItemById() throws Exception {
         long existingItemId = getExistingItemId();
@@ -91,13 +101,15 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         verifyItemDeletion(nonExistingItemId);
     }
 
+    //Abstract methods:
+
     protected abstract List<T> getAllItems() throws Exception;
 
     protected abstract Optional<T> getItemById(Long id) throws Exception;
 
     protected abstract Optional<T> getItemByIdForNonExistingId(Long id) throws Exception;
 
-    protected abstract T getItemToBeCreated();
+    protected abstract T getItemToBeCreated() throws Exception;
 
     protected abstract void createItem(T item) throws Exception;
 
@@ -117,29 +129,18 @@ public abstract class AbstractModelTests<T extends Identifiable> {
 
     protected abstract JpaRepository<T, Long> getRepository();
 
+    //Helper methods:
+
     protected T getExistingItem() {
         return getRepository().findAll().iterator().next();
-    }
-
-    private boolean itemIdExists(Long id) {
-        return getRepository().findById(id).isPresent();
-    }
-
-    private void verifyEqualToSampleData(List<T> items) {
-        assertNotNull(items);
-        assertFalse(items.isEmpty());
     }
 
     private long getExistingItemId() {
         return getExistingItem().getId();
     }
 
-    private void verifyItemIdAsSpecified(T item, Long expectedId) {
-        assertEquals(expectedId, item.getId());
-    }
-
-    private void verifyItemUpdate(T item) {
-        verifyItemExists(item);
+    private boolean itemIdExists(Long id) {
+        return getRepository().findById(id).isPresent();
     }
 
     private long getNonExistingItemId() {
@@ -148,6 +149,19 @@ public abstract class AbstractModelTests<T extends Identifiable> {
             id = nextLong(1, Long.MAX_VALUE);
         }
         return id;
+    }
+
+    private void verifyEqualToSampleData(List<T> items) {
+        assertNotNull(items);
+        assertFalse(items.isEmpty());
+    }
+
+    private void verifyItemIdAsSpecified(T item, Long expectedId) {
+        assertEquals(expectedId, item.getId());
+    }
+
+    private void verifyItemUpdate(T item) {
+        verifyItemExists(item);
     }
 
     private void verifyItemCreation(T item) {

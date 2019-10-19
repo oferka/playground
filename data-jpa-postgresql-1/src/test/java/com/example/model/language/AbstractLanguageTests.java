@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static com.example.data.sample.language.RandomLanguageSampleDataProviderUtils.generateRandomLanguage;
 import static com.example.model.language.Language.NAME_MAX_LENGTH;
 import static com.example.model.language.Language.NAME_MIN_LENGTH;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
@@ -21,6 +20,36 @@ public abstract class AbstractLanguageTests extends AbstractModelTests<Language>
 
     @Autowired
     private LanguageRepository repository;
+
+    //Create methods:
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNullName() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidNameValue(null));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithBlankName() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidNameValue(EMPTY));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNameShorterThanMin() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidNameValue(randomAlphabetic(NAME_MIN_LENGTH - 1)));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNameLongerThanMax() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidNameValue(randomAlphabetic(NAME_MAX_LENGTH + 1)));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNullCode() throws Exception {
+        Code invalidValue = null;
+        createItemWithInvalidItem(getItemWithInvalidCodeValue(invalidValue));
+    }
+
+    //Read methods:
 
     @Test
     public void shouldFindItemsByName() throws Exception {
@@ -43,56 +72,56 @@ public abstract class AbstractLanguageTests extends AbstractModelTests<Language>
         verifyItemsCodeAsSpecified(items, existingItemValue);
     }
 
-    @Test
-    public void shouldFailValidationForCreateItemWithNullName() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidName(null));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithBlankName() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidName(EMPTY));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithNameShorterThanMin() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidName(randomAlphabetic(NAME_MIN_LENGTH - 1)));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithNameLongerThanMax() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidName(randomAlphabetic(NAME_MAX_LENGTH + 1)));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithNullCode() throws Exception {
-        Code invalidValue = null;
-        createItemWithInvalidItem(getItemWithInvalidCode(invalidValue));
-    }
+    //Update methods:
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullName() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidName(null));
+        updateItemWithInvalidItem(getItemWithInvalidNameValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithBlankName() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidName(EMPTY));
+        updateItemWithInvalidItem(getItemWithInvalidNameValue(EMPTY));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNameShorterThanMin() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidName(randomAlphabetic(NAME_MIN_LENGTH - 1)));
+        updateItemWithInvalidItem(getItemWithInvalidNameValue(randomAlphabetic(NAME_MIN_LENGTH - 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNameLongerThanMax() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidName(randomAlphabetic(NAME_MAX_LENGTH + 1)));
+        updateItemWithInvalidItem(getItemWithInvalidNameValue(randomAlphabetic(NAME_MAX_LENGTH + 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullCode() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidCode(null));
+        updateItemWithInvalidItem(getItemWithInvalidCodeValue(null));
     }
+
+    //Overridden methods:
+
+    @Override
+    protected Language getItemToBeCreated() {
+        Language result = getExistingItem();
+        result.setId(null);
+        return result;
+    }
+
+    @Override
+    protected Language getUpdatedItem(Language item) {
+        String updateValue = getUpdatedItemAttributeValue(item.getName());
+        item.setName(updateValue);
+        return item;
+    }
+
+    //Abstract methods:
+
+    protected abstract List<Language> getItemsByName(String value) throws Exception;
+
+    protected abstract List<Language> getItemsByCode(Code value) throws Exception;
+
+    //Helper methods:
 
     private void verifyItemsNameAsSpecified(List<Language> items, String expectedValue) {
         assertFalse(items.isEmpty());
@@ -108,24 +137,16 @@ public abstract class AbstractLanguageTests extends AbstractModelTests<Language>
         }
     }
 
-    protected abstract List<Language> getItemsByName(String value) throws Exception;
-
-    protected abstract List<Language> getItemsByCode(Code value) throws Exception;
-
-    private Language getItemWithInvalidName(String value) {
-        Language result = getValidItem();
+    private Language getItemWithInvalidNameValue(String value) {
+        Language result = getExistingItem();
         result.setName(value);
         return result;
     }
 
-    private Language getItemWithInvalidCode(Code value) {
-        Language result = getValidItem();
+    private Language getItemWithInvalidCodeValue(Code value) {
+        Language result = getExistingItem();
         result.setCode(value);
         return result;
-    }
-
-    private Language getValidItem() {
-        return generateRandomLanguage();
     }
 
     private String getExistingItemName() {
@@ -142,17 +163,5 @@ public abstract class AbstractLanguageTests extends AbstractModelTests<Language>
 
     private Code getExistingItemCode() {
         return getExistingItem().getCode();
-    }
-
-    @Override
-    protected Language getItemToBeCreated() {
-        return getValidItem();
-    }
-
-    @Override
-    protected Language getUpdatedItem(Language item) {
-        String updateValue = getUpdatedItemAttributeValue(item.getName());
-        item.setName(updateValue);
-        return item;
     }
 }

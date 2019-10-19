@@ -22,6 +22,26 @@ import static org.junit.Assert.fail;
 @SpringBootTest
 public class BookRepositoryTests extends AbstractBookTests {
 
+    //Create methods:
+
+    @Override
+    protected void createItem(Book item) {
+        getRepository().save(item);
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Book item) {
+        try {
+            getRepository().save(item);
+            fail();
+        }
+        catch (TransactionSystemException e) {
+            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
+        }
+    }
+
+    //Read methods:
+
     @Override
     protected List<Book> getAllItems() {
         Iterable<Book> iterable = getRepository().findAll();
@@ -115,21 +135,7 @@ public class BookRepositoryTests extends AbstractBookTests {
         return getItemListFromItemIterable(getRepository().findAllByKeywordsLanguageCode(value));
     }
 
-    @Override
-    protected void createItem(Book item) {
-        getRepository().save(item);
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Book item) {
-        try {
-            getRepository().save(item);
-            fail();
-        }
-        catch (TransactionSystemException e) {
-            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
-        }
-    }
+    //Update methods
 
     @Override
     protected void updateItem(Book item) {
@@ -154,6 +160,8 @@ public class BookRepositoryTests extends AbstractBookTests {
             assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
         }
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {

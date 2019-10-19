@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,6 +21,26 @@ public class LanguageServiceTests extends AbstractLanguageTests {
 
     @Autowired
     private LanguageService service;
+
+    //Create methods:
+
+    @Override
+    protected void createItem(Language item) {
+        service.createItem(item);
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Language item) {
+        try {
+            service.createItem(item);
+            fail();
+        }
+        catch (ConstraintViolationException e) {
+            assertFalse(e.getConstraintViolations().isEmpty());
+        }
+    }
+
+    //Read methods:
 
     @Override
     protected List<Language> getAllItems() {
@@ -51,21 +70,7 @@ public class LanguageServiceTests extends AbstractLanguageTests {
         return getItemListFromItemIterable(service.findItemsByCode(value));
     }
 
-    @Override
-    protected void createItem(Language item) {
-        service.createItem(item);
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Language item) {
-        try {
-            service.createItem(item);
-            fail();
-        }
-        catch (ConstraintViolationException e) {
-            assertTrue(!e.getConstraintViolations().isEmpty());
-        }
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Language item) {
@@ -84,9 +89,11 @@ public class LanguageServiceTests extends AbstractLanguageTests {
             fail();
         }
         catch (ConstraintViolationException e) {
-            assertTrue(!e.getConstraintViolations().isEmpty());
+            assertFalse(e.getConstraintViolations().isEmpty());
         }
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {

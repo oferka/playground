@@ -10,6 +10,7 @@ import org.springframework.transaction.TransactionSystemException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.Assert.assertTrue;
@@ -18,6 +19,25 @@ import static org.junit.Assert.fail;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LanguageRepositoryTests extends AbstractLanguageTests {
+
+    //Create methods:
+
+    @Override
+    protected void createItem(Language item) {
+        getRepository().save(item);
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Language item) {
+        try {
+            getRepository().save(item);
+            fail();
+        }
+        catch (TransactionSystemException e) {
+            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
+        }
+    }
+    //Read methods:
 
     @Override
     protected List<Language> getAllItems() {
@@ -46,22 +66,7 @@ public class LanguageRepositoryTests extends AbstractLanguageTests {
     protected List<Language> getItemsByCode(Code value) {
         return getItemListFromItemIterable(getRepository().findByCode(value));
     }
-
-    @Override
-    protected void createItem(Language item) {
-        getRepository().save(item);
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Language item) {
-        try {
-            getRepository().save(item);
-            fail();
-        }
-        catch (TransactionSystemException e) {
-            assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
-        }
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Language item) {
@@ -86,6 +91,8 @@ public class LanguageRepositoryTests extends AbstractLanguageTests {
             assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
         }
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {

@@ -39,6 +39,31 @@ public class LanguageSystemTests extends AbstractLanguageTests {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
+    //Create methods:
+
+    @Override
+    protected void createItem(Language item) {
+        UriComponents uriComponents = generateUriComponents();
+        URI uri = uriComponents.toUri();
+        RequestEntity<Language> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
+        ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Language item) {
+        UriComponents uriComponents = generateUriComponents();
+        URI uri = uriComponents.toUri();
+        RequestEntity<Language> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
+        ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        Map responseBody = responseEntity.getBody();
+        assertNotNull(responseBody);
+        assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
+    }
+
+    //Read methods:
+
     @Override
     protected List<Language> getAllItems() {
         UriComponents uriComponents = generateUriComponents();
@@ -101,25 +126,7 @@ public class LanguageSystemTests extends AbstractLanguageTests {
         return asList(items);
     }
 
-    @Override
-    protected void createItem(Language item) {
-        UriComponents uriComponents = generateUriComponents();
-        URI uri = uriComponents.toUri();
-        RequestEntity<Language> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
-        ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
-        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Language item) {
-        UriComponents uriComponents = generateUriComponents();
-        URI uri = uriComponents.toUri();
-        RequestEntity<Language> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
-        ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
-        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        Map<String, String> responseBody = responseEntity.getBody();
-        assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Language item) {
@@ -146,9 +153,12 @@ public class LanguageSystemTests extends AbstractLanguageTests {
         RequestEntity<Language> requestEntity = new RequestEntity<>(item, HttpMethod.PUT, uri);
         ResponseEntity<Map> responseEntity = testRestTemplate.exchange(requestEntity, Map.class);
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        Map<String, String> responseBody = responseEntity.getBody();
+        Map responseBody = responseEntity.getBody();
+        assertNotNull(responseBody);
         assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {
@@ -167,6 +177,8 @@ public class LanguageSystemTests extends AbstractLanguageTests {
         ResponseEntity responseEntity = testRestTemplate.exchange(requestEntity, Void.class);
         assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
     }
+
+    //Helper methods
 
     private UriComponents generateUriComponents() {
         return generateUriComponents(EMPTY, null);

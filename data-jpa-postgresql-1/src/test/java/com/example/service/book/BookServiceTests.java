@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,6 +24,26 @@ public class BookServiceTests extends AbstractBookTests {
 
     @Autowired
     private BookService service;
+
+    //Create methods:
+
+    @Override
+    protected void createItem(Book item) {
+        service.createItem(item);
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Book item) {
+        try {
+            service.createItem(item);
+            fail();
+        }
+        catch (ConstraintViolationException e) {
+            assertFalse(e.getConstraintViolations().isEmpty());
+        }
+    }
+
+    //Read methods:
 
     @Override
     protected List<Book> getAllItems() {
@@ -117,21 +138,7 @@ public class BookServiceTests extends AbstractBookTests {
         return getItemListFromItemIterable(service.findItemsByKeywordsLanguageCode(value));
     }
 
-    @Override
-    protected void createItem(Book item) {
-        service.createItem(item);
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Book item) {
-        try {
-            service.createItem(item);
-            fail();
-        }
-        catch (ConstraintViolationException e) {
-            assertFalse(e.getConstraintViolations().isEmpty());
-        }
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Book item) {
@@ -153,6 +160,8 @@ public class BookServiceTests extends AbstractBookTests {
             assertFalse(e.getConstraintViolations().isEmpty());
         }
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {
