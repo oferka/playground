@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import static com.example.model.book.Book.*;
 import static java.time.LocalDate.now;
@@ -105,6 +106,12 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     public void shouldFailValidationForCreateItemWithNullLanguage() throws Exception {
         Language invalidValue = null;
         createItemWithInvalidItem(getItemWithInvalidLanguage(invalidValue));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNullKeywords() throws Exception {
+        Set<Keyword> invalidValue = null;
+        createItemWithInvalidItem(getItemWithInvalidKeywords(invalidValue));
     }
 
     //Read tests:
@@ -368,6 +375,11 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         updateItemWithInvalidItem(getItemWithInvalidLanguage(null));
     }
 
+    @Test
+    public void shouldFailValidationForUpdateItemWithNullKeywords() throws Exception {
+        updateItemWithInvalidItem(getItemWithInvalidKeywords(null));
+    }
+
     //Delete tests:
 
     //Overridden methods:
@@ -461,6 +473,12 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
     private Book getItemWithInvalidLanguage(Language value) {
         Book result = getValidItem();
         result.setLanguage(value);
+        return result;
+    }
+
+    private Book getItemWithInvalidKeywords(Set<Keyword> value) {
+        Book result = getValidItem();
+        result.setKeywords(value);
         return result;
     }
 
