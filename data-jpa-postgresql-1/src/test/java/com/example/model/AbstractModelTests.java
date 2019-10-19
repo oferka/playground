@@ -62,10 +62,7 @@ public abstract class AbstractModelTests<T extends Identifiable> {
 
     @Test
     public void shouldUpdateItem() throws Exception {
-        long existingItemId = getExistingItemId();
-        Optional<T> item = getItemById(existingItemId);
-        assertTrue(item.isPresent());
-        T existingItem = item.get();
+        T existingItem = getExistingItem();
         existingItem = getUpdatedItem(existingItem);
         updateItem(existingItem);
         verifyItemUpdate(existingItem);
