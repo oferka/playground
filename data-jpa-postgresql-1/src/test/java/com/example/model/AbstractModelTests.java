@@ -90,14 +90,14 @@ public abstract class AbstractModelTests<T extends Identifiable> {
     @Test
     public void shouldDeleteItemById() throws Exception {
         long existingItemId = getExistingItemId();
-        deleteById(existingItemId);
+        deleteItemById(existingItemId);
         verifyItemDeletion(existingItemId);
     }
 
     @Test
     public void shouldReturnNotFoundForDeleteItemByNonExistingId() throws Exception {
         long nonExistingItemId = getNonExistingItemId();
-        deleteByIdForNonExistingId(nonExistingItemId);
+        deleteItemByIdForNonExistingId(nonExistingItemId);
         verifyItemDeletion(nonExistingItemId);
     }
 
@@ -117,9 +117,9 @@ public abstract class AbstractModelTests<T extends Identifiable> {
 
     protected abstract void updateItem(T item) throws Exception;
 
-    protected abstract void deleteById(Long id) throws Exception;
+    protected abstract void deleteItemById(Long id) throws Exception;
 
-    protected abstract void deleteByIdForNonExistingId(Long id) throws Exception;
+    protected abstract void deleteItemByIdForNonExistingId(Long id) throws Exception;
 
     protected abstract void updateItemForNonExistingItem(T item) throws Exception;
 

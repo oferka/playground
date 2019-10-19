@@ -345,7 +345,7 @@ public class BookSystemTests extends AbstractBookTests {
     //Delete methods:
 
     @Override
-    protected void deleteById(Long id) {
+    protected void deleteItemById(Long id) {
         UriComponents uriComponents = generateUriComponents("/" + id);
         URI uri = uriComponents.toUri();
         RequestEntity requestEntity = new RequestEntity(HttpMethod.DELETE, uri);
@@ -354,7 +354,7 @@ public class BookSystemTests extends AbstractBookTests {
     }
 
     @Override
-    protected void deleteByIdForNonExistingId(Long id) {
+    protected void deleteItemByIdForNonExistingId(Long id) {
         UriComponents uriComponents = generateUriComponents("/" + id);
         URI uri = uriComponents.toUri();
         RequestEntity requestEntity = new RequestEntity(HttpMethod.DELETE, uri);

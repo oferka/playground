@@ -150,7 +150,7 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
     //Delete methods:
 
     @Override
-    protected void deleteById(Long id) throws Exception {
+    protected void deleteItemById(Long id) throws Exception {
         mockMvc.perform(delete("/" +KEYWORDS_PATH + "/" + id))
                 .andDo(log())
                 .andExpect(status().isNoContent())
@@ -158,7 +158,7 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
     }
 
     @Override
-    protected void deleteByIdForNonExistingId(Long id) throws Exception {
+    protected void deleteItemByIdForNonExistingId(Long id) throws Exception {
         mockMvc.perform(delete("/" + KEYWORDS_PATH + "/" + id))
                 .andDo(log())
                 .andExpect(status().isNoContent())

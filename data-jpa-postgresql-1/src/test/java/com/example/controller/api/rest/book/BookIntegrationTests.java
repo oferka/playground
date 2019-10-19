@@ -272,7 +272,7 @@ public class BookIntegrationTests extends AbstractBookTests {
     //Delete methods:
 
     @Override
-    protected void deleteById(Long id) throws Exception {
+    protected void deleteItemById(Long id) throws Exception {
         mockMvc.perform(delete("/" + BOOKS_PATH + "/" + id))
                 .andDo(log())
                 .andExpect(status().isNoContent())
@@ -280,7 +280,7 @@ public class BookIntegrationTests extends AbstractBookTests {
     }
 
     @Override
-    protected void deleteByIdForNonExistingId(Long id) throws Exception {
+    protected void deleteItemByIdForNonExistingId(Long id) throws Exception {
         mockMvc.perform(delete("/" + BOOKS_PATH + "/" + id))
                 .andDo(log())
                 .andExpect(status().isNoContent())

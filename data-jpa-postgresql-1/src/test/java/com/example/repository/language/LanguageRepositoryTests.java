@@ -95,12 +95,12 @@ public class LanguageRepositoryTests extends AbstractLanguageTests {
     //Delete methods:
 
     @Override
-    protected void deleteById(Long id) {
+    protected void deleteItemById(Long id) {
         getRepository().deleteById(id);
     }
 
     @Override
-    protected void deleteByIdForNonExistingId(Long id) {
+    protected void deleteItemByIdForNonExistingId(Long id) {
         Optional<Language> existingItem = getItemById(id);
         if(existingItem.isPresent()) {
             getRepository().deleteById(id);

@@ -164,12 +164,12 @@ public class BookServiceTests extends AbstractBookTests {
     //Delete methods:
 
     @Override
-    protected void deleteById(Long id) {
+    protected void deleteItemById(Long id) {
         service.deleteItemById(id);
     }
 
     @Override
-    protected void deleteByIdForNonExistingId(Long id) {
+    protected void deleteItemByIdForNonExistingId(Long id) {
         service.deleteItemById(id);
     }
 }
