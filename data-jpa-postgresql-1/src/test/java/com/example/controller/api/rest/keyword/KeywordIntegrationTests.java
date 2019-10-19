@@ -30,6 +30,32 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
     @Autowired
     private MockMvc mockMvc;
 
+    //Create methods:
+
+    @Override
+    protected void createItem(Keyword item) throws Exception {
+        mockMvc.perform(post("/" + KEYWORDS_PATH)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(item))
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(log())
+                .andExpect(status().isCreated())
+                .andReturn();
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Keyword item) throws Exception {
+        mockMvc.perform(post("/" + KEYWORDS_PATH)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(item))
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(log())
+                .andExpect(status().isBadRequest())
+                .andReturn();
+    }
+
+    //Read methods:
+
     @Override
     protected List<Keyword> getAllItems() throws Exception {
         MvcResult mvcResult = mockMvc.perform(get("/" + KEYWORDS_PATH))
@@ -89,27 +115,7 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
         return asList(returnedItems);
     }
 
-    @Override
-    protected void createItem(Keyword item) throws Exception {
-        mockMvc.perform(post("/" + KEYWORDS_PATH)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(item))
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(log())
-                .andExpect(status().isCreated())
-                .andReturn();
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Keyword item) throws Exception {
-        mockMvc.perform(post("/" + KEYWORDS_PATH)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(item))
-                .accept(MediaType.APPLICATION_JSON))
-                .andDo(log())
-                .andExpect(status().isBadRequest())
-                .andReturn();
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Keyword item) throws Exception {
@@ -140,6 +146,8 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
                 .andExpect(status().isBadRequest())
                 .andReturn();
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) throws Exception {

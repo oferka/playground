@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,6 +21,26 @@ public class KeywordServiceTests extends AbstractKeywordTests {
 
     @Autowired
     private KeywordService service;
+
+    //Create methods:
+
+    @Override
+    protected void createItem(Keyword item) {
+        service.createItem(item);
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Keyword item) {
+        try {
+            service.createItem(item);
+            fail();
+        }
+        catch (ConstraintViolationException e) {
+            assertFalse(e.getConstraintViolations().isEmpty());
+        }
+    }
+
+    //Read methods:
 
     @Override
     protected List<Keyword> getAllItems() {
@@ -48,7 +67,7 @@ public class KeywordServiceTests extends AbstractKeywordTests {
 
     @Override
     protected List<Keyword> getItemsByDateDefined(LocalDate value) {
-            return getItemListFromItemIterable(service.findItemsByDateDefined(value));
+        return getItemListFromItemIterable(service.findItemsByDateDefined(value));
     }
 
     @Override
@@ -56,21 +75,7 @@ public class KeywordServiceTests extends AbstractKeywordTests {
         return getItemListFromItemIterable(service.findItemsByLanguageName(value));
     }
 
-    @Override
-    protected void createItem(Keyword item) {
-        service.createItem(item);
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Keyword item) {
-        try {
-            service.createItem(item);
-            fail();
-        }
-        catch (ConstraintViolationException e) {
-            assertTrue(!e.getConstraintViolations().isEmpty());
-        }
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Keyword item) {
@@ -89,9 +94,11 @@ public class KeywordServiceTests extends AbstractKeywordTests {
             fail();
         }
         catch (ConstraintViolationException e) {
-            assertTrue(!e.getConstraintViolations().isEmpty());
+            assertFalse(e.getConstraintViolations().isEmpty());
         }
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {

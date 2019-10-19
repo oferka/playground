@@ -24,6 +24,46 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
     @Autowired
     private KeywordRepository repository;
 
+    //Create tests:
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNullText() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidTextValue(null));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithBlankText() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidTextValue(EMPTY));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithTextShorterThanMin() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidTextValue(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithTextLongerThanMax() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidTextValue(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNullDateCreated() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidDateDefinedValue(null));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithFutureDateCreated() throws Exception {
+        createItemWithInvalidItem(getItemWithInvalidDateDefinedValue(now().plusDays(nextInt(1,100))));
+    }
+
+    @Test
+    public void shouldFailValidationForCreateItemWithNullLanguage() throws Exception {
+        Language invalidValue = null;
+        createItemWithInvalidItem(getItemWithInvalidLanguageValue(invalidValue));
+    }
+
+    //Read tests:
+
     @Test
     public void shouldFindItemsByText() throws Exception {
         String existingItemValue = getExistingItemText();
@@ -66,97 +106,85 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
         assertTrue(items.isEmpty());
     }
 
-    @Test
-    public void shouldFailValidationForCreateItemWithNullText() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidText(null));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithBlankText() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidText(EMPTY));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithTextShorterThanMin() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidText(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithTextLongerThanMax() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidText(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithNullDateCreated() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidDateDefined(null));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithFutureDateCreated() throws Exception {
-        createItemWithInvalidItem(getItemWithInvalidDateDefined(now().plusDays(nextInt(1,100))));
-    }
-
-    @Test
-    public void shouldFailValidationForCreateItemWithNullLanguage() throws Exception {
-        Language invalidValue = null;
-        createItemWithInvalidItem(getItemWithInvalidLanguage(invalidValue));
-    }
+    //Update tests:
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullText() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidText(null));
+        updateItemWithInvalidItem(getItemWithInvalidTextValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithBlankText() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidText(EMPTY));
+        updateItemWithInvalidItem(getItemWithInvalidTextValue(EMPTY));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithTextShorterThanMin() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidText(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
+        updateItemWithInvalidItem(getItemWithInvalidTextValue(randomAlphabetic(TITLE_MIN_LENGTH - 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithTextLongerThanMax() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidText(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
+        updateItemWithInvalidItem(getItemWithInvalidTextValue(randomAlphabetic(TITLE_MAX_LENGTH + 1)));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullDateDefined() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidDateDefined(null));
+        updateItemWithInvalidItem(getItemWithInvalidDateDefinedValue(null));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithFutureDateDefined() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidDateDefined(now().plusDays(nextInt(1, 100))));
+        updateItemWithInvalidItem(getItemWithInvalidDateDefinedValue(now().plusDays(nextInt(1, 100))));
     }
 
     @Test
     public void shouldFailValidationForUpdateItemWithNullLanguage() throws Exception {
-        updateItemWithInvalidItem(getItemWithInvalidLanguage(null));
+        updateItemWithInvalidItem(getItemWithInvalidLanguageValue(null));
     }
 
-    private Keyword getItemWithInvalidText(String value) {
-        Keyword result = getValidItem();
+    //Overridden methods:
+
+    @Override
+    protected Keyword getItemToBeCreated() {
+        Keyword result = getExistingItem();
+        result.setId(null);
+        return result;
+    }
+
+    @Override
+    protected Keyword getUpdatedItem(Keyword item) {
+        String updateValue = getUpdatedItemAttributeValue(item.getText());
+        item.setText(updateValue);
+        return item;
+    }
+
+    //Abstract methods:
+
+    protected abstract List<Keyword> getItemsByText(String value) throws Exception;
+
+    protected abstract List<Keyword> getItemsByDateDefined(LocalDate value) throws Exception;
+
+    protected abstract List<Keyword> getItemsByLanguageName(String value) throws Exception;
+
+    //Helper methods:
+
+    private Keyword getItemWithInvalidTextValue(String value) {
+        Keyword result = getExistingItem();
         result.setText(value);
         return result;
     }
 
-    private Keyword getItemWithInvalidDateDefined(LocalDate value) {
-        Keyword result = getValidItem();
+    private Keyword getItemWithInvalidDateDefinedValue(LocalDate value) {
+        Keyword result = getExistingItem();
         result.setDateDefined(value);
         return result;
     }
 
-    private Keyword getItemWithInvalidLanguage(Language value) {
-        Keyword result = getValidItem();
+    private Keyword getItemWithInvalidLanguageValue(Language value) {
+        Keyword result = getExistingItem();
         result.setLanguage(value);
         return result;
-    }
-
-    private Keyword getValidItem() {
-        return getSampleDataLoader().getKeywordSampleDataLoader().getKeywordSampleDataProvider().getSampleItem();
     }
 
     private void verifyItemsTextAsSpecified(List<Keyword> items, String expectedValue) {
@@ -179,12 +207,6 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
             assertEquals(expectedValue, item.getLanguage().getName());
         }
     }
-
-    protected abstract List<Keyword> getItemsByText(String value) throws Exception;
-
-    protected abstract List<Keyword> getItemsByDateDefined(LocalDate value) throws Exception;
-
-    protected abstract List<Keyword> getItemsByLanguageName(String value) throws Exception;
 
     private String getExistingItemText() {
         return getExistingItem().getText();
@@ -224,17 +246,5 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
             result = randomAlphabetic(6);
         }
         return result;
-    }
-
-    @Override
-    protected Keyword getItemToBeCreated() {
-        return getValidItem();
-    }
-
-    @Override
-    protected Keyword getUpdatedItem(Keyword item) {
-        String updateValue = getUpdatedItemAttributeValue(item.getText());
-        item.setText(updateValue);
-        return item;
     }
 }

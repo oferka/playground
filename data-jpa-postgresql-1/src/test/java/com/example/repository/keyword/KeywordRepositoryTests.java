@@ -10,6 +10,7 @@ import org.springframework.transaction.TransactionSystemException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.Assert.assertTrue;
@@ -18,6 +19,26 @@ import static org.junit.Assert.fail;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class KeywordRepositoryTests extends AbstractKeywordTests {
+
+    //Create methods:
+
+    @Override
+    protected void createItem(Keyword item) {
+        getRepository().save(item);
+    }
+
+    @Override
+    protected void createItemWithInvalidItem(Keyword item) {
+        try {
+            getRepository().save(item);
+            fail();
+        }
+        catch (TransactionSystemException e) {
+            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
+        }
+    }
+
+    //Read methods:
 
     @Override
     protected List<Keyword> getAllItems() {
@@ -52,21 +73,7 @@ public class KeywordRepositoryTests extends AbstractKeywordTests {
         return getItemListFromItemIterable(getRepository().findByLanguageName(value));
     }
 
-    @Override
-    protected void createItem(Keyword item) {
-        getRepository().save(item);
-    }
-
-    @Override
-    protected void createItemWithInvalidItem(Keyword item) {
-        try {
-            getRepository().save(item);
-            fail();
-        }
-        catch (TransactionSystemException e) {
-            assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
-        }
-    }
+    //Update methods:
 
     @Override
     protected void updateItem(Keyword item) {
@@ -91,6 +98,8 @@ public class KeywordRepositoryTests extends AbstractKeywordTests {
             assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
         }
     }
+
+    //Delete methods:
 
     @Override
     protected void deleteById(Long id) {
