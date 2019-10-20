@@ -5,7 +5,6 @@ import com.example.model.language.Language.Code;
 import com.example.repository.language.LanguageRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -47,16 +46,6 @@ public class LanguageServiceImpl implements LanguageService {
     @Override
     public Optional<Language> findItemById(Long itemId) {
         return repository.findById(itemId);
-    }
-
-    @Override
-    public void deleteItemById(Long itemId) {
-        try {
-            repository.deleteById(itemId);
-        }
-        catch (EmptyResultDataAccessException e) {
-            log.debug("Language with id {} does not exist, no language to delete", itemId);
-        }
     }
 
     @Override

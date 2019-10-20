@@ -21,9 +21,4 @@ public class RandomLanguageSampleDataProvider extends LanguageSampleDataProvider
         }
         return languages;
     }
-
-    @Override
-    public Language getSampleItem() {
-        return generateRandomLanguage();
-    }
 }

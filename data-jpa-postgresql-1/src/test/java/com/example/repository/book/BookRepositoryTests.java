@@ -160,20 +160,4 @@ public class BookRepositoryTests extends AbstractBookTests {
             assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
         }
     }
-
-    //Delete methods:
-
-    @Override
-    protected boolean deleteItemById(Long id) {
-        getRepository().deleteById(id);
-        return true;
-    }
-
-    @Override
-    protected void deleteItemByIdForNonExistingId(Long id) {
-        Optional<Book> existingItem = getItemById(id);
-        if(existingItem.isPresent()) {
-            getRepository().deleteById(id);
-        }
-    }
 }

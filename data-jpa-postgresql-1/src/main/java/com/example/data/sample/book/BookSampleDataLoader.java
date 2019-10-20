@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface BookSampleDataLoader {
 
-    BookSampleDataProvider getBookSampleDataProvider();
-
     List<Book> load(List<Language> loadedLanguages, List<Keyword> loadedKeywords);
 
     void clean();

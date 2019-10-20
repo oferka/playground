@@ -18,7 +18,5 @@ public interface LanguageService {
 
     Optional<Language> findItemById(Long itemId);
 
-    void deleteItemById(Long itemId);
-
     void updateItem(@Valid Language item);
 }

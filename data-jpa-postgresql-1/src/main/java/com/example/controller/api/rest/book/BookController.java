@@ -174,12 +174,6 @@ public class BookController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(path="/{" + BOOK_ID_PARAM_NAME + "}")
-    public ResponseEntity<Void> deleteItem(@PathVariable(name = BOOK_ID_PARAM_NAME) Long bookId) {
-        bookService.deleteItemById(bookId);
-        return ResponseEntity.noContent().build();
-    }
-
     @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason=INVALID_REQUEST_ARGUMENT_REASON)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException exception) {

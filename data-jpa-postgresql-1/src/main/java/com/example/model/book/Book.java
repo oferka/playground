@@ -83,6 +83,6 @@ public class Book implements Identifiable {
         ELECTRONIC_BOOK,
         GRAPHIC_NOVEL,
         HARD_COVER,
-        PAPER_BACK;
+        PAPER_BACK
     }
 }

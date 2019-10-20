@@ -23,9 +23,4 @@ public class RandomBookSampleDataProvider extends BookSampleDataProvider {
         }
         return books;
     }
-
-    @Override
-    public Book getSampleItem() {
-        return generateRandomBook(getDependencies().get(Language.class), getDependencies().get(Keyword.class));
-    }
 }

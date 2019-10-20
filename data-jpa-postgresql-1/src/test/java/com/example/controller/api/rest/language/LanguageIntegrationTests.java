@@ -136,23 +136,4 @@ public class LanguageIntegrationTests extends AbstractLanguageTests {
                 .andExpect(status().isBadRequest())
                 .andReturn();
     }
-
-    //Delete methods:
-
-    @Override
-    protected boolean deleteItemById(Long id) throws Exception {
-        mockMvc.perform(delete("/" + LANGUAGES_PATH + "/" + id))
-                .andDo(log())
-                .andExpect(status().isNoContent())
-                .andReturn();
-        return true;
-    }
-
-    @Override
-    protected void deleteItemByIdForNonExistingId(Long id) throws Exception {
-        mockMvc.perform(delete("/" + LANGUAGES_PATH + "/" + id))
-                .andDo(log())
-                .andExpect(status().isNoContent())
-                .andReturn();
-    }
 }

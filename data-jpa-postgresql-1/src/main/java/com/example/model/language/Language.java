@@ -90,6 +90,6 @@ public class Language implements Identifiable {
         urd,
         ukr,
         vie,
-        cym;
+        cym
     }
 }

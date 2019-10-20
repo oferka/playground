@@ -20,7 +20,5 @@ public interface KeywordService {
 
     Optional<Keyword> findItemById(Long itemId);
 
-    void deleteItemById(Long itemId);
-
     void updateItem(@Valid Keyword item);
 }

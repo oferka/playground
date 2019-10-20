@@ -46,14 +46,4 @@ public class FixedKeywordSampleDataProvider extends KeywordSampleDataProvider {
                         .build()
         );
     }
-
-    @Override
-    public Keyword getSampleItem() {
-        List<Language> loadedLanguages = getDependencies().get(Language.class);
-        return Keyword.builder()
-                .text("Budget")
-                .dateDefined(LocalDate.of(2003, 9, 8))
-                .language(loadedLanguages.get(nextInt(0, loadedLanguages.size())))
-                .build();
-    }
 }

@@ -30,7 +30,7 @@ public class KeywordController {
     static final String FIND_BY_TEXT_PATH = "findByText";
     static final String FIND_BY_DATE_DEFINED_PATH = "findByDateDefined";
     static final String FIND_BY_LANGUAGE_NAME_PATH = "findByLanguageName";
-    static final String KEYWORD_ID_PARAM_NAME = "keywordId";
+    private static final String KEYWORD_ID_PARAM_NAME = "keywordId";
     static final String KEYWORD_TEXT_PARAM_NAME = "text";
     static final String KEYWORD_DATE_DEFINED_PARAM_NAME = "dateDefined";
     static final String KEYWORD_LANGUAGE_NAME_PARAM_NAME = "name";
@@ -79,17 +79,11 @@ public class KeywordController {
     @PutMapping(path="/{" + KEYWORD_ID_PARAM_NAME + "}")
     public ResponseEntity<Void> updateItem(@RequestBody @Valid Keyword item, @PathVariable Long keywordId) {
         Optional<Keyword> savedItem = keywordService.findItemById(keywordId);
-        if(!savedItem.isPresent()) {
+        if(savedItem.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         item.setId(savedItem.get().getId());
         keywordService.updateItem(item);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping(path="/{" + KEYWORD_ID_PARAM_NAME + "}")
-    public ResponseEntity<Void> deleteItem(@PathVariable(name = KEYWORD_ID_PARAM_NAME) Long bookId) {
-        keywordService.deleteItemById(bookId);
         return ResponseEntity.noContent().build();
     }
 

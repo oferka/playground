@@ -10,6 +10,4 @@ public interface SampleDataProvider<T> {
     void setDependencies(Map<Class, List> dependencies);
 
     List<T> getSampleItems();
-
-    T getSampleItem();
 }

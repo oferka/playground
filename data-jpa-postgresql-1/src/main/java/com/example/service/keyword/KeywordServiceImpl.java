@@ -4,7 +4,6 @@ import com.example.model.keyword.Keyword;
 import com.example.repository.keyword.KeywordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -59,16 +58,6 @@ public class KeywordServiceImpl implements KeywordService {
         Optional<Keyword> existingItem = findItemById(item.getId());
         if(existingItem.isPresent()) {
             repository.save(item);
-        }
-    }
-
-    @Override
-    public void deleteItemById(Long itemId) {
-        try {
-            repository.deleteById(itemId);
-        }
-        catch (EmptyResultDataAccessException e) {
-            log.debug("Book with id {} does not exist, no book to delete", itemId);
         }
     }
 }

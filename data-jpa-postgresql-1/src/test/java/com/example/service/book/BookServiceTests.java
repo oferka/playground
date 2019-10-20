@@ -160,17 +160,4 @@ public class BookServiceTests extends AbstractBookTests {
             assertFalse(e.getConstraintViolations().isEmpty());
         }
     }
-
-    //Delete methods:
-
-    @Override
-    protected boolean deleteItemById(Long id) {
-        service.deleteItemById(id);
-        return true;
-    }
-
-    @Override
-    protected void deleteItemByIdForNonExistingId(Long id) {
-        service.deleteItemById(id);
-    }
 }

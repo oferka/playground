@@ -28,7 +28,7 @@ public class LanguageController {
     static final String LANGUAGES_PATH = "languages";
     static final String FIND_BY_NAME_PATH = "findByName";
     static final String FIND_BY_CODE_PATH = "findByCode";
-    static final String LANGUAGE_ID_PARAM_NAME = "languageId";
+    private static final String LANGUAGE_ID_PARAM_NAME = "languageId";
     static final String LANGUAGE_NAME_PARAM_NAME = "name";
     static final String LANGUAGE_CODE_PARAM_NAME = "code";
     static final String INVALID_REQUEST_ARGUMENT_REASON = "Request data validation error. The provided data violates the validation constraints defined for a Language";
@@ -71,17 +71,11 @@ public class LanguageController {
     @PutMapping(path="/{" + LANGUAGE_ID_PARAM_NAME + "}")
     public ResponseEntity<Void> updateItem(@RequestBody @Valid Language item, @PathVariable Long languageId) {
         Optional<Language> savedItem = languageService.findItemById(languageId);
-        if(!savedItem.isPresent()) {
+        if(savedItem.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         item.setId(savedItem.get().getId());
         languageService.updateItem(item);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping(path="/{" + LANGUAGE_ID_PARAM_NAME + "}")
-    public ResponseEntity<Void> deleteItem(@PathVariable(name = LANGUAGE_ID_PARAM_NAME) Long languageId) {
-        languageService.deleteItemById(languageId);
         return ResponseEntity.noContent().build();
     }
 

@@ -46,7 +46,5 @@ public interface BookService {
 
     Optional<Book> findItemById(Long itemId);
 
-    void deleteItemById(Long itemId);
-
     void updateItem(@Valid Book item);
 }

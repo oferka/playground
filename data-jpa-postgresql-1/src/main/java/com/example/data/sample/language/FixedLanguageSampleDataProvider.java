@@ -230,12 +230,4 @@ public class FixedLanguageSampleDataProvider extends LanguageSampleDataProvider 
                         .build()
         );
     }
-
-    @Override
-    public Language getSampleItem() {
-        return Language.builder()
-                .name("Amharic")
-                .code(amh)
-                .build();
-    }
 }

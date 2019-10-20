@@ -172,27 +172,6 @@ public class KeywordSystemTests extends AbstractKeywordTests {
         assertEquals(INVALID_REQUEST_ARGUMENT_REASON, responseBody.get("message"));
     }
 
-    //Delete methods:
-
-    @Override
-    protected boolean deleteItemById(Long id) {
-        UriComponents uriComponents = generateUriComponents("/" + id);
-        URI uri = uriComponents.toUri();
-        RequestEntity requestEntity = new RequestEntity(HttpMethod.DELETE, uri);
-        ResponseEntity responseEntity = testRestTemplate.exchange(requestEntity, Void.class);
-        assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
-        return true;
-    }
-
-    @Override
-    protected void deleteItemByIdForNonExistingId(Long id) {
-        UriComponents uriComponents = generateUriComponents("/" + id);
-        URI uri = uriComponents.toUri();
-        RequestEntity requestEntity = new RequestEntity(HttpMethod.DELETE, uri);
-        ResponseEntity responseEntity = testRestTemplate.exchange(requestEntity, Void.class);
-        assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
-    }
-
     //Helper methods:
 
     private UriComponents generateUriComponents() {

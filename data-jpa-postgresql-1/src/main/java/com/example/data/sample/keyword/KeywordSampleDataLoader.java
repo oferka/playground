@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface KeywordSampleDataLoader {
 
-    KeywordSampleDataProvider getKeywordSampleDataProvider();
-
     List<Keyword> load(List<Language> loadedLanguages);
 
     void clean();

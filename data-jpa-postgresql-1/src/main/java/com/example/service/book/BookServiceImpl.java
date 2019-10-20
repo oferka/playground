@@ -6,7 +6,6 @@ import com.example.model.language.Language.Code;
 import com.example.repository.book.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -121,16 +120,6 @@ public class BookServiceImpl implements BookService {
         Optional<Book> existingItem = findItemById(item.getId());
         if(existingItem.isPresent()) {
             repository.save(item);
-        }
-    }
-
-    @Override
-    public void deleteItemById(Long itemId) {
-        try {
-            repository.deleteById(itemId);
-        }
-        catch (EmptyResultDataAccessException e) {
-            log.debug("Book with id {} does not exist, no book to delete", itemId);
         }
     }
 }

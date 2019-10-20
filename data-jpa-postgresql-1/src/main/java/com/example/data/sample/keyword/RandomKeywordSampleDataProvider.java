@@ -22,9 +22,4 @@ public class RandomKeywordSampleDataProvider extends KeywordSampleDataProvider {
         }
         return keywords;
     }
-
-    @Override
-    public Keyword getSampleItem() {
-        return generateRandomKeyword(getDependencies().get(Language.class));
-    }
 }

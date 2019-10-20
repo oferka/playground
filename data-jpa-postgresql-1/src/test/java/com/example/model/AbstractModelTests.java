@@ -85,22 +85,6 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         verifyItemUpdateForNonExistingItem(item);
     }
 
-    //Delete tests:
-
-    @Test
-    public void shouldDeleteItemById() throws Exception {
-        long existingItemId = getExistingItemId();
-        boolean deleted = deleteItemById(existingItemId);
-        verifyItemDeletion(existingItemId, deleted);
-    }
-
-    @Test
-    public void shouldReturnNotFoundForDeleteItemByNonExistingId() throws Exception {
-        long nonExistingItemId = getNonExistingItemId();
-        deleteItemByIdForNonExistingId(nonExistingItemId);
-        verifyItemDeletion(nonExistingItemId, true);
-    }
-
     //Abstract methods:
 
     protected abstract List<T> getAllItems() throws Exception;
@@ -116,10 +100,6 @@ public abstract class AbstractModelTests<T extends Identifiable> {
     protected abstract T getUpdatedItem(T item);
 
     protected abstract void updateItem(T item) throws Exception;
-
-    protected abstract boolean deleteItemById(Long id) throws Exception;
-
-    protected abstract void deleteItemByIdForNonExistingId(Long id) throws Exception;
 
     protected abstract void updateItemForNonExistingItem(T item) throws Exception;
 

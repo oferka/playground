@@ -5,7 +5,6 @@ import com.example.model.keyword.Keyword;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionSystemException;
 
@@ -99,28 +98,6 @@ public class KeywordRepositoryTests extends AbstractKeywordTests {
         }
         catch (TransactionSystemException e) {
             assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
-        }
-    }
-
-    //Delete methods:
-
-    @Override
-    protected boolean deleteItemById(Long id) {
-        try {
-            getRepository().deleteById(id);
-            assert false;
-        }
-        catch (DataIntegrityViolationException e) {
-            log.info("Expected data integrity exception. Message is {}", e.getMessage());
-        }
-        return false;
-    }
-
-    @Override
-    protected void deleteItemByIdForNonExistingId(Long id) {
-        Optional<Keyword> existingItem = getItemById(id);
-        if(existingItem.isPresent()) {
-            getRepository().deleteById(id);
         }
     }
 }

@@ -57,22 +57,6 @@ public class FixedBookSampleDataProvider extends BookSampleDataProvider {
         );
     }
 
-    @Override
-    public Book getSampleItem() {
-        List<Language> loadedLanguages = getDependencies().get(Language.class);
-        List<Keyword> loadedKeywords = getDependencies().get(Keyword.class);
-        return Book.builder()
-                .title("Java")
-                .datePublished(LocalDate.of(2005, 6, 12))
-                .numberOfPages(278)
-                .familyFriendly(true)
-                .isbn("ISBN 978-0-596-52068-7")
-                .format(AUDIO_BOOK)
-                .language(loadedLanguages.get(nextInt(0, loadedLanguages.size())))
-                .keywords(generateKeywordsSet(loadedKeywords))
-                .build();
-    }
-
     private Set<Keyword> generateKeywordsSet(List<Keyword> loadedKeywords) { //todo
         Set<Keyword> result = new HashSet<>();
         result.add(loadedKeywords.get(0));
