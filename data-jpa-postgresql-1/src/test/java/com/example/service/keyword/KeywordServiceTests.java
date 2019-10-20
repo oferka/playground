@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -101,8 +102,9 @@ public class KeywordServiceTests extends AbstractKeywordTests {
     //Delete methods:
 
     @Override
-    protected void deleteItemById(Long id) {
+    protected boolean deleteItemById(Long id) {
         service.deleteItemById(id);
+        return true;
     }
 
     @Override

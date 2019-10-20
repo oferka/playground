@@ -140,11 +140,12 @@ public class LanguageIntegrationTests extends AbstractLanguageTests {
     //Delete methods:
 
     @Override
-    protected void deleteItemById(Long id) throws Exception {
+    protected boolean deleteItemById(Long id) throws Exception {
         mockMvc.perform(delete("/" + LANGUAGES_PATH + "/" + id))
                 .andDo(log())
                 .andExpect(status().isNoContent())
                 .andReturn();
+        return true;
     }
 
     @Override

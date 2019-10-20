@@ -175,12 +175,13 @@ public class KeywordSystemTests extends AbstractKeywordTests {
     //Delete methods:
 
     @Override
-    protected void deleteItemById(Long id) {
+    protected boolean deleteItemById(Long id) {
         UriComponents uriComponents = generateUriComponents("/" + id);
         URI uri = uriComponents.toUri();
         RequestEntity requestEntity = new RequestEntity(HttpMethod.DELETE, uri);
         ResponseEntity responseEntity = testRestTemplate.exchange(requestEntity, Void.class);
         assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
+        return true;
     }
 
     @Override

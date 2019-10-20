@@ -150,11 +150,12 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
     //Delete methods:
 
     @Override
-    protected void deleteItemById(Long id) throws Exception {
+    protected boolean deleteItemById(Long id) throws Exception {
         mockMvc.perform(delete("/" +KEYWORDS_PATH + "/" + id))
                 .andDo(log())
                 .andExpect(status().isNoContent())
                 .andReturn();
+        return true;
     }
 
     @Override

@@ -90,15 +90,15 @@ public abstract class AbstractModelTests<T extends Identifiable> {
     @Test
     public void shouldDeleteItemById() throws Exception {
         long existingItemId = getExistingItemId();
-        deleteItemById(existingItemId);
-        verifyItemDeletion(existingItemId);
+        boolean deleted = deleteItemById(existingItemId);
+        verifyItemDeletion(existingItemId, deleted);
     }
 
     @Test
     public void shouldReturnNotFoundForDeleteItemByNonExistingId() throws Exception {
         long nonExistingItemId = getNonExistingItemId();
         deleteItemByIdForNonExistingId(nonExistingItemId);
-        verifyItemDeletion(nonExistingItemId);
+        verifyItemDeletion(nonExistingItemId, true);
     }
 
     //Abstract methods:
@@ -117,7 +117,7 @@ public abstract class AbstractModelTests<T extends Identifiable> {
 
     protected abstract void updateItem(T item) throws Exception;
 
-    protected abstract void deleteItemById(Long id) throws Exception;
+    protected abstract boolean deleteItemById(Long id) throws Exception;
 
     protected abstract void deleteItemByIdForNonExistingId(Long id) throws Exception;
 
@@ -178,9 +178,14 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         return result;
     }
 
-    private void verifyItemDeletion(Long id) {
+    private void verifyItemDeletion(Long id, boolean deleted) {
         Optional<T> item =getRepository().findById(id);
-        assertTrue(item.isEmpty());
+        if(deleted) {
+            assertTrue(item.isEmpty());
+        }
+        else {
+            assertTrue(item.isPresent());
+        }
     }
 
     private void verifyItemExists(T item) {

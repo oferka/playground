@@ -2,8 +2,10 @@ package com.example.repository.keyword;
 
 import com.example.model.keyword.AbstractKeywordTests;
 import com.example.model.keyword.Keyword;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionSystemException;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class KeywordRepositoryTests extends AbstractKeywordTests {
@@ -102,8 +105,15 @@ public class KeywordRepositoryTests extends AbstractKeywordTests {
     //Delete methods:
 
     @Override
-    protected void deleteItemById(Long id) {
-        getRepository().deleteById(id);
+    protected boolean deleteItemById(Long id) {
+        try {
+            getRepository().deleteById(id);
+            assert false;
+        }
+        catch (DataIntegrityViolationException e) {
+            log.info("Expected data integrity exception. Message is {}", e.getMessage());
+        }
+        return false;
     }
 
     @Override
