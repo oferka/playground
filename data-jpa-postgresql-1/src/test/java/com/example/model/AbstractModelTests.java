@@ -158,16 +158,6 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         return result;
     }
 
-    private void verifyItemDeletion(Long id, boolean deleted) {
-        Optional<T> item =getRepository().findById(id);
-        if(deleted) {
-            assertTrue(item.isEmpty());
-        }
-        else {
-            assertTrue(item.isPresent());
-        }
-    }
-
     private void verifyItemExists(T item) {
         assertNotNull(item);
         //todo

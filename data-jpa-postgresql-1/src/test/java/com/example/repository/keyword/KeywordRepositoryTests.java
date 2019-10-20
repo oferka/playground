@@ -97,7 +97,7 @@ public class KeywordRepositoryTests extends AbstractKeywordTests {
             fail();
         }
         catch (TransactionSystemException e) {
-            assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
+            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
         }
     }
 }

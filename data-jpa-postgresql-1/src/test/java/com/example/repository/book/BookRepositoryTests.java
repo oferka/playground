@@ -157,7 +157,7 @@ public class BookRepositoryTests extends AbstractBookTests {
             fail();
         }
         catch (TransactionSystemException e) {
-            assertTrue(e.getMessage().contains("Could not commit JPA transaction"));
+            assertTrue(Objects.requireNonNull(e.getMessage()).contains("Could not commit JPA transaction"));
         }
     }
 }
