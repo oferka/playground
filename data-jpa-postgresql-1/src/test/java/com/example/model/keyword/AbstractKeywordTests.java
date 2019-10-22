@@ -159,6 +159,14 @@ public abstract class AbstractKeywordTests extends AbstractModelTests<Keyword> {
         return item;
     }
 
+    @Override
+    protected boolean equalsIgnoreId(Keyword item1, Keyword item2) {
+        return (item1.getText().equals(item2.getText()) &&
+                item1.getDateDefined().equals(item2.getDateDefined()) &&
+                item1.getLanguage().equals(item2.getLanguage())
+        );
+    }
+
     //Abstract methods:
 
     protected abstract List<Keyword> getItemsByText(String value) throws Exception;

@@ -397,6 +397,19 @@ public abstract class AbstractBookTests extends AbstractModelTests<Book> {
         return item;
     }
 
+    @Override
+    protected boolean equalsIgnoreId(Book item1, Book item2) {
+        return (item1.getTitle().equals(item2.getTitle()) &&
+                item1.getDatePublished().equals(item2.getDatePublished()) &&
+                item1.getNumberOfPages().equals(item2.getNumberOfPages()) &&
+                item1.getFamilyFriendly().equals(item2.getFamilyFriendly()) &&
+                item1.getIsbn().equals(item2.getIsbn()) &&
+                item1.getFormat().equals(item2.getFormat()) &&
+                item1.getLanguage().equals(item2.getLanguage()) &&
+                item1.getKeywords().equals(item2.getKeywords())
+        );
+    }
+
     //Abstract methods:
 
     protected abstract List<Book> getItemsByTitle(String value) throws Exception;

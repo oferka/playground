@@ -115,6 +115,13 @@ public abstract class AbstractLanguageTests extends AbstractModelTests<Language>
         return item;
     }
 
+    @Override
+    protected boolean equalsIgnoreId(Language item1, Language item2) {
+        return (item1.getName().equals(item2.getName()) &&
+                item1.getCode().equals(item2.getCode())
+        );
+    }
+
     //Abstract methods:
 
     protected abstract List<Language> getItemsByName(String value) throws Exception;

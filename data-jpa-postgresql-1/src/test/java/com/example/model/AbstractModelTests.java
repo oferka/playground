@@ -76,9 +76,9 @@ public abstract class AbstractModelTests<T extends BaseEntity> {
     @Test
     public void shouldUpdateItem() throws Exception {
         T existingItem = getExistingItem();
-        existingItem = getUpdatedItem(existingItem);
-        updateItem(existingItem);
-        verifyItemUpdate(existingItem);
+        T updatedItem = getUpdatedItem(existingItem);
+        updateItem(updatedItem);
+        verifyItemUpdate(updatedItem);
     }
 
     @Test
@@ -114,6 +114,8 @@ public abstract class AbstractModelTests<T extends BaseEntity> {
 
     protected abstract JpaRepository<T, Long> getRepository();
 
+    protected abstract boolean equalsIgnoreId(T item1, T item2);
+
     //Helper methods:
 
     protected T getExistingItem() {
@@ -145,13 +147,15 @@ public abstract class AbstractModelTests<T extends BaseEntity> {
         assertEquals(expectedId, item.getId());
     }
 
-    private void verifyItemUpdate(T item) {
-        verifyItemExists(item);
+    private void verifyItemUpdate(T updatedItem) throws Exception {
+        Optional<T> savedItem = getItemById(updatedItem.getId());
+        assert savedItem.isPresent();
+        assertEquals(savedItem.get().getId(), updatedItem.getId());
+        assertEquals((int) savedItem.get().getVersion(), updatedItem.getVersion() + 1);
     }
 
     private void verifyItemCreation(T itemToBeCreated, T createdItem) {
-        verifyItemExists(itemToBeCreated);
-        //todo
+        assertTrue(equalsIgnoreId(itemToBeCreated, createdItem));
     }
 
     private void verifyAllItemsHaveSpecifiedVersion(Integer expectedVersion) throws Exception {
@@ -169,10 +173,6 @@ public abstract class AbstractModelTests<T extends BaseEntity> {
         List<T> result = new ArrayList<>();
         itemIterable.forEach(result::add);
         return result;
-    }
-
-    private void verifyItemExists(T item) {
-        assertNotNull(item);
     }
 
     protected String getUpdatedItemAttributeValue(String currentValue) {
