@@ -1,6 +1,6 @@
 package com.example.model.book;
 
-import com.example.model.Identifiable;
+import com.example.model.BaseEntity;
 import com.example.model.keyword.Keyword;
 import com.example.model.language.Language;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -25,7 +25,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "book", schema = "demo")
-public class Book implements Identifiable {
+public class Book implements BaseEntity {
 
     public static final int TITLE_MIN_LENGTH = 1;
     public static final int TITLE_MAX_LENGTH = 100;
@@ -35,6 +35,9 @@ public class Book implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Version
+    private Integer version;
 
     @NotNull(message = "title must not be null")
     @NotBlank(message = "title must not be blank")

@@ -25,8 +25,8 @@ public class KeywordRepositoryTests extends AbstractKeywordTests {
     //Create methods:
 
     @Override
-    protected void createItem(Keyword item) {
-        getRepository().save(item);
+    protected Keyword createItem(Keyword item) {
+        return getRepository().save(item);
     }
 
     @Override

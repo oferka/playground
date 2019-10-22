@@ -35,14 +35,20 @@ public class BookIntegrationTests extends AbstractBookTests {
     //Create methods:
 
     @Override
-    protected void createItem(Book item) throws Exception {
-        mockMvc.perform(post("/" + BOOKS_PATH)
+    protected Book createItem(Book item) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(post("/" + BOOKS_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(item))
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isCreated())
                 .andReturn();
+        String createdItemLocation = mvcResult.getResponse().getHeader("Location");
+        assert createdItemLocation != null;
+        long createdItemId = Long.parseLong(createdItemLocation.substring(createdItemLocation.lastIndexOf("/") + 1));
+        Optional<Book> createdItem = getItemById(createdItemId);
+        assert createdItem.isPresent();
+        return createdItem.get();
     }
 
     @Override

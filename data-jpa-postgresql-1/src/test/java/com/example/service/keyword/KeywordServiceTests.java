@@ -26,8 +26,8 @@ public class KeywordServiceTests extends AbstractKeywordTests {
     //Create methods:
 
     @Override
-    protected void createItem(Keyword item) {
-        service.createItem(item);
+    protected Keyword createItem(Keyword item) {
+        return service.createItem(item);
     }
 
     @Override

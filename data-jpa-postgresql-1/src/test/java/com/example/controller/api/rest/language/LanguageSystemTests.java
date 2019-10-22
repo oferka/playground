@@ -42,12 +42,20 @@ public class LanguageSystemTests extends AbstractLanguageTests {
     //Create methods:
 
     @Override
-    protected void createItem(Language item) {
+    protected Language createItem(Language item) {
         UriComponents uriComponents = generateUriComponents();
         URI uri = uriComponents.toUri();
         RequestEntity<Language> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
         ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        URI createdItemUri = responseEntity.getHeaders().getLocation();
+        assert createdItemUri != null;
+        String createdItemLocationPath = createdItemUri.getPath();
+        assert createdItemLocationPath != null;
+        long createdItemId = Long.parseLong(createdItemLocationPath.substring(createdItemLocationPath.lastIndexOf("/") + 1));
+        Optional<Language> createdItem = getItemById(createdItemId);
+        assert createdItem.isPresent();
+        return createdItem.get();
     }
 
     @Override

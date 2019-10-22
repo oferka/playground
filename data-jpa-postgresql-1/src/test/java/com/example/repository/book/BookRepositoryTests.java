@@ -25,8 +25,8 @@ public class BookRepositoryTests extends AbstractBookTests {
     //Create methods:
 
     @Override
-    protected void createItem(Book item) {
-        getRepository().save(item);
+    protected Book createItem(Book item) {
+        return getRepository().save(item);
     }
 
     @Override

@@ -33,14 +33,20 @@ public class KeywordIntegrationTests extends AbstractKeywordTests {
     //Create methods:
 
     @Override
-    protected void createItem(Keyword item) throws Exception {
-        mockMvc.perform(post("/" + KEYWORDS_PATH)
+    protected Keyword createItem(Keyword item) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(post("/" + KEYWORDS_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(item))
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isCreated())
                 .andReturn();
+        String createdItemLocation = mvcResult.getResponse().getHeader("Location");
+        assert createdItemLocation != null;
+        long createdItemId = Long.parseLong(createdItemLocation.substring(createdItemLocation.lastIndexOf("/") + 1));
+        Optional<Keyword> createdItem = getItemById(createdItemId);
+        assert createdItem.isPresent();
+        return createdItem.get();
     }
 
     @Override

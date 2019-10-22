@@ -25,8 +25,8 @@ public class LanguageRepositoryTests extends AbstractLanguageTests {
     //Create methods:
 
     @Override
-    protected void createItem(Language item) {
-        getRepository().save(item);
+    protected Language createItem(Language item) {
+        return getRepository().save(item);
     }
 
     @Override

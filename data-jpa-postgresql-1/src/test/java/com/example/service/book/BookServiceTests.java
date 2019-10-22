@@ -28,8 +28,8 @@ public class BookServiceTests extends AbstractBookTests {
     //Create methods:
 
     @Override
-    protected void createItem(Book item) {
-        service.createItem(item);
+    protected Book createItem(Book item) {
+        return service.createItem(item);
     }
 
     @Override

@@ -33,14 +33,20 @@ public class LanguageIntegrationTests extends AbstractLanguageTests {
     //Create methods:
 
     @Override
-    protected void createItem(Language item) throws Exception {
-        mockMvc.perform(post("/" + LANGUAGES_PATH)
+    protected Language createItem(Language item) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(post("/" + LANGUAGES_PATH)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(item))
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isCreated())
                 .andReturn();
+        String createdItemLocation = mvcResult.getResponse().getHeader("Location");
+        assert createdItemLocation != null;
+        long createdItemId = Long.parseLong(createdItemLocation.substring(createdItemLocation.lastIndexOf("/") + 1));
+        Optional<Language> createdItem = getItemById(createdItemId);
+        assert createdItem.isPresent();
+        return createdItem.get();
     }
 
     @Override

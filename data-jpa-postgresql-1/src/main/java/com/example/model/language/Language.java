@@ -1,6 +1,6 @@
 package com.example.model.language;
 
-import com.example.model.Identifiable;
+import com.example.model.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @Entity
 @Table(name = "language", schema = "demo")
-public class Language implements Identifiable {
+public class Language implements BaseEntity {
 
     public static final int NAME_MIN_LENGTH = 1;
     public static final int NAME_MAX_LENGTH = 64;
@@ -25,6 +25,9 @@ public class Language implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Version
+    private Integer version;
 
     @NotNull(message = "name must not be null")
     @NotBlank(message = "name must not be blank")

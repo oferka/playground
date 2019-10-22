@@ -16,7 +16,7 @@ import static org.apache.commons.lang3.RandomUtils.nextLong;
 import static org.junit.Assert.*;
 
 @Data
-public abstract class AbstractModelTests<T extends Identifiable> {
+public abstract class AbstractModelTests<T extends BaseEntity> {
 
     @Autowired
     private SampleDataLoader sampleDataLoader;
@@ -39,8 +39,13 @@ public abstract class AbstractModelTests<T extends Identifiable> {
     @Test
     public void shouldCreateItem() throws Exception {
         T itemToBeCreated = getItemToBeCreated();
-        createItem(itemToBeCreated);
-        verifyItemCreation(itemToBeCreated);
+        T result = createItem(itemToBeCreated);
+        verifyItemCreation(itemToBeCreated, result);
+    }
+
+    @Test
+    public void shouldHaveVersionZeroUponCreation() throws Exception {
+        verifyAllItemsHaveSpecifiedVersion(0);
     }
 
     //Read tests:
@@ -95,7 +100,7 @@ public abstract class AbstractModelTests<T extends Identifiable> {
 
     protected abstract T getItemToBeCreated() throws Exception;
 
-    protected abstract void createItem(T item) throws Exception;
+    protected abstract T createItem(T item) throws Exception;
 
     protected abstract T getUpdatedItem(T item);
 
@@ -144,8 +149,16 @@ public abstract class AbstractModelTests<T extends Identifiable> {
         verifyItemExists(item);
     }
 
-    private void verifyItemCreation(T item) {
-        verifyItemExists(item);
+    private void verifyItemCreation(T itemToBeCreated, T createdItem) {
+        verifyItemExists(itemToBeCreated);
+        //todo
+    }
+
+    private void verifyAllItemsHaveSpecifiedVersion(Integer expectedVersion) throws Exception {
+        List<T> items = getAllItems();
+        for(T item : items) {
+            assertEquals(expectedVersion, item.getVersion());
+        }
     }
 
     private void verifyItemUpdateForNonExistingItem(T item) {
@@ -160,7 +173,6 @@ public abstract class AbstractModelTests<T extends Identifiable> {
 
     private void verifyItemExists(T item) {
         assertNotNull(item);
-        //todo
     }
 
     protected String getUpdatedItemAttributeValue(String currentValue) {

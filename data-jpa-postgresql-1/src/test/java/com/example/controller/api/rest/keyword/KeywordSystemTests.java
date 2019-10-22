@@ -42,12 +42,20 @@ public class KeywordSystemTests extends AbstractKeywordTests {
     //Create methods:
 
     @Override
-    protected void createItem(Keyword item) {
+    protected Keyword createItem(Keyword item) {
         UriComponents uriComponents = generateUriComponents();
         URI uri = uriComponents.toUri();
         RequestEntity<Keyword> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
         ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        URI createdItemUri = responseEntity.getHeaders().getLocation();
+        assert createdItemUri != null;
+        String createdItemLocationPath = createdItemUri.getPath();
+        assert createdItemLocationPath != null;
+        long createdItemId = Long.parseLong(createdItemLocationPath.substring(createdItemLocationPath.lastIndexOf("/") + 1));
+        Optional<Keyword> createdItem = getItemById(createdItemId);
+        assert createdItem.isPresent();
+        return createdItem.get();
     }
 
     @Override

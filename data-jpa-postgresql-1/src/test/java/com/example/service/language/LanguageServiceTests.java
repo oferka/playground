@@ -26,8 +26,8 @@ public class LanguageServiceTests extends AbstractLanguageTests {
     //Create methods:
 
     @Override
-    protected void createItem(Language item) {
-        service.createItem(item);
+    protected Language createItem(Language item) {
+        return service.createItem(item);
     }
 
     @Override

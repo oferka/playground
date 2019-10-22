@@ -1,6 +1,6 @@
 package com.example.model.keyword;
 
-import com.example.model.Identifiable;
+import com.example.model.BaseEntity;
 import com.example.model.language.Language;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -26,7 +26,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "keyword", schema = "demo")
-public class Keyword implements Identifiable {
+public class Keyword implements BaseEntity {
 
     public static final int TEXT_MIN_LENGTH = 2;
     public static final int TEXT_MAX_LENGTH = 30;
@@ -34,6 +34,9 @@ public class Keyword implements Identifiable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Version
+    private Integer version;
 
     @NotNull(message = "text must not be null")
     @NotBlank(message = "text must not be blank")

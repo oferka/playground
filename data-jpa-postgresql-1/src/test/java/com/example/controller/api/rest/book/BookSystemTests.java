@@ -44,12 +44,20 @@ public class BookSystemTests extends AbstractBookTests {
     //Create methods:
 
     @Override
-    protected void createItem(Book item) {
+    protected Book createItem(Book item) {
         UriComponents uriComponents = generateUriComponents();
         URI uri = uriComponents.toUri();
         RequestEntity<Book> requestEntity = new RequestEntity<>(item, HttpMethod.POST, uri);
         ResponseEntity<URI> responseEntity = testRestTemplate.exchange(requestEntity, URI.class);
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        URI createdItemUri = responseEntity.getHeaders().getLocation();
+        assert createdItemUri != null;
+        String createdItemLocationPath = createdItemUri.getPath();
+        assert createdItemLocationPath != null;
+        long createdItemId = Long.parseLong(createdItemLocationPath.substring(createdItemLocationPath.lastIndexOf("/") + 1));
+        Optional<Book> createdItem = getItemById(createdItemId);
+        assert createdItem.isPresent();
+        return createdItem.get();
     }
 
     @Override
