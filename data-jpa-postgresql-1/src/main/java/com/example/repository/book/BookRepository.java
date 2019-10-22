@@ -1,7 +1,7 @@
 package com.example.repository.book;
 
 import com.example.model.book.Book;
-import com.example.model.book.Book.Format;
+import com.example.model.book.Format;
 import com.example.model.language.Language.Code;
 import org.springframework.data.jpa.repository.JpaRepository;
 

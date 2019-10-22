@@ -2,7 +2,7 @@ package com.example.controller.api.rest.book;
 
 import com.example.model.book.AbstractBookTests;
 import com.example.model.book.Book;
-import com.example.model.book.Book.Format;
+import com.example.model.book.Format;
 import com.example.model.language.Language.Code;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.runner.RunWith;

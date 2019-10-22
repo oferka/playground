@@ -2,7 +2,7 @@ package com.example.service.book;
 
 import com.example.model.book.AbstractBookTests;
 import com.example.model.book.Book;
-import com.example.model.book.Book.Format;
+import com.example.model.book.Format;
 import com.example.model.language.Language.Code;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

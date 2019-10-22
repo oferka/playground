@@ -1,7 +1,7 @@
 package com.example.service.book;
 
 import com.example.model.book.Book;
-import com.example.model.book.Book.Format;
+import com.example.model.book.Format;
 import com.example.model.language.Language.Code;
 import com.example.repository.book.BookRepository;
 import lombok.extern.slf4j.Slf4j;

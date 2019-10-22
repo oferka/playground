@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.example.model.book.Book.Format.*;
+import static com.example.model.book.Format.*;
 import static java.util.Arrays.asList;
 import static org.apache.commons.lang3.RandomUtils.nextInt;
 

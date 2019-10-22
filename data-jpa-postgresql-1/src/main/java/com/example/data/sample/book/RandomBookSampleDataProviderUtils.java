@@ -1,6 +1,7 @@
 package com.example.data.sample.book;
 
 import com.example.model.book.Book;
+import com.example.model.book.Format;
 import com.example.model.keyword.Keyword;
 import com.example.model.language.Language;
 import com.github.javafaker.Faker;
@@ -50,8 +51,8 @@ public class RandomBookSampleDataProviderUtils {
         return (nextBoolean()? (new Faker().code().isbn10(nextBoolean())) : (new Faker().code().isbn13(nextBoolean())));
     }
 
-    private static Book.Format generateRandomBookFormat() {
-        Book.Format[] formats = Book.Format.values();
+    private static Format generateRandomBookFormat() {
+        Format[] formats = Format.values();
         return formats[nextInt(0, formats.length)];
     }
 

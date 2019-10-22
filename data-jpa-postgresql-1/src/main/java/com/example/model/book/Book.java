@@ -68,7 +68,7 @@ public class Book implements BaseEntity {
     @NotNull(message = "format must not be null")
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private Book.Format format;
+    private Format format;
 
     @NotNull(message = "language must not be null")
     @ManyToOne(optional = false)
@@ -80,12 +80,4 @@ public class Book implements BaseEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(schema = "demo")
     private Set<Keyword> keywords;
-
-    public enum Format {
-        AUDIO_BOOK,
-        ELECTRONIC_BOOK,
-        GRAPHIC_NOVEL,
-        HARD_COVER,
-        PAPER_BACK
-    }
 }
