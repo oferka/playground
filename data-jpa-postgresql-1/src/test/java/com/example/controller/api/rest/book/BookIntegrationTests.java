@@ -145,7 +145,7 @@ public class BookIntegrationTests extends AbstractBookTests {
 
     @Override
     protected List<Book> getItemsByFormat(Format value) throws Exception {
-        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_FORMAT_PATH).param(BOOK_FORMAT_PARAM_NAME, value.toString()))
+        MvcResult mvcResult = mockMvc.perform(get("/" + BOOKS_PATH + "/" + FIND_BY_FORMAT_PATH).param(BOOK_FORMAT_PARAM_NAME, Format.forValue(value.getName()).name()))
                 .andDo(log())
                 .andExpect(status().isOk())
                 .andReturn();

@@ -66,7 +66,7 @@ public class Book implements BaseEntity {
     private String isbn;
 
     @NotNull(message = "format must not be null")
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
     private Format format;
 

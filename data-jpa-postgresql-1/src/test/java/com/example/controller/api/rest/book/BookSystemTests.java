@@ -181,7 +181,7 @@ public class BookSystemTests extends AbstractBookTests {
     @Override
     protected List<Book> getItemsByFormat(Format value) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add(BOOK_FORMAT_PARAM_NAME, value.toString());
+        params.add(BOOK_FORMAT_PARAM_NAME, Format.forValue(value.getName()).name());
         UriComponents uriComponents = generateUriComponents("/" + FIND_BY_FORMAT_PATH, params);
         URI uri = uriComponents.toUri();
         RequestEntity requestEntity = new RequestEntity(HttpMethod.GET, uri);
