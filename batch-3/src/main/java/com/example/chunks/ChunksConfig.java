@@ -55,7 +55,7 @@ public class ChunksConfig {
     @Bean(name = CHUNKS_JOB_NAME)
     public Job job(ChunksJobExecutionListener listener) {
         return jobBuilderFactory
-                .get("chunksJob")
+                .get(CHUNKS_JOB_NAME)
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
                 .start(processLines(itemReader(), itemProcessor(), itemWriter()))
