@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.RELEASE</version>
+        <version>2.2.2.RELEASE</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +18,7 @@
         <java.version>10</java.version>
         <jetbrains-annotations.version>16.0.3</jetbrains-annotations.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
-        <spring-cloud-dependencies.version>Greenwich.SR3</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>Hoxton.RELEASE</spring-cloud-dependencies.version>
         <spring-boot-admin-starter-server.version>2.1.5</spring-boot-admin-starter-server.version>
         <spring-boot-admin-starter-client.version>2.1.5</spring-boot-admin-starter-client.version>
         <spring-data-elasticsearch.version>3.0.8.RELEASE</spring-data-elasticsearch.version>
@@ -112,5 +112,6 @@
         <module>data-jpa-postgresql-1</module>
         <module>profile-1</module>
         <module>rest-test-1</module>
+        <module>jsonb-1</module>
     </modules>
 </project>
