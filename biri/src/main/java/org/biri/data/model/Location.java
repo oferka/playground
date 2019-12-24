@@ -1,10 +1,10 @@
-package org.biri.model;
+package org.biri.data.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-public class Group {
+public class Location {
 
     @Id
     private String id;
@@ -12,4 +12,6 @@ public class Group {
     private String name;
 
     private String description;
+
+    private Address address;
 }

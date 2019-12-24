@@ -1,4 +1,4 @@
-package org.biri.model;
+package org.biri.data.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
