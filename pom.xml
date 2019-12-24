@@ -113,5 +113,6 @@
         <module>profile-1</module>
         <module>rest-test-1</module>
         <module>jsonb-1</module>
+        <module>biri</module>
     </modules>
 </project>
