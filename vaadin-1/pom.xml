@@ -12,9 +12,6 @@
     <version>1.0-SNAPSHOT</version>
     <description>application that uses a Vaadin based UI on a Spring Data JPA based backend</description>
     <url>https://spring.io/guides/gs/crud-with-vaadin/</url>
-    <properties>
-        <vaadin.version>12.0.5</vaadin.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
