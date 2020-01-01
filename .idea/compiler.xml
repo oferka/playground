@@ -28,6 +28,7 @@
         <module name="logging-1" />
         <module name="centralized-configuration-1-server" />
         <module name="hal-browser-1" />
+        <module name="junit5-1" />
         <module name="docker-1" />
         <module name="form-validation-1" />
         <module name="testing-1" />
@@ -153,6 +154,7 @@
       <module name="jquery-1" options="-parameters" />
       <module name="jsonb-1" options="-parameters" />
       <module name="junit-assumptions-1" options="-parameters" />
+      <module name="junit5-1" options="-parameters" />
       <module name="ldap-1" options="-parameters" />
       <module name="library-1-application" options="-parameters" />
       <module name="library-1-library" options="-parameters" />
