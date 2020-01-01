@@ -24,7 +24,7 @@
         <spring-data-elasticsearch.version>3.0.8.RELEASE</spring-data-elasticsearch.version>
         <elasticsearch.version>6.8.1</elasticsearch.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <javafaker.version>1.0.0</javafaker.version>
+        <javafaker.version>1.0.1</javafaker.version>
         <avro.version>1.9.1</avro.version>
         <easy-random-core.version>4.0.0</easy-random-core.version>
         <commons-io.version>2.6</commons-io.version>
@@ -33,6 +33,7 @@
         <javax.el-api.version>3.0.0</javax.el-api.version>
         <jakarta.el.version>3.0.3</jakarta.el.version>
         <opencsv.version>4.6</opencsv.version>
+        <vaadin.version>14.1.3</vaadin.version>
     </properties>
     <scm>
         <url>https://github.com/oferka/playground</url>
