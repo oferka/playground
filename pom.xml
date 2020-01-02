@@ -118,5 +118,6 @@
         <module>jsonb-1</module>
         <module>biri</module>
         <module>junit5-1</module>
+        <module>okta-1</module>
     </modules>
 </project>
