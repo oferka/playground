@@ -83,6 +83,7 @@
         <module name="rest-test-1" />
         <module name="cors-1" />
         <module name="neo4j-1" />
+        <module name="shell-1" />
         <module name="ribbon-1-server" />
         <module name="angular-1" />
         <module name="data-rest-mongodb-1" />
@@ -180,6 +181,7 @@
       <module name="ribbon-1-server" options="-parameters" />
       <module name="scheduling-1" options="-parameters" />
       <module name="security-1" options="-parameters" />
+      <module name="shell-1" options="-parameters" />
       <module name="sorted-set-1" options="-parameters" />
       <module name="stream-1" options="-parameters" />
       <module name="testing-1" options="-parameters" />

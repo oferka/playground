@@ -119,5 +119,6 @@
         <module>biri</module>
         <module>junit5-1</module>
         <module>okta-1</module>
+        <module>shell-1</module>
     </modules>
 </project>
