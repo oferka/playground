@@ -88,6 +88,7 @@
         <module name="redis-1" />
         <module name="data-rest-mongodb-1" />
         <module name="blocking-queue-1" />
+        <module name="selenium-1" />
         <module name="actuator-1" />
         <module name="library-1-application" />
         <module name="avro-1" />
@@ -181,6 +182,7 @@
       <module name="ribbon-1-server" options="-parameters" />
       <module name="scheduling-1" options="-parameters" />
       <module name="security-1" options="-parameters" />
+      <module name="selenium-1" options="-parameters" />
       <module name="shell-1" options="-parameters" />
       <module name="sorted-set-1" options="-parameters" />
       <module name="stream-1" options="-parameters" />
