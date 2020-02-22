@@ -65,7 +65,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     private void login(WebDriver driver) {
         log.info("Login started");
         enterText(driver, By.id("username"), "ofer.karp@walkme.com");
-        enterText(driver, By.id("password"), "********************");
+        enterText(driver, By.id("password"), "*****");
         log.info("Login completed");
     }
 

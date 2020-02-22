@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static java.lang.String.format;
+
 @Data
 @AllArgsConstructor
 public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
@@ -18,16 +20,8 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
 
     @Override
     public WebElement retrievePageHeader(WebDriver driver) {
-        return waitForAndGetElement(driver, By.className(className), text);
-    }
-
-    private WebElement waitForAndGetElement(WebDriver driver, By locator, String expectedElementText) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        WebElement pageHeaderElement = driver.findElement(locator);
-        if(pageHeaderElement.getText().equals(expectedElementText)) {
-            return pageHeaderElement;
-        }
-        return null;
+        String xpath = format("//*[@class='%s' and text()='%s']", className, text);
+        By locator = By.xpath(xpath);
+        return new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
