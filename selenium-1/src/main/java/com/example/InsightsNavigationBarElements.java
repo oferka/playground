@@ -15,7 +15,6 @@ public enum InsightsNavigationBarElements {
 
     OVERVIEW(
             "Overview",
-            "Overview",
             new InsightsFirstLevelNavigationElementRetriever("overview"),
             FIRST_LEVEL,
             0,
@@ -24,7 +23,6 @@ public enum InsightsNavigationBarElements {
             new InsightsDefaultPageHeaderRetriever("Overview")
     ),
     APPS(
-            "Apps",
             "Apps",
             new InsightsFirstLevelNavigationElementRetriever("apps"),
             FIRST_LEVEL,
@@ -35,7 +33,6 @@ public enum InsightsNavigationBarElements {
     ),
     APPS_OVERVIEW(
             "Apps Overview",
-            "Apps Overview",
             new InsightsSecondLevelNavigationElementRetriever("Apps Overview"),
             SECOND_LEVEL,
             0,
@@ -45,7 +42,6 @@ public enum InsightsNavigationBarElements {
     ),
     SMART_WALK_THRUS(
             "SmartWalkThrus",
-            "Smart Walk-Thrus",
             new InsightsSecondLevelNavigationElementRetriever("Smart Walk-Thrus"),
             SECOND_LEVEL,
             1,
@@ -55,7 +51,6 @@ public enum InsightsNavigationBarElements {
     ),
     WALK_THRUS(
             "WalkThrus",
-            "Walk-Thrus",
             new InsightsSecondLevelNavigationElementRetriever("Walk-Thrus"),
             SECOND_LEVEL,
             2,
@@ -64,7 +59,6 @@ public enum InsightsNavigationBarElements {
             new InsightsDefaultPageHeaderRetriever("Walk-Thrus")
     ),
     ONBOARDING(
-            "Onboarding",
             "Onboarding",
             new InsightsSecondLevelNavigationElementRetriever("Onboarding"),
             SECOND_LEVEL,
@@ -75,7 +69,6 @@ public enum InsightsNavigationBarElements {
     ),
     SHOUT_OUTS(
             "ShoutOuts",
-            "ShoutOuts",
             new InsightsSecondLevelNavigationElementRetriever("ShoutOuts"),
             SECOND_LEVEL,
             4,
@@ -84,7 +77,6 @@ public enum InsightsNavigationBarElements {
             new InsightsDefaultPageHeaderRetriever("ShoutOuts")
     ),
     LAUNCHERS(
-            "Launchers",
             "Launchers",
             new InsightsSecondLevelNavigationElementRetriever("Launchers"),
             SECOND_LEVEL,
@@ -95,7 +87,6 @@ public enum InsightsNavigationBarElements {
     ),
     RESOURCES(
             "Resources",
-            "Resources",
             new InsightsSecondLevelNavigationElementRetriever("Resources"),
             SECOND_LEVEL,
             6,
@@ -104,7 +95,6 @@ public enum InsightsNavigationBarElements {
             new InsightsDefaultPageHeaderRetriever("Resources")
     ),
     SHUTTLES(
-            "Shuttles",
             "Shuttles",
             new InsightsSecondLevelNavigationElementRetriever("Shuttles"),
             SECOND_LEVEL,
@@ -115,7 +105,6 @@ public enum InsightsNavigationBarElements {
     ),
     SURVEYS(
             "Surveys",
-            "Surveys",
             new InsightsSecondLevelNavigationElementRetriever("Surveys"),
             SECOND_LEVEL,
             8,
@@ -124,7 +113,6 @@ public enum InsightsNavigationBarElements {
             new InsightsDefaultPageHeaderRetriever("Surveys")
     ),
     SMART_TIPS(
-            "SmartTips",
             "SmartTips",
             new InsightsSecondLevelNavigationElementRetriever("SmartTips"),
             SECOND_LEVEL,
@@ -135,7 +123,6 @@ public enum InsightsNavigationBarElements {
     ),
     MENU_AND_SEARCH(
             "MenuAndSearch",
-            "Menu & Search",
             new InsightsSecondLevelNavigationElementRetriever("Menu & Search"),
             SECOND_LEVEL,
             10,
@@ -145,14 +132,12 @@ public enum InsightsNavigationBarElements {
     ),
     USERS(
             "Users",
-            "Users",
             new InsightsFirstLevelNavigationElementRetriever("users"),
             FIRST_LEVEL,
             2,
             NAVIGATION_ELEMET,
             "Users", new InsightsDefaultPageHeaderRetriever("Users")),
     SESSION_PLAYBACK(
-            "Session Playback",
             "Session Playback",
             new InsightsFirstLevelNavigationElementRetriever("session playback"),
             FIRST_LEVEL,
@@ -163,7 +148,6 @@ public enum InsightsNavigationBarElements {
     ),
     FEATURES(
             "Features",
-            "Features",
             new InsightsFirstLevelNavigationElementRetriever("features"),
             FIRST_LEVEL,
             4,
@@ -172,7 +156,6 @@ public enum InsightsNavigationBarElements {
             new PageHeaderRetrieverByClassAndText("features-empty-state__title", "Track Feature Adoption")
     ),
     FUNNELS(
-            "Funnels",
             "Funnels",
             new InsightsFirstLevelNavigationElementRetriever("funnels"),
             FIRST_LEVEL,
@@ -183,7 +166,6 @@ public enum InsightsNavigationBarElements {
     ),
     TRACKED_EVENTS(
             "Tracked Events",
-            "Tracked Events",
             new InsightsFirstLevelNavigationElementRetriever("tracked events"),
             FIRST_LEVEL,
             6,
@@ -193,7 +175,6 @@ public enum InsightsNavigationBarElements {
     ),
     TRACKED_EVENTS_ANALYTICS(
             "TrackedEventsAnalytics",
-            "Analytics",
             new InsightsSecondLevelNavigationElementRetriever("Analytics"),
             SECOND_LEVEL,
             11,
@@ -203,7 +184,6 @@ public enum InsightsNavigationBarElements {
     ),
     TRACKED_EVENTS_SETUP(
             "Setup",
-            "TrackedEventsSetup",
             new InsightsSecondLevelNavigationElementRetriever("Setup"),
             SECOND_LEVEL,
             12,
@@ -212,7 +192,6 @@ public enum InsightsNavigationBarElements {
             new PageHeaderRetrieverByClassAndText("tracked-events-report__header__page-name", "Tracked Events Setup")
     ),
     REPORTS(
-            "Reports",
             "Reports",
             new InsightsFirstLevelNavigationElementRetriever("reports"),
             FIRST_LEVEL,
@@ -224,9 +203,6 @@ public enum InsightsNavigationBarElements {
 
     @Getter
     private String name;
-
-    @Getter
-    private String text;
 
     @Getter
     private NavigationElementRetriever navigationElementRetriever;
