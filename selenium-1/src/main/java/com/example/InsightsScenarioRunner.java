@@ -8,12 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import static com.example.InsightsNavigationBarElements.*;
 import static com.example.InsightsNavigationBarElements.InsightsNavigationBarElementTypes.NAVIGATION_ELEMET;
-import static com.example.InsightsNavigationBarElements.InsightsNavigationBarLevels.FIRST_LEVEL;
-import static com.example.InsightsNavigationBarElements.InsightsNavigationBarLevels.SECOND_LEVEL;
 
 @Service
 @Slf4j
@@ -26,27 +22,27 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         openDAPHomePage(driver);
         login(driver);
         impersonate(driver);
-        openOverview(driver);
-        openApps(driver);
-        openAppsOverview(driver);
-        openSmartWalkThrus(driver);
-        openWalkThrus(driver);
-        openOnboarding(driver);
-        openShoutOuts(driver);
-        openLaunchers(driver);
-        openResources(driver);
-        openShuttles(driver);
-        openSurveys(driver);
-        openSmartTips(driver);
-        openMenuAndSearch(driver);
-        openUsers(driver);
-        openSessionPlayback(driver);
-        openFeatures(driver);
-        openFunnels(driver);
-        openTrackedEvents(driver);
-        openTrackedEventsAnalytics(driver);
-        openTrackedEventsSetup(driver);
-        openReports(driver);
+        openOverviewPage(driver);
+        openAppsMenu(driver);
+        openAppsOverviewPage(driver);
+        openSmartWalkThrusPage(driver);
+        openWalkThrusPage(driver);
+        openOnboardingPage(driver);
+        openShoutOutsPage(driver);
+        openLaunchersPage(driver);
+        openResourcesPage(driver);
+        openShuttlesPage(driver);
+        openSurveysPage(driver);
+        openSmartTipsPage(driver);
+        openMenuAndSearchPage(driver);
+        openUsersPage(driver);
+        openSessionPlaybackPage(driver);
+        openFeaturesPage(driver);
+        openFunnelsPage(driver);
+        openTrackedEventsMenu(driver);
+        openTrackedEventsAnalyticsPage(driver);
+        openTrackedEventsSetupPage(driver);
+        openReportsPage(driver);
         closeBrowser(driver);
         log.info("Run scenario completed");
     }
@@ -80,87 +76,87 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         log.info("Impersonate completed");
     }
 
-    private void openOverview(WebDriver driver) {
+    private void openOverviewPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, OVERVIEW);
     }
 
-    private void openApps(WebDriver driver) {
+    private void openAppsMenu(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, APPS);
     }
 
-    private void openAppsOverview(WebDriver driver) {
+    private void openAppsOverviewPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, APPS_OVERVIEW);
     }
 
-    private void openSmartWalkThrus(WebDriver driver) {
+    private void openSmartWalkThrusPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, SMART_WALK_THRUS);
     }
 
-    private void openWalkThrus(WebDriver driver) {
+    private void openWalkThrusPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, WALK_THRUS);
     }
 
-    private void openOnboarding(WebDriver driver) {
+    private void openOnboardingPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, ONBOARDING);
     }
 
-    private void openShoutOuts(WebDriver driver) {
+    private void openShoutOutsPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, SHOUT_OUTS);
     }
 
-    private void openLaunchers(WebDriver driver) {
+    private void openLaunchersPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, LAUNCHERS);
     }
 
-    private void openResources(WebDriver driver) {
+    private void openResourcesPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, RESOURCES);
     }
 
-    private void openShuttles(WebDriver driver) {
+    private void openShuttlesPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, SHUTTLES);
     }
 
-    private void openSurveys(WebDriver driver) {
+    private void openSurveysPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, SURVEYS);
     }
 
-    private void openSmartTips(WebDriver driver) {
+    private void openSmartTipsPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, SMART_TIPS);
     }
 
-    private void openMenuAndSearch(WebDriver driver) {
+    private void openMenuAndSearchPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, MENU_AND_SEARCH);
     }
 
-    private void openUsers(WebDriver driver) {
+    private void openUsersPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, USERS);
     }
 
-    private void openSessionPlayback(WebDriver driver) {
+    private void openSessionPlaybackPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, SESSION_PLAYBACK);
     }
 
-    private void openFeatures(WebDriver driver) {
+    private void openFeaturesPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, FEATURES);
     }
 
-    private void openFunnels(WebDriver driver) {
+    private void openFunnelsPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, FUNNELS);
     }
 
-    private void openTrackedEvents(WebDriver driver) {
+    private void openTrackedEventsMenu(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS);
     }
 
-    private void openTrackedEventsAnalytics(WebDriver driver) {
+    private void openTrackedEventsAnalyticsPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_ANALYTICS);
     }
 
-    private void openTrackedEventsSetup(WebDriver driver) {
+    private void openTrackedEventsSetupPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_SETUP);
     }
 
-    private void openReports(WebDriver driver) {
+    private void openReportsPage(WebDriver driver) {
         ClickInsightsNavigationBarElement(driver, REPORTS);
     }
 
@@ -204,7 +200,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
 
     private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
         log.info("Expand {} insights navigation bar element started", insightsNavigationBarElement.getName());
-        WebElement navigationElement = waitForAndGetInsightsNavigationElement(driver, insightsNavigationBarElement);
+        WebElement navigationElement = insightsNavigationBarElement.getNavigationElementRetriever().retrieveNavigationElement(driver);
         highlightElement(driver, navigationElement);
         navigationElement.click();
         log.info("Expand {} insights navigation bar element completed", insightsNavigationBarElement.getName());
@@ -212,7 +208,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
 
     private void openInsightsPage(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
         log.info("Open {} insights page started", insightsNavigationBarElement.getName());
-        WebElement navigationElement = waitForAndGetInsightsNavigationElement(driver, insightsNavigationBarElement);
+        WebElement navigationElement = insightsNavigationBarElement.getNavigationElementRetriever().retrieveNavigationElement(driver);
         highlightElement(driver, navigationElement);
         navigationElement.click();
         waitForPageLoad(driver, insightsNavigationBarElement.getPageTitleContains());
@@ -241,26 +237,5 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         return driver.findElement(locator);
-    }
-
-    private WebElement waitForAndGetInsightsNavigationElement(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
-        WebElement result = null;
-        if(insightsNavigationBarElement.getLevel() == FIRST_LEVEL) {
-            result = waitForAndGetElementFromList(driver, By.className("side-navbar__button__text"), insightsNavigationBarElement.getItemIndex());
-        }
-        else {
-            if(insightsNavigationBarElement.getLevel() == SECOND_LEVEL) {
-                result = waitForAndGetElementFromList(driver, By.className("side-navbar__sub-item-button__text"), insightsNavigationBarElement.getItemIndex());
-            }
-        }
-        return result;
-    }
-
-    private WebElement waitForAndGetElementFromList(WebDriver driver, By elementListLocator, int index) {
-        List<WebElement> elements = driver.findElements(elementListLocator);
-        WebElement element = elements.get(index);
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        return element;
     }
 }
