@@ -6,8 +6,6 @@ import lombok.ToString;
 
 import static com.example.InsightsNavigationBarElements.InsightsNavigationBarElementTypes.NAVIGATION_ELEMET;
 import static com.example.InsightsNavigationBarElements.InsightsNavigationBarElementTypes.NAVIGATION_ELEMET_GROUP;
-import static com.example.InsightsNavigationBarElements.InsightsNavigationBarLevels.FIRST_LEVEL;
-import static com.example.InsightsNavigationBarElements.InsightsNavigationBarLevels.SECOND_LEVEL;
 
 @ToString
 @AllArgsConstructor
@@ -16,7 +14,6 @@ public enum InsightsNavigationBarElements {
     OVERVIEW(
             "Overview",
             new InsightsFirstLevelNavigationElementRetriever("overview"),
-            FIRST_LEVEL,
             0,
             NAVIGATION_ELEMET,
             "Overview",
@@ -25,7 +22,6 @@ public enum InsightsNavigationBarElements {
     APPS(
             "Apps",
             new InsightsFirstLevelNavigationElementRetriever("apps"),
-            FIRST_LEVEL,
             1,
             NAVIGATION_ELEMET_GROUP,
             null,
@@ -34,7 +30,6 @@ public enum InsightsNavigationBarElements {
     APPS_OVERVIEW(
             "Apps Overview",
             new InsightsSecondLevelNavigationElementRetriever("Apps Overview"),
-            SECOND_LEVEL,
             0,
             NAVIGATION_ELEMET,
             "Apps",
@@ -43,7 +38,6 @@ public enum InsightsNavigationBarElements {
     SMART_WALK_THRUS(
             "SmartWalkThrus",
             new InsightsSecondLevelNavigationElementRetriever("Smart Walk-Thrus"),
-            SECOND_LEVEL,
             1,
             NAVIGATION_ELEMET,
             "Apps",
@@ -52,7 +46,6 @@ public enum InsightsNavigationBarElements {
     WALK_THRUS(
             "WalkThrus",
             new InsightsSecondLevelNavigationElementRetriever("Walk-Thrus"),
-            SECOND_LEVEL,
             2,
             NAVIGATION_ELEMET,
             "Apps",
@@ -61,7 +54,6 @@ public enum InsightsNavigationBarElements {
     ONBOARDING(
             "Onboarding",
             new InsightsSecondLevelNavigationElementRetriever("Onboarding"),
-            SECOND_LEVEL,
             3,
             NAVIGATION_ELEMET,
             "Apps",
@@ -70,7 +62,6 @@ public enum InsightsNavigationBarElements {
     SHOUT_OUTS(
             "ShoutOuts",
             new InsightsSecondLevelNavigationElementRetriever("ShoutOuts"),
-            SECOND_LEVEL,
             4,
             NAVIGATION_ELEMET,
             "Apps",
@@ -79,7 +70,6 @@ public enum InsightsNavigationBarElements {
     LAUNCHERS(
             "Launchers",
             new InsightsSecondLevelNavigationElementRetriever("Launchers"),
-            SECOND_LEVEL,
             5,
             NAVIGATION_ELEMET,
             "Apps",
@@ -88,7 +78,6 @@ public enum InsightsNavigationBarElements {
     RESOURCES(
             "Resources",
             new InsightsSecondLevelNavigationElementRetriever("Resources"),
-            SECOND_LEVEL,
             6,
             NAVIGATION_ELEMET,
             "Apps",
@@ -97,7 +86,6 @@ public enum InsightsNavigationBarElements {
     SHUTTLES(
             "Shuttles",
             new InsightsSecondLevelNavigationElementRetriever("Shuttles"),
-            SECOND_LEVEL,
             7,
             NAVIGATION_ELEMET,
             "Apps",
@@ -106,7 +94,6 @@ public enum InsightsNavigationBarElements {
     SURVEYS(
             "Surveys",
             new InsightsSecondLevelNavigationElementRetriever("Surveys"),
-            SECOND_LEVEL,
             8,
             NAVIGATION_ELEMET,
             "Apps",
@@ -115,7 +102,6 @@ public enum InsightsNavigationBarElements {
     SMART_TIPS(
             "SmartTips",
             new InsightsSecondLevelNavigationElementRetriever("SmartTips"),
-            SECOND_LEVEL,
             9,
             NAVIGATION_ELEMET,
             "Apps",
@@ -124,7 +110,6 @@ public enum InsightsNavigationBarElements {
     MENU_AND_SEARCH(
             "MenuAndSearch",
             new InsightsSecondLevelNavigationElementRetriever("Menu & Search"),
-            SECOND_LEVEL,
             10,
             NAVIGATION_ELEMET,
             "Apps",
@@ -133,14 +118,12 @@ public enum InsightsNavigationBarElements {
     USERS(
             "Users",
             new InsightsFirstLevelNavigationElementRetriever("users"),
-            FIRST_LEVEL,
             2,
             NAVIGATION_ELEMET,
             "Users", new InsightsDefaultPageHeaderRetriever("Users")),
     SESSION_PLAYBACK(
             "Session Playback",
             new InsightsFirstLevelNavigationElementRetriever("session playback"),
-            FIRST_LEVEL,
             3,
             NAVIGATION_ELEMET,
             "Session Playback",
@@ -149,7 +132,6 @@ public enum InsightsNavigationBarElements {
     FEATURES(
             "Features",
             new InsightsFirstLevelNavigationElementRetriever("features"),
-            FIRST_LEVEL,
             4,
             NAVIGATION_ELEMET,
             "Features",
@@ -158,7 +140,6 @@ public enum InsightsNavigationBarElements {
     FUNNELS(
             "Funnels",
             new InsightsFirstLevelNavigationElementRetriever("funnels"),
-            FIRST_LEVEL,
             5,
             NAVIGATION_ELEMET,
             "Funnels",
@@ -167,7 +148,6 @@ public enum InsightsNavigationBarElements {
     TRACKED_EVENTS(
             "Tracked Events",
             new InsightsFirstLevelNavigationElementRetriever("tracked events"),
-            FIRST_LEVEL,
             6,
             NAVIGATION_ELEMET_GROUP,
             null,
@@ -176,7 +156,6 @@ public enum InsightsNavigationBarElements {
     TRACKED_EVENTS_ANALYTICS(
             "TrackedEventsAnalytics",
             new InsightsSecondLevelNavigationElementRetriever("Analytics"),
-            SECOND_LEVEL,
             11,
             NAVIGATION_ELEMET,
             "Tracked Events",
@@ -185,7 +164,6 @@ public enum InsightsNavigationBarElements {
     TRACKED_EVENTS_SETUP(
             "Setup",
             new InsightsSecondLevelNavigationElementRetriever("Setup"),
-            SECOND_LEVEL,
             12,
             NAVIGATION_ELEMET,
             "Tracked Events",
@@ -194,7 +172,6 @@ public enum InsightsNavigationBarElements {
     REPORTS(
             "Reports",
             new InsightsFirstLevelNavigationElementRetriever("reports"),
-            FIRST_LEVEL,
             7,
             NAVIGATION_ELEMET,
             "Reports",
@@ -208,9 +185,6 @@ public enum InsightsNavigationBarElements {
     private NavigationElementRetriever navigationElementRetriever;
 
     @Getter
-    private InsightsNavigationBarLevels level;
-
-    @Getter
     private int itemIndex;
 
     @Getter
@@ -221,20 +195,6 @@ public enum InsightsNavigationBarElements {
 
     @Getter
     private PageHeaderRetriever pageHeaderRetriever;
-
-    @ToString
-    @AllArgsConstructor
-    enum InsightsNavigationBarLevels {
-
-        FIRST_LEVEL("First Level", 0),
-        SECOND_LEVEL("Second Level", 1);
-
-        @Getter
-        private String name;
-
-        @Getter
-        private int levelIndex;
-    }
 
     @ToString
     @AllArgsConstructor
