@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import static com.example.InsightsNavigationBarElements.*;
-import static com.example.InsightsNavigationBarElements.InsightsNavigationBarElementTypes.NAVIGATION_ELEMET;
 
 @Service
 @Slf4j
@@ -217,15 +216,9 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     }
 
     private void highlightInsightsPageHeader(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
-        if (insightsNavigationBarElement.getType() == NAVIGATION_ELEMET) {
-            PageHeaderRetriever pageHeaderRetriever = insightsNavigationBarElement.getPageHeaderRetriever();
-            if(pageHeaderRetriever != null) {
-                WebElement pageHeaderElement = pageHeaderRetriever.retrievePageHeader(driver);
-                if(pageHeaderElement != null) {
-                    highlightElement(driver, pageHeaderElement);
-                }
-            }
-        }
+        PageHeaderRetriever pageHeaderRetriever = insightsNavigationBarElement.getPageHeaderRetriever();
+        WebElement pageHeaderElement = pageHeaderRetriever.retrievePageHeader(driver);
+        highlightElement(driver, pageHeaderElement);
     }
 
     private void highlightElement(WebDriver driver, WebElement element) {
