@@ -76,87 +76,87 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     }
 
     private void openOverviewPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, OVERVIEW);
+        ClickInsightsNavigationBarElement(driver, OVERVIEW_NAVIGATION_ELEMET);
     }
 
     private void openAppsMenu(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, APPS);
+        ClickInsightsNavigationBarElement(driver, APPS_NAVIGATION_ELEMET_GROUP);
     }
 
     private void openAppsOverviewPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, APPS_OVERVIEW);
+        ClickInsightsNavigationBarElement(driver, APPS_OVERVIEW_NAVIGATION_ELEMET);
     }
 
     private void openSmartWalkThrusPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SMART_WALK_THRUS);
+        ClickInsightsNavigationBarElement(driver, SMART_WALK_THRUS_NAVIGATION_ELEMET);
     }
 
     private void openWalkThrusPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, WALK_THRUS);
+        ClickInsightsNavigationBarElement(driver, WALK_THRUS_NAVIGATION_ELEMET);
     }
 
     private void openOnboardingPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, ONBOARDING);
+        ClickInsightsNavigationBarElement(driver, ONBOARDING_NAVIGATION_ELEMET);
     }
 
     private void openShoutOutsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SHOUT_OUTS);
+        ClickInsightsNavigationBarElement(driver, SHOUT_OUTS_NAVIGATION_ELEMET);
     }
 
     private void openLaunchersPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, LAUNCHERS);
+        ClickInsightsNavigationBarElement(driver, LAUNCHERS_NAVIGATION_ELEMET);
     }
 
     private void openResourcesPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, RESOURCES);
+        ClickInsightsNavigationBarElement(driver, RESOURCES_NAVIGATION_ELEMET);
     }
 
     private void openShuttlesPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SHUTTLES);
+        ClickInsightsNavigationBarElement(driver, SHUTTLES_NAVIGATION_ELEMET);
     }
 
     private void openSurveysPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SURVEYS);
+        ClickInsightsNavigationBarElement(driver, SURVEYS_NAVIGATION_ELEMET);
     }
 
     private void openSmartTipsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SMART_TIPS);
+        ClickInsightsNavigationBarElement(driver, SMART_TIPS_NAVIGATION_ELEMET);
     }
 
     private void openMenuAndSearchPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, MENU_AND_SEARCH);
+        ClickInsightsNavigationBarElement(driver, MENU_AND_SEARCH_NAVIGATION_ELEMET);
     }
 
     private void openUsersPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, USERS);
+        ClickInsightsNavigationBarElement(driver, USERS_NAVIGATION_ELEMET);
     }
 
     private void openSessionPlaybackPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SESSION_PLAYBACK);
+        ClickInsightsNavigationBarElement(driver, SESSION_PLAYBACK_NAVIGATION_ELEMET);
     }
 
     private void openFeaturesPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, FEATURES);
+        ClickInsightsNavigationBarElement(driver, FEATURES_NAVIGATION_ELEMET);
     }
 
     private void openFunnelsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, FUNNELS);
+        ClickInsightsNavigationBarElement(driver, FUNNELS_NAVIGATION_ELEMET);
     }
 
     private void openTrackedEventsMenu(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS);
+        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP);
     }
 
     private void openTrackedEventsAnalyticsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_ANALYTICS);
+        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_ANALYTICS_NAVIGATION_ELEMET);
     }
 
     private void openTrackedEventsSetupPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_SETUP);
+        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET);
     }
 
     private void openReportsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, REPORTS);
+        ClickInsightsNavigationBarElement(driver, REPORTS_NAVIGATION_ELEMET);
     }
 
     public void closeBrowser(WebDriver driver) {
