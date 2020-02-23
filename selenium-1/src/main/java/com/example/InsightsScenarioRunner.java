@@ -8,7 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
-import static com.example.InsightsNavigationBarElements.*;
+import static com.example.InsightsNavigationBarElementGroups.APPS_NAVIGATION_ELEMET_GROUP;
+import static com.example.InsightsNavigationBarElementGroups.TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP;
 import static com.example.InsightsPages.*;
 
 @Service
@@ -185,12 +186,12 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         element.sendKeys(Keys.ENTER);
     }
 
-    private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
-        log.info("Expand {} insights navigation bar element started", insightsNavigationBarElement.getName());
-        WebElement navigationElement = insightsNavigationBarElement.getNavigationElementRetriever().retrieveNavigationElement(driver);
+    private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElementGroups insightsNavigationBarElementGroup) {
+        log.info("Expand {} insights navigation bar element started", insightsNavigationBarElementGroup.getName());
+        WebElement navigationElement = insightsNavigationBarElementGroup.getNavigationElementRetriever().retrieveNavigationElement(driver);
         highlightElement(driver, navigationElement);
         navigationElement.click();
-        log.info("Expand {} insights navigation bar element completed", insightsNavigationBarElement.getName());
+        log.info("Expand {} insights navigation bar element completed", insightsNavigationBarElementGroup.getName());
     }
 
     private void openInsightsPage(WebDriver driver, InsightsPages insightsPage) {
