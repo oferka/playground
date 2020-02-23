@@ -49,6 +49,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
                         REPORTS_PAGE
                 )
         );
+        closeBrowser(driver);
         log.info("Run scenario completed");
     }
 
