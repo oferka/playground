@@ -23,8 +23,8 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
     @Override
     public WebElement retrievePageHeader(WebDriver driver) {
         String xpath = format("//*[@class='%s' and text()='%s']", className, text);
-        log.debug("Trying to locate page header element using xpath: {}", xpath);
         By locator = By.xpath(xpath);
+        log.debug("Trying to locate page header element using xpath: {}", xpath);
         return new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(locator));
     }
 }

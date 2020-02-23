@@ -22,9 +22,18 @@ public class NavigationElementRetrieverByClassAndText implements NavigationEleme
 
     @Override
     public WebElement retrieveNavigationElement(WebDriver driver) {
+        return new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getNavigationElement(driver)));
+    }
+
+    @Override
+    public boolean isDisplayed(WebDriver driver) {
+        return getNavigationElement(driver).isDisplayed();
+    }
+
+    private WebElement getNavigationElement(WebDriver driver) {
         String xpath = format("//*[@class='%s' and text()='%s']", className, text);
-        log.debug("Trying to locate navigation element using xpath: {}", xpath);
         By locator = By.xpath(xpath);
-        return new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(locator));
+        log.debug("Trying to locate navigation element using xpath: {}", xpath);
+        return driver.findElement(locator);
     }
 }

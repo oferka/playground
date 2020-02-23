@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
-import static com.example.InsightsNavigationBarElementGroups.APPS_NAVIGATION_ELEMET_GROUP;
-import static com.example.InsightsNavigationBarElementGroups.TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP;
 import static com.example.InsightsPages.*;
 
 @Service
@@ -24,7 +22,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         login(driver);
         impersonate(driver);
         openOverviewPage(driver);
-        openAppsMenu(driver);
         openAppsOverviewPage(driver);
         openSmartWalkThrusPage(driver);
         openWalkThrusPage(driver);
@@ -40,7 +37,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         openSessionPlaybackPage(driver);
         openFeaturesPage(driver);
         openFunnelsPage(driver);
-        openTrackedEventsMenu(driver);
         openTrackedEventsAnalyticsPage(driver);
         openTrackedEventsSetupPage(driver);
         openReportsPage(driver);
@@ -79,10 +75,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
 
     private void openOverviewPage(WebDriver driver) {
         openInsightsPage(driver, OVERVIEW_PAGE);
-    }
-
-    private void openAppsMenu(WebDriver driver) {
-        expandTopLevelNavigationElement(driver, APPS_NAVIGATION_ELEMET_GROUP);
     }
 
     private void openAppsOverviewPage(WebDriver driver) {
@@ -145,10 +137,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         openInsightsPage(driver, FUNNELS_PAGE);
     }
 
-    private void openTrackedEventsMenu(WebDriver driver) {
-        expandTopLevelNavigationElement(driver, TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP);
-    }
-
     private void openTrackedEventsAnalyticsPage(WebDriver driver) {
         openInsightsPage(driver, TRACKED_EVENTS_ANALYTICS_PAGE);
     }
@@ -196,7 +184,14 @@ public class InsightsScenarioRunner implements ScenarioRunner {
 
     private void openInsightsPage(WebDriver driver, InsightsPages insightsPage) {
         log.info("Open {} insights page started", insightsPage.getName());
-        WebElement navigationElement = insightsPage.getNavigationBarElement().getNavigationElementRetriever().retrieveNavigationElement(driver);
+        InsightsNavigationBarElements insightsNavigationBarElement = insightsPage.getNavigationBarElement();
+        NavigationElementRetriever navigationElementRetriever = insightsNavigationBarElement.getNavigationElementRetriever();
+        if(!navigationElementRetriever.isDisplayed(driver)) {
+            InsightsNavigationBarElementGroups insightsNavigationBarElementGroup = insightsPage.getNavigationBarElement().getInsightsNavigationBarElementGroup();
+            log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", insightsNavigationBarElement.getName(), insightsNavigationBarElementGroup.getName());
+            expandTopLevelNavigationElement(driver, insightsNavigationBarElementGroup);
+        }
+        WebElement navigationElement = navigationElementRetriever.retrieveNavigationElement(driver);
         highlightElement(driver, navigationElement);
         navigationElement.click();
         waitForPageLoad(driver, insightsPage.getPageTitleContains());

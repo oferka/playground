@@ -6,4 +6,6 @@ import org.openqa.selenium.WebElement;
 public interface NavigationElementRetriever {
 
     WebElement retrieveNavigationElement(WebDriver driver);
+
+    boolean isDisplayed(WebDriver driver);
 }
