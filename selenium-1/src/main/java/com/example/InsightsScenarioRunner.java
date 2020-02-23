@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
 import static com.example.InsightsNavigationBarElements.*;
+import static com.example.InsightsPages.*;
 
 @Service
 @Slf4j
@@ -76,87 +77,87 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     }
 
     private void openOverviewPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, OVERVIEW_NAVIGATION_ELEMET);
+        openInsightsPage(driver, OVERVIEW_PAGE);
     }
 
     private void openAppsMenu(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, APPS_NAVIGATION_ELEMET_GROUP);
+        expandTopLevelNavigationElement(driver, APPS_NAVIGATION_ELEMET_GROUP);
     }
 
     private void openAppsOverviewPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, APPS_OVERVIEW_NAVIGATION_ELEMET);
+        openInsightsPage(driver, APPS_OVERVIEW_PAGE);
     }
 
     private void openSmartWalkThrusPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SMART_WALK_THRUS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, SMART_WALK_THRUS_PAGE);
     }
 
     private void openWalkThrusPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, WALK_THRUS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, WALK_THRUS_PAGE);
     }
 
     private void openOnboardingPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, ONBOARDING_NAVIGATION_ELEMET);
+        openInsightsPage(driver, ONBOARDING_PAGE);
     }
 
     private void openShoutOutsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SHOUT_OUTS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, SHOUT_OUTS_PAGE);
     }
 
     private void openLaunchersPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, LAUNCHERS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, LAUNCHERS_PAGE);
     }
 
     private void openResourcesPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, RESOURCES_NAVIGATION_ELEMET);
+        openInsightsPage(driver, RESOURCES_PAGE);
     }
 
     private void openShuttlesPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SHUTTLES_NAVIGATION_ELEMET);
+        openInsightsPage(driver, SHUTTLES_PAGE);
     }
 
     private void openSurveysPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SURVEYS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, SURVEYS_PAGE);
     }
 
     private void openSmartTipsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SMART_TIPS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, SMART_TIPS_PAGE);
     }
 
     private void openMenuAndSearchPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, MENU_AND_SEARCH_NAVIGATION_ELEMET);
+        openInsightsPage(driver, MENU_AND_SEARCH_PAGE);
     }
 
     private void openUsersPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, USERS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, USERS_PAGE);
     }
 
     private void openSessionPlaybackPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, SESSION_PLAYBACK_NAVIGATION_ELEMET);
+        openInsightsPage(driver, SESSION_PLAYBACK_PAGE);
     }
 
     private void openFeaturesPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, FEATURES_NAVIGATION_ELEMET);
+        openInsightsPage(driver, FEATURES_PAGE);
     }
 
     private void openFunnelsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, FUNNELS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, FUNNELS_PAGE);
     }
 
     private void openTrackedEventsMenu(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP);
+        expandTopLevelNavigationElement(driver, TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP);
     }
 
     private void openTrackedEventsAnalyticsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_ANALYTICS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, TRACKED_EVENTS_ANALYTICS_PAGE);
     }
 
     private void openTrackedEventsSetupPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET);
+        openInsightsPage(driver, TRACKED_EVENTS_SETUP_PAGE);
     }
 
     private void openReportsPage(WebDriver driver) {
-        ClickInsightsNavigationBarElement(driver, REPORTS_NAVIGATION_ELEMET);
+        openInsightsPage(driver, REPORTS_PAGE);
     }
 
     public void closeBrowser(WebDriver driver) {
@@ -184,19 +185,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         element.sendKeys(Keys.ENTER);
     }
 
-    private void ClickInsightsNavigationBarElement(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
-        log.info("Click {} insights navigation bar element started", insightsNavigationBarElement.getName());
-        switch (insightsNavigationBarElement.getType()) {
-            case NAVIGATION_ELEMET_GROUP:
-                expandTopLevelNavigationElement(driver, insightsNavigationBarElement);
-                break;
-            case NAVIGATION_ELEMET:
-                openInsightsPage(driver, insightsNavigationBarElement);
-                break;
-        }
-        log.info("Click {} insights navigation bar element completed", insightsNavigationBarElement.getName());
-    }
-
     private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
         log.info("Expand {} insights navigation bar element started", insightsNavigationBarElement.getName());
         WebElement navigationElement = insightsNavigationBarElement.getNavigationElementRetriever().retrieveNavigationElement(driver);
@@ -205,18 +193,18 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         log.info("Expand {} insights navigation bar element completed", insightsNavigationBarElement.getName());
     }
 
-    private void openInsightsPage(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
-        log.info("Open {} insights page started", insightsNavigationBarElement.getName());
-        WebElement navigationElement = insightsNavigationBarElement.getNavigationElementRetriever().retrieveNavigationElement(driver);
+    private void openInsightsPage(WebDriver driver, InsightsPages insightsPage) {
+        log.info("Open {} insights page started", insightsPage.getName());
+        WebElement navigationElement = insightsPage.getNavigationBarElement().getNavigationElementRetriever().retrieveNavigationElement(driver);
         highlightElement(driver, navigationElement);
         navigationElement.click();
-        waitForPageLoad(driver, insightsNavigationBarElement.getPageTitleContains());
-        highlightInsightsPageHeader(driver, insightsNavigationBarElement);
-        log.info("Open {} insights page completed", insightsNavigationBarElement.getName());
+        waitForPageLoad(driver, insightsPage.getPageTitleContains());
+        highlightInsightsPageHeader(driver, insightsPage);
+        log.info("Open {} insights page completed", insightsPage.getName());
     }
 
-    private void highlightInsightsPageHeader(WebDriver driver, InsightsNavigationBarElements insightsNavigationBarElement) {
-        PageHeaderRetriever pageHeaderRetriever = insightsNavigationBarElement.getPageHeaderRetriever();
+    private void highlightInsightsPageHeader(WebDriver driver, InsightsPages insightsPage) {
+        PageHeaderRetriever pageHeaderRetriever = insightsPage.getPageHeaderRetriever();
         WebElement pageHeaderElement = pageHeaderRetriever.retrievePageHeader(driver);
         highlightElement(driver, pageHeaderElement);
     }

@@ -16,7 +16,7 @@ public enum InsightsPages {
             "Overview",
             new InsightsDefaultPageHeaderRetriever("Overview")
     ),
-    APPS_PAGE(
+    APPS_OVERVIEW_PAGE(
             "Apps Overview",
             APPS_OVERVIEW_NAVIGATION_ELEMET,
             "Apps",
