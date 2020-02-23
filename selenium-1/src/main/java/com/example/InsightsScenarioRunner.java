@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.example.InsightsPages.*;
+import static java.util.Arrays.asList;
 
 @Service
 @Slf4j
@@ -21,26 +24,31 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         openDAPHomePage(driver);
         login(driver);
         impersonate(driver);
-        openOverviewPage(driver);
-        openAppsOverviewPage(driver);
-        openSmartWalkThrusPage(driver);
-        openWalkThrusPage(driver);
-        openOnboardingPage(driver);
-        openShoutOutsPage(driver);
-        openLaunchersPage(driver);
-        openResourcesPage(driver);
-        openShuttlesPage(driver);
-        openSurveysPage(driver);
-        openSmartTipsPage(driver);
-        openMenuAndSearchPage(driver);
-        openUsersPage(driver);
-        openSessionPlaybackPage(driver);
-        openFeaturesPage(driver);
-        openFunnelsPage(driver);
-        openTrackedEventsAnalyticsPage(driver);
-        openTrackedEventsSetupPage(driver);
-        openReportsPage(driver);
-        closeBrowser(driver);
+
+        openInsightsPages(
+                driver,
+                asList(
+                        OVERVIEW_PAGE,
+                        APPS_OVERVIEW_PAGE,
+                        SMART_WALK_THRUS_PAGE,
+                        WALK_THRUS_PAGE,
+                        ONBOARDING_PAGE,
+                        SHOUT_OUTS_PAGE,
+                        LAUNCHERS_PAGE,
+                        RESOURCES_PAGE,
+                        SHUTTLES_PAGE,
+                        SURVEYS_PAGE,
+                        SMART_TIPS_PAGE,
+                        MENU_AND_SEARCH_PAGE,
+                        USERS_PAGE,
+                        SESSION_PLAYBACK_PAGE,
+                        FEATURES_PAGE,
+                        FUNNELS_PAGE,
+                        TRACKED_EVENTS_ANALYTICS_PAGE,
+                        TRACKED_EVENTS_SETUP_PAGE,
+                        REPORTS_PAGE
+                )
+        );
         log.info("Run scenario completed");
     }
 
@@ -71,6 +79,12 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         enterText(driver, By.className("react-autosuggest__input"), "kinnser@walkme.com");
         waitForPageLoad(driver, "Overview | Insights");
         log.info("Impersonate completed");
+    }
+
+    private void openInsightsPages(WebDriver driver, List<InsightsPages> insightsPages) {
+        for(InsightsPages insightsPage : insightsPages) {
+            openInsightsPage(driver, insightsPage);
+        }
     }
 
     private void openOverviewPage(WebDriver driver) {
