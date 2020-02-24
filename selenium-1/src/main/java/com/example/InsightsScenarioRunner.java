@@ -1,9 +1,7 @@
 package com.example;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
@@ -17,10 +15,16 @@ import static java.util.Arrays.asList;
 @Slf4j
 public class InsightsScenarioRunner implements ScenarioRunner {
 
+    private BrowserProvider browserProvider;
+
+    public InsightsScenarioRunner(BrowserProvider browserProvider) {
+        this.browserProvider = browserProvider;
+    }
+
     @Override
     public void runScenario() {
         log.info("Run scenario started");
-        WebDriver driver = openBrowser();
+        WebDriver driver =  browserProvider.openBrowser();
         openDAPHomePage(driver);
         login(driver);
         impersonate(driver);
@@ -51,15 +55,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         );
         closeBrowser(driver);
         log.info("Run scenario completed");
-    }
-
-    private WebDriver openBrowser() {
-        log.info("Open browser started");
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        log.info("Open browser completed");
-        return driver;
     }
 
     private void openDAPHomePage(WebDriver driver) {
