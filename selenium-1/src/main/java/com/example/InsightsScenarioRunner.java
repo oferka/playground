@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,8 @@ import static java.util.Arrays.asList;
 @Slf4j
 public class InsightsScenarioRunner implements ScenarioRunner {
 
+    @Autowired
     private BrowserProvider browserProvider;
-
-    public InsightsScenarioRunner(BrowserProvider browserProvider) {
-        this.browserProvider = browserProvider;
-    }
 
     @Override
     public void runScenario() {
