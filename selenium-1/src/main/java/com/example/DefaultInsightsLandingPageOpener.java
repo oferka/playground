@@ -17,6 +17,9 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     @Autowired
     private LoginConfiguration loginConfiguration;
 
+    @Autowired
+    private ElementHighlighter elementHighlighter;
+
     @Override
     public void open(WebDriver driver) {
         openInsightsPage(driver);
@@ -43,7 +46,7 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     }
 
     private void enterText(WebDriver driver, WebElement element, String text) {
-        highlightElement(driver, element);
+        elementHighlighter.highlight(driver, element);
         element.sendKeys(text);
         element.sendKeys(Keys.ENTER);
     }
@@ -52,10 +55,5 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
         WebDriverWait wait = new WebDriverWait(driver, loginConfiguration.getEnterTextTimeoutInSeconds());
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         return driver.findElement(locator);
-    }
-
-    private void highlightElement(WebDriver driver, WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].setAttribute('style', 'color: navy; background: silver; border: 2px solid navy;');", element);
     }
 }

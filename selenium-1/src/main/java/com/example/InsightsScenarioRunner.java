@@ -22,6 +22,9 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     @Autowired
     private InsightsLandingPageOpener insightsLandingPageOpener;
 
+    @Autowired
+    private ElementHighlighter elementHighlighter;
+
     @Override
     public void runScenario() {
         log.info("Run scenario started");
@@ -70,7 +73,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElementGroups insightsNavigationBarElementGroup) {
         log.info("Expand {} insights navigation bar element started", insightsNavigationBarElementGroup.getName());
         WebElement navigationElement = insightsNavigationBarElementGroup.getNavigationElementRetriever().retrieveNavigationElement(driver);
-        highlightElement(driver, navigationElement);
+        elementHighlighter.highlight(driver, navigationElement);
         navigationElement.click();
         log.info("Expand {} insights navigation bar element completed", insightsNavigationBarElementGroup.getName());
     }
@@ -85,7 +88,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
             expandTopLevelNavigationElement(driver, insightsNavigationBarElementGroup);
         }
         WebElement navigationElement = navigationElementRetriever.retrieveNavigationElement(driver);
-        highlightElement(driver, navigationElement);
+        elementHighlighter.highlight(driver, navigationElement);
         navigationElement.click();
         new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
         highlightInsightsPageHeader(driver, insightsPage);
@@ -95,11 +98,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     private void highlightInsightsPageHeader(WebDriver driver, InsightsPages insightsPage) {
         PageHeaderRetriever pageHeaderRetriever = insightsPage.getPageHeaderRetriever();
         WebElement pageHeaderElement = pageHeaderRetriever.retrievePageHeader(driver);
-        highlightElement(driver, pageHeaderElement);
-    }
-
-    private void highlightElement(WebDriver driver, WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].setAttribute('style', 'color: navy; background: silver; border: 2px solid navy;');", element);
+        elementHighlighter.highlight(driver, pageHeaderElement);
     }
 }
