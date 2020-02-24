@@ -65,11 +65,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         }
     }
 
-    public void closeBrowser(WebDriver driver) {
-        driver.close();
-        driver.quit();
-    }
-
     private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElementGroups insightsNavigationBarElementGroup) {
         log.info("Expand {} insights navigation bar element started", insightsNavigationBarElementGroup.getName());
         WebElement navigationElement = insightsNavigationBarElementGroup.getNavigationElementRetriever().retrieveNavigationElement(driver);
@@ -99,5 +94,10 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         PageHeaderRetriever pageHeaderRetriever = insightsPage.getPageHeaderRetriever();
         WebElement pageHeaderElement = pageHeaderRetriever.retrievePageHeader(driver);
         elementHighlighter.highlight(driver, pageHeaderElement);
+    }
+
+    public void closeBrowser(WebDriver driver) {
+        driver.close();
+        driver.quit();
     }
 }
