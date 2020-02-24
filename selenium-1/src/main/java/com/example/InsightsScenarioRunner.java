@@ -19,13 +19,14 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     @Autowired
     private BrowserProvider browserProvider;
 
+    @Autowired
+    private InsightsLandingPageOpener insightsLandingPageOpener;
+
     @Override
     public void runScenario() {
         log.info("Run scenario started");
         WebDriver driver =  browserProvider.openBrowser();
-        openDAPHomePage(driver);
-        login(driver);
-        impersonate(driver);
+        insightsLandingPageOpener.open(driver);
         openInsightsPages(
                 driver,
                 asList(
@@ -47,31 +48,12 @@ public class InsightsScenarioRunner implements ScenarioRunner {
                         FUNNELS_PAGE,
                         TRACKED_EVENTS_ANALYTICS_PAGE,
                         TRACKED_EVENTS_SETUP_PAGE,
-                        REPORTS_PAGE
+                        REPORTS_PAGE,
+                        OVERVIEW_PAGE
                 )
         );
         closeBrowser(driver);
         log.info("Run scenario completed");
-    }
-
-    private void openDAPHomePage(WebDriver driver) {
-        log.info("Open DAP home page started");
-        goToUrl(driver, "https://insights.walkme.com/", "WalkMe - Log in");
-        log.info("Open DAP home page completed");
-    }
-
-    private void login(WebDriver driver) {
-        log.info("Login started");
-        enterText(driver, By.id("username"), "ofer.karp@walkme.com");
-        enterText(driver, By.id("password"), "");
-        log.info("Login completed");
-    }
-
-    private void impersonate(WebDriver driver) {
-        log.info("Impersonate started");
-        enterText(driver, By.className("react-autosuggest__input"), "kinnser@walkme.com");
-        waitForPageLoad(driver, "Overview | Insights");
-        log.info("Impersonate completed");
     }
 
     private void openInsightsPages(WebDriver driver, List<InsightsPages> insightsPages) {
@@ -85,24 +67,9 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         driver.quit();
     }
 
-    private void goToUrl(WebDriver driver, String address, String titleContains) {
-        driver.get(address);
-        waitForPageLoad(driver, titleContains);
-    }
-
-    private void enterText(WebDriver driver, By locator, String text) {
-        enterText(driver, waitForAndGetElement(driver, locator), text);
-    }
-
     private void waitForPageLoad(WebDriver driver, String titleContains) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.titleContains(titleContains));
-    }
-
-    private void enterText(WebDriver driver, WebElement element, String text) {
-        highlightElement(driver, element);
-        element.sendKeys(text);
-        element.sendKeys(Keys.ENTER);
     }
 
     private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElementGroups insightsNavigationBarElementGroup) {
@@ -139,11 +106,5 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     private void highlightElement(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].setAttribute('style', 'color: navy; background: silver; border: 2px solid navy;');", element);
-    }
-
-    private WebElement waitForAndGetElement(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.elementToBeClickable(locator));
-        return driver.findElement(locator);
     }
 }
