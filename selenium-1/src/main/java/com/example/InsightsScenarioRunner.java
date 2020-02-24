@@ -26,7 +26,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         openDAPHomePage(driver);
         login(driver);
         impersonate(driver);
-
         openInsightsPages(
                 driver,
                 asList(
