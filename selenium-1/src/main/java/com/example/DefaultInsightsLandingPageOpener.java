@@ -34,7 +34,7 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     }
 
     private void impersonate(WebDriver driver) {
-        enterText(driver, By.className("react-autosuggest__input"), "kinnser@walkme.com");
+        enterText(driver, By.className("react-autosuggest__input"), loginConfiguration.getImpersonateUsername());
         waitForPageLoad(driver, "Overview | Insights");
     }
 
