@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpener {
 
     @Autowired
-    InsightsLandingPageConfiguration insightsLandingPageConfiguration;
+    private InsightsLandingPageConfiguration insightsLandingPageConfiguration;
+
+    @Autowired
+    private LoginConfiguration loginConfiguration;
 
     @Override
     public void open(WebDriver driver) {
@@ -26,8 +29,8 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     }
 
     private void login(WebDriver driver) {
-        enterText(driver, By.id("username"), "ofer.karp@walkme.com");
-        enterText(driver, By.id("password"), "");
+        enterText(driver, By.id("username"), loginConfiguration.getUsername());
+        enterText(driver, By.id("password"), loginConfiguration.getPassword());
     }
 
     private void impersonate(WebDriver driver) {
