@@ -12,4 +12,8 @@ import org.springframework.context.annotation.PropertySource;
 public class InsightsLandingPageConfiguration {
 
     private String address;
+
+    private String titleContains;
+
+    private int timeOutInSeconds;
 }

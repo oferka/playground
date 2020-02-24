@@ -16,4 +16,6 @@ public class LoginConfiguration {
     private String password;
 
     private String impersonateUsername;
+
+    private int enterTextTimeoutInSeconds;
 }

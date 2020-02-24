@@ -67,11 +67,6 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         driver.quit();
     }
 
-    private void waitForPageLoad(WebDriver driver, String titleContains) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.titleContains(titleContains));
-    }
-
     private void expandTopLevelNavigationElement(WebDriver driver, InsightsNavigationBarElementGroups insightsNavigationBarElementGroup) {
         log.info("Expand {} insights navigation bar element started", insightsNavigationBarElementGroup.getName());
         WebElement navigationElement = insightsNavigationBarElementGroup.getNavigationElementRetriever().retrieveNavigationElement(driver);
@@ -92,7 +87,7 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         WebElement navigationElement = navigationElementRetriever.retrieveNavigationElement(driver);
         highlightElement(driver, navigationElement);
         navigationElement.click();
-        waitForPageLoad(driver, insightsPage.getPageTitleContains());
+        new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
         highlightInsightsPageHeader(driver, insightsPage);
         log.info("Open {} insights page completed", insightsPage.getName());
     }

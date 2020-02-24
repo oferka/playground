@@ -35,12 +35,7 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
 
     private void impersonate(WebDriver driver) {
         enterText(driver, By.className("react-autosuggest__input"), loginConfiguration.getImpersonateUsername());
-        waitForPageLoad(driver, "Overview | Insights");
-    }
-
-    private void waitForPageLoad(WebDriver driver, String titleContains) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.titleContains(titleContains));
+        new WebDriverWait(driver, insightsLandingPageConfiguration.getTimeOutInSeconds()).until(ExpectedConditions.titleContains(insightsLandingPageConfiguration.getTitleContains()));
     }
 
     private void enterText(WebDriver driver, By locator, String text) {
@@ -54,7 +49,7 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     }
 
     private WebElement waitForAndGetElement(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, loginConfiguration.getEnterTextTimeoutInSeconds());
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         return driver.findElement(locator);
     }
