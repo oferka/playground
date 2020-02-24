@@ -4,11 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpener {
+
+    @Autowired
+    InsightsLandingPageConfiguration insightsLandingPageConfiguration;
 
     @Override
     public void open(WebDriver driver) {
@@ -18,28 +22,17 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     }
 
     private void openInsightsPage(WebDriver driver) {
-        log.info("Open DAP home page started");
-        goToUrl(driver, "https://insights.walkme.com/", "WalkMe - Log in");
-        log.info("Open DAP home page completed");
+        driver.get(insightsLandingPageConfiguration.getAddress());
     }
 
     private void login(WebDriver driver) {
-        log.info("Login started");
         enterText(driver, By.id("username"), "ofer.karp@walkme.com");
         enterText(driver, By.id("password"), "");
-        log.info("Login completed");
     }
 
     private void impersonate(WebDriver driver) {
-        log.info("Impersonate started");
         enterText(driver, By.className("react-autosuggest__input"), "kinnser@walkme.com");
         waitForPageLoad(driver, "Overview | Insights");
-        log.info("Impersonate completed");
-    }
-
-    private void goToUrl(WebDriver driver, String address, String titleContains) {
-        driver.get(address);
-        waitForPageLoad(driver, titleContains);
     }
 
     private void waitForPageLoad(WebDriver driver, String titleContains) {
