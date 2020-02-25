@@ -18,7 +18,8 @@ public class DefaultInsightsPageOpener implements InsightsPageOpener {
     @Override
     public void open(WebDriver driver, InsightsPages insightsPage) {
         log.info("Open {} insights page started", insightsPage.getName());
-        if(!pageDisplayed(driver, insightsPage)) {
+        if(!isPageDisplayed(driver, insightsPage)) {
+            log.debug("Insights page {} is currently not displayed. Going to use navigation bar to open it", insightsPage.getName());
             InsightsNavigationBarElements insightsNavigationBarElement = insightsPage.getNavigationBarElement();
             NavigationElementRetriever navigationElementRetriever = insightsNavigationBarElement.getNavigationElementRetriever();
             if (!navigationElementRetriever.isDisplayed(driver)) {
@@ -31,6 +32,9 @@ public class DefaultInsightsPageOpener implements InsightsPageOpener {
             navigationElement.click();
             new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
             highlightInsightsPageHeader(driver, insightsPage);
+        }
+        else {
+            log.debug("Insights page {} is currently displayed", insightsPage.getName());
         }
         log.info("Open {} insights page completed", insightsPage.getName());
     }
@@ -49,7 +53,7 @@ public class DefaultInsightsPageOpener implements InsightsPageOpener {
         elementHighlighter.highlight(driver, pageHeaderElement);
     }
 
-    private boolean pageDisplayed(WebDriver driver, InsightsPages insightsPage) {
-        return false;
+    private boolean isPageDisplayed(WebDriver driver, InsightsPages insightsPage) {
+        return insightsPage.getPageHeaderRetriever().isDisplayed(driver);
     }
 }

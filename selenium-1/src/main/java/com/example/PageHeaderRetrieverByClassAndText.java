@@ -22,8 +22,26 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
 
     @Override
     public WebElement retrievePageHeader(WebDriver driver) {
+        return new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(getLocator()));
+    }
+
+    @Override
+    public boolean isDisplayed(WebDriver driver) {
+        log.info("Check if insights page identified by text: {} is currently displayed started", text);
+        boolean result;
+        try {
+            driver.findElement(getLocator());
+            result = true;
+        }
+        catch (Exception e) {
+            result = false;
+        }
+        log.info("Check if insights page identified by text: {} is currently displayed completed. result is: {}", text, result);
+        return result;
+    }
+
+    private By getLocator() {
         String xpath = format("//*[@class='%s' and text()='%s']", className, text);
-        By locator = By.xpath(xpath);
-        return new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(locator));
+        return By.xpath(xpath);
     }
 }
