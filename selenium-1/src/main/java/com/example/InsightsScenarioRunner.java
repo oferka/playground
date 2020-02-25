@@ -21,14 +21,14 @@ public class InsightsScenarioRunner implements ScenarioRunner {
     private InsightsLandingPageOpener insightsLandingPageOpener;
 
     @Autowired
-    private InsightsPageOpener insightsPageOpener;
+    private InsightsPageTester insightsPageTester;
 
     @Override
     public void runScenario() {
         log.info("Run scenario started");
         WebDriver driver =  browserProvider.openBrowser();
         insightsLandingPageOpener.open(driver);
-        openInsightsPages(
+        testInsightsPages(
                 driver,
                 asList(
                         OVERVIEW_PAGE,
@@ -49,17 +49,16 @@ public class InsightsScenarioRunner implements ScenarioRunner {
                         FUNNELS_PAGE,
                         TRACKED_EVENTS_ANALYTICS_PAGE,
                         TRACKED_EVENTS_SETUP_PAGE,
-                        REPORTS_PAGE,
-                        OVERVIEW_PAGE
+                        REPORTS_PAGE
                 )
         );
         closeBrowser(driver);
         log.info("Run scenario completed");
     }
 
-    private void openInsightsPages(WebDriver driver, List<InsightsPages> insightsPages) {
+    private void testInsightsPages(WebDriver driver, List<InsightsPages> insightsPages) {
         for(InsightsPages insightsPage : insightsPages) {
-            insightsPageOpener.open(driver, insightsPage);
+            insightsPageTester.test(driver, insightsPage);
         }
     }
 

@@ -18,18 +18,20 @@ public class DefaultInsightsPageOpener implements InsightsPageOpener {
     @Override
     public void open(WebDriver driver, InsightsPages insightsPage) {
         log.info("Open {} insights page started", insightsPage.getName());
-        InsightsNavigationBarElements insightsNavigationBarElement = insightsPage.getNavigationBarElement();
-        NavigationElementRetriever navigationElementRetriever = insightsNavigationBarElement.getNavigationElementRetriever();
-        if(!navigationElementRetriever.isDisplayed(driver)) {
-            InsightsNavigationBarElementGroups insightsNavigationBarElementGroup = insightsPage.getNavigationBarElement().getInsightsNavigationBarElementGroup();
-            log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", insightsNavigationBarElement.getName(), insightsNavigationBarElementGroup.getName());
-            expandTopLevelNavigationElement(driver, insightsNavigationBarElementGroup);
+        if(!pageDisplayed(driver, insightsPage)) {
+            InsightsNavigationBarElements insightsNavigationBarElement = insightsPage.getNavigationBarElement();
+            NavigationElementRetriever navigationElementRetriever = insightsNavigationBarElement.getNavigationElementRetriever();
+            if (!navigationElementRetriever.isDisplayed(driver)) {
+                InsightsNavigationBarElementGroups insightsNavigationBarElementGroup = insightsPage.getNavigationBarElement().getInsightsNavigationBarElementGroup();
+                log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", insightsNavigationBarElement.getName(), insightsNavigationBarElementGroup.getName());
+                expandTopLevelNavigationElement(driver, insightsNavigationBarElementGroup);
+            }
+            WebElement navigationElement = navigationElementRetriever.retrieveNavigationElement(driver);
+            elementHighlighter.highlight(driver, navigationElement);
+            navigationElement.click();
+            new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
+            highlightInsightsPageHeader(driver, insightsPage);
         }
-        WebElement navigationElement = navigationElementRetriever.retrieveNavigationElement(driver);
-        elementHighlighter.highlight(driver, navigationElement);
-        navigationElement.click();
-        new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
-        highlightInsightsPageHeader(driver, insightsPage);
         log.info("Open {} insights page completed", insightsPage.getName());
     }
 
@@ -45,5 +47,9 @@ public class DefaultInsightsPageOpener implements InsightsPageOpener {
         PageHeaderRetriever pageHeaderRetriever = insightsPage.getPageHeaderRetriever();
         WebElement pageHeaderElement = pageHeaderRetriever.retrievePageHeader(driver);
         elementHighlighter.highlight(driver, pageHeaderElement);
+    }
+
+    private boolean pageDisplayed(WebDriver driver, InsightsPages insightsPage) {
+        return false;
     }
 }
