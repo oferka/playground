@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 public class DefaultInsightsPageOpener implements InsightsPageOpener {
 
     @Autowired
+    private InsightsPageOpenerConfiguration insightsPageOpenerConfiguration;
+
+    @Autowired
     private ElementHighlighter elementHighlighter;
 
     @Override
@@ -30,7 +33,7 @@ public class DefaultInsightsPageOpener implements InsightsPageOpener {
             WebElement navigationElement = navigationElementRetriever.retrieveNavigationElement(driver);
             elementHighlighter.highlight(driver, navigationElement);
             navigationElement.click();
-            new WebDriverWait(driver, 30).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
+            new WebDriverWait(driver, insightsPageOpenerConfiguration.getTitleChangeTimeoutInSeconds()).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
             highlightInsightsPageHeader(driver, insightsPage);
         }
         else {
