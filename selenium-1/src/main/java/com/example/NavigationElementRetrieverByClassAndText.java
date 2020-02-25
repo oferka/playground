@@ -22,7 +22,7 @@ public class NavigationElementRetrieverByClassAndText implements NavigationEleme
 
     @Override
     public WebElement retrieveNavigationElement(WebDriver driver) {
-        return new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(getNavigationElement(driver)));
+        return new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(getNavigationElement(driver)));
     }
 
     @Override
@@ -33,7 +33,6 @@ public class NavigationElementRetrieverByClassAndText implements NavigationEleme
     private WebElement getNavigationElement(WebDriver driver) {
         String xpath = format("//*[@class='%s' and text()='%s']", className, text);
         By locator = By.xpath(xpath);
-        log.debug("Trying to locate navigation element using xpath: {}", xpath);
         return driver.findElement(locator);
     }
 }
