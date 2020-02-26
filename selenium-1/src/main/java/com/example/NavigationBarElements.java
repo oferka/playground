@@ -114,5 +114,5 @@ public enum NavigationBarElements {
     private NavigationElementRetriever navigationElementRetriever;
 
     @Getter
-    private NavigationBarElementGroups insightsNavigationBarElementGroup;
+    private NavigationBarElementGroups navigationBarElementGroup;
 }

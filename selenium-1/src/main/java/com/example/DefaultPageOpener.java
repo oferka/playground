@@ -19,44 +19,61 @@ public class DefaultPageOpener implements PageOpener {
     private ElementHighlighter elementHighlighter;
 
     @Override
-    public void open(WebDriver driver, Pages insightsPage) {
-        log.info("Open {} insights page started", insightsPage.getName());
-        if(!isPageDisplayed(driver, insightsPage)) {
-            log.debug("Insights page {} is currently not displayed. Going to use navigation bar to open it", insightsPage.getName());
-            NavigationBarElements insightsNavigationBarElement = insightsPage.getNavigationBarElement();
-            NavigationElementRetriever navigationElementRetriever = insightsNavigationBarElement.getNavigationElementRetriever();
-            if (!navigationElementRetriever.isDisplayed(driver)) {
-                NavigationBarElementGroups insightsNavigationBarElementGroup = insightsPage.getNavigationBarElement().getInsightsNavigationBarElementGroup();
-                log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", insightsNavigationBarElement.getName(), insightsNavigationBarElementGroup.getName());
-                expandTopLevelNavigationElement(driver, insightsNavigationBarElementGroup);
-            }
-            WebElement navigationElement = navigationElementRetriever.retrieve(driver);
+    public void open(WebDriver driver, Pages page) {
+        String pageName = page.getName();
+        log.debug("Open {} page started", page.getName());
+        if(!isPageDisplayed(driver, page)) {
+            log.debug("Page {} is currently not displayed. Going to use navigation bar to open it", pageName);
+            WebElement navigationElement = getNavigationElement(driver, page);
             elementHighlighter.highlight(driver, navigationElement);
             navigationElement.click();
-            new WebDriverWait(driver, pageOpenerConfiguration.getTitleChangeTimeoutInSeconds()).until(ExpectedConditions.titleContains(insightsPage.getPageTitleContains()));
-            highlightInsightsPageHeader(driver, insightsPage);
+            new WebDriverWait(driver, pageOpenerConfiguration.getTitleChangeTimeoutInSeconds()).until(ExpectedConditions.titleContains(page.getPageTitleContains()));
+            highlightPageHeader(driver, page);
         }
         else {
-            log.debug("Insights page {} is currently displayed", insightsPage.getName());
+            log.debug("Page {} is currently displayed", pageName);
         }
-        log.info("Open {} insights page completed", insightsPage.getName());
+        log.debug("Open {} page completed", pageName);
     }
 
-    private void expandTopLevelNavigationElement(WebDriver driver, NavigationBarElementGroups insightsNavigationBarElementGroup) {
-        log.info("Expand {} insights navigation bar element started", insightsNavigationBarElementGroup.getName());
-        WebElement navigationElement = insightsNavigationBarElementGroup.getNavigationElementRetriever().retrieve(driver);
+    private WebElement getNavigationElement(WebDriver driver, Pages page) {
+        String pageName = page.getName();
+        log.debug("Get navigation element for page {} started", pageName);
+        NavigationBarElements navigationBarElement = page.getNavigationBarElement();
+        NavigationElementRetriever navigationElementRetriever = navigationBarElement.getNavigationElementRetriever();
+        if (!navigationElementRetriever.isDisplayed(driver)) {
+            NavigationBarElementGroups navigationBarElementGroup = page.getNavigationBarElement().getNavigationBarElementGroup();
+            log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", navigationBarElement.getName(), navigationBarElementGroup.getName());
+            expandNavigationElement(driver, navigationBarElementGroup);
+        }
+        WebElement result = navigationElementRetriever.retrieve(driver);
+        log.debug("Get navigation element for page {} completed. Element text is {}", pageName, result.getText());
+        return result;
+    }
+
+    private void expandNavigationElement(WebDriver driver, NavigationBarElementGroups navigationBarElementGroup) {
+        String navigationBarElementGroupName = navigationBarElementGroup.getName();
+        log.debug("Expand {} navigation element started", navigationBarElementGroupName);
+        WebElement navigationElement = navigationBarElementGroup.getNavigationElementRetriever().retrieve(driver);
         elementHighlighter.highlight(driver, navigationElement);
         navigationElement.click();
-        log.info("Expand {} insights navigation bar element completed", insightsNavigationBarElementGroup.getName());
+        log.debug("Expand {} navigation element completed", navigationBarElementGroupName);
     }
 
-    private void highlightInsightsPageHeader(WebDriver driver, Pages insightsPage) {
-        PageHeaderRetriever pageHeaderRetriever = insightsPage.getPageHeaderRetriever();
+    private void highlightPageHeader(WebDriver driver, Pages page) {
+        String pageName = page.getName();
+        log.debug("Highlight page header for page {} started", pageName);
+        PageHeaderRetriever pageHeaderRetriever = page.getPageHeaderRetriever();
         WebElement pageHeaderElement = pageHeaderRetriever.retrieve(driver);
         elementHighlighter.highlight(driver, pageHeaderElement);
+        log.debug("Highlight page header for page {} completed", pageName);
     }
 
-    private boolean isPageDisplayed(WebDriver driver, Pages insightsPage) {
-        return insightsPage.getPageHeaderRetriever().isDisplayed(driver);
+    private boolean isPageDisplayed(WebDriver driver, Pages page) {
+        String pageName = page.getName();
+        log.debug("Check if page {} is displayed started", pageName);
+        boolean result = page.getPageHeaderRetriever().isDisplayed(driver);
+        log.debug("Check if page {} is displayed completed. Result is {}", pageName, result);
+        return result;
     }
 }
