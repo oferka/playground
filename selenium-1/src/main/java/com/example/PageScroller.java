@@ -22,11 +22,14 @@ public interface PageScroller {
     @ToString
     @AllArgsConstructor
     enum ScrollSpeeds {
-        FAST ("Fast"),
-        MEDIUM("Medium"),
-        SLOW("Slow");
+        FAST ("Fast", 100),
+        MEDIUM("Medium", 500),
+        SLOW("Slow", 1000);
 
         @Getter
         private String name;
+
+        @Getter
+        private long delay;
     }
 }
