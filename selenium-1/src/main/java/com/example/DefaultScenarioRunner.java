@@ -58,8 +58,8 @@ public class DefaultScenarioRunner implements ScenarioRunner {
 
     private void testPages(WebDriver driver, List<Pages> pages) {
         log.debug("Test {} pages started", pages.size());
-        for(Pages insightsPage : pages) {
-            pageTester.test(driver, insightsPage);
+        for(Pages page : pages) {
+            pageTester.test(driver, page);
         }
         log.debug("Test {} pages completed", pages.size());
     }

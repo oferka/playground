@@ -200,7 +200,7 @@ public enum Pages {
             )
     ),
     TRACKED_EVENTS_SETUP_PAGE(
-            "Setup",
+            "TrackedEventsSetup",
             TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET,
             "Tracked Events",
             new PageHeaderRetrieverByClassAndText("tracked-events-report__header__page-name", "Tracked Events Setup"),

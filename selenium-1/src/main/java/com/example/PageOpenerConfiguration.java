@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("classpath:insights-page-opener.properties")
-@ConfigurationProperties(prefix = "insights.page.open")
+@PropertySource("classpath:page-opener.properties")
+@ConfigurationProperties(prefix = "page.open")
 @Data
 public class PageOpenerConfiguration {
 

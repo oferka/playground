@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("classpath:insights-landing-page.properties")
+@PropertySource("classpath:landing-page.properties")
 @ConfigurationProperties(prefix = "landing.page")
 @Data
 public class LandingPageConfiguration {

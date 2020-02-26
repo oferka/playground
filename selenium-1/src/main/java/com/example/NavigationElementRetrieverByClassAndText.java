@@ -27,7 +27,10 @@ public class NavigationElementRetrieverByClassAndText implements NavigationEleme
 
     @Override
     public boolean isDisplayed(WebDriver driver) {
-        return getNavigationElement(driver).isDisplayed();
+        log.debug("Check if navigation element identified by text {} is displayed started", text);
+        boolean result = getNavigationElement(driver).isDisplayed();
+        log.debug("Check if navigation element identified by text {} is displayed completed. Result is {}", text, result);
+        return result;
     }
 
     private WebElement getNavigationElement(WebDriver driver) {

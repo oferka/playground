@@ -27,7 +27,7 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
 
     @Override
     public boolean isDisplayed(WebDriver driver) {
-        log.info("Check if insights page identified by text: {} is currently displayed started", text);
+        log.debug("Check if page header identified by text: {} is currently displayed started", text);
         boolean result;
         try {
             driver.findElement(getLocator());
@@ -36,7 +36,7 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
         catch (Exception e) {
             result = false;
         }
-        log.info("Check if insights page identified by text: {} is currently displayed completed. result is: {}", text, result);
+        log.debug("Check if page header identified by text: {} is currently displayed completed. result is: {}", text, result);
         return result;
     }
 

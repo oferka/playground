@@ -16,10 +16,11 @@ public class DefaultPageTester implements PageTester {
     private PageWidgetsObserver pageWidgetsObserver;
 
     @Override
-    public void test(WebDriver driver, Pages insightsPage) {
-        log.info("Test {} insights page started", insightsPage.getName());
-        pageOpener.open(driver, insightsPage);
-        pageWidgetsObserver.observe(driver, insightsPage);
-        log.info("Test {} insights page completed", insightsPage.getName());
+    public void test(WebDriver driver, Pages page) {
+        String pageName = page.getName();
+        log.debug("Test {} page started", pageName);
+        pageOpener.open(driver, page);
+        pageWidgetsObserver.observe(driver, page);
+        log.debug("Test {} page completed", page.getName());
     }
 }

@@ -4,5 +4,5 @@ import org.openqa.selenium.WebDriver;
 
 public interface PageTester {
 
-    void test(WebDriver driver, Pages insightsPage);
+    void test(WebDriver driver, Pages page);
 }

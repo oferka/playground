@@ -19,11 +19,11 @@ public class PageScrollPostObservationAction extends PostObservationAction {
 
     @Override
     void execute(WebDriver driver) {
-        log.info("Page scroll {} by {} started", scrollDirection.getName(), scroll);
+        log.debug("Page scroll {} by {} started", scrollDirection.getName(), scroll);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String script = format("window.scrollBy(0,%s)", getSignedScroll());
         js.executeScript(script, "");
-        log.info("Page scroll {} by {} completed", scrollDirection.getName(), scroll);
+        log.debug("Page scroll {} by {} completed", scrollDirection.getName(), scroll);
     }
 
     private int getSignedScroll() {
