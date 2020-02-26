@@ -14,7 +14,7 @@ import static java.lang.String.format;
 @Data
 @AllArgsConstructor
 @Slf4j
-public class NavigationElementRetrieverByClassAndText implements NavigationElementRetriever {
+public class WidgetTitleRetrieverByClassAndText implements WidgetTitleRetriever {
 
     private String className;
 
@@ -22,17 +22,12 @@ public class NavigationElementRetrieverByClassAndText implements NavigationEleme
 
     @Override
     public WebElement retrieve(WebDriver driver) {
-        return new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(getNavigationElement(driver)));
+        return new WebDriverWait(driver, 60).until(ExpectedConditions.presenceOfElementLocated(getLocator()));
     }
 
-    @Override
-    public boolean isDisplayed(WebDriver driver) {
-        return getNavigationElement(driver).isDisplayed();
-    }
-
-    private WebElement getNavigationElement(WebDriver driver) {
+    private By getLocator() {
         String xpath = format("//*[@class='%s' and text()='%s']", className, text);
-        By locator = By.xpath(xpath);
-        return driver.findElement(locator);
+        return By.xpath(xpath);
     }
 }
+

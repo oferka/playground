@@ -1,33 +1,33 @@
 package com.example;
 
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.example.InsightsPages.*;
+import static com.example.Pages.*;
 import static java.util.Arrays.asList;
 
 @Service
 @Slf4j
-public class InsightsScenarioRunner implements ScenarioRunner {
+public class DefaultScenarioRunner implements ScenarioRunner {
 
     @Autowired
     private BrowserProvider browserProvider;
 
     @Autowired
-    private InsightsLandingPageOpener insightsLandingPageOpener;
+    private LandingPageOpener landingPageOpener;
 
     @Autowired
-    private InsightsPageTester insightsPageTester;
+    private PageTester pageTester;
 
     @Override
     public void runScenario() {
         log.info("Run scenario started");
         WebDriver driver =  browserProvider.openBrowser();
-        insightsLandingPageOpener.open(driver);
+        landingPageOpener.open(driver);
         testInsightsPages(
                 driver,
                 asList(
@@ -56,9 +56,9 @@ public class InsightsScenarioRunner implements ScenarioRunner {
         log.info("Run scenario completed");
     }
 
-    private void testInsightsPages(WebDriver driver, List<InsightsPages> insightsPages) {
-        for(InsightsPages insightsPage : insightsPages) {
-            insightsPageTester.test(driver, insightsPage);
+    private void testInsightsPages(WebDriver driver, List<Pages> pages) {
+        for(Pages insightsPage : pages) {
+            pageTester.test(driver, insightsPage);
         }
     }
 

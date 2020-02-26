@@ -6,15 +6,15 @@ import lombok.ToString;
 
 @ToString
 @AllArgsConstructor
-public enum InsightsNavigationBarElementGroups {
+public enum NavigationBarElementGroups {
 
     APPS_NAVIGATION_ELEMET_GROUP(
             "Apps",
-            new InsightsFirstLevelNavigationElementRetriever("apps")
+            new FirstLevelNavigationElementRetriever("apps")
     ),
     TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP(
             "Tracked Events",
-            new InsightsFirstLevelNavigationElementRetriever("tracked events")
+            new FirstLevelNavigationElementRetriever("tracked events")
     );
 
     @Getter

@@ -21,8 +21,8 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
     private String text;
 
     @Override
-    public WebElement retrievePageHeader(WebDriver driver) {
-        return new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(getLocator()));
+    public WebElement retrieve(WebDriver driver) {
+        return new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(getLocator()));
     }
 
     @Override

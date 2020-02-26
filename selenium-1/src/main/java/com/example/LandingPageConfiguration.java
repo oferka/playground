@@ -6,10 +6,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("classpath:insights-page-opener.properties")
-@ConfigurationProperties(prefix = "insights.page.open")
+@PropertySource("classpath:insights-landing-page.properties")
+@ConfigurationProperties(prefix = "landing.page")
 @Data
-public class InsightsPageOpenerConfiguration {
+public class LandingPageConfiguration {
 
-    private int titleChangeTimeoutInSeconds;
+    private String address;
+
+    private String titleContains;
+
+    private int timeOutInSeconds;
 }

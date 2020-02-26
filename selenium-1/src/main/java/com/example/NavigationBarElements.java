@@ -4,106 +4,106 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-import static com.example.InsightsNavigationBarElementGroups.APPS_NAVIGATION_ELEMET_GROUP;
-import static com.example.InsightsNavigationBarElementGroups.TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP;
+import static com.example.NavigationBarElementGroups.APPS_NAVIGATION_ELEMET_GROUP;
+import static com.example.NavigationBarElementGroups.TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP;
 
 @ToString
 @AllArgsConstructor
-public enum InsightsNavigationBarElements {
+public enum NavigationBarElements {
 
     OVERVIEW_NAVIGATION_ELEMET(
             "Overview",
-            new InsightsFirstLevelNavigationElementRetriever("overview"),
+            new FirstLevelNavigationElementRetriever("overview"),
             null
     ),
     APPS_OVERVIEW_NAVIGATION_ELEMET(
             "Apps Overview",
-            new InsightsSecondLevelNavigationElementRetriever("Apps Overview"),
+            new SecondLevelNavigationElementRetriever("Apps Overview"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     SMART_WALK_THRUS_NAVIGATION_ELEMET(
             "SmartWalkThrus",
-            new InsightsSecondLevelNavigationElementRetriever("Smart Walk-Thrus"),
+            new SecondLevelNavigationElementRetriever("Smart Walk-Thrus"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     WALK_THRUS_NAVIGATION_ELEMET(
             "WalkThrus",
-            new InsightsSecondLevelNavigationElementRetriever("Walk-Thrus"),
+            new SecondLevelNavigationElementRetriever("Walk-Thrus"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     ONBOARDING_NAVIGATION_ELEMET(
             "Onboarding",
-            new InsightsSecondLevelNavigationElementRetriever("Onboarding"),
+            new SecondLevelNavigationElementRetriever("Onboarding"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     SHOUT_OUTS_NAVIGATION_ELEMET(
             "ShoutOuts",
-            new InsightsSecondLevelNavigationElementRetriever("ShoutOuts"),
+            new SecondLevelNavigationElementRetriever("ShoutOuts"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     LAUNCHERS_NAVIGATION_ELEMET(
             "Launchers",
-            new InsightsSecondLevelNavigationElementRetriever("Launchers"),
+            new SecondLevelNavigationElementRetriever("Launchers"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     RESOURCES_NAVIGATION_ELEMET(
             "Resources",
-            new InsightsSecondLevelNavigationElementRetriever("Resources"),
+            new SecondLevelNavigationElementRetriever("Resources"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     SHUTTLES_NAVIGATION_ELEMET(
             "Shuttles",
-            new InsightsSecondLevelNavigationElementRetriever("Shuttles"),
+            new SecondLevelNavigationElementRetriever("Shuttles"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     SURVEYS_NAVIGATION_ELEMET(
             "Surveys",
-            new InsightsSecondLevelNavigationElementRetriever("Surveys"),
+            new SecondLevelNavigationElementRetriever("Surveys"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     SMART_TIPS_NAVIGATION_ELEMET(
             "SmartTips",
-            new InsightsSecondLevelNavigationElementRetriever("SmartTips"),
+            new SecondLevelNavigationElementRetriever("SmartTips"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     MENU_AND_SEARCH_NAVIGATION_ELEMET(
             "MenuAndSearch",
-            new InsightsSecondLevelNavigationElementRetriever("Menu & Search"),
+            new SecondLevelNavigationElementRetriever("Menu & Search"),
             APPS_NAVIGATION_ELEMET_GROUP
     ),
     USERS_NAVIGATION_ELEMET(
             "Users",
-            new InsightsFirstLevelNavigationElementRetriever("users"),
+            new FirstLevelNavigationElementRetriever("users"),
             null
     ),
     SESSION_PLAYBACK_NAVIGATION_ELEMET(
             "Session Playback",
-            new InsightsFirstLevelNavigationElementRetriever("session playback"),
+            new FirstLevelNavigationElementRetriever("session playback"),
             null
     ),
     FEATURES_NAVIGATION_ELEMET(
             "Features",
-            new InsightsFirstLevelNavigationElementRetriever("features"),
+            new FirstLevelNavigationElementRetriever("features"),
             null
     ),
     FUNNELS_NAVIGATION_ELEMET(
             "Funnels",
-            new InsightsFirstLevelNavigationElementRetriever("funnels"),
+            new FirstLevelNavigationElementRetriever("funnels"),
             null
     ),
     TRACKED_EVENTS_ANALYTICS_NAVIGATION_ELEMET(
             "TrackedEventsAnalytics",
-            new InsightsSecondLevelNavigationElementRetriever("Analytics"),
+            new SecondLevelNavigationElementRetriever("Analytics"),
             TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP
     ),
     TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET(
             "Setup",
-            new InsightsSecondLevelNavigationElementRetriever("Setup"),
+            new SecondLevelNavigationElementRetriever("Setup"),
             TRACKED_EVENTS_NAVIGATION_ELEMET_GROUP
     ),
     REPORTS_NAVIGATION_ELEMET(
             "Reports",
-            new InsightsFirstLevelNavigationElementRetriever("reports"),
+            new FirstLevelNavigationElementRetriever("reports"),
             null
     );
 
@@ -114,5 +114,5 @@ public enum InsightsNavigationBarElements {
     private NavigationElementRetriever navigationElementRetriever;
 
     @Getter
-    private InsightsNavigationBarElementGroups insightsNavigationBarElementGroup;
+    private NavigationBarElementGroups insightsNavigationBarElementGroup;
 }

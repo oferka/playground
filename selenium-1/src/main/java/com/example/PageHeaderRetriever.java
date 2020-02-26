@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 public interface PageHeaderRetriever {
 
-    WebElement retrievePageHeader(WebDriver driver);
+    WebElement retrieve(WebDriver driver);
 
     boolean isDisplayed(WebDriver driver);
 }

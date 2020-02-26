@@ -1,7 +1,10 @@
 package com.example;
 
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +12,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpener {
+public class DefaultLandingPageOpener implements LandingPageOpener {
 
     @Autowired
-    private InsightsLandingPageConfiguration insightsLandingPageConfiguration;
+    private LandingPageConfiguration landingPageConfiguration;
 
     @Autowired
     private LoginConfiguration loginConfiguration;
@@ -28,7 +31,7 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
     }
 
     private void openInsightsPage(WebDriver driver) {
-        driver.get(insightsLandingPageConfiguration.getAddress());
+        driver.get(landingPageConfiguration.getAddress());
     }
 
     private void login(WebDriver driver) {
@@ -38,7 +41,7 @@ public class DefaultInsightsLandingPageOpener implements InsightsLandingPageOpen
 
     private void impersonate(WebDriver driver) {
         enterText(driver, By.className("react-autosuggest__input"), loginConfiguration.getImpersonateUsername());
-        new WebDriverWait(driver, insightsLandingPageConfiguration.getTimeOutInSeconds()).until(ExpectedConditions.titleContains(insightsLandingPageConfiguration.getTitleContains()));
+        new WebDriverWait(driver, landingPageConfiguration.getTimeOutInSeconds()).until(ExpectedConditions.titleContains(landingPageConfiguration.getTitleContains()));
     }
 
     private void enterText(WebDriver driver, By locator, String text) {

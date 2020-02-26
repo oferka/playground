@@ -7,15 +7,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class DefaultInsightsPageTester implements InsightsPageTester {
+public class DefaultPageTester implements PageTester {
 
     @Autowired
-    private InsightsPageOpener insightsPageOpener;
+    private PageOpener pageOpener;
+
+    @Autowired
+    private PageWidgetsObserver pageWidgetsObserver;
 
     @Override
-    public void test(WebDriver driver, InsightsPages insightsPage) {
+    public void test(WebDriver driver, Pages insightsPage) {
         log.info("Test {} insights page started", insightsPage.getName());
-        insightsPageOpener.open(driver, insightsPage);
+        pageOpener.open(driver, insightsPage);
+        pageWidgetsObserver.observe(driver, insightsPage);
         log.info("Test {} insights page completed", insightsPage.getName());
     }
 }
