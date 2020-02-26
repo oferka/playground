@@ -25,23 +25,33 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
 
     @Override
     public void open(WebDriver driver) {
-        openInsightsPage(driver);
+        log.debug("Open landing page started");
+        navigateToPage(driver);
         login(driver);
         impersonate(driver);
+        log.debug("Open landing page completed");
     }
 
-    private void openInsightsPage(WebDriver driver) {
-        driver.get(landingPageConfiguration.getAddress());
+    private void navigateToPage(WebDriver driver) {
+        String address = landingPageConfiguration.getAddress();
+        log.debug("Navigate to page {} started", address);
+        driver.get(address);
+        log.debug("Navigate to page {} completed", address);
     }
 
     private void login(WebDriver driver) {
+        log.debug("Login started");
         enterText(driver, By.id("username"), loginConfiguration.getUsername());
         enterText(driver, By.id("password"), loginConfiguration.getPassword());
+        log.debug("Login completed");
     }
 
     private void impersonate(WebDriver driver) {
-        enterText(driver, By.className("react-autosuggest__input"), loginConfiguration.getImpersonateUsername());
+        String impersonateUserName = loginConfiguration.getImpersonateUsername();
+        log.debug("Impersonate to user {} started", impersonateUserName);
+        enterText(driver, By.className("react-autosuggest__input"), impersonateUserName);
         new WebDriverWait(driver, landingPageConfiguration.getTimeOutInSeconds()).until(ExpectedConditions.titleContains(landingPageConfiguration.getTitleContains()));
+        log.debug("Impersonate to user {} completed", impersonateUserName);
     }
 
     private void enterText(WebDriver driver, By locator, String text) {
