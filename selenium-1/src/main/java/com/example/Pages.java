@@ -9,6 +9,7 @@ import java.util.List;
 import static com.example.NavigationBarElements.*;
 import static com.example.PageScroller.ScrollDirections.DOWN;
 import static com.example.PageScroller.ScrollDirections.UP;
+import static com.example.PageScroller.ScrollSpeeds.SLOW;
 import static java.util.Arrays.asList;
 
 @ToString
@@ -39,7 +40,7 @@ public enum Pages {
                                         new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
                                 )
                         ),
-                        new PageScrollPostObservationAction(DOWN, 500)
+                        new PageScrollPostObservationAction(DOWN, 500, SLOW)
                 ),
                     new ObservedWidgetsGroup(
                             asList(
@@ -52,7 +53,7 @@ public enum Pages {
                                             new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
                                     )
                             ),
-                            new PageScrollPostObservationAction(UP, 500)
+                            new PageScrollPostObservationAction(UP, 500, SLOW)
                     )
             )
     ),

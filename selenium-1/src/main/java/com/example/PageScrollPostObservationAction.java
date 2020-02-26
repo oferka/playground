@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.PageScroller.ScrollDirections;
+import com.example.PageScroller.ScrollSpeeds;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,14 +18,13 @@ public class PageScrollPostObservationAction extends PostObservationAction {
 
     private int pixels;
 
-    private PageScroller pageScroller;
-
-    public PageScrollPostObservationAction(ScrollDirections direction, int pixels) {
-        this(direction, pixels, new DefaultPageScroller());
-    }
+    private ScrollSpeeds speed;
 
     @Override
     void execute(WebDriver driver) {
-        pageScroller.scroll(driver, direction, pixels);
+        log.debug("Page scroll post observation action with direction {} pixels {} and speed {} started", direction.getName(), pixels, speed.getName());
+        PageScroller pageScroller = new DefaultPageScroller();
+        pageScroller.scroll(driver, direction, pixels, speed);
+        log.debug("Page scroll post observation action with direction {} pixels {} and speed {} completed", direction.getName(), pixels, speed.getName());
     }
 }

@@ -13,15 +13,15 @@ import static java.lang.String.format;
 public class DefaultPageScroller implements PageScroller {
 
     @Override
-    public void scroll(WebDriver driver, ScrollDirections direction, int pixels) {
+    public void scroll(WebDriver driver, ScrollDirections direction, int pixels, ScrollSpeeds speed) {
         log.debug("Page scroll {} by {} started", direction.getName(), pixels);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        String script = format("window.scrollBy(0,%s)", getSignedScroll(direction, pixels));
+        String script = format("window.scrollBy(0,%s)", getSignedScroll(direction, pixels, speed));
         js.executeScript(script, "");
         log.debug("Page scroll {} by {} completed", direction.getName(), pixels);
     }
 
-    private int getSignedScroll(ScrollDirections direction, int pixels) {
+    private int getSignedScroll(ScrollDirections direction, int pixels, ScrollSpeeds speed) {
         int result = pixels;
         if(direction == UP) {
             result = pixels * -1;
