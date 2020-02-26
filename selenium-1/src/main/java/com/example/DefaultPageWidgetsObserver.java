@@ -41,12 +41,18 @@ public class DefaultPageWidgetsObserver implements PageWidgetsObserver {
 
     private void observe(WebDriver driver, Widget widget) {
         log.debug("Observe {} widget started", widget.getName());
+        observeWidgetTitles(driver, widget);
+        log.debug("Observe {} widget completed", widget.getName());
+    }
+
+    private void observeWidgetTitles(WebDriver driver, Widget widget) {
+        log.debug("Observe {} widget title started", widget.getName());
         List<WidgetTitleRetriever> widgetTitleRetrievers = widget.getWidgetTitleRetrievers();
         for(WidgetTitleRetriever widgetTitleRetriever : widgetTitleRetrievers) {
             WebElement widgetTitleElement = widgetTitleRetriever.retrieve(driver);
             log.debug("Found widget title element: {}", widgetTitleElement);
             elementHighlighter.highlight(driver, widgetTitleElement);
         }
-        log.debug("Observe {} widget completed", widget.getName());
+        log.debug("Observe {} widget title completed", widget.getName());
     }
 }
