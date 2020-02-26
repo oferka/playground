@@ -15,7 +15,7 @@ import static java.util.Arrays.asList;
 public class DefaultScenarioRunner implements ScenarioRunner {
 
     @Autowired
-    private BrowserProvider browserProvider;
+    private BrowserOpener browserProvider;
 
     @Autowired
     private LandingPageOpener landingPageOpener;
@@ -25,10 +25,10 @@ public class DefaultScenarioRunner implements ScenarioRunner {
 
     @Override
     public void runScenario() {
-        log.info("Run scenario started");
-        WebDriver driver =  browserProvider.openBrowser();
+        log.debug("Run scenario started");
+        WebDriver driver =  browserProvider.open();
         landingPageOpener.open(driver);
-        testInsightsPages(
+        testPages(
                 driver,
                 asList(
                         OVERVIEW_PAGE,
@@ -53,17 +53,21 @@ public class DefaultScenarioRunner implements ScenarioRunner {
                 )
         );
         closeBrowser(driver);
-        log.info("Run scenario completed");
+        log.debug("Run scenario completed");
     }
 
-    private void testInsightsPages(WebDriver driver, List<Pages> pages) {
+    private void testPages(WebDriver driver, List<Pages> pages) {
+        log.debug("Test {} pages started", pages.size());
         for(Pages insightsPage : pages) {
             pageTester.test(driver, insightsPage);
         }
+        log.debug("Test {} pages completed", pages.size());
     }
 
     public void closeBrowser(WebDriver driver) {
+        log.debug("Close browser started");
         driver.close();
         driver.quit();
+        log.debug("Close browser started");
     }
 }

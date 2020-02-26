@@ -18,10 +18,17 @@ public class DefaultElementHighlighter implements ElementHighlighter {
 
     @Override
     public void highlight(WebDriver driver, WebElement element) {
+        log.debug("Element {} highlighting started", element.getText());
         if(elementHighlighterConfiguration.isEnabled()) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            String script = format("arguments[0].setAttribute('style', 'color: %s; background: %s; border: %s;');", elementHighlighterConfiguration.getColor(), elementHighlighterConfiguration.getBackground(), elementHighlighterConfiguration.getBorder());
+            String script = format(
+                    "arguments[0].setAttribute('style', 'color: %s; background: %s; border: %s;');",
+                    elementHighlighterConfiguration.getColor(),
+                    elementHighlighterConfiguration.getBackground(),
+                    elementHighlighterConfiguration.getBorder()
+            );
             js.executeScript(script, element);
         }
+        log.debug("Element {} highlighting completed", element.getText());
     }
 }

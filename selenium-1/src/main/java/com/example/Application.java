@@ -13,7 +13,7 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner run(ScenarioRunner scenarioRunner) {
+    public CommandLineRunner runScenario(ScenarioRunner scenarioRunner) {
         return args -> {
             scenarioRunner.runScenario();
         };
