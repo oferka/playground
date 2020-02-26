@@ -7,6 +7,8 @@ import lombok.ToString;
 import java.util.List;
 
 import static com.example.NavigationBarElements.*;
+import static com.example.PageScrollPostObservationAction.ScrollDirections.DOWN;
+import static com.example.PageScrollPostObservationAction.ScrollDirections.UP;
 import static java.util.Arrays.asList;
 
 @ToString
@@ -37,7 +39,7 @@ public enum Pages {
                                         new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
                                 )
                         ),
-                        new PageScrollPostObservationAction(500)
+                        new PageScrollPostObservationAction(DOWN, 500)
                 ),
                     new ObservedWidgetsGroup(
                             asList(
@@ -50,7 +52,7 @@ public enum Pages {
                                             new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
                                     )
                             ),
-                            new PageScrollPostObservationAction(-500)
+                            new PageScrollPostObservationAction(UP, 500)
                     )
             )
     ),
