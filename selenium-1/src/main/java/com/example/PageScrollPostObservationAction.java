@@ -1,11 +1,11 @@
 package com.example;
 
-import lombok.*;
+import com.example.PageScroller.ScrollDirections;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-import static java.lang.String.format;
 
 @Data
 @AllArgsConstructor
@@ -13,34 +13,18 @@ import static java.lang.String.format;
 @Slf4j
 public class PageScrollPostObservationAction extends PostObservationAction {
 
-    private ScrollDirections scrollDirection;
+    private ScrollDirections direction;
 
-    private int scroll;
+    private int pixels;
+
+    private PageScroller pageScroller;
+
+    public PageScrollPostObservationAction(ScrollDirections direction, int pixels) {
+        this(direction, pixels, new DefaultPageScroller());
+    }
 
     @Override
     void execute(WebDriver driver) {
-        log.debug("Page scroll {} by {} started", scrollDirection.getName(), scroll);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        String script = format("window.scrollBy(0,%s)", getSignedScroll());
-        js.executeScript(script, "");
-        log.debug("Page scroll {} by {} completed", scrollDirection.getName(), scroll);
-    }
-
-    private int getSignedScroll() {
-        int result = scroll;
-        if(scrollDirection == ScrollDirections.UP) {
-            result = scroll * -1;
-        }
-        return result;
-    }
-
-    @ToString
-    @AllArgsConstructor
-    public enum ScrollDirections {
-        UP ("Up"),
-        DOWN("Down");
-
-        @Getter
-        private String name;
+        pageScroller.scroll(driver, direction, pixels);
     }
 }

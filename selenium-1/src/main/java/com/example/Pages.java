@@ -7,8 +7,8 @@ import lombok.ToString;
 import java.util.List;
 
 import static com.example.NavigationBarElements.*;
-import static com.example.PageScrollPostObservationAction.ScrollDirections.DOWN;
-import static com.example.PageScrollPostObservationAction.ScrollDirections.UP;
+import static com.example.PageScroller.ScrollDirections.DOWN;
+import static com.example.PageScroller.ScrollDirections.UP;
 import static java.util.Arrays.asList;
 
 @ToString
