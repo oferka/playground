@@ -64,7 +64,7 @@ public enum Pages {
                                                     new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top WalkMe Items")
                                             ),
                                             asList(
-                                                    new WidgetBodyRetrieverByClass("react-bs-table-container")
+                                                    new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
                                             )
                                     ),
                                     new Widget(
@@ -73,7 +73,7 @@ public enum Pages {
                                                     new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
                                             ),
                                             asList(
-                                                    new WidgetBodyRetrieverByClass("react-bs-table-container")
+                                                    new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
                                             )
                                     )
                             ),
