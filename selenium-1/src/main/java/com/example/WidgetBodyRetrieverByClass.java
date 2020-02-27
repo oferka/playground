@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static java.lang.String.format;
-
 @Data
 @AllArgsConstructor
 @Slf4j
@@ -24,7 +22,6 @@ public class WidgetBodyRetrieverByClass implements WidgetBodyRetriever {
     }
 
     private By getLocator() {
-        String xpath = format("//*[@class='%s']", className);
-        return By.xpath(xpath);
+        return By.className(className);
     }
 }
