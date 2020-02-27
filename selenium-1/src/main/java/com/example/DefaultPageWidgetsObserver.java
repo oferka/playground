@@ -42,6 +42,7 @@ public class DefaultPageWidgetsObserver implements PageWidgetsObserver {
     private void observe(WebDriver driver, Widget widget) {
         log.debug("Observe {} widget started", widget.getName());
         observeWidgetTitles(driver, widget);
+        observeWidgetBody(driver, widget);
         log.debug("Observe {} widget completed", widget.getName());
     }
 
@@ -54,5 +55,16 @@ public class DefaultPageWidgetsObserver implements PageWidgetsObserver {
             elementHighlighter.highlight(driver, widgetTitleElement);
         }
         log.debug("Observe {} widget title completed", widget.getName());
+    }
+
+    private void observeWidgetBody(WebDriver driver, Widget widget) {
+        log.debug("Observe {} widget body started", widget.getName());
+        List<WidgetBodyRetriever> widgetBodyRetrievers = widget.getWidgetBodyRetrievers();
+        for(WidgetBodyRetriever widgetBodyRetriever : widgetBodyRetrievers) {
+            WebElement widgetBodyElement = widgetBodyRetriever.retrieve(driver);
+            log.debug("Found widget body element: {}", widgetBodyElement);
+            elementHighlighter.highlight(driver, widgetBodyElement);
+        }
+        log.debug("Observe {} widget body completed", widget.getName());
     }
 }

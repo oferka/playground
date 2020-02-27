@@ -30,15 +30,28 @@ public enum Pages {
                                         asList(
                                                 new WidgetTitleRetrieverByClassAndText("walkme-app-highlight__title", "Unique Users"),
                                                 new WidgetTitleRetrieverByClassAndText("walkme-app-highlight__title", "Sessions")
+                                        ),
+                                        asList(
+                                                new WidgetBodyRetrieverByClass("recharts-surface")
                                         )
                                 ),
                                 new Widget(
                                         "Where are users accessing your site from?",
-                                        new WidgetTitleRetrieverByClassAndText("sessions-by-country__header-title", "Where are users accessing your site from?")
+                                        asList(
+                                                new WidgetTitleRetrieverByClassAndText("sessions-by-country__header-title", "Where are users accessing your site from?")
+                                        ),
+                                        asList(
+                                                new WidgetBodyRetrieverByClass("sessions-by-country__map")
+                                        )
                                 ),
                                 new Widget(
                                         "Sessions Duration Breakdown",
-                                        new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
+                                        asList(
+                                                new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
+                                        ),
+                                        asList(
+                                                new WidgetBodyRetrieverByClass("sessions-time-breakdown-result-bar-label-wrapper")
+                                        )
                                 )
                         ),
                         new PageScrollPostObservationAction(DOWN, 600, MEDIUM)
@@ -47,11 +60,21 @@ public enum Pages {
                             asList(
                                     new Widget(
                                             "Top WalkMe Items",
-                                            new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top WalkMe Items")
+                                            asList(
+                                                    new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top WalkMe Items")
+                                            ),
+                                            asList(
+                                                    new WidgetBodyRetrieverByClass("react-bs-table-container")
+                                            )
                                     ),
                                     new Widget(
                                             "Top Goals Reached",
-                                            new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
+                                            asList(
+                                                    new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
+                                            ),
+                                            asList(
+                                                    new WidgetBodyRetrieverByClass("react-bs-table-container")
+                                            )
                                     )
                             ),
                             new PageScrollPostObservationAction(UP, 600, MEDIUM)
