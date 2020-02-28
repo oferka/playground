@@ -28,11 +28,11 @@ public enum Pages {
                                 new Widget(
                                         "Unique User and Sessions",
                                         asList(
-                                                new WidgetTitleRetrieverByClassAndText("walkme-app-highlight__title", "Unique Users"),
-                                                new WidgetTitleRetrieverByClassAndText("walkme-app-highlight__title", "Sessions")
+                                                new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Unique Users']"),
+                                                new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Sessions']")
                                         ),
                                         asList(
-                                                new WidgetBodyRetrieverByClass("recharts-surface"),
+                                                new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']"),
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'count of users who visited')]"),
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')] ")
                                         )
@@ -40,7 +40,7 @@ public enum Pages {
                                 new Widget(
                                         "Where are users accessing your site from?",
                                         asList(
-                                                new WidgetTitleRetrieverByClassAndText("sessions-by-country__header-title", "Where are users accessing your site from?"),
+                                                new WidgetTitleRetrieverByXPath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']"),
                                                 new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
                                                 new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
                                                 new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
