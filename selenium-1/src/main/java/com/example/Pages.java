@@ -23,7 +23,7 @@ public enum Pages {
             "Overview",
             new DefaultPageHeaderRetriever("Overview"),
             asList(
-                new ObservedWidgetsGroup(
+                    new ObservedWidgetsGroup(
                         asList(
                                 new Widget(
                                         "Unique User and Sessions",
@@ -64,7 +64,7 @@ public enum Pages {
                                 )
                         ),
                         new PageScrollPostObservationAction(DOWN, 600, MEDIUM)
-                ),
+                    ),
                     new ObservedWidgetsGroup(
                             asList(
                                     new Widget(
@@ -210,7 +210,7 @@ public enum Pages {
             "Features",
             FEATURES_NAVIGATION_ELEMET,
             "Features",
-            new PageHeaderRetrieverByClassAndText("features-empty-state__title", "Track Feature Adoption"),
+            new DefaultPageHeaderRetriever("Features"),
             asList(
 
             )
