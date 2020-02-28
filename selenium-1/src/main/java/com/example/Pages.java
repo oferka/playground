@@ -46,7 +46,7 @@ public enum Pages {
                                                 new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
                                         ),
                                         singletonList(
-                                                new WidgetBodyRetrieverByClass("sessions-by-country__map")
+                                                new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']")
                                         )
                                 ),
                                 new Widget(
@@ -69,19 +69,19 @@ public enum Pages {
                             asList(
                                     new Widget(
                                             "Top WalkMe Items",
-                                            asList(
-                                                    new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top WalkMe Items")
+                                            singletonList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']")
                                             ),
-                                            asList(
+                                            singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
                                             )
                                     ),
                                     new Widget(
                                             "Top Goals Reached",
-                                            asList(
-                                                    new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
+                                            singletonList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']")
                                             ),
-                                            asList(
+                                            singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
                                             )
                                     )
