@@ -32,6 +32,7 @@ public class DefaultPageOpener implements PageOpener {
         }
         else {
             log.debug("Page {} is currently displayed", pageName);
+            elementHighlighter.highlight(driver, page.getPageHeaderRetriever().retrieve(driver));
         }
         log.debug("Open {} page completed", pageName);
     }

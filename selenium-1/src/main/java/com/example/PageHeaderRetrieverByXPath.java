@@ -26,7 +26,7 @@ public class PageHeaderRetrieverByXPath implements PageHeaderRetriever {
         log.debug("Check if page header identified by xpath: {} is currently displayed started", xpath);
         boolean result;
         try {
-            driver.findElement(getLocator());
+            WebElement element = driver.findElement(getLocator());
             result = true;
         }
         catch (Exception e) {
