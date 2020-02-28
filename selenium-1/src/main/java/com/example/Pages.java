@@ -77,7 +77,7 @@ public enum Pages {
                                             )
                                     ),
                                     new Widget(
-                                            "Top Goals Reached",
+                                            "Top Goals Reached2",
                                             asList(
                                                     new WidgetTitleRetrieverByClassAndText("overview-walkme-report__title", "Top Goals Reached")
                                             ),
