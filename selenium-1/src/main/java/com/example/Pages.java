@@ -55,7 +55,11 @@ public enum Pages {
                                                 new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
                                         ),
                                         asList(
-                                                new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]")
+                                                new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
+                                                new WidgetBodyRetrieverByXPath("//div[@class='result-bar-label']"),
+                                                new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
+                                                new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
+                                                new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
                                         )
                                 )
                         ),
