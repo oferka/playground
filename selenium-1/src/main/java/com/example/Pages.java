@@ -32,13 +32,18 @@ public enum Pages {
                                                 new WidgetTitleRetrieverByClassAndText("walkme-app-highlight__title", "Sessions")
                                         ),
                                         asList(
-                                                new WidgetBodyRetrieverByClass("recharts-surface")
+                                                new WidgetBodyRetrieverByClass("recharts-surface"),
+                                                new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'count of users who visited')]"),
+                                                new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')] ")
                                         )
                                 ),
                                 new Widget(
                                         "Where are users accessing your site from?",
                                         asList(
-                                                new WidgetTitleRetrieverByClassAndText("sessions-by-country__header-title", "Where are users accessing your site from?")
+                                                new WidgetTitleRetrieverByClassAndText("sessions-by-country__header-title", "Where are users accessing your site from?"),
+                                                new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
+                                                new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
+                                                new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
                                         ),
                                         asList(
                                                 new WidgetBodyRetrieverByClass("sessions-by-country__map")
@@ -50,7 +55,7 @@ public enum Pages {
                                                 new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
                                         ),
                                         asList(
-                                                new WidgetBodyRetrieverByClass("sessions-time-breakdown-result-bar-label-wrapper")
+                                                new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]")
                                         )
                                 )
                         ),
