@@ -10,8 +10,8 @@ import static com.example.NavigationBarElements.*;
 import static com.example.PageScroller.ScrollDirections.DOWN;
 import static com.example.PageScroller.ScrollDirections.UP;
 import static com.example.PageScroller.ScrollSpeeds.MEDIUM;
-import static com.example.PageScroller.ScrollSpeeds.SLOW;
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 @ToString
 @AllArgsConstructor
@@ -45,13 +45,13 @@ public enum Pages {
                                                 new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
                                                 new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
                                         ),
-                                        asList(
+                                        singletonList(
                                                 new WidgetBodyRetrieverByClass("sessions-by-country__map")
                                         )
                                 ),
                                 new Widget(
                                         "Sessions Duration Breakdown",
-                                        asList(
+                                        singletonList(
                                                 new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
                                         ),
                                         asList(
