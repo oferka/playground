@@ -21,7 +21,6 @@ public enum Pages {
             "Overview",
             OVERVIEW_NAVIGATION_ELEMET,
             "Overview",
-//            new DefaultPageHeaderRetriever("Overview"),
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Overview']"),
             asList(
                     new ObservedWidgetsGroup(
