@@ -21,7 +21,8 @@ public enum Pages {
             "Overview",
             OVERVIEW_NAVIGATION_ELEMET,
             "Overview",
-            new DefaultPageHeaderRetriever("Overview"),
+//            new DefaultPageHeaderRetriever("Overview"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Overview']"),
             asList(
                     new ObservedWidgetsGroup(
                         asList(
@@ -94,7 +95,7 @@ public enum Pages {
             "Apps Overview",
             APPS_OVERVIEW_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Apps Overview"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
             asList(
 
             )
@@ -103,7 +104,7 @@ public enum Pages {
             "SmartWalkThrus",
             SMART_WALK_THRUS_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Smart Walk-Thrus"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
             asList(
 
             )
@@ -112,7 +113,7 @@ public enum Pages {
             "WalkThrus",
             WALK_THRUS_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Walk-Thrus"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Walk-Thrus']"),
             asList(
 
             )
@@ -121,7 +122,7 @@ public enum Pages {
             "Onboarding",
             ONBOARDING_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Onboarding Tasks"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Onboarding Tasks']"),
             asList(
 
             )
@@ -130,7 +131,7 @@ public enum Pages {
             "ShoutOuts",
             SHOUT_OUTS_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("ShoutOuts"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='ShoutOuts']"),
             asList(
 
             )
@@ -139,7 +140,7 @@ public enum Pages {
             "Launchers",
             LAUNCHERS_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Launchers"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Launchers']"),
             asList(
 
             )
@@ -148,7 +149,7 @@ public enum Pages {
             "Resources",
             RESOURCES_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Resources"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Resources']"),
             asList(
 
             )
@@ -157,7 +158,7 @@ public enum Pages {
             "Shuttles",
             SHUTTLES_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Shuttles"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Shuttles']"),
             asList(
 
             )
@@ -166,7 +167,7 @@ public enum Pages {
             "Surveys",
             SURVEYS_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Surveys"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Surveys']"),
             asList(
 
             )
@@ -175,7 +176,7 @@ public enum Pages {
             "SmartTips",
             SMART_TIPS_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("SmartTips"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='SmartTips']"),
             asList(
 
             )
@@ -184,7 +185,7 @@ public enum Pages {
             "MenuAndSearch",
             MENU_AND_SEARCH_NAVIGATION_ELEMET,
             "Apps",
-            new DefaultPageHeaderRetriever("Menu & Search"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Menu & Search']"),
             asList(
 
             )
@@ -192,7 +193,8 @@ public enum Pages {
     USERS_PAGE(
             "Users",
             USERS_NAVIGATION_ELEMET,
-            "Users", new DefaultPageHeaderRetriever("Users"),
+            "Users",
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Users']"),
             asList(
 
             )
@@ -201,7 +203,7 @@ public enum Pages {
             "Session Playback",
             SESSION_PLAYBACK_NAVIGATION_ELEMET,
             "Session Playback",
-            new PageHeaderRetrieverByClassAndText("enable-sessions-empty-state__title", "Watch Session Playback"),
+            new PageHeaderRetrieverByXPath("//div[@class='enable-sessions-empty-state__title' and text()='Watch Session Playback']"),
             asList(
 
             )
@@ -210,7 +212,7 @@ public enum Pages {
             "Features",
             FEATURES_NAVIGATION_ELEMET,
             "Features",
-            new DefaultPageHeaderRetriever("Features"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Features']"),
             asList(
 
             )
@@ -219,7 +221,7 @@ public enum Pages {
             "Funnels",
             FUNNELS_NAVIGATION_ELEMET,
             "Funnels",
-            new PageHeaderRetrieverByClassAndText("funnel-selection__title", "Funnels"),
+            new PageHeaderRetrieverByXPath("//div[@class='funnel-selection__title' and text()='Funnels']"),
             asList(
 
             )
@@ -228,7 +230,7 @@ public enum Pages {
             "TrackedEventsAnalytics",
             TRACKED_EVENTS_ANALYTICS_NAVIGATION_ELEMET,
             "Tracked Events",
-            new DefaultPageHeaderRetriever("Tracked Events Analytics"),
+            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Tracked Events Analytics']"),
             asList(
 
             )
@@ -237,7 +239,7 @@ public enum Pages {
             "TrackedEventsSetup",
             TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET,
             "Tracked Events",
-            new PageHeaderRetrieverByClassAndText("tracked-events-report__header__page-name", "Tracked Events Setup"),
+            new PageHeaderRetrieverByXPath("//div[@class='tracked-events-report__header__page-name' and text()='Tracked Events Setup']"),
             asList(
 
             )
@@ -246,7 +248,7 @@ public enum Pages {
             "Reports",
             REPORTS_NAVIGATION_ELEMET,
             "Reports",
-            new PageHeaderRetrieverByClassAndText("reports-page__page-name", "Reports"),
+            new PageHeaderRetrieverByXPath("//div[@class='reports-page__page-name' and text()='Reports']"),
             asList(
 
             )

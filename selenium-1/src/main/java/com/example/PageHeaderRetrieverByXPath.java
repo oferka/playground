@@ -9,16 +9,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static java.lang.String.format;
-
 @Data
 @AllArgsConstructor
 @Slf4j
-public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
+public class PageHeaderRetrieverByXPath implements PageHeaderRetriever {
 
-    private String className;
-
-    private String text;
+    private String xpath;
 
     @Override
     public WebElement retrieve(WebDriver driver) {
@@ -27,7 +23,7 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
 
     @Override
     public boolean isDisplayed(WebDriver driver) {
-        log.debug("Check if page header identified by text: {} is currently displayed started", text);
+        log.debug("Check if page header identified by xpath: {} is currently displayed started", xpath);
         boolean result;
         try {
             driver.findElement(getLocator());
@@ -36,12 +32,11 @@ public class PageHeaderRetrieverByClassAndText implements PageHeaderRetriever {
         catch (Exception e) {
             result = false;
         }
-        log.debug("Check if page header identified by text: {} is currently displayed completed. result is: {}", text, result);
+        log.debug("Check if page header identified by xpath: {} is currently displayed completed. result is: {}", xpath, result);
         return result;
     }
 
     private By getLocator() {
-        String xpath = format("//*[@class='%s' and text()='%s']", className, text);
         return By.xpath(xpath);
     }
 }
