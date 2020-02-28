@@ -52,7 +52,7 @@ public enum Pages {
                                 new Widget(
                                         "Sessions Duration Breakdown",
                                         singletonList(
-                                                new WidgetTitleRetrieverByClassAndText("sessions-time-breakdown__header", "Sessions Duration Breakdown")
+                                                new WidgetTitleRetrieverByXPath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']")
                                         ),
                                         asList(
                                                 new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
