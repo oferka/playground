@@ -5,6 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+
 import static com.example.PageScroller.ScrollDirections.UP;
 import static java.lang.String.format;
 
@@ -21,7 +23,7 @@ public class DefaultPageScroller implements PageScroller {
         int stepSize = signedPixels/numberOfSteps;
         for(int i=0; i<numberOfSteps; i++) {
             scroll(driver, stepSize);
-            pauseExecution(speed.getDelay());
+            new DefaultExecutionPauser().pause(Duration.ofMillis(speed.getDelay()));
         }
         stepSize = signedPixels%numberOfSteps;
         if(stepSize != 0) {
@@ -45,14 +47,5 @@ public class DefaultPageScroller implements PageScroller {
         String script = format("window.scrollBy(0,%s)", signedPixels);
         js.executeScript(script, "");
         log.debug("Scroll by {} completed", signedPixels);
-    }
-
-    private void pauseExecution(long delay) {
-        try {
-            Thread.sleep(delay);
-        }
-        catch (InterruptedException e) {
-            log.error("Failed to pause execution. error message is {}", e.getMessage());
-        }
     }
 }
