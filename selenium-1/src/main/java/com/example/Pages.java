@@ -146,46 +146,40 @@ public enum Pages {
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__chart ']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='bubble-chart']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__table']")
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='result-bar-label']"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='report-pie-chart-wrapper']"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
                                             ),
                                             new WidgetBorderRetrieverByXPath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']")
                                     )
                             ),
                             new PageScrollPostObservationAction(DOWN, 400, MEDIUM)
+                    ),
+                    new ObservedWidgetsGroup(
+                            asList(
+                                    new Widget(
+                                            "Top WalkMe Items",
+                                            asList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
+                                            ),
+                                            singletonList(
+                                                    new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']")
+                                    ),
+                                    new Widget(
+                                            "Top Goals Reached",
+                                            asList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-icon-image-div' and text()='?']")
+                                            ),
+                                            singletonList(
+                                                    new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']")
+                                    )
+                            ),
+                            new PageScrollPostObservationAction(UP, 900, MEDIUM)
                     )
-                    //,
-//                    new ObservedWidgetsGroup(
-//                            asList(
-//                                    new Widget(
-//                                            "Top WalkMe Items",
-//                                            asList(
-//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
-//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
-//                                            ),
-//                                            singletonList(
-//                                                    new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
-//                                            ),
-//                                            new WidgetBorderRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']")
-//                                    ),
-//                                    new Widget(
-//                                            "Top Goals Reached",
-//                                            asList(
-//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
-//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
-//                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-icon-image-div' and text()='?']")
-//                                            ),
-//                                            singletonList(
-//                                                    new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
-//                                            ),
-//                                            new WidgetBorderRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']")
-//                                    )
-//                            ),
-//                            new PageScrollPostObservationAction(UP, 600, MEDIUM)
-//                    )
             )
     ),
     SMART_WALK_THRUS_PAGE(
