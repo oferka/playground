@@ -32,8 +32,8 @@ public class DefaultScenarioRunner implements ScenarioRunner {
                 driver,
                 asList(
 //                        OVERVIEW_PAGE,
-                        APPS_OVERVIEW_PAGE,
-//                        SMART_WALK_THRUS_PAGE,
+//                        APPS_OVERVIEW_PAGE,
+                        SMART_WALK_THRUS_PAGE,
 //                        WALK_THRUS_PAGE,
 //                        ONBOARDING_PAGE,
 //                        SHOUT_OUTS_PAGE,

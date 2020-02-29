@@ -188,7 +188,50 @@ public enum Pages {
             "Apps",
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
             asList(
-
+                    new ObservedWidgetsGroup(
+                            singletonList(
+                                    new Widget(
+                                            "Users Played Smart Walk-Thrus and Smart Walk-Thru Plays and Main Goals Reached",
+                                            asList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Users Played Smart Walk-Thrus']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Smart Walk-Thru Plays']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Main Goals Reached']")
+                                            ),
+                                            asList(
+                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays that resulted')]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']")
+                                    )
+                            ),
+                            new PageScrollPostObservationAction(DOWN, 500, MEDIUM)
+                    ),
+                    new ObservedWidgetsGroup(
+                            singletonList(
+                                    new Widget(
+                                            "Smart Walk-Thrus Summary",
+                                            asList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='insights-table__header']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='insights-table__title' and text()='Smart Walk-Thrus Summary']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='table-search-bar table-search-bar--blurred']")
+                                            ),
+                                            asList(
+//                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays that resulted')]"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[@class='insights-table__container']")
+                                    )
+                            ),
+                            new PageScrollPostObservationAction(UP, 500, MEDIUM)
+                    )
             )
     ),
     WALK_THRUS_PAGE(
