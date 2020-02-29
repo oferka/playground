@@ -24,7 +24,7 @@ public enum Pages {
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Overview']"),
             asList(
                     new ObservedWidgetsGroup(
-                        asList(
+                        singletonList(
                                 new Widget(
                                         "Unique User and Sessions",
                                         asList(
@@ -32,42 +32,48 @@ public enum Pages {
                                                 new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Sessions']")
                                         ),
                                         asList(
-                                                new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']"),
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'count of users who visited')]"),
-                                                new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')] ")
+                                                new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')]"),
+                                                new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
                                         ),
                                         new WidgetBorderRetrieverByXPath("//div[@class='highlights-with-graph']")
-                                ),
-                                new Widget(
-                                        "Where are users accessing your site from?",
-                                        asList(
-                                                new WidgetTitleRetrieverByXPath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']"),
-                                                new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
-                                                new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
-                                                new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
-                                        ),
-                                        singletonList(
-                                                new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']")
-                                        ),
-                                        new WidgetBorderRetrieverByXPath("//div[@class='sessions-by-country']")
-                                ),
-                                new Widget(
-                                        "Sessions Duration Breakdown",
-                                        singletonList(
-                                                new WidgetTitleRetrieverByXPath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']")
-                                        ),
-                                        asList(
-                                                new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
-                                                new WidgetBodyRetrieverByXPath("//div[@class='result-bar-label']"),
-                                                new WidgetBodyRetrieverByXPath("//div[@class='report-pie-chart-wrapper']"),
-                                                new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
-                                                new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
-                                                new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
-                                        ),
-                                        new WidgetBorderRetrieverByXPath("//div[@class='sessions-time-breakdown']")
                                 )
                         ),
-                        new PageScrollPostObservationAction(DOWN, 600, MEDIUM)
+                        new PageScrollPostObservationAction(DOWN, 200, MEDIUM)
+                    ),
+                    new ObservedWidgetsGroup(
+                            asList(
+                                    new Widget(
+                                            "Where are users accessing your site from?",
+                                            asList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
+                                            ),
+                                            asList(
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@id='GeoChart']")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[@class='sessions-by-country']")
+                                    ),
+                                    new Widget(
+                                            "Sessions Duration Breakdown",
+                                            singletonList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']")
+                                            ),
+                                            asList(
+                                                    new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='result-bar-label']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='report-pie-chart-wrapper']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[@class='sessions-time-breakdown']")
+                                    )
+                            ),
+                            new PageScrollPostObservationAction(DOWN, 400, MEDIUM)
                     ),
                     new ObservedWidgetsGroup(
                             asList(
@@ -86,7 +92,8 @@ public enum Pages {
                                             "Top Goals Reached",
                                             asList(
                                                     new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']")
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-icon-image-div' and text()='?']")
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
@@ -104,7 +111,83 @@ public enum Pages {
             "Apps",
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
             asList(
-
+                    new ObservedWidgetsGroup(
+                            asList(
+                                    new Widget(
+                                            "Users WalkMe was available to and Users who Interacted with WalkMe and Avg. user interactions with WalkMe",
+                                            asList(
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Users WalkMe was available to']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Users who Interacted with WalkMe']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Avg. user interactions with WalkMe']")
+                                            ),
+                                            asList(
+                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'Users who had any WalkMe content visible')]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'Users who interacted with any WalkMe item')]"),
+                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The average number of times a user has interacted with any WalkMe content.')]"),
+                                                    new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[@class='highlights-with-graph']")
+                                    )//,
+//                                    new Widget(
+//                                            "Where are users accessing your site from?",
+//                                            asList(
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']"),
+//                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
+//                                                    new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
+//                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
+//                                            ),
+//                                            asList(
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@id='GeoChart']")
+//                                            ),
+//                                            new WidgetBorderRetrieverByXPath("//div[@class='sessions-by-country']")
+//                                    ),
+//                                    new Widget(
+//                                            "Sessions Duration Breakdown",
+//                                            singletonList(
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']")
+//                                            ),
+//                                            asList(
+//                                                    new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='result-bar-label']"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='report-pie-chart-wrapper']"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
+//                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
+//                                            ),
+//                                            new WidgetBorderRetrieverByXPath("//div[@class='sessions-time-breakdown']")
+//                                    )
+                            ),
+                            new PageScrollPostObservationAction(DOWN, 1000, MEDIUM)
+                    )//,
+//                    new ObservedWidgetsGroup(
+//                            asList(
+//                                    new Widget(
+//                                            "Top WalkMe Items",
+//                                            asList(
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
+//                                            ),
+//                                            singletonList(
+//                                                    new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+//                                            ),
+//                                            new WidgetBorderRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']")
+//                                    ),
+//                                    new Widget(
+//                                            "Top Goals Reached",
+//                                            asList(
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
+//                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-icon-image-div' and text()='?']")
+//                                            ),
+//                                            singletonList(
+//                                                    new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+//                                            ),
+//                                            new WidgetBorderRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']")
+//                                    )
+//                            ),
+//                            new PageScrollPostObservationAction(UP, 600, MEDIUM)
+//                    )
             )
     ),
     SMART_WALK_THRUS_PAGE(

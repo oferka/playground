@@ -23,9 +23,10 @@ public class DefaultWidgetObserver implements WidgetObserver {
     public void observe(WebDriver driver, Widget widget) {
         log.debug("Observe {} widget started", widget.getName());
         observeWidgetBorder(driver, widget);
+        executionPauser.pause(Duration.ofSeconds(1));
         observeWidgetTitles(driver, widget);
+        executionPauser.pause(Duration.ofSeconds(1));
         observeWidgetBody(driver, widget);
-        executionPauser.pause(Duration.ofSeconds(2));
         log.debug("Observe {} widget completed", widget.getName());
     }
 
