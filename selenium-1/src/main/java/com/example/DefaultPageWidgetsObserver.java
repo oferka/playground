@@ -45,10 +45,22 @@ public class DefaultPageWidgetsObserver implements PageWidgetsObserver {
 
     private void observe(WebDriver driver, Widget widget) {
         log.debug("Observe {} widget started", widget.getName());
+        observeWidgetBorder(driver, widget);
         observeWidgetTitles(driver, widget);
         observeWidgetBody(driver, widget);
         executionPauser.pause(Duration.ofSeconds(2));
         log.debug("Observe {} widget completed", widget.getName());
+    }
+
+    private void observeWidgetBorder(WebDriver driver, Widget widget) {
+        log.debug("Observe {} widget border started", widget.getName());
+        WidgetBorderRetriever widgetBorderRetriever = widget.getWidgetBorderRetriever();
+        if(widgetBorderRetriever != null) {
+            WebElement widgetBorderElement = widgetBorderRetriever.retrieve(driver);
+            log.debug("Found widget border element: {}", widgetBorderElement);
+            elementHighlighter.highlight(driver, widgetBorderElement);
+        }
+        log.debug("Observe {} widget border completed", widget.getName());
     }
 
     private void observeWidgetTitles(WebDriver driver, Widget widget) {

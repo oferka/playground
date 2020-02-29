@@ -35,7 +35,8 @@ public enum Pages {
                                                 new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']"),
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'count of users who visited')]"),
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')] ")
-                                        )
+                                        ),
+                                        new WidgetBorderRetrieverByXPath("//div[@class='highlights-with-graph']")
                                 ),
                                 new Widget(
                                         "Where are users accessing your site from?",
@@ -47,7 +48,8 @@ public enum Pages {
                                         ),
                                         singletonList(
                                                 new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']")
-                                        )
+                                        ),
+                                        new WidgetBorderRetrieverByXPath("//div[@class='sessions-by-country']")
                                 ),
                                 new Widget(
                                         "Sessions Duration Breakdown",
@@ -60,7 +62,8 @@ public enum Pages {
                                                 new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
                                                 new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
                                                 new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
-                                        )
+                                        ),
+                                        new WidgetBorderRetrieverByXPath("//div[@class='sessions-time-breakdown']")
                                 )
                         ),
                         new PageScrollPostObservationAction(DOWN, 600, MEDIUM)
@@ -74,7 +77,8 @@ public enum Pages {
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
-                                            )
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']")
                                     ),
                                     new Widget(
                                             "Top Goals Reached",
@@ -83,7 +87,8 @@ public enum Pages {
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
-                                            )
+                                            ),
+                                            new WidgetBorderRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']")
                                     )
                             ),
                             new PageScrollPostObservationAction(UP, 600, MEDIUM)

@@ -16,4 +16,6 @@ public class Widget {
     private List<WidgetTitleRetriever> widgetTitleRetrievers;
 
     private List<WidgetBodyRetriever> widgetBodyRetrievers;
+
+    private WidgetBorderRetriever widgetBorderRetriever;
 }
