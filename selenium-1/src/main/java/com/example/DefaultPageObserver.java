@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class DefaultPageWidgetsObserver implements PageWidgetsObserver {
+public class DefaultPageObserver implements PageObserver {
 
     @Autowired
     private ElementHighlighter elementHighlighter;

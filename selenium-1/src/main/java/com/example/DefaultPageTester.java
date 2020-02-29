@@ -13,14 +13,14 @@ public class DefaultPageTester implements PageTester {
     private PageOpener pageOpener;
 
     @Autowired
-    private PageWidgetsObserver pageWidgetsObserver;
+    private PageObserver pageObserver;
 
     @Override
     public void test(WebDriver driver, Pages page) {
         String pageName = page.getName();
         log.debug("Test {} page started", pageName);
         pageOpener.open(driver, page);
-        pageWidgetsObserver.observe(driver, page);
+        pageObserver.observe(driver, page);
         log.debug("Test {} page completed", page.getName());
     }
 }
