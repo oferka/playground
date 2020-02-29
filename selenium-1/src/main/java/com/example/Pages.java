@@ -220,12 +220,10 @@ public enum Pages {
                                                     new WidgetTitleRetrieverByXPath("//div[@class='table-search-bar table-search-bar--blurred']")
                                             ),
                                             asList(
-//                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays that resulted')]"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-//                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='react-bs-table-container']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination-container']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination-text']"),
+                                                    new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination']")
                                             ),
                                             new WidgetBorderRetrieverByXPath("//div[@class='insights-table__container']")
                                     )
