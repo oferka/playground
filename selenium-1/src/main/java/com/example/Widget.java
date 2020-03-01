@@ -13,9 +13,9 @@ public class Widget {
 
     private String name;
 
+    private WidgetBorderRetriever widgetBorderRetriever;
+
     private List<WidgetTitleRetriever> widgetTitleRetrievers;
 
     private List<WidgetBodyRetriever> widgetBodyRetrievers;
-
-    private WidgetBorderRetriever widgetBorderRetriever;
 }
