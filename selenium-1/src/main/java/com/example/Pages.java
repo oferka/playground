@@ -23,7 +23,7 @@ public enum Pages {
             "Overview",
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Overview']"),
             asList(
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                         singletonList(
                                 new Widget(
                                         "Unique User and Sessions",
@@ -41,7 +41,7 @@ public enum Pages {
                         ),
                         new PageScrollPostObservationAction(DOWN, 200, MEDIUM)
                     ),
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             asList(
                                     new Widget(
                                             "Where are users accessing your site from?",
@@ -75,7 +75,7 @@ public enum Pages {
                             ),
                             new PageScrollPostObservationAction(DOWN, 400, MEDIUM)
                     ),
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             asList(
                                     new Widget(
                                             "Top WalkMe Items",
@@ -111,7 +111,7 @@ public enum Pages {
             "Apps",
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
             asList(
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             singletonList(
                                     new Widget(
                                             "Users WalkMe was available to and Users who Interacted with WalkMe and Avg. user interactions with WalkMe",
@@ -134,7 +134,7 @@ public enum Pages {
                             ),
                             new PageScrollPostObservationAction(DOWN, 500, MEDIUM)
                     ),
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             singletonList(
                                     new Widget(
                                             "WalkMe Usage by Item Type",
@@ -152,7 +152,7 @@ public enum Pages {
                             ),
                             new PageScrollPostObservationAction(DOWN, 400, MEDIUM)
                     ),
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             asList(
                                     new Widget(
                                             "Top WalkMe Items",
@@ -188,7 +188,7 @@ public enum Pages {
             "Apps",
             new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
             asList(
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             singletonList(
                                     new Widget(
                                             "Users Played Smart Walk-Thrus and Smart Walk-Thru Plays and Main Goals Reached",
@@ -210,7 +210,7 @@ public enum Pages {
                             ),
                             new PageScrollPostObservationAction(DOWN, 500, MEDIUM)
                     ),
-                    new ObservedWidgetsGroup(
+                    new WidgetsGroup(
                             singletonList(
                                     new Widget(
                                             "Smart Walk-Thrus Summary",
@@ -390,5 +390,5 @@ public enum Pages {
     private PageHeaderRetriever pageHeaderRetriever;
 
     @Getter
-    private List<ObservedWidgetsGroup> observedWidgetsGroups;
+    private List<WidgetsGroup> widgetsGroups;
 }

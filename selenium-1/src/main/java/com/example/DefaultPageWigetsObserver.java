@@ -19,14 +19,14 @@ public class DefaultPageWigetsObserver implements PageWigetsObserver {
     private ExecutionPauser executionPauser;
 
     @Override
-    public void observe(WebDriver driver, ObservedWidgetsGroup observedWidgetsGroup) {
+    public void observe(WebDriver driver, WidgetsGroup widgetsGroup) {
         log.debug("Observe widgets group started");
-        List<Widget> widgets = observedWidgetsGroup.getWidgets();
+        List<Widget> widgets = widgetsGroup.getWidgets();
         for(Widget widget : widgets) {
             widgetObserver.observe(driver, widget);
             executionPauser.pause(Duration.ofSeconds(2));
         }
-        PostObservationAction postObservationAction = observedWidgetsGroup.getPostObservationAction();
+        PostObservationAction postObservationAction = widgetsGroup.getPostObservationAction();
         if(postObservationAction != null) {
             postObservationAction.execute(driver);
         }
