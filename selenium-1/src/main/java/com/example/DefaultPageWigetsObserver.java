@@ -26,9 +26,9 @@ public class DefaultPageWigetsObserver implements PageWigetsObserver {
             widgetObserver.observe(driver, widget);
             executionPauser.pause(Duration.ofSeconds(2));
         }
-        PostObservationAction postObservationAction = widgetsGroup.getPostObservationAction();
-        if(postObservationAction != null) {
-            postObservationAction.execute(driver);
+        ObservationAction observationAction = widgetsGroup.getObservationAction();
+        if(observationAction != null) {
+            observationAction.execute(driver);
         }
         log.debug("Observe widgets group completed");
     }

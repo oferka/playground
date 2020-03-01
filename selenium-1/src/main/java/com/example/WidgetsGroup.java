@@ -13,5 +13,5 @@ public class WidgetsGroup {
 
     private List<Widget> widgets;
 
-    private PostObservationAction postObservationAction;
+    private ObservationAction observationAction;
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 import org.openqa.selenium.WebDriver;
 
 @Data
-public abstract class PostObservationAction {
+public abstract class ObservationAction {
 
     abstract void execute(WebDriver driver);
 }

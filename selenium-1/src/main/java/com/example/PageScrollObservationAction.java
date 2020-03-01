@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 @AllArgsConstructor
 @NoArgsConstructor
 @Slf4j
-public class PageScrollPostObservationAction extends PostObservationAction {
+public class PageScrollObservationAction extends ObservationAction {
 
     private ScrollDirections direction;
 

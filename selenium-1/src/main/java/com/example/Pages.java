@@ -39,7 +39,7 @@ public enum Pages {
                                         )
                                 )
                         ),
-                        new PageScrollPostObservationAction(DOWN, 200, MEDIUM)
+                        new PageScrollObservationAction(DOWN, 200, MEDIUM)
                     ),
                     new WidgetsGroup(
                             asList(
@@ -73,7 +73,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(DOWN, 400, MEDIUM)
+                            new PageScrollObservationAction(DOWN, 400, MEDIUM)
                     ),
                     new WidgetsGroup(
                             asList(
@@ -101,7 +101,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(UP, 600, MEDIUM)
+                            new PageScrollObservationAction(UP, 600, MEDIUM)
                     )
             )
     ),
@@ -132,7 +132,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(DOWN, 500, MEDIUM)
+                            new PageScrollObservationAction(DOWN, 500, MEDIUM)
                     ),
                     new WidgetsGroup(
                             singletonList(
@@ -150,7 +150,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(DOWN, 400, MEDIUM)
+                            new PageScrollObservationAction(DOWN, 400, MEDIUM)
                     ),
                     new WidgetsGroup(
                             asList(
@@ -178,7 +178,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(UP, 900, MEDIUM)
+                            new PageScrollObservationAction(UP, 900, MEDIUM)
                     )
             )
     ),
@@ -208,7 +208,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(DOWN, 500, MEDIUM)
+                            new PageScrollObservationAction(DOWN, 500, MEDIUM)
                     ),
                     new WidgetsGroup(
                             singletonList(
@@ -228,7 +228,7 @@ public enum Pages {
                                             )
                                     )
                             ),
-                            new PageScrollPostObservationAction(UP, 500, MEDIUM)
+                            new PageScrollObservationAction(UP, 500, MEDIUM)
                     )
             )
     ),
