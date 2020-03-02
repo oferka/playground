@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.time.Duration;
 import java.util.List;
 
 @Data
@@ -22,6 +23,7 @@ public class ViewStateChangeObservationAction extends ObservationAction {
         log.debug("View state change observation action started");
         for(ViewState viewState : viewStates) {
             execute(driver, viewState);
+            new DefaultExecutionPauser().pause(Duration.ofSeconds(1));
         }
         log.debug("View state change observation action completed");
     }
