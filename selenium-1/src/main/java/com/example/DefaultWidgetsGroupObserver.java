@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class DefaultPageWigetsObserver implements PageWigetsObserver {
+public class DefaultWidgetsGroupObserver implements WidgetsGroupObserver {
 
     @Autowired
     private WidgetObserver widgetObserver;

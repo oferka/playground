@@ -36,6 +36,9 @@ public enum Pages {
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'count of users who visited')]"),
                                                 new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')]"),
                                                 new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                                        ),
+                                        asList(
+
                                         )
                                 )
                         ),
@@ -55,6 +58,10 @@ public enum Pages {
                                             asList(
                                                     new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@id='GeoChart']")
+                                            ),
+                                            asList(
+                                                new ElementByXPathClickObservationAction("//div[text()='LIST']"),
+                                                new ElementByXPathClickObservationAction("//div[text()='MAP']")
                                             )
                                     ),
                                     new Widget(
@@ -70,6 +77,9 @@ public enum Pages {
                                                     new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),
@@ -86,6 +96,9 @@ public enum Pages {
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                            ),
+                                            asList(
+
                                             )
                                     ),
                                     new Widget(
@@ -98,6 +111,9 @@ public enum Pages {
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),
@@ -129,6 +145,9 @@ public enum Pages {
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'Available To')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'more than once')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                     new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),
@@ -147,6 +166,9 @@ public enum Pages {
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__chart ']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='bubble-chart']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__table']")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),
@@ -163,6 +185,9 @@ public enum Pages {
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                            ),
+                                            asList(
+
                                             )
                                     ),
                                     new Widget(
@@ -175,6 +200,9 @@ public enum Pages {
                                             ),
                                             singletonList(
                                                     new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),
@@ -205,6 +233,9 @@ public enum Pages {
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),
@@ -225,6 +256,9 @@ public enum Pages {
                                                     new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination-container']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination-text']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination']")
+                                            ),
+                                            asList(
+
                                             )
                                     )
                             ),

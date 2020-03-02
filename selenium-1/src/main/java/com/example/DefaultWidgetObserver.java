@@ -27,6 +27,8 @@ public class DefaultWidgetObserver implements WidgetObserver {
         observeWidgetTitles(driver, widget);
         executionPauser.pause(Duration.ofSeconds(1));
         observeWidgetBody(driver, widget);
+        executionPauser.pause(Duration.ofSeconds(1));
+        executeObservationActions(driver, widget);
         log.debug("Observe {} widget completed", widget.getName());
     }
 
@@ -61,5 +63,15 @@ public class DefaultWidgetObserver implements WidgetObserver {
             elementHighlighter.highlight(driver, widgetBodyElement);
         }
         log.debug("Observe {} widget body completed", widget.getName());
+    }
+
+    private void executeObservationActions(WebDriver driver, Widget widget) {
+        log.debug("Execute observation actions for widget {} started", widget.getName());
+        List<ObservationAction> observationActions = widget.getObservationActions();
+        for(ObservationAction observationAction : observationActions) {
+            observationAction.execute(driver);
+            executionPauser.pause(Duration.ofSeconds(1));
+        }
+        log.debug("Execute observation actions for widget {} completed", widget.getName());
     }
 }

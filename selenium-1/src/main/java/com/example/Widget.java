@@ -18,4 +18,6 @@ public class Widget {
     private List<WidgetTitleRetriever> widgetTitleRetrievers;
 
     private List<WidgetBodyRetriever> widgetBodyRetrievers;
+
+    private List<ObservationAction> observationActions;
 }

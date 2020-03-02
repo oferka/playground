@@ -22,9 +22,9 @@ public class PageScrollObservationAction extends ObservationAction {
 
     @Override
     void execute(WebDriver driver) {
-        log.debug("Page scroll post observation action with direction {} pixels {} and speed {} started", direction.getName(), pixels, speed.getName());
+        log.debug("Page scroll observation action with direction {} pixels {} and speed {} started", direction.getName(), pixels, speed.getName());
         PageScroller pageScroller = new DefaultPageScroller();
         pageScroller.scroll(driver, direction, pixels, speed);
-        log.debug("Page scroll post observation action with direction {} pixels {} and speed {} completed", direction.getName(), pixels, speed.getName());
+        log.debug("Page scroll observation action with direction {} pixels {} and speed {} completed", direction.getName(), pixels, speed.getName());
     }
 }

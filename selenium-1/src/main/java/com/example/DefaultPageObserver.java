@@ -12,7 +12,7 @@ import java.util.List;
 public class DefaultPageObserver implements PageObserver {
 
     @Autowired
-    private PageWigetsObserver pageWigetsObserver;
+    private WidgetsGroupObserver widgetsGroupObserver;
 
     @Override
     public void observe(WebDriver driver, Pages page) {
@@ -20,7 +20,7 @@ public class DefaultPageObserver implements PageObserver {
         log.debug("Observe {} page started", pageName);
         List<WidgetsGroup> widgetsGroups = page.getWidgetsGroups();
         for(WidgetsGroup widgetsGroup : widgetsGroups) {
-            pageWigetsObserver.observe(driver, widgetsGroup);
+            widgetsGroupObserver.observe(driver, widgetsGroup);
         }
         log.debug("Observe {} page completed", pageName);
     }
