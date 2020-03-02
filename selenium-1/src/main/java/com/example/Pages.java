@@ -10,6 +10,7 @@ import static com.example.NavigationBarElements.*;
 import static com.example.PageScroller.ScrollDirections.DOWN;
 import static com.example.PageScroller.ScrollDirections.UP;
 import static com.example.PageScroller.ScrollSpeeds.MEDIUM;
+import static com.example.ViewStateChangeObservationAction.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 
@@ -51,17 +52,29 @@ public enum Pages {
                                             new WidgetBorderRetrieverByXPath("//div[@class='sessions-by-country']"),
                                             asList(
                                                     new WidgetTitleRetrieverByXPath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']"),
+                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']"),
                                                     new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[text()='LIST']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']")
+                                                    new WidgetTitleRetrieverByXPath("//div[text()='LIST']")
                                             ),
                                             asList(
                                                     new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']"),
                                                     new WidgetBodyRetrieverByXPath("//div[@id='GeoChart']")
                                             ),
-                                            asList(
-                                                new ElementByXPathClickObservationAction("//div[text()='LIST']"),
-                                                new ElementByXPathClickObservationAction("//div[text()='MAP']")
+                                            singletonList(
+                                                    new ViewStateChangeObservationAction(
+                                                            asList(
+                                                                    new ViewState(
+                                                                            "LIST",
+                                                                            new ElementRetrieverByXPath("//div[text()='LIST']"),
+                                                                            new ElementRetrieverByXPath("//div[text()='Country']/ancestor::div[@class='react-bs-table-container']")
+                                                                    ),
+                                                                    new ViewState(
+                                                                            "MAP",
+                                                                            new ElementRetrieverByXPath("//div[text()='MAP']"),
+                                                                            new ElementRetrieverByXPath("//div[@id='GeoChart']")
+                                                                    )
+                                                            )
+                                                    )
                                             )
                                     ),
                                     new Widget(
