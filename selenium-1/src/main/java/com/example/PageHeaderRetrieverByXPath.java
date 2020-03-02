@@ -1,42 +1,35 @@
 package com.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.stereotype.Service;
 
-@Data
-@AllArgsConstructor
+@Service
 @Slf4j
 public class PageHeaderRetrieverByXPath implements PageHeaderRetriever {
 
-    private String xpath;
-
     @Override
-    public WebElement retrieve(WebDriver driver) {
-        return new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(getLocator()));
+    public WebElement retrieve(WebDriver driver, By locator) {
+        return new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     @Override
-    public boolean isDisplayed(WebDriver driver) {
-        log.debug("Check if page header identified by xpath: {} is currently displayed started", xpath);
+    public boolean isDisplayed(WebDriver driver, By locator) {
+        log.debug("Check if page header identified by locator: {} is currently displayed started", locator);
         boolean result;
         try {
-            WebElement element = driver.findElement(getLocator());
+            WebElement element = driver.findElement(locator);
+            log.debug("Found page header element {}", element.getText());
             result = true;
         }
         catch (Exception e) {
             result = false;
         }
-        log.debug("Check if page header identified by xpath: {} is currently displayed completed. result is: {}", xpath, result);
+        log.debug("Check if page header identified by locator: {} is currently displayed completed. result is: {}", locator, result);
         return result;
-    }
-
-    private By getLocator() {
-        return By.xpath(xpath);
     }
 }

@@ -16,6 +16,9 @@ public class DefaultPageOpener implements PageOpener {
     private PageOpenerConfiguration pageOpenerConfiguration;
 
     @Autowired
+    private PageHeaderRetriever pageHeaderRetriever;
+
+    @Autowired
     private ElementHighlighter elementHighlighter;
 
     @Override
@@ -32,7 +35,7 @@ public class DefaultPageOpener implements PageOpener {
         }
         else {
             log.debug("Page {} is currently displayed", pageName);
-            elementHighlighter.highlight(driver, page.getPageHeaderRetriever().retrieve(driver));
+            elementHighlighter.highlight(driver, pageHeaderRetriever.retrieve(driver, page.getPageHeaderLocator()));
         }
         log.debug("Open {} page completed", pageName);
     }
@@ -64,8 +67,7 @@ public class DefaultPageOpener implements PageOpener {
     private void highlightPageHeader(WebDriver driver, Pages page) {
         String pageName = page.getName();
         log.debug("Highlight page header for page {} started", pageName);
-        PageHeaderRetriever pageHeaderRetriever = page.getPageHeaderRetriever();
-        WebElement pageHeaderElement = pageHeaderRetriever.retrieve(driver);
+        WebElement pageHeaderElement = pageHeaderRetriever.retrieve(driver, page.getPageHeaderLocator());
         elementHighlighter.highlight(driver, pageHeaderElement);
         log.debug("Highlight page header for page {} completed", pageName);
     }
@@ -73,7 +75,7 @@ public class DefaultPageOpener implements PageOpener {
     private boolean isPageDisplayed(WebDriver driver, Pages page) {
         String pageName = page.getName();
         log.debug("Check if page {} is displayed started", pageName);
-        boolean result = page.getPageHeaderRetriever().isDisplayed(driver);
+        boolean result = pageHeaderRetriever.isDisplayed(driver, page.getPageHeaderLocator());
         log.debug("Check if page {} is displayed completed. Result is {}", pageName, result);
         return result;
     }

@@ -3,6 +3,7 @@ package com.example;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
+import org.openqa.selenium.By;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public enum Pages {
             "Overview",
             OVERVIEW_NAVIGATION_ELEMET,
             "Overview",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Overview']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Overview']"),
             asList(
                     new WidgetsGroup(
                         singletonList(
@@ -138,7 +139,7 @@ public enum Pages {
             "Apps Overview",
             APPS_OVERVIEW_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
             asList(
                     new WidgetsGroup(
                             singletonList(
@@ -227,7 +228,7 @@ public enum Pages {
             "SmartWalkThrus",
             SMART_WALK_THRUS_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
             asList(
                     new WidgetsGroup(
                             singletonList(
@@ -283,7 +284,7 @@ public enum Pages {
             "WalkThrus",
             WALK_THRUS_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Walk-Thrus']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Walk-Thrus']"),
             asList(
 
             )
@@ -292,7 +293,7 @@ public enum Pages {
             "Onboarding",
             ONBOARDING_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Onboarding Tasks']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Onboarding Tasks']"),
             asList(
 
             )
@@ -301,7 +302,7 @@ public enum Pages {
             "ShoutOuts",
             SHOUT_OUTS_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='ShoutOuts']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='ShoutOuts']"),
             asList(
 
             )
@@ -310,7 +311,7 @@ public enum Pages {
             "Launchers",
             LAUNCHERS_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Launchers']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Launchers']"),
             asList(
 
             )
@@ -319,7 +320,7 @@ public enum Pages {
             "Resources",
             RESOURCES_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Resources']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Resources']"),
             asList(
 
             )
@@ -328,7 +329,7 @@ public enum Pages {
             "Shuttles",
             SHUTTLES_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Shuttles']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Shuttles']"),
             asList(
 
             )
@@ -337,7 +338,7 @@ public enum Pages {
             "Surveys",
             SURVEYS_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Surveys']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Surveys']"),
             asList(
 
             )
@@ -346,7 +347,7 @@ public enum Pages {
             "SmartTips",
             SMART_TIPS_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='SmartTips']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='SmartTips']"),
             asList(
 
             )
@@ -355,7 +356,7 @@ public enum Pages {
             "MenuAndSearch",
             MENU_AND_SEARCH_NAVIGATION_ELEMET,
             "Apps",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Menu & Search']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Menu & Search']"),
             asList(
 
             )
@@ -364,7 +365,7 @@ public enum Pages {
             "Users",
             USERS_NAVIGATION_ELEMET,
             "Users",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Users']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Users']"),
             asList(
 
             )
@@ -373,7 +374,7 @@ public enum Pages {
             "Session Playback",
             SESSION_PLAYBACK_NAVIGATION_ELEMET,
             "Session Playback",
-            new PageHeaderRetrieverByXPath("//div[@class='enable-sessions-empty-state__title' and text()='Watch Session Playback']"),
+            By.xpath("//div[@class='enable-sessions-empty-state__title' and text()='Watch Session Playback']"),
             asList(
 
             )
@@ -382,7 +383,7 @@ public enum Pages {
             "Features",
             FEATURES_NAVIGATION_ELEMET,
             "Features",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Features']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Features']"),
             asList(
 
             )
@@ -391,7 +392,7 @@ public enum Pages {
             "Funnels",
             FUNNELS_NAVIGATION_ELEMET,
             "Funnels",
-            new PageHeaderRetrieverByXPath("//div[@class='funnel-selection__title' and text()='Funnels']"),
+            By.xpath("//div[@class='funnel-selection__title' and text()='Funnels']"),
             asList(
 
             )
@@ -400,7 +401,7 @@ public enum Pages {
             "TrackedEventsAnalytics",
             TRACKED_EVENTS_ANALYTICS_NAVIGATION_ELEMET,
             "Tracked Events",
-            new PageHeaderRetrieverByXPath("//div[@class='report-header__page-name' and text()='Tracked Events Analytics']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Tracked Events Analytics']"),
             asList(
 
             )
@@ -409,7 +410,7 @@ public enum Pages {
             "TrackedEventsSetup",
             TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET,
             "Tracked Events",
-            new PageHeaderRetrieverByXPath("//div[@class='tracked-events-report__header__page-name' and text()='Tracked Events Setup']"),
+            By.xpath("//div[@class='tracked-events-report__header__page-name' and text()='Tracked Events Setup']"),
             asList(
 
             )
@@ -418,7 +419,7 @@ public enum Pages {
             "Reports",
             REPORTS_NAVIGATION_ELEMET,
             "Reports",
-            new PageHeaderRetrieverByXPath("//div[@class='reports-page__page-name' and text()='Reports']"),
+            By.xpath("//div[@class='reports-page__page-name' and text()='Reports']"),
             asList(
 
             )
@@ -434,7 +435,7 @@ public enum Pages {
     private String pageTitleContains;
 
     @Getter
-    private PageHeaderRetriever pageHeaderRetriever;
+    private By pageHeaderLocator;
 
     @Getter
     private List<WidgetsGroup> widgetsGroups;
