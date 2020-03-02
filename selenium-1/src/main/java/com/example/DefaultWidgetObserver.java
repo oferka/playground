@@ -1,6 +1,7 @@
 package com.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,25 @@ import java.util.List;
 public class DefaultWidgetObserver implements WidgetObserver {
 
     @Autowired
+    private WidgetBorderRetriever widgetBorderRetriever;
+
+    @Autowired
+    private WidgetTitleRetriever widgetTitleRetriever;
+
+    @Autowired
+    private WidgetBodyRetriever widgetBodyRetriever;
+
+    @Autowired
     private ElementHighlighter elementHighlighter;
 
     @Autowired
     private ExecutionPauser executionPauser;
 
+    @Autowired
+    private ViewStateChangeExecutor viewStateChangeExecutor;
+
     @Override
-    public void observe(WebDriver driver, Widget widget) {
+    public void observe(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget started", widget.getName());
         observeWidgetBorder(driver, widget);
         executionPauser.pause(Duration.ofSeconds(1));
@@ -28,50 +41,49 @@ public class DefaultWidgetObserver implements WidgetObserver {
         executionPauser.pause(Duration.ofSeconds(1));
         observeWidgetBody(driver, widget);
         executionPauser.pause(Duration.ofSeconds(1));
-        executeObservationActions(driver, widget);
+        executeViewStateChangeInstructions(driver, widget);
         log.debug("Observe {} widget completed", widget.getName());
     }
 
-    private void observeWidgetBorder(WebDriver driver, Widget widget) {
+    private void observeWidgetBorder(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget border started", widget.getName());
-        WidgetBorderRetriever widgetBorderRetriever = widget.getWidgetBorderRetriever();
-        if(widgetBorderRetriever != null) {
-            WebElement widgetBorderElement = widgetBorderRetriever.retrieve(driver);
-            log.debug("Found widget border element: {}", widgetBorderElement);
-            elementHighlighter.highlight(driver, widgetBorderElement);
+        By borderLocator = widget.getBorderLocator();
+        if(borderLocator != null) {
+            WebElement borderElement = widgetBorderRetriever.retrieve(driver, borderLocator);
+            log.debug("Found widget border element: {}", borderElement);
+            elementHighlighter.highlight(driver, borderElement);
         }
         log.debug("Observe {} widget border completed", widget.getName());
     }
 
-    private void observeWidgetTitles(WebDriver driver, Widget widget) {
+    private void observeWidgetTitles(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget title started", widget.getName());
-        List<WidgetTitleRetriever> widgetTitleRetrievers = widget.getWidgetTitleRetrievers();
-        for(WidgetTitleRetriever widgetTitleRetriever : widgetTitleRetrievers) {
-            WebElement widgetTitleElement = widgetTitleRetriever.retrieve(driver);
-            log.debug("Found widget title element: {}", widgetTitleElement);
-            elementHighlighter.highlight(driver, widgetTitleElement);
+        List<By> titleLocators = widget.getTitleLocators();
+        for(By titleLocator : titleLocators) {
+            WebElement titleElement = widgetTitleRetriever.retrieve(driver, titleLocator);
+            log.debug("Found widget title element: {}", titleElement);
+            elementHighlighter.highlight(driver, titleElement);
         }
         log.debug("Observe {} widget title completed", widget.getName());
     }
 
-    private void observeWidgetBody(WebDriver driver, Widget widget) {
+    private void observeWidgetBody(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget body started", widget.getName());
-        List<WidgetBodyRetriever> widgetBodyRetrievers = widget.getWidgetBodyRetrievers();
-        for(WidgetBodyRetriever widgetBodyRetriever : widgetBodyRetrievers) {
-            WebElement widgetBodyElement = widgetBodyRetriever.retrieve(driver);
-            log.debug("Found widget body element: {}", widgetBodyElement);
-            elementHighlighter.highlight(driver, widgetBodyElement);
+        List<By> bodyLocators = widget.getBodyLocators();
+        for(By bodyLocator : bodyLocators) {
+            WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
+            log.debug("Found widget body element: {}", bodyElement);
+            elementHighlighter.highlight(driver, bodyElement);
         }
         log.debug("Observe {} widget body completed", widget.getName());
     }
 
-    private void executeObservationActions(WebDriver driver, Widget widget) {
-        log.debug("Execute observation actions for widget {} started", widget.getName());
-        List<ObservationAction> observationActions = widget.getObservationActions();
-        for(ObservationAction observationAction : observationActions) {
-            observationAction.execute(driver);
-            executionPauser.pause(Duration.ofSeconds(1));
+    private void executeViewStateChangeInstructions(WebDriver driver, Widgets widget) {
+        log.debug("Execute view state change instructions for widget {} started", widget.getName());
+        ViewStateChangeInstructions viewStateChangeInstructions = widget.getViewStateChangeInstructions();
+        if(viewStateChangeInstructions != null) {
+            viewStateChangeExecutor.execute(driver, viewStateChangeInstructions);
         }
-        log.debug("Execute observation actions for widget {} completed", widget.getName());
+        log.debug("Execute view state change instructions for widget {} completed", widget.getName());
     }
 }

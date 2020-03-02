@@ -4,5 +4,5 @@ import org.openqa.selenium.WebDriver;
 
 public interface WidgetsGroupObserver {
 
-    void observe(WebDriver driver, WidgetsGroup widgetsGroup);
+    void observe(WebDriver driver, WidgetGroups widgetsGroup);
 }

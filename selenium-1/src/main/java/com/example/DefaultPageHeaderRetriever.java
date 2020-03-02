@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class PageHeaderRetrieverByXPath implements PageHeaderRetriever {
+public class DefaultPageHeaderRetriever implements PageHeaderRetriever {
 
     @Override
     public WebElement retrieve(WebDriver driver, By locator) {

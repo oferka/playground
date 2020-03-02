@@ -18,17 +18,20 @@ public class DefaultWidgetsGroupObserver implements WidgetsGroupObserver {
     @Autowired
     private ExecutionPauser executionPauser;
 
+    @Autowired
+    private PageScroller pageScroller;
+
     @Override
-    public void observe(WebDriver driver, WidgetsGroup widgetsGroup) {
+    public void observe(WebDriver driver, WidgetGroups widgetGroup) {
         log.debug("Observe widgets group started");
-        List<Widget> widgets = widgetsGroup.getWidgets();
-        for(Widget widget : widgets) {
+        List<Widgets> widgets = widgetGroup.getWidgets();
+        for(Widgets widget : widgets) {
             widgetObserver.observe(driver, widget);
-            executionPauser.pause(Duration.ofSeconds(2));
+            executionPauser.pause(Duration.ofSeconds(1));
         }
-        ObservationAction observationAction = widgetsGroup.getObservationAction();
-        if(observationAction != null) {
-            observationAction.execute(driver);
+        PageScrollInstructions pageScrollInstructions = widgetGroup.getPageScrollInstructions();
+        if(pageScrollInstructions != null) {
+            pageScroller.scroll(driver, pageScrollInstructions);
         }
         log.debug("Observe widgets group completed");
     }

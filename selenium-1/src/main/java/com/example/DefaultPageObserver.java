@@ -18,8 +18,8 @@ public class DefaultPageObserver implements PageObserver {
     public void observe(WebDriver driver, Pages page) {
         String pageName = page.getName();
         log.debug("Observe {} page started", pageName);
-        List<WidgetsGroup> widgetsGroups = page.getWidgetsGroups();
-        for(WidgetsGroup widgetsGroup : widgetsGroups) {
+        List<WidgetGroups> widgetGroups = page.getWidgetGroups();
+        for(WidgetGroups widgetsGroup : widgetGroups) {
             widgetsGroupObserver.observe(driver, widgetsGroup);
         }
         log.debug("Observe {} page completed", pageName);

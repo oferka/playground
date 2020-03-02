@@ -4,5 +4,5 @@ import org.openqa.selenium.WebDriver;
 
 public interface WidgetObserver {
 
-    void observe(WebDriver driver, Widget widget);
+    void observe(WebDriver driver, Widgets widget);
 }

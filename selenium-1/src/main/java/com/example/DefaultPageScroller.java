@@ -1,36 +1,41 @@
 package com.example;
 
+import com.example.PageScrollInstructions.ScrollDirections;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 
-import static com.example.PageScroller.ScrollDirections.UP;
+import static com.example.PageScrollInstructions.ScrollDirections.UP;
 import static java.lang.String.format;
 
 @Service
 @Slf4j
 public class DefaultPageScroller implements PageScroller {
 
+    @Autowired
+    private ExecutionPauser executionPauser;
+
     @Override
-    public void scroll(WebDriver driver, ScrollDirections direction, int pixels, ScrollSpeeds speed) {
-        log.debug("Page scroll {} by {} with speed {} started", direction.getName(), pixels, speed);
+    public void scroll(WebDriver driver, PageScrollInstructions pageScrollInstructions) {
+        log.debug("Page scroll started with instructions {} started", pageScrollInstructions);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         int numberOfSteps = 10;
-        int signedPixels = getSignedScroll(direction, pixels);
+        int signedPixels = getSignedScroll(pageScrollInstructions.getDirection(), pageScrollInstructions.getPixels());
         int stepSize = signedPixels/numberOfSteps;
         for(int i=0; i<numberOfSteps; i++) {
             scroll(driver, stepSize);
-            new DefaultExecutionPauser().pause(Duration.ofMillis(speed.getDelay()));
+            executionPauser.pause(Duration.ofMillis(pageScrollInstructions.getSpeed().getDelay()));
         }
         stepSize = signedPixels%numberOfSteps;
         if(stepSize != 0) {
             String script = format("window.scrollBy(0,%s)", stepSize);
             js.executeScript(script, "");
         }
-        log.debug("Page scroll {} by {} with speed {} completed", direction.getName(), pixels, speed);
+        log.debug("Page scroll started with instructions {} completed", pageScrollInstructions);
     }
 
     private int getSignedScroll(ScrollDirections direction, int pixels) {

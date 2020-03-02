@@ -8,12 +8,8 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 import static com.example.NavigationBarElements.*;
-import static com.example.PageScroller.ScrollDirections.DOWN;
-import static com.example.PageScroller.ScrollDirections.UP;
-import static com.example.PageScroller.ScrollSpeeds.MEDIUM;
-import static com.example.ViewStateChangeObservationAction.*;
+import static com.example.WidgetGroups.*;
 import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 
 @ToString
 @AllArgsConstructor
@@ -25,114 +21,9 @@ public enum Pages {
             "Overview",
             By.xpath("//div[@class='report-header__page-name' and text()='Overview']"),
             asList(
-                    new WidgetsGroup(
-                        singletonList(
-                                new Widget(
-                                        "Unique User and Sessions",
-                                        new WidgetBorderRetrieverByXPath("//div[@class='highlights-with-graph']"),
-                                        asList(
-                                                new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Unique Users']"),
-                                                new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Sessions']")
-                                        ),
-                                        asList(
-                                                new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'count of users who visited')]"),
-                                                new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'single visit of a user')]"),
-                                                new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
-                                        ),
-                                        asList(
-
-                                        )
-                                )
-                        ),
-                        new PageScrollObservationAction(DOWN, 200, MEDIUM)
-                    ),
-                    new WidgetsGroup(
-                            asList(
-                                    new Widget(
-                                            "Where are users accessing your site from?",
-                                            new WidgetBorderRetrieverByXPath("//div[@class='sessions-by-country']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']/ancestor::div[@class='view-state']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[text()='MAP']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[text()='LIST']")
-                                            ),
-                                            asList(
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='sessions-by-country__map']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@id='GeoChart']")
-                                            ),
-                                            singletonList(
-                                                    new ViewStateChangeObservationAction(
-                                                            asList(
-                                                                    new ViewState(
-                                                                            "LIST",
-                                                                            new ElementRetrieverByXPath("//div[text()='LIST']"),
-                                                                            new ElementRetrieverByXPath("//div[text()='Country']/ancestor::div[@class='react-bs-table-container']")
-                                                                    ),
-                                                                    new ViewState(
-                                                                            "MAP",
-                                                                            new ElementRetrieverByXPath("//div[text()='MAP']"),
-                                                                            new ElementRetrieverByXPath("//div[@id='GeoChart']")
-                                                                    )
-                                                            )
-                                                    )
-                                            )
-                                    ),
-                                    new Widget(
-                                            "Sessions Duration Breakdown",
-                                            new WidgetBorderRetrieverByXPath("//div[@class='sessions-time-breakdown']"),
-                                            singletonList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']")
-                                            ),
-                                            asList(
-                                                    new WidgetBodyRetrieverByXPath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='result-bar-label']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='report-pie-chart-wrapper']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][1]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][2]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='pie-chart-legend-item'][3]")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(DOWN, 400, MEDIUM)
-                    ),
-                    new WidgetsGroup(
-                            asList(
-                                    new Widget(
-                                            "Top WalkMe Items",
-                                            new WidgetBorderRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
-                                            ),
-                                            singletonList(
-                                                    new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    ),
-                                    new Widget(
-                                            "Top Goals Reached",
-                                            new WidgetBorderRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-icon-image-div' and text()='?']")
-                                            ),
-                                            singletonList(
-                                                    new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(UP, 600, MEDIUM)
-                    )
+                    OVERVIEW_PAGE_GROUP_1,
+                    OVERVIEW_PAGE_GROUP_2,
+                    OVERVIEW_PAGE_GROUP_3
             )
     ),
     APPS_OVERVIEW_PAGE(
@@ -141,87 +32,9 @@ public enum Pages {
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
             asList(
-                    new WidgetsGroup(
-                            singletonList(
-                                    new Widget(
-                                            "Users WalkMe was available to and Users who Interacted with WalkMe and Avg. user interactions with WalkMe",
-                                            new WidgetBorderRetrieverByXPath("//div[@class='highlights-with-graph']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Users WalkMe was available to']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Users who Interacted with WalkMe']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Avg. user interactions with WalkMe']")
-                                            ),
-                                            asList(
-                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'Users who had any WalkMe content visible')]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'Users who interacted with any WalkMe item')]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The average number of times a user has interacted with any WalkMe content.')]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'in Filter')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'Available To')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'more than once')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                                                    new WidgetBodyRetrieverByXPath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(DOWN, 500, MEDIUM)
-                    ),
-                    new WidgetsGroup(
-                            singletonList(
-                                    new Widget(
-                                            "WalkMe Usage by Item Type",
-                                            new WidgetBorderRetrieverByXPath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']"),
-                                            singletonList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']")
-                                            ),
-                                            asList(
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__overview']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__chart ']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='bubble-chart']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-items-usage__table']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(DOWN, 400, MEDIUM)
-                    ),
-                    new WidgetsGroup(
-                            asList(
-                                    new Widget(
-                                            "Top WalkMe Items",
-                                            new WidgetBorderRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
-                                            ),
-                                            singletonList(
-                                                    new WidgetBodyRetrieverByXPath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    ),
-                                    new Widget(
-                                            "Top Goals Reached",
-                                            new WidgetBorderRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-icon-image-div' and text()='?']")
-                                            ),
-                                            singletonList(
-                                                    new WidgetBodyRetrieverByXPath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(UP, 900, MEDIUM)
-                    )
+                    APPS_OVERVIEW_PAGE_GROUP_1,
+                    APPS_OVERVIEW_PAGE_GROUP_2,
+                    APPS_OVERVIEW_PAGE_GROUP_3
             )
     ),
     SMART_WALK_THRUS_PAGE(
@@ -230,54 +43,8 @@ public enum Pages {
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
             asList(
-                    new WidgetsGroup(
-                            singletonList(
-                                    new Widget(
-                                            "Users Played Smart Walk-Thrus and Smart Walk-Thru Plays and Main Goals Reached",
-                                            new WidgetBorderRetrieverByXPath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Users Played Smart Walk-Thrus']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Smart Walk-Thru Plays']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='walkme-app-highlight__title' and text()='Main Goals Reached']")
-                                            ),
-                                            asList(
-                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays that resulted')]"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(DOWN, 500, MEDIUM)
-                    ),
-                    new WidgetsGroup(
-                            singletonList(
-                                    new Widget(
-                                            "Smart Walk-Thrus Summary",
-                                            new WidgetBorderRetrieverByXPath("//div[@class='insights-table__container']"),
-                                            asList(
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='insights-table__header']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='insights-table__title' and text()='Smart Walk-Thrus Summary']"),
-                                                    new WidgetTitleRetrieverByXPath("//div[@class='table-search-bar table-search-bar--blurred']")
-                                            ),
-                                            asList(
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='react-bs-table-container']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination-container']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination-text']"),
-                                                    new WidgetBodyRetrieverByXPath("//div[@class='reports-table__pagination']")
-                                            ),
-                                            asList(
-
-                                            )
-                                    )
-                            ),
-                            new PageScrollObservationAction(UP, 500, MEDIUM)
-                    )
+                    SMART_WALK_THRUS_GROUP_1,
+                    SMART_WALK_THRUS_GROUP_2
             )
     ),
     WALK_THRUS_PAGE(
@@ -438,5 +205,5 @@ public enum Pages {
     private By pageHeaderLocator;
 
     @Getter
-    private List<WidgetsGroup> widgetsGroups;
+    private List<WidgetGroups> widgetGroups;
 }
