@@ -1,6 +1,7 @@
 package com.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,6 +21,9 @@ public class DefaultPageOpener implements PageOpener {
 
     @Autowired
     private ElementHighlighter elementHighlighter;
+
+    @Autowired
+    private NavigationElementRetriever navigationElementRetriever;
 
     @Override
     public void open(WebDriver driver, Pages page) {
@@ -44,13 +48,13 @@ public class DefaultPageOpener implements PageOpener {
         String pageName = page.getName();
         log.debug("Get navigation element for page {} started", pageName);
         NavigationBarElements navigationBarElement = page.getNavigationBarElement();
-        NavigationElementRetriever navigationElementRetriever = navigationBarElement.getNavigationElementRetriever();
-        if (!navigationElementRetriever.isDisplayed(driver)) {
+        By navigationElementLocator = page.getNavigationBarElement().getNavigationElementLocator();
+        if (!navigationElementRetriever.isDisplayed(driver, navigationElementLocator)) {
             NavigationBarElementGroups navigationBarElementGroup = page.getNavigationBarElement().getNavigationBarElementGroup();
             log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", navigationBarElement.getName(), navigationBarElementGroup.getName());
             expandNavigationElement(driver, navigationBarElementGroup);
         }
-        WebElement result = navigationElementRetriever.retrieve(driver);
+        WebElement result = navigationElementRetriever.retrieve(driver, navigationElementLocator);
         log.debug("Get navigation element for page {} completed. Element text is {}", pageName, result.getText());
         return result;
     }
@@ -58,7 +62,8 @@ public class DefaultPageOpener implements PageOpener {
     private void expandNavigationElement(WebDriver driver, NavigationBarElementGroups navigationBarElementGroup) {
         String navigationBarElementGroupName = navigationBarElementGroup.getName();
         log.debug("Expand {} navigation element started", navigationBarElementGroupName);
-        WebElement navigationElement = navigationBarElementGroup.getNavigationElementRetriever().retrieve(driver);
+        By navigationElementLocator = navigationBarElementGroup.getNavigationElementLocator();
+        WebElement navigationElement = navigationElementRetriever.retrieve(driver, navigationElementLocator);
         elementHighlighter.highlight(driver, navigationElement);
         navigationElement.click();
         log.debug("Expand {} navigation element completed", navigationBarElementGroupName);
