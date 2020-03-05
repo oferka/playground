@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.util.List;
 
 @Service
@@ -27,7 +26,7 @@ public class DefaultWidgetsGroupObserver implements WidgetsGroupObserver {
         List<Widgets> widgets = widgetGroup.getWidgets();
         for(Widgets widget : widgets) {
             widgetObserver.observe(driver, widget);
-            executionPauser.pause(Duration.ofSeconds(1));
+            executionPauser.pause();
         }
         PageScrollInstructions pageScrollInstructions = widgetGroup.getPageScrollInstructions();
         if(pageScrollInstructions != null) {

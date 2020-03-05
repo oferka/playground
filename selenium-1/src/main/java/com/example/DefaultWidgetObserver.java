@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.util.List;
 
 @Service
@@ -36,11 +35,11 @@ public class DefaultWidgetObserver implements WidgetObserver {
     public void observe(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget started", widget.getName());
         observeWidgetBorder(driver, widget);
-        executionPauser.pause(Duration.ofSeconds(1));
+        executionPauser.pause();
         observeWidgetTitles(driver, widget);
-        executionPauser.pause(Duration.ofSeconds(1));
+        executionPauser.pause();
         observeWidgetBody(driver, widget);
-        executionPauser.pause(Duration.ofSeconds(1));
+        executionPauser.pause();
         executeViewStateChangeInstructions(driver, widget);
         log.debug("Observe {} widget completed", widget.getName());
     }

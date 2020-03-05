@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.util.List;
 
 @Service
@@ -30,7 +29,7 @@ public class DefaultViewStateChangeExecutor implements ViewStateChangeExecutor {
         List<ViewState> viewStates = viewStateChangeInstructions.getViewStates();
         for(ViewState viewState : viewStates) {
             execute(driver, viewState);
-            executionPauser.pause(Duration.ofSeconds(1));
+            executionPauser.pause();
         }
         log.debug("View state change executor completed");
     }
