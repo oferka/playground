@@ -23,6 +23,12 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
     @Autowired
     private ElementHighlighter elementHighlighter;
 
+    @Autowired
+    private ElementMouseHoverer elementMouseHoverer;
+
+    @Autowired
+    private ExecutionPauser executionPauser;
+
     @Override
     public void open(WebDriver driver) {
         log.debug("Open landing page started");
@@ -60,6 +66,8 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
 
     private void enterText(WebDriver driver, WebElement element, String text) {
         elementHighlighter.highlight(driver, element);
+        elementMouseHoverer.hover(driver, element);
+        executionPauser.pause();
         element.sendKeys(text);
         element.sendKeys(Keys.ENTER);
     }

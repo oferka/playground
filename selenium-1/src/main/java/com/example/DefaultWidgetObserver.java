@@ -26,6 +26,9 @@ public class DefaultWidgetObserver implements WidgetObserver {
     private ElementHighlighter elementHighlighter;
 
     @Autowired
+    private ElementMouseHoverer elementMouseHoverer;
+
+    @Autowired
     private ExecutionPauser executionPauser;
 
     @Autowired
@@ -62,6 +65,8 @@ public class DefaultWidgetObserver implements WidgetObserver {
             WebElement titleElement = widgetTitleRetriever.retrieve(driver, titleLocator);
             log.debug("Found widget title element: {}", titleElement);
             elementHighlighter.highlight(driver, titleElement);
+            elementMouseHoverer.hover(driver, titleElement);
+            executionPauser.pause();
         }
         log.debug("Observe {} widget title completed", widget.getName());
     }
@@ -73,6 +78,8 @@ public class DefaultWidgetObserver implements WidgetObserver {
             WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
             log.debug("Found widget body element: {}", bodyElement);
             elementHighlighter.highlight(driver, bodyElement);
+            elementMouseHoverer.hover(driver, bodyElement);
+            executionPauser.pause();
         }
         log.debug("Observe {} widget body completed", widget.getName());
     }
