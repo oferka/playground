@@ -7,11 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.format;
-import static java.util.Arrays.asList;
 
 @Service
 @Slf4j
@@ -43,8 +42,8 @@ public class DefaultPageObserver implements PageObserver {
     private void observe(WebDriver driver, Pages page, String filterValue, String timePeriodValue) {
         String pageName = page.getName();
         log.debug("Observe {} page with filter {} and time period {} started", pageName, filterValue, timePeriodValue);
-        setFilterValue(driver, filterValue);
-        setTimePeriodValue(driver, timePeriodValue);
+        setFilterValue(driver, page, filterValue);
+        setTimePeriodValue(driver, page, timePeriodValue);
         observerWidgetGroup(driver, page.getWidgetGroups());
         log.debug("Observe {} page with filter {} and time period {} completed", pageName, filterValue, timePeriodValue);
     }
@@ -56,42 +55,84 @@ public class DefaultPageObserver implements PageObserver {
     }
 
     private List<String> getFilterValues(WebDriver driver, Pages page) {
-        return asList(
-                "All Sessions",
-                "need training visits",
-                "Chrome users",
-                "Accessed PPS+ Article"
-        );
+//        return asList(
+//                "All Sessions",
+//                "need training visits",
+//                "Chrome users",
+//                "Accessed PPS+ Article"
+//        );
+        log.debug("Get filter values in page {} started", page.getName());
+        openFilterList(driver);
+        executionPauser.pause();
+        List<String> result = new ArrayList<>();
+        List<WebElement> valueElements = driver.findElements(By.xpath("//span[@class='suggestion-highlight-container']"));
+        for(WebElement valueElement : valueElements) {
+            if(!result.contains(valueElement.getText())) {
+                result.add(valueElement.getText());
+            }
+        }
+        closeFilterList(driver);
+        log.debug("Get filter values in page {} completed. Result is: {}", page.getName(), result);
+        return result;
+    }
+
+    private void closeFilterList(WebDriver driver) {
+        log.debug("Close filter list started");
+        WebElement filterContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']"));
+        elementHighlighter.highlight(driver, filterContainerElement);
+        filterContainerElement.click();
+        log.debug("Close filter list completed");
     }
 
     private List<String> getTimePeriodValues(WebDriver driver, Pages page) {
-        return asList(
-                "Today",
-                "Yesterday",
-                "Last Week",
-                "Last Month",
-                "Last 3 Months",
-                "Last 7 Days",
-                "Last 30 Days",
-                "Last 90 Days"
-        );
+//        return asList(
+//                "Today",
+//                "Yesterday",
+//                "Last Week",
+//                "Last Month",
+//                "Last 3 Months",
+//                "Last 7 Days",
+//                "Last 30 Days",
+//                "Last 90 Days"
+//        );
+        log.debug("Get time period values for page {} started", page.getName());
+        openTimePeriodList(driver);
+        executionPauser.pause();
+        List<String> result = new ArrayList<>();
+        List<WebElement> valueElements = driver.findElements(By.xpath("//div[@class='dropdown-menu-item']"));
+        for(WebElement valueElement : valueElements) {
+            if(!result.contains(valueElement.getText())) {
+                result.add(valueElement.getText());
+            }
+        }
+        closeTimePeriodList(driver);
+        log.debug("Get time period values for page {} completed. Result is: {}", page.getName(), result);
+        return result;
     }
 
-    private void setFilterValue(WebDriver driver, String filterValue) {
-        log.debug("Set filter value to {} started", filterValue);
+    private void closeTimePeriodList(WebDriver driver) {
+        log.debug("Close time period list started");
+        WebElement timePeriodContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']"));
+        elementHighlighter.highlight(driver, timePeriodContainerElement);
+        timePeriodContainerElement.click();
+        log.debug("Close time period list completed");
+    }
+
+    private void setFilterValue(WebDriver driver, Pages page, String filterValue) {
+        log.debug("Set filter value to {} on page {} started", filterValue, page.getName());
         WebElement filterContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']"));
         elementHighlighter.highlight(driver, filterContainerElement);
         String currentFilterValue = getCurrentFilterValue(driver);
         if(currentFilterValue.equals(filterValue)) {
-            log.debug("Filter value {} is already selected", filterValue);
+            log.debug("Filter value {} is already selected on page {}", filterValue, page.getName());
         }
         else {
             openFilterList(driver);
-            executionPauser.pause(Duration.ofSeconds(1));
+            executionPauser.pause();
             selectFilterValue(driver, filterValue);
-            executionPauser.pause(Duration.ofSeconds(1));
+            executionPauser.pause();
         }
-        log.debug("Set filter value to {} completed", filterValue);
+        log.debug("Set filter value to {} on page {} completed", filterValue, page.getName());
     }
 
     private String getCurrentFilterValue(WebDriver driver) {
@@ -104,10 +145,26 @@ public class DefaultPageObserver implements PageObserver {
 
     private void openFilterList(WebDriver driver) {
         log.debug("Open filter list started");
-        WebElement filterTextElement = driver.findElement(By.xpath("//span[@class='suggestion-highlight-container']/ancestor::div[@class='overflow-tooltip']"));
-        elementHighlighter.highlight(driver, filterTextElement);
-        filterTextElement.click();
+        if(isFilterListDisplayed(driver)) {
+            log.debug("Filter list is already displayed");
+        }
+        else {
+            WebElement filterTextElement = driver.findElement(By.xpath("//span[@class='suggestion-highlight-container']/ancestor::div[@class='overflow-tooltip']"));
+            elementHighlighter.highlight(driver, filterTextElement);
+            filterTextElement.click();
+        }
         log.debug("Open filter list completed");
+    }
+
+    private boolean isFilterListDisplayed(WebDriver driver) {
+        log.debug("Check if filter list is displayed started");
+        boolean result = false;
+        List<WebElement> valueElements = driver.findElements(By.xpath("//span[@class='suggestion-highlight-container']"));
+        if(valueElements.size() > 1) {
+            result = true;
+        }
+        log.debug("Check if filter list is displayed completed. Result is {}", result);
+        return result;
     }
 
     private void selectFilterValue(WebDriver driver, String filterValue) {
@@ -120,21 +177,21 @@ public class DefaultPageObserver implements PageObserver {
         log.debug("Select filter value {} completed", filterValue);
     }
 
-    private void setTimePeriodValue(WebDriver driver, String timePeriodValue) {
-        log.debug("Set time period value to {} started", timePeriodValue);
+    private void setTimePeriodValue(WebDriver driver, Pages page, String timePeriodValue) {
+        log.debug("Set time period value to {} on page {} started", timePeriodValue, page.getName());
         WebElement timePeriodContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']"));
         elementHighlighter.highlight(driver, timePeriodContainerElement);
         String currentTimePeriodValue = getCurrentTimePeriodValue(driver);
         if(currentTimePeriodValue.equals(timePeriodValue)) {
-            log.debug("Time period value {} is already selected", timePeriodValue);
+            log.debug("Time period value {} is already selected on page {}", timePeriodValue, page.getName());
         }
         else {
             openTimePeriodList(driver);
-            executionPauser.pause(Duration.ofSeconds(1));
+            executionPauser.pause();
             selectTimePeriodValue(driver, timePeriodValue);
-            executionPauser.pause(Duration.ofSeconds(1));
+            executionPauser.pause();
         }
-        log.debug("Set time period value to {} completed", timePeriodValue);
+        log.debug("Set time period value to {} on page {} completed", timePeriodValue, page.getName());
     }
 
     private String getCurrentTimePeriodValue(WebDriver driver) {
@@ -147,10 +204,26 @@ public class DefaultPageObserver implements PageObserver {
 
     private void openTimePeriodList(WebDriver driver) {
         log.debug("Open time period list started");
-        WebElement timePeriodTextElement = driver.findElement(By.xpath("//div[@class='datepicker__dropdown-toggle__title']"));
-        elementHighlighter.highlight(driver, timePeriodTextElement);
-        timePeriodTextElement.click();
+        if(isTimePeriodListDisplayed(driver)) {
+            log.debug("Time period list is already displayed");
+        }
+        else {
+            WebElement timePeriodTextElement = driver.findElement(By.xpath("//div[@class='datepicker__dropdown-toggle__title']"));
+            elementHighlighter.highlight(driver, timePeriodTextElement);
+            timePeriodTextElement.click();
+        }
         log.debug("Open time period list completed");
+    }
+
+    private boolean isTimePeriodListDisplayed(WebDriver driver) {
+        log.debug("Check if time period list is displayed started");
+        boolean result = false;
+        List<WebElement> valueElements = driver.findElements(By.xpath("//div[@class='dropdown-menu-item']"));
+        if(!valueElements.isEmpty()) {
+            result = true;
+        }
+        log.debug("Check if time period list is displayed completed. Result is {}", result);
+        return result;
     }
 
     private void selectTimePeriodValue(WebDriver driver, String timePeriodValue) {
