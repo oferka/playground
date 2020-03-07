@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +44,10 @@ public class DefaultPageFilterController implements PageFilterController {
     @Override
     public void setFilterValue(WebDriver driver, Pages page, String filterValue) {
         log.debug("Set filter value to {} on page {} started", filterValue, page.getName());
-        WebElement filterContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']"));
+        WebElement filterContainerElement = waitForAndGetElement(
+                driver,
+                By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']")
+        );
         elementHighlighter.highlight(driver, filterContainerElement);
         String currentFilterValue = getCurrentFilterValue(driver, page);
         if(currentFilterValue.equals(filterValue)) {
@@ -59,7 +64,10 @@ public class DefaultPageFilterController implements PageFilterController {
 
     private void closeFilterList(WebDriver driver, Pages page) {
         log.debug("Close filter list in page {} started", page.getName());
-        WebElement filterContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']"));
+        WebElement filterContainerElement = waitForAndGetElement(
+                driver,
+                By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']")
+        );
         elementHighlighter.highlight(driver, filterContainerElement);
         filterContainerElement.click();
         log.debug("Close filter list in page {} completed", page.getName());
@@ -67,7 +75,10 @@ public class DefaultPageFilterController implements PageFilterController {
 
     private String getCurrentFilterValue(WebDriver driver, Pages page) {
         log.debug("Get current filter value in page {} started", page.getName());
-        WebElement filterValueElement = driver.findElement(By.xpath("//span[@class='suggestion-highlight-container']"));
+        WebElement filterValueElement = waitForAndGetElement(
+                driver,
+                By.xpath("//span[@class='suggestion-highlight-container']")
+        );
         String result = filterValueElement.getText();
         log.debug("Get current filter value in page {} completed. Result is {}", page.getName(), result);
         return result;
@@ -79,7 +90,10 @@ public class DefaultPageFilterController implements PageFilterController {
             log.debug("Filter list in page {} is already displayed", page.getName());
         }
         else {
-            WebElement filterTextElement = driver.findElement(By.xpath("//span[@class='suggestion-highlight-container']/ancestor::div[@class='overflow-tooltip']"));
+            WebElement filterTextElement = waitForAndGetElement(
+                    driver,
+                    By.xpath("//span[@class='suggestion-highlight-container']/ancestor::div[@class='overflow-tooltip']")
+            );
             elementHighlighter.highlight(driver, filterTextElement);
             filterTextElement.click();
         }
@@ -100,10 +114,19 @@ public class DefaultPageFilterController implements PageFilterController {
     private void selectFilterValue(WebDriver driver, Pages page, String filterValue) {
         log.debug("Select filter value {} in page {} started", filterValue, page.getName());
         String xpath = format("//span[@class='suggestion-highlight-container' and text()='%s']", filterValue);
-        WebElement filterValueElement = driver.findElement(By.xpath(xpath));
+        WebElement filterValueElement = waitForAndGetElement(
+                driver,
+                By.xpath(xpath)
+        );
         elementHighlighter.highlight(driver, filterValueElement);
         executionPauser.pause();
         filterValueElement.click();
         log.debug("Select filter value {} in page {} completed", filterValue, page.getName());
+    }
+
+    private WebElement waitForAndGetElement(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return driver.findElement(locator);
     }
 }

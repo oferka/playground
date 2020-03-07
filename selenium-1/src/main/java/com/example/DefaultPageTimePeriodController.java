@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +44,10 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
     @Override
     public void setTimePeriodValue(WebDriver driver, Pages page, String timePeriodValue) {
         log.debug("Set time period value to {} in page {} started", timePeriodValue, page.getName());
-        WebElement timePeriodContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']"));
+        WebElement timePeriodContainerElement = waitForAndGetElement(
+                driver,
+                By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']")
+        );
         elementHighlighter.highlight(driver, timePeriodContainerElement);
         String currentTimePeriodValue = getCurrentTimePeriodValue(driver, page);
         if(currentTimePeriodValue.equals(timePeriodValue)) {
@@ -59,7 +64,10 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
 
     private void closeTimePeriodList(WebDriver driver, Pages page) {
         log.debug("Close time period list in page {} started", page.getName());
-        WebElement timePeriodContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']"));
+        WebElement timePeriodContainerElement = waitForAndGetElement(
+                driver,
+                By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']")
+        );
         elementHighlighter.highlight(driver, timePeriodContainerElement);
         timePeriodContainerElement.click();
         log.debug("Close time period list in page {} completed", page.getName());
@@ -67,7 +75,10 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
 
     private String getCurrentTimePeriodValue(WebDriver driver, Pages page) {
         log.debug("Get current time period value in page {} started", page.getName());
-        WebElement timePeriodValueElement = driver.findElement(By.xpath("//div[@class='datepicker__dropdown-toggle__title']"));
+        WebElement timePeriodValueElement = waitForAndGetElement(
+                driver,
+                By.xpath("//div[@class='datepicker__dropdown-toggle__title']")
+        );
         String result = timePeriodValueElement.getText();
         log.debug("Get current time period value in page {} completed. Result is {}", page.getName(), result);
         return result;
@@ -79,7 +90,10 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
             log.debug("Time period list is already displayed in page {}", page.getName());
         }
         else {
-            WebElement timePeriodTextElement = driver.findElement(By.xpath("//div[@class='datepicker__dropdown-toggle__title']"));
+            WebElement timePeriodTextElement = waitForAndGetElement(
+                    driver,
+                    By.xpath("//div[@class='datepicker__dropdown-toggle__title']")
+            );
             elementHighlighter.highlight(driver, timePeriodTextElement);
             timePeriodTextElement.click();
         }
@@ -100,16 +114,28 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
     private void selectTimePeriodValue(WebDriver driver, Pages page, String timePeriodValue) {
         log.debug("Select time period value {} in page {} started", timePeriodValue, page.getName());
         String xpath = format("//div[@class='dropdown-menu-item' and text()='%s']", timePeriodValue);
-        WebElement timePeriodValueElement = driver.findElement(By.xpath(xpath));
+        WebElement timePeriodValueElement = waitForAndGetElement(
+                driver,
+                By.xpath(xpath)
+        );
         elementHighlighter.highlight(driver, timePeriodValueElement);
         executionPauser.pause();
         timePeriodValueElement.click();
         if(timePeriodValue.equals("Custom Dates")) {
-            WebElement applyButton = driver.findElement(By.xpath("//div[@class='button custom-date-range__submit-button custom-date-range__submit-button_active' and text()='Apply']"));
+            WebElement applyButton = waitForAndGetElement(
+                    driver,
+                    By.xpath("//div[@class='button custom-date-range__submit-button custom-date-range__submit-button_active' and text()='Apply']")
+            );
             elementHighlighter.highlight(driver, applyButton);
             executionPauser.pause();
             applyButton.click();
         }
         log.debug("Select time period value {} in page {} completed", timePeriodValue, page.getName());
+    }
+
+    private WebElement waitForAndGetElement(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return driver.findElement(locator);
     }
 }
