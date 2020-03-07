@@ -55,12 +55,6 @@ public class DefaultPageObserver implements PageObserver {
     }
 
     private List<String> getFilterValues(WebDriver driver, Pages page) {
-//        return asList(
-//                "All Sessions",
-//                "need training visits",
-//                "Chrome users",
-//                "Accessed PPS+ Article"
-//        );
         log.debug("Get filter values in page {} started", page.getName());
         openFilterList(driver);
         executionPauser.pause();
@@ -85,16 +79,6 @@ public class DefaultPageObserver implements PageObserver {
     }
 
     private List<String> getTimePeriodValues(WebDriver driver, Pages page) {
-//        return asList(
-//                "Today",
-//                "Yesterday",
-//                "Last Week",
-//                "Last Month",
-//                "Last 3 Months",
-//                "Last 7 Days",
-//                "Last 30 Days",
-//                "Last 90 Days"
-//        );
         log.debug("Get time period values for page {} started", page.getName());
         openTimePeriodList(driver);
         executionPauser.pause();
