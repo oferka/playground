@@ -25,11 +25,14 @@ public class DefaultPageObserver implements PageObserver {
     @Autowired
     private ExecutionPauser executionPauser;
 
+    @Autowired
+    private PageFilterController pageFilterController;
+
     @Override
     public void observe(WebDriver driver, Pages page) {
         String pageName = page.getName();
         log.debug("Observe {} page started", pageName);
-        List<String> filterValues = getFilterValues(driver, page);
+        List<String> filterValues = pageFilterController.getFilterValues(driver, page);
         List<String> timePeriodValues = getTimePeriodValues(driver, page);
         for(String filterValue : filterValues) {
             for(String timePeriodValue : timePeriodValues) {
@@ -42,7 +45,7 @@ public class DefaultPageObserver implements PageObserver {
     private void observe(WebDriver driver, Pages page, String filterValue, String timePeriodValue) {
         String pageName = page.getName();
         log.debug("Observe {} page with filter {} and time period {} started", pageName, filterValue, timePeriodValue);
-        setFilterValue(driver, page, filterValue);
+        pageFilterController.setFilterValue(driver, page, filterValue);
         setTimePeriodValue(driver, page, timePeriodValue);
         observerWidgetGroup(driver, page.getWidgetGroups());
         log.debug("Observe {} page with filter {} and time period {} completed", pageName, filterValue, timePeriodValue);
@@ -52,30 +55,6 @@ public class DefaultPageObserver implements PageObserver {
         for(WidgetGroups widgetsGroup : widgetGroups) {
             widgetsGroupObserver.observe(driver, widgetsGroup);
         }
-    }
-
-    private List<String> getFilterValues(WebDriver driver, Pages page) {
-        log.debug("Get filter values in page {} started", page.getName());
-        openFilterList(driver, page);
-        executionPauser.pause();
-        List<String> result = new ArrayList<>();
-        List<WebElement> valueElements = driver.findElements(By.xpath("//span[@class='suggestion-highlight-container']"));
-        for(WebElement valueElement : valueElements) {
-            if(!result.contains(valueElement.getText())) {
-                result.add(valueElement.getText());
-            }
-        }
-        closeFilterList(driver);
-        log.debug("Get filter values in page {} completed. Result is: {}", page.getName(), result);
-        return result;
-    }
-
-    private void closeFilterList(WebDriver driver) {
-        log.debug("Close filter list started");
-        WebElement filterContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']"));
-        elementHighlighter.highlight(driver, filterContainerElement);
-        filterContainerElement.click();
-        log.debug("Close filter list completed");
     }
 
     private List<String> getTimePeriodValues(WebDriver driver, Pages page) {
@@ -100,65 +79,6 @@ public class DefaultPageObserver implements PageObserver {
         elementHighlighter.highlight(driver, timePeriodContainerElement);
         timePeriodContainerElement.click();
         log.debug("Close time period list completed");
-    }
-
-    private void setFilterValue(WebDriver driver, Pages page, String filterValue) {
-        log.debug("Set filter value to {} on page {} started", filterValue, page.getName());
-        WebElement filterContainerElement = driver.findElement(By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__dropdown-toggle report-header__dropdown-toggle--selected']"));
-        elementHighlighter.highlight(driver, filterContainerElement);
-        String currentFilterValue = getCurrentFilterValue(driver, page);
-        if(currentFilterValue.equals(filterValue)) {
-            log.debug("Filter value {} is already selected on page {}", filterValue, page.getName());
-        }
-        else {
-            openFilterList(driver, page);
-            executionPauser.pause();
-            selectFilterValue(driver, page, filterValue);
-            executionPauser.pause();
-        }
-        log.debug("Set filter value to {} on page {} completed", filterValue, page.getName());
-    }
-
-    private String getCurrentFilterValue(WebDriver driver, Pages page) {
-        log.debug("Get current filter value in page {} started", page.getName());
-        WebElement filterValueElement = driver.findElement(By.xpath("//span[@class='suggestion-highlight-container']"));
-        String result = filterValueElement.getText();
-        log.debug("Get current filter value in page {} completed. Result is {}", page.getName(), result);
-        return result;
-    }
-
-    private void openFilterList(WebDriver driver, Pages page) {
-        log.debug("Open filter list in page {} started", page.getName());
-        if(isFilterListDisplayed(driver, page)) {
-            log.debug("Filter list in page {} is already displayed", page.getName());
-        }
-        else {
-            WebElement filterTextElement = driver.findElement(By.xpath("//span[@class='suggestion-highlight-container']/ancestor::div[@class='overflow-tooltip']"));
-            elementHighlighter.highlight(driver, filterTextElement);
-            filterTextElement.click();
-        }
-        log.debug("Open filter list in page {} completed", page.getName());
-    }
-
-    private boolean isFilterListDisplayed(WebDriver driver, Pages page) {
-        log.debug("Check if filter list is displayed in page {} started", page.getName());
-        boolean result = false;
-        List<WebElement> valueElements = driver.findElements(By.xpath("//span[@class='suggestion-highlight-container']"));
-        if(valueElements.size() > 1) {
-            result = true;
-        }
-        log.debug("Check if filter list is displayed in page {} completed. Result is {}", page.getName(), result);
-        return result;
-    }
-
-    private void selectFilterValue(WebDriver driver, Pages page, String filterValue) {
-        log.debug("Select filter value {} in page {} started", filterValue, page.getName());
-        String xpath = format("//span[@class='suggestion-highlight-container' and text()='%s']", filterValue);
-        WebElement filterValueElement = driver.findElement(By.xpath(xpath));
-        elementHighlighter.highlight(driver, filterValueElement);
-        executionPauser.pause();
-        filterValueElement.click();
-        log.debug("Select filter value {} in page {} completed", filterValue, page.getName());
     }
 
     private void setTimePeriodValue(WebDriver driver, Pages page, String timePeriodValue) {
