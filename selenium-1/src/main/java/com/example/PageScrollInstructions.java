@@ -29,7 +29,7 @@ public class PageScrollInstructions {
     @AllArgsConstructor
     enum ScrollSpeeds {
         FAST ("Fast", 100),
-        MEDIUM("Medium", 500),
+        MEDIUM("Medium", 250),
         SLOW("Slow", 1000);
 
         @Getter
