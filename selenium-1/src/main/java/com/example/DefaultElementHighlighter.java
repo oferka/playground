@@ -18,7 +18,7 @@ public class DefaultElementHighlighter implements ElementHighlighter {
 
     @Override
     public void highlight(WebDriver driver, WebElement element) {
-        log.debug("Element {} highlighting started", element.getText());
+        log.debug("Element highlighting started");
         if(elementHighlighterConfiguration.isEnabled()) {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             String script = format(
@@ -29,6 +29,6 @@ public class DefaultElementHighlighter implements ElementHighlighter {
             );
             js.executeScript(script, element);
         }
-        log.debug("Element {} highlighting completed", element.getText());
+        log.debug("Element highlighting completed");
     }
 }

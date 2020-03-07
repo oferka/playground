@@ -21,7 +21,7 @@ public class DefaultPageScroller implements PageScroller {
 
     @Override
     public void scroll(WebDriver driver, PageScrollInstructions pageScrollInstructions) {
-        log.debug("Page scroll started with instructions {} started", pageScrollInstructions);
+        log.debug("Page scroll started");
         JavascriptExecutor js = (JavascriptExecutor) driver;
         int numberOfSteps = 10;
         int signedPixels = getSignedScroll(pageScrollInstructions.getDirection(), pageScrollInstructions.getPixels());
@@ -35,7 +35,7 @@ public class DefaultPageScroller implements PageScroller {
             String script = format("window.scrollBy(0,%s)", stepSize);
             js.executeScript(script, "");
         }
-        log.debug("Page scroll started with instructions {} completed", pageScrollInstructions);
+        log.debug("Page scroll completed");
     }
 
     private int getSignedScroll(ScrollDirections direction, int pixels) {

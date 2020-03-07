@@ -16,11 +16,11 @@ public class DefaultElementMouseHoverer implements ElementMouseHoverer {
 
     @Override
     public void hover(WebDriver driver, WebElement element) {
-        log.debug("Element {} mouse hover started", element.getText());
+        log.debug("Element mouse hover started");
         if(elementMouseHovererConfiguration.isEnabled()) {
             Actions actions = new Actions(driver);
             actions.moveToElement(element).perform();
         }
-        log.debug("Element {} mouse hover completed", element.getText());
+        log.debug("Element mouse hover completed");
     }
 }

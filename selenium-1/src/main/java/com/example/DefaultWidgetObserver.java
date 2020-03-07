@@ -52,7 +52,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
         By borderLocator = widget.getBorderLocator();
         if(borderLocator != null) {
             WebElement borderElement = widgetBorderRetriever.retrieve(driver, borderLocator);
-            log.debug("Found widget border element: {}", borderElement);
+            log.debug("Found widget border element");
             elementHighlighter.highlight(driver, borderElement);
         }
         log.debug("Observe {} widget border completed", widget.getName());
@@ -63,7 +63,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
         List<By> titleLocators = widget.getTitleLocators();
         for(By titleLocator : titleLocators) {
             WebElement titleElement = widgetTitleRetriever.retrieve(driver, titleLocator);
-            log.debug("Found widget title element: {}", titleElement);
+            log.debug("Found widget title element");
             elementHighlighter.highlight(driver, titleElement);
             elementMouseHoverer.hover(driver, titleElement);
             executionPauser.pause();
@@ -76,7 +76,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
         List<By> bodyLocators = widget.getBodyLocators();
         for(By bodyLocator : bodyLocators) {
             WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
-            log.debug("Found widget body element: {}", bodyElement);
+            log.debug("Found widget body element");
             elementHighlighter.highlight(driver, bodyElement);
             elementMouseHoverer.hover(driver, bodyElement);
             executionPauser.pause();

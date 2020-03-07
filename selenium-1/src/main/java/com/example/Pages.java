@@ -159,7 +159,7 @@ public enum Pages {
             "Funnels",
             FUNNELS_NAVIGATION_ELEMET,
             "Funnels",
-            By.xpath("//div[@class='funnel-selection__title' and text()='Funnels']"),
+            By.xpath("//div[@class='report-header__page-name' and text()='Funnels']"),
             asList(
 
             )

@@ -19,7 +19,7 @@ public class DefaultPageHeaderRetriever implements PageHeaderRetriever {
 
     @Override
     public boolean isDisplayed(WebDriver driver, By locator) {
-        log.debug("Check if page header identified by locator: {} is currently displayed started", locator);
+        log.debug("Check if page header is currently displayed started");
         boolean result;
         try {
             WebElement element = driver.findElement(locator);
@@ -29,7 +29,7 @@ public class DefaultPageHeaderRetriever implements PageHeaderRetriever {
         catch (Exception e) {
             result = false;
         }
-        log.debug("Check if page header identified by locator: {} is currently displayed completed. result is: {}", locator, result);
+        log.debug("Check if page header is currently displayed completed. result is: {}", result);
         return result;
     }
 }

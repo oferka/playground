@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -22,6 +23,7 @@
         <module name="profile-1" />
         <module name="list-1" />
         <module name="gateway-1" />
+        <module name="cli-1" />
         <module name="data-mongodb-1" />
         <module name="jsonb-1" />
         <module name="logging-1" />
@@ -33,7 +35,6 @@
         <module name="logstash-1" />
         <module name="zuul-1-gateway" />
         <module name="configuration-properties-1" />
-        <module name="rest-test-1" />
         <module name="batch-3" />
         <module name="junit5-1" />
         <module name="batch-1" />
@@ -79,7 +80,7 @@
         <module name="hal-browser-1" />
         <module name="jquery-1" />
         <module name="batch-2" />
-        <module name="cli-1" />
+        <module name="rest-test-1" />
         <module name="cors-1" />
         <module name="neo4j-1" />
         <module name="shell-1" />
