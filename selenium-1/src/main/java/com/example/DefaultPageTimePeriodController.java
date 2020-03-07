@@ -104,6 +104,12 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
         elementHighlighter.highlight(driver, timePeriodValueElement);
         executionPauser.pause();
         timePeriodValueElement.click();
+        if(timePeriodValue.equals("Custom Dates")) {
+            WebElement applyButton = driver.findElement(By.xpath("//div[@class='button custom-date-range__submit-button custom-date-range__submit-button_active' and text()='Apply']"));
+            elementHighlighter.highlight(driver, applyButton);
+            executionPauser.pause();
+            applyButton.click();
+        }
         log.debug("Select time period value {} in page {} completed", timePeriodValue, page.getName());
     }
 }
