@@ -20,6 +20,6 @@ public class ViewStateChangeInstructions {
     public static class ViewState {
         private String name;
         private By controlLocator;
-        private By viewLocator;
+        private List<By> viewLocators;
     }
 }

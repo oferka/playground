@@ -16,4 +16,20 @@ public class DefaultElementRetriever implements ElementRetriever {
     public WebElement retrieve(WebDriver driver, By locator) {
         return new WebDriverWait(driver, 60).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
+
+    @Override
+    public boolean isDisplayed(WebDriver driver, By locator) {
+        log.debug("Check if element is currently displayed started");
+        boolean result;
+        try {
+            WebElement element = driver.findElement(locator);
+            log.debug("Found element");
+            result = true;
+        }
+        catch (Exception e) {
+            result = false;
+        }
+        log.debug("Check if element is currently displayed completed. result is: {}", result);
+        return result;
+    }
 }

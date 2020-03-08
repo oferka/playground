@@ -99,12 +99,41 @@
                                 new ViewState(
                                         "LIST",
                                         By.xpath("//div[text()='LIST']"),
-                                        By.xpath("//div[text()='Country']/ancestor::div[@class='react-bs-table-container']")
+                                        asList(
+                                                By.xpath("//div[text()='Country']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[text()='Country']/following::tr[@class='report-list-view__row'][1]"),
+                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][1]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__country-name'][1]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__count'][1]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][1]"),
+                                                By.xpath("//div[text()='Country']/following::tr[@class='report-list-view__row'][2]"),
+                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][2]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__country-name'][2]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__count'][2]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][2]"),
+                                                By.xpath("//div[text()='Country']/following::tr[@class='report-list-view__row'][3]"),
+                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][3]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__country-name'][3]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__count'][3]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][3]"),
+                                                By.xpath("//div[text()='Country']/following::tr[@class='report-list-view__row'][4]"),
+                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][4]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__country-name'][4]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__count'][4]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][4]"),
+                                                By.xpath("//div[text()='Country']/following::tr[@class='report-list-view__row'][5]"),
+                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][5]]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__country-name'][5]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__count'][5]"),
+                                                By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][5]")
+                                        )
                                 ),
                                 new ViewState(
                                         "MAP",
                                         By.xpath("//div[text()='MAP']"),
-                                        By.xpath("//div[@id='GeoChart']")
+                                        asList(
+                                                By.xpath("//div[@id='GeoChart']")
+                                        )
                                 )
                         )
                 )
@@ -163,11 +192,32 @@
                                         "Success",
                                         "//div[text()='Type']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][1]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][1]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][2]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][3]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][4]"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][2]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][5]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][6]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][7]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][8]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][3]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][9]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][10]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][11]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][12]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][4]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][13]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][14]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][15]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][16]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][5]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][17]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][18]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][19]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][20]")
                                         ),
                                         true
                                 ),
@@ -207,10 +257,32 @@
                                         "Success",
                                         "//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[text()='Goal']/following::tr[@class='report-list-view__row'][1]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][2]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][3]"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][4]"),
+                                                By.xpath("//div[text()='Goal']/following::tr[@class='report-list-view__row'][2]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][5]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][6]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][7]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][8]"),
+                                                By.xpath("//div[text()='Goal']/following::tr[@class='report-list-view__row'][3]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][9]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][10]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][11]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][12]"),
+                                                By.xpath("//div[text()='Goal']/following::tr[@class='report-list-view__row'][4]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][13]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][14]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][15]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][16]"),
+                                                By.xpath("//div[text()='Goal']/following::tr[@class='report-list-view__row'][5]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][17]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][18]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][19]"),
+                                                By.xpath("//div[text()='Goal    ']/following::div[@class='report-list-view__cell'][20]")
                                         ),
                                         true
                                 ),

@@ -40,9 +40,14 @@ public class DefaultViewStateChangeExecutor implements ViewStateChangeExecutor {
         WebElement controlElement = elementRetriever.retrieve(driver, controlLocator);
         elementHighlighter.highlight(driver, controlElement);
         controlElement.click();
-        By viewLocator = viewState.getViewLocator();
-        WebElement viewElement = elementRetriever.retrieve(driver, viewLocator);
-        elementHighlighter.highlight(driver, viewElement);
+        List<By> viewLocators = viewState.getViewLocators();
+        for(By viewLocator : viewLocators) {
+            if(elementRetriever.isDisplayed(driver, viewLocator)) {
+                WebElement viewElement = elementRetriever.retrieve(driver, viewLocator);
+                elementHighlighter.highlight(driver, viewElement);
+                executionPauser.pause();
+            }
+        }
         log.debug("View state change for view state {} completed", viewState.getName());
     }
 }

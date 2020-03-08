@@ -80,11 +80,13 @@ public class DefaultWidgetObserver implements WidgetObserver {
         WidgetBodyStateInstructions widgetBodyStateInstructions = getDisplayedState(driver, widget);
         List<By> bodyLocators = widgetBodyStateInstructions.getLocators();
         for(By bodyLocator : bodyLocators) {
-            WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
-            log.debug("Found widget body element");
-            elementHighlighter.highlight(driver, bodyElement);
-            elementMouseHoverer.hover(driver, bodyElement);
-            executionPauser.pause();
+            if(widgetBodyRetriever.isDisplayed(driver, bodyLocator)) {
+                WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
+                log.debug("Found widget body element");
+                elementHighlighter.highlight(driver, bodyElement);
+                elementMouseHoverer.hover(driver, bodyElement);
+                executionPauser.pause();
+            }
         }
         log.debug("Observe {} widget body completed", widget.getName());
         return widgetBodyStateInstructions;
