@@ -74,7 +74,7 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
-                                            By.xpath("//div[@class='sessions-by-country']/following::div[@class='no-data-card__text' and text()='No sessions found']")
+                                            By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]")
                                         ),
                                         false
                                 )
@@ -114,8 +114,8 @@
                                 new WidgetBodyStateInstructions(
                                         "Success",
                                         asList(
-                                                By.xpath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
                                                 By.xpath("//div[@class='result-bar-label']"),
+                                                By.xpath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
                                                 By.xpath("//div[@class='report-pie-chart-wrapper']"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][1]"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][2]"),
@@ -152,7 +152,11 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
-                                        singletonList(
+                                        asList(
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][3]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][4]"),
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
                                         ),
                                         true
@@ -160,7 +164,8 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
-
+                                                By.xpath("//div[text()='No WalkMe activity found']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
                                         ),
                                         false
                                 )
@@ -188,7 +193,10 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
-                                        singletonList(
+                                        asList(
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][3]"),
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
                                         ),
                                         true
@@ -196,7 +204,8 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
-
+                                                By.xpath("//div[text()='No goals reached']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
                                         ),
                                         false
                                 )

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.format;
+import static java.util.Arrays.asList;
 
 @Service
 @Slf4j
@@ -26,19 +27,23 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
 
     @Override
     public List<String> getTimePeriodValues(WebDriver driver, Pages page) {
-        log.debug("Get time period values for page {} started", page.getName());
-        openTimePeriodList(driver, page);
-        executionPauser.pause();
-        List<String> result = new ArrayList<>();
-        List<WebElement> valueElements = driver.findElements(By.xpath("//div[@class='dropdown-menu-item']"));
-        for(WebElement valueElement : valueElements) {
-            if(!result.contains(valueElement.getText())) {
-                result.add(valueElement.getText());
-            }
-        }
-        closeTimePeriodList(driver, page);
-        log.debug("Get time period values for page {} completed. Result is: {}", page.getName(), result);
-        return result;
+//        log.debug("Get time period values for page {} started", page.getName());
+//        openTimePeriodList(driver, page);
+//        executionPauser.pause();
+//        List<String> result = new ArrayList<>();
+//        List<WebElement> valueElements = driver.findElements(By.xpath("//div[@class='dropdown-menu-item']"));
+//        for(WebElement valueElement : valueElements) {
+//            if(!result.contains(valueElement.getText())) {
+//                result.add(valueElement.getText());
+//            }
+//        }
+//        closeTimePeriodList(driver, page);
+//        log.debug("Get time period values for page {} completed. Result is: {}", page.getName(), result);
+//        return result;
+
+        return asList(
+                "Today"
+        );
     }
 
     @Override
