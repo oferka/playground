@@ -7,4 +7,6 @@ import org.openqa.selenium.WebElement;
 public interface WidgetBodyRetriever {
 
     WebElement retrieve(WebDriver driver, By locator);
+
+    boolean isDisplayed(WebDriver driver, By locator);
 }

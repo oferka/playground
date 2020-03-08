@@ -73,7 +73,10 @@ public class DefaultWidgetObserver implements WidgetObserver {
 
     private void observeWidgetBody(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget body started", widget.getName());
-        List<By> bodyLocators = widget.getBodyLocators();
+        WebElement displayedBodyElement = widgetBodyRetriever.retrieve(driver, generateMultiStateBodyLocator(widget));
+        log.debug("Body element for widget {} was retrieved", widget.getName());
+        WidgetBodyStateInstructions widgetBodyStateInstructions = getDisplayedState(driver, widget);
+        List<By> bodyLocators = widgetBodyStateInstructions.getLocators();
         for(By bodyLocator : bodyLocators) {
             WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
             log.debug("Found widget body element");
@@ -82,6 +85,44 @@ public class DefaultWidgetObserver implements WidgetObserver {
             executionPauser.pause();
         }
         log.debug("Observe {} widget body completed", widget.getName());
+    }
+
+    private By generateMultiStateBodyLocator(Widgets widget) {
+        log.debug("Generate multi state body locator for widget {} started", widget.getName());
+        WidgetBodyInstructions widgetBodyInstructions = widget.getWidgetBodyInstructions();
+        List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
+        String xpath = "";
+        for(WidgetBodyStateInstructions instructions : widgetBodyStateInstructions) {
+            List<By> locators = instructions.getLocators();
+            if(!locators.isEmpty()) {
+                By locator = locators.get(0);
+                String locatorToString = locator.toString();
+                String locatorXPath = locatorToString.substring(locatorToString.indexOf(":") + 1);
+                xpath = xpath.concat(locatorXPath);
+                xpath = xpath.concat(" | ");
+            }
+        }
+        if(xpath.endsWith(" | ")) {
+            xpath = xpath.substring(0, xpath.lastIndexOf( " | "));
+        }
+        log.debug("Generate multi state body locator for widget {} completed. Result is {}", widget.getName(), xpath);
+        return By.xpath(xpath);
+    }
+
+    private WidgetBodyStateInstructions getDisplayedState(WebDriver driver, Widgets widget) {
+        log.debug("Get displayed state for widget {} started", widget.getName());
+        WidgetBodyStateInstructions result = null;
+        WidgetBodyInstructions widgetBodyInstructions = widget.getWidgetBodyInstructions();
+        List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
+        for(WidgetBodyStateInstructions instructions : widgetBodyStateInstructions) {
+            List<By> locators = instructions.getLocators();
+            if(!locators.isEmpty() && widgetBodyRetriever.isDisplayed(driver, locators.get(0))) {
+                result = instructions;
+                break;
+            }
+        }
+        log.debug("Get displayed state for widget {} completed. Result is {}", widget.getName(), result.getName());
+        return result;
     }
 
     private void executeViewStateChangeInstructions(WebDriver driver, Widgets widget) {

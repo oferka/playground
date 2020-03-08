@@ -22,10 +22,30 @@
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Unique Users']"),
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Sessions']")
                 ),
-                asList(
-                        By.xpath("//div[contains(@data-tip,'count of users who visited')]"),
-                        By.xpath("//div[contains(@data-tip,'single visit of a user')]"),
-                        By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[contains(@data-tip,'count of users who visited')]"),
+                                                By.xpath("//div[contains(@data-tip,'single visit of a user')]"),
+                                                By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -38,9 +58,29 @@
                         By.xpath("//div[text()='MAP']"),
                         By.xpath("//div[text()='LIST']")
                 ),
-                asList(
-                        By.xpath("//div[@class='sessions-by-country__map']"),
-                        By.xpath("//div[@id='GeoChart']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[@class='sessions-by-country__map']"),
+                                                By.xpath("//div[@id='GeoChart']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+                                            By.xpath("//div[@class='sessions-by-country']/following::div[@class='no-data-card__text' and text()='No sessions found']")
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 new ViewStateChangeInstructions(
                         asList(
@@ -63,13 +103,32 @@
                 singletonList(
                         By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']")
                 ),
-                asList(
-                        By.xpath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
-                        By.xpath("//div[@class='result-bar-label']"),
-                        By.xpath("//div[@class='report-pie-chart-wrapper']"),
-                        By.xpath("//div[@class='pie-chart-legend-item'][1]"),
-                        By.xpath("//div[@class='pie-chart-legend-item'][2]"),
-                        By.xpath("//div[@class='pie-chart-legend-item'][3]")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
+                                                By.xpath("//div[@class='result-bar-label']"),
+                                                By.xpath("//div[@class='report-pie-chart-wrapper']"),
+                                                By.xpath("//div[@class='pie-chart-legend-item'][1]"),
+                                                By.xpath("//div[@class='pie-chart-legend-item'][2]"),
+                                                By.xpath("//div[@class='pie-chart-legend-item'][3]")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+                                                By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -80,8 +139,28 @@
                         By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
                 ),
-                singletonList(
-                        By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        singletonList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -93,8 +172,28 @@
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
                         By.xpath("//div[@class='walkme-icon-image-div' and text()='?']")
                 ),
-                singletonList(
-                        By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        singletonList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -106,14 +205,34 @@
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Users who Interacted with WalkMe']"),
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Avg. user interactions with WalkMe']")
                 ),
-                asList(
-                        By.xpath("//div[contains(@data-tip,'Users who had any WalkMe content visible')]"),
-                        By.xpath("//div[contains(@data-tip,'Users who interacted with any WalkMe item')]"),
-                        By.xpath("//div[contains(@data-tip,'The average number of times a user has interacted with any WalkMe content.')]"),
-                        By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'in Filter')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                        By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'Available To')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                        By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'more than once')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                        By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[contains(@data-tip,'Users who had any WalkMe content visible')]"),
+                                                By.xpath("//div[contains(@data-tip,'Users who interacted with any WalkMe item')]"),
+                                                By.xpath("//div[contains(@data-tip,'The average number of times a user has interacted with any WalkMe content.')]"),
+                                                By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'in Filter')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'Available To')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'more than once')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -123,11 +242,31 @@
                 singletonList(
                         By.xpath("//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']")
                 ),
-                asList(
-                        By.xpath("//div[@class='walkme-items-usage__overview']"),
-                        By.xpath("//div[@class='walkme-items-usage__chart ']"),
-                        By.xpath("//div[@class='bubble-chart']"),
-                        By.xpath("//div[@class='walkme-items-usage__table']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[@class='walkme-items-usage__overview']"),
+                                                By.xpath("//div[@class='walkme-items-usage__chart ']"),
+                                                By.xpath("//div[@class='bubble-chart']"),
+                                                By.xpath("//div[@class='walkme-items-usage__table']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -138,8 +277,28 @@
                         By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
                 ),
-                singletonList(
-                        By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        singletonList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -151,8 +310,28 @@
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
                         By.xpath("//div[@class='walkme-icon-image-div' and text()='?']")
                 ),
-                singletonList(
-                        By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        singletonList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -164,13 +343,33 @@
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Smart Walk-Thru Plays']"),
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Main Goals Reached']")
                 ),
-                asList(
-                        By.xpath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
-                        By.xpath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
-                        By.xpath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays that resulted')]"),
-                        By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                        By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
-                        By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
+                                                By.xpath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
+                                                By.xpath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays that resulted')]"),
+                                                By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
+                                                By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         ),
@@ -182,11 +381,31 @@
                         By.xpath("//div[@class='insights-table__title' and text()='Smart Walk-Thrus Summary']"),
                         By.xpath("//div[@class='table-search-bar table-search-bar--blurred']")
                 ),
-                asList(
-                        By.xpath("//div[@class='react-bs-table-container']"),
-                        By.xpath("//div[@class='reports-table__pagination-container']"),
-                        By.xpath("//div[@class='reports-table__pagination-text']"),
-                        By.xpath("//div[@class='reports-table__pagination']")
+                new WidgetBodyInstructions(
+                        asList(
+                                new WidgetBodyStateInstructions(
+                                        "Success",
+                                        asList(
+                                                By.xpath("//div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[@class='reports-table__pagination-container']"),
+                                                By.xpath("//div[@class='reports-table__pagination-text']"),
+                                                By.xpath("//div[@class='reports-table__pagination']")
+                                        )
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "No Data",
+                                        asList(
+
+                                        )
+                                )
+                                ,
+                                new WidgetBodyStateInstructions(
+                                        "Error",
+                                        asList(
+
+                                        )
+                                )
+                        )
                 ),
                 null
         );
@@ -201,7 +420,7 @@
         private List<By> titleLocators;
 
         @Getter
-        private List<By> bodyLocators;
+        private WidgetBodyInstructions widgetBodyInstructions;
 
         @Getter
         private ViewStateChangeInstructions viewStateChangeInstructions;

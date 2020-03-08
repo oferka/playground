@@ -14,6 +14,22 @@ public class DefaultWidgetBodyRetriever implements WidgetBodyRetriever {
 
     @Override
     public WebElement retrieve(WebDriver driver, By locator) {
-        return new WebDriverWait(driver, 60).until(ExpectedConditions.presenceOfElementLocated(locator));
+        return new WebDriverWait(driver, 120).until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    @Override
+    public boolean isDisplayed(WebDriver driver, By locator) {
+        log.debug("Check if widget body is currently displayed started");
+        boolean result;
+        try {
+            WebElement element = driver.findElement(locator);
+            log.debug("Found widget body element");
+            result = true;
+        }
+        catch (Exception e) {
+            result = false;
+        }
+        log.debug("Check if widget body is currently displayed completed. result is: {}", result);
+        return result;
     }
 }
