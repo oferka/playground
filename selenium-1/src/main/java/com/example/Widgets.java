@@ -26,6 +26,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[contains(@data-tip,'count of users who visited')]",
                                         asList(
                                                 By.xpath("//div[contains(@data-tip,'count of users who visited')]"),
                                                 By.xpath("//div[contains(@data-tip,'single visit of a user')]"),
@@ -35,6 +36,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -43,6 +45,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -65,6 +68,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[@class='sessions-by-country__map']",
                                         asList(
                                                 By.xpath("//div[@class='sessions-by-country__map']"),
                                                 By.xpath("//div[@id='GeoChart']")
@@ -73,6 +77,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        "//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]",
                                         asList(
                                             By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]")
                                         ),
@@ -81,6 +86,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -113,6 +119,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[@class='result-bar-label']",
                                         asList(
                                                 By.xpath("//div[@class='result-bar-label']"),
                                                 By.xpath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
@@ -125,6 +132,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        "//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']",
                                         asList(
                                                 By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']")
                                         ),
@@ -132,6 +140,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -152,6 +161,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[text()='Type']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][1]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][2]"),
@@ -163,6 +173,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        "//div[text()='No WalkMe activity found']",
                                         asList(
                                                 By.xpath("//div[text()='No WalkMe activity found']"),
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
@@ -172,6 +183,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -193,6 +205,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][2]"),
@@ -203,6 +216,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        "//div[text()='No goals reached']",
                                         asList(
                                                 By.xpath("//div[text()='No goals reached']"),
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
@@ -212,6 +226,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -233,6 +248,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[contains(@data-tip,'Users who had any WalkMe content visible')]",
                                         asList(
                                                 By.xpath("//div[contains(@data-tip,'Users who had any WalkMe content visible')]"),
                                                 By.xpath("//div[contains(@data-tip,'Users who interacted with any WalkMe item')]"),
@@ -246,6 +262,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -254,6 +271,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -273,6 +291,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[@class='walkme-items-usage__overview']",
                                         asList(
                                                 By.xpath("//div[@class='walkme-items-usage__overview']"),
                                                 By.xpath("//div[@class='walkme-items-usage__chart ']"),
@@ -283,6 +302,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -291,6 +311,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -311,6 +332,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[text()='Type']/ancestor::div[@class='react-bs-table-container']",
                                         singletonList(
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
                                         ),
@@ -318,6 +340,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -326,6 +349,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -347,6 +371,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']",
                                         singletonList(
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
                                         ),
@@ -354,6 +379,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -362,6 +388,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -383,6 +410,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]",
                                         asList(
                                                 By.xpath("//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]"),
                                                 By.xpath("//div[contains(@data-tip,'The total count of Smart Walk-Thru plays')]"),
@@ -395,6 +423,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -403,6 +432,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),
@@ -424,6 +454,7 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
+                                        "//div[@class='react-bs-table-container']",
                                         asList(
                                                 By.xpath("//div[@class='react-bs-table-container']"),
                                                 By.xpath("//div[@class='reports-table__pagination-container']"),
@@ -434,6 +465,7 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
+                                        null,
                                         asList(
 
                                         ),
@@ -442,6 +474,7 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
+                                        null,
                                         asList(
 
                                         ),

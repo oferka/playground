@@ -15,6 +15,9 @@ public class WidgetBodyStateInstructions {
     private String name;
 
     @Getter
+    private String indicatorXPath;
+
+    @Getter
     private List<By> locators;
 
     @Getter

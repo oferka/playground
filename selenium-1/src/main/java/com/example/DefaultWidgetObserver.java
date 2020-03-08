@@ -96,12 +96,9 @@ public class DefaultWidgetObserver implements WidgetObserver {
         List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
         String xpath = "";
         for(WidgetBodyStateInstructions instructions : widgetBodyStateInstructions) {
-            List<By> locators = instructions.getLocators();
-            if(!locators.isEmpty()) {
-                By locator = locators.get(0);
-                String locatorToString = locator.toString();
-                String locatorXPath = locatorToString.substring(locatorToString.indexOf(":") + 1);
-                xpath = xpath.concat(locatorXPath);
+            String indicatorXPath = instructions.getIndicatorXPath();
+            if(indicatorXPath != null) {
+                xpath = xpath.concat(indicatorXPath);
                 xpath = xpath.concat(" | ");
             }
         }
