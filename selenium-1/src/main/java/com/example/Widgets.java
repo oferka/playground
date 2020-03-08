@@ -79,7 +79,9 @@
                                         "No Data",
                                         "//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]",
                                         asList(
-                                            By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]")
+                                                By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card'][1]"),
+                                                By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__img'][1]"),
+                                                By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]")
                                         ),
                                         false
                                 )
@@ -163,6 +165,8 @@
                                         "No Data",
                                         "//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']",
                                         asList(
+                                                By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
+                                                By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__img'][1]"),
                                                 By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']")
                                         ),
                                         false
@@ -225,8 +229,9 @@
                                         "No Data",
                                         "//div[text()='No WalkMe activity found']",
                                         asList(
-                                                By.xpath("//div[text()='No WalkMe activity found']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                                By.xpath("//div[text()='No WalkMe activity found']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[text()='No WalkMe activity found']/preceding-sibling::div[@class='no-data-card__img']"),
+                                                By.xpath("//div[text()='No WalkMe activity found']")
                                         ),
                                         false
                                 )
@@ -282,7 +287,7 @@
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][17]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][18]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][19]"),
-                                                By.xpath("//div[text()='Goal    ']/following::div[@class='report-list-view__cell'][20]")
+                                                By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][20]")
                                         ),
                                         true
                                 ),
@@ -290,8 +295,9 @@
                                         "No Data",
                                         "//div[text()='No goals reached']",
                                         asList(
-                                                By.xpath("//div[text()='No goals reached']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
+                                                By.xpath("//div[text()='No goals reached']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("/div[text()='No goals reached']/preceding-sibling::div[@class='no-data-card__img']"),
+                                                By.xpath("//div[text()='No goals reached']")
                                         ),
                                         false
                                 )
