@@ -41,9 +41,11 @@ public class DefaultWidgetObserver implements WidgetObserver {
         executionPauser.pause();
         observeWidgetTitles(driver, widget);
         executionPauser.pause();
-        observeWidgetBody(driver, widget);
-        executionPauser.pause();
-        executeViewStateChangeInstructions(driver, widget);
+        WidgetBodyStateInstructions widgetBodyStateInstructions = observeWidgetBody(driver, widget);
+        if(widgetBodyStateInstructions.isSuccess()) {
+            executionPauser.pause();
+            executeViewStateChangeInstructions(driver, widget);
+        }
         log.debug("Observe {} widget completed", widget.getName());
     }
 
@@ -71,7 +73,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
         log.debug("Observe {} widget title completed", widget.getName());
     }
 
-    private void observeWidgetBody(WebDriver driver, Widgets widget) {
+    private WidgetBodyStateInstructions observeWidgetBody(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget body started", widget.getName());
         WebElement displayedBodyElement = widgetBodyRetriever.retrieve(driver, generateMultiStateBodyLocator(widget));
         log.debug("Body element for widget {} was retrieved", widget.getName());
@@ -85,6 +87,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
             executionPauser.pause();
         }
         log.debug("Observe {} widget body completed", widget.getName());
+        return widgetBodyStateInstructions;
     }
 
     private By generateMultiStateBodyLocator(Widgets widget) {

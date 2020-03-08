@@ -30,20 +30,23 @@
                                                 By.xpath("//div[contains(@data-tip,'count of users who visited')]"),
                                                 By.xpath("//div[contains(@data-tip,'single visit of a user')]"),
                                                 By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -65,20 +68,23 @@
                                         asList(
                                                 By.xpath("//div[@class='sessions-by-country__map']"),
                                                 By.xpath("//div[@id='GeoChart']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
                                             By.xpath("//div[@class='sessions-by-country']/following::div[@class='no-data-card__text' and text()='No sessions found']")
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -114,19 +120,22 @@
                                                 By.xpath("//div[@class='pie-chart-legend-item'][1]"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][2]"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][3]")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
                                                 By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']")
-                                        )
+                                        ),
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -145,20 +154,23 @@
                                         "Success",
                                         singletonList(
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -178,20 +190,23 @@
                                         "Success",
                                         singletonList(
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -217,20 +232,23 @@
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'Available To')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'more than once')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                 By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -251,20 +269,23 @@
                                                 By.xpath("//div[@class='walkme-items-usage__chart ']"),
                                                 By.xpath("//div[@class='bubble-chart']"),
                                                 By.xpath("//div[@class='walkme-items-usage__table']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -283,20 +304,23 @@
                                         "Success",
                                         singletonList(
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -316,20 +340,23 @@
                                         "Success",
                                         singletonList(
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='react-bs-table-container']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -354,20 +381,23 @@
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'total users')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
@@ -390,20 +420,23 @@
                                                 By.xpath("//div[@class='reports-table__pagination-container']"),
                                                 By.xpath("//div[@class='reports-table__pagination-text']"),
                                                 By.xpath("//div[@class='reports-table__pagination']")
-                                        )
+                                        ),
+                                        true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         asList(
 
-                                        )
+                                        ),
+                                        false
                                 )
                         )
                 ),
