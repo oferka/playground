@@ -117,8 +117,8 @@ public class DefaultWidgetObserver implements WidgetObserver {
         WidgetBodyInstructions widgetBodyInstructions = widget.getWidgetBodyInstructions();
         List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
         for(WidgetBodyStateInstructions instructions : widgetBodyStateInstructions) {
-            List<By> locators = instructions.getLocators();
-            if(!locators.isEmpty() && widgetBodyRetriever.isDisplayed(driver, locators.get(0))) {
+            By locator = By.xpath(instructions.getIndicatorXPath());
+            if(widgetBodyRetriever.isDisplayed(driver, locator)) {
                 result = instructions;
                 break;
             }

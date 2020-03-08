@@ -22,7 +22,7 @@ public enum WidgetGroups {
             singletonList(
                     UNIQUE_USER_AND_SESSIONS
             ),
-            new PageScrollInstructions(DOWN, 200, MEDIUM)
+            new PageScrollInstructions(DOWN, 300, MEDIUM)
     ),
     OVERVIEW_PAGE_GROUP_2(
             "Overview Page Group 2",
@@ -30,7 +30,7 @@ public enum WidgetGroups {
                     WHERE_ARE_USERS_ACCESSING_YOUR_SITE_FROM,
                     SESSIONS_DURATION_BREAKDOWN
             ),
-            new PageScrollInstructions(DOWN, 400, MEDIUM)
+            new PageScrollInstructions(DOWN, 600, MEDIUM)
     ),
     OVERVIEW_PAGE_GROUP_3(
             "Overview Page Group 3",
@@ -38,7 +38,7 @@ public enum WidgetGroups {
                     OVERVIEW_TOP_WALKME_ITEMS,
                     OVERVIEW_TOP_GOALS_REACHED
             ),
-            new PageScrollInstructions(UP, 600, MEDIUM)
+            new PageScrollInstructions(UP, 900, MEDIUM)
     ),
     APPS_OVERVIEW_PAGE_GROUP_1(
             "Apps Overview Page Group 1",
@@ -52,7 +52,7 @@ public enum WidgetGroups {
             singletonList(
                     WALKME_USAGE_BY_ITEM_TYPE
             ),
-            new PageScrollInstructions(DOWN, 400, MEDIUM)
+            new PageScrollInstructions(DOWN, 600, MEDIUM)
     ),
     APPS_OVERVIEW_PAGE_GROUP_3(
             "Apps Overview Page Group 3",
@@ -60,21 +60,21 @@ public enum WidgetGroups {
                     APPS_OVERVIEW_TOP_WALKME_ITEMS,
                     APPS_OVERVIEW_TOP_GOALS_REACHED
             ),
-            new PageScrollInstructions(UP, 900, MEDIUM)
+            new PageScrollInstructions(UP, 1100, MEDIUM)
     ),
     SMART_WALK_THRUS_GROUP_1(
             "SmartWalkThrus Group 1",
             singletonList(
                     USERS_PLAYED_SMART_WALK_THRUS_AND_SMART_WALK_THRU_PLAYS_AND_MAIN_GOALS_REACHED
             ),
-            new PageScrollInstructions(DOWN, 500, MEDIUM)
+            new PageScrollInstructions(DOWN, 600, MEDIUM)
     ),
     SMART_WALK_THRUS_GROUP_2(
             "SmartWalkThrus Group 2",
             singletonList(
                     SMART_WALK_THRUS_SUMMARY
             ),
-            new PageScrollInstructions(UP, 500, MEDIUM)
+            new PageScrollInstructions(UP, 600, MEDIUM)
     );
 
     @Getter
