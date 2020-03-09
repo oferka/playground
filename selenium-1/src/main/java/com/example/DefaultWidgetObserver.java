@@ -14,10 +14,10 @@ import java.util.List;
 public class DefaultWidgetObserver implements WidgetObserver {
 
     @Autowired
-    private WidgetBorderRetriever widgetBorderRetriever;
+    private WidgetTitleObserver widgetTitleObserver;
 
     @Autowired
-    private WidgetTitleRetriever widgetTitleRetriever;
+    private WidgetBorderRetriever widgetBorderRetriever;
 
     @Autowired
     private WidgetBodyRetriever widgetBodyRetriever;
@@ -39,7 +39,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
         log.debug("Observe {} widget started", widget.getName());
         observeWidgetBorder(driver, widget);
         executionPauser.pause();
-        observeWidgetTitles(driver, widget);
+        widgetTitleObserver.observe(driver, widget);
         executionPauser.pause();
         WidgetBodyStateInstructions widgetBodyStateInstructions = observeWidgetBody(driver, widget);
         if(widgetBodyStateInstructions.isSuccess()) {
@@ -58,19 +58,6 @@ public class DefaultWidgetObserver implements WidgetObserver {
             elementHighlighter.highlight(driver, borderElement);
         }
         log.debug("Observe {} widget border completed", widget.getName());
-    }
-
-    private void observeWidgetTitles(WebDriver driver, Widgets widget) {
-        log.debug("Observe {} widget title started", widget.getName());
-        List<By> titleLocators = widget.getTitleLocators();
-        for(By titleLocator : titleLocators) {
-            WebElement titleElement = widgetTitleRetriever.retrieve(driver, titleLocator);
-            log.debug("Found widget title element");
-            elementHighlighter.highlight(driver, titleElement);
-            elementMouseHoverer.hover(driver, titleElement);
-            executionPauser.pause();
-        }
-        log.debug("Observe {} widget title completed", widget.getName());
     }
 
     private WidgetBodyStateInstructions observeWidgetBody(WebDriver driver, Widgets widget) {
