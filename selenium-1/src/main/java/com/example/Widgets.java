@@ -358,19 +358,34 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
-                                        "//div[@class='walkme-items-usage__overview']",
+                                        "//div[@class='bubble-chart']",
                                         asList(
                                                 By.xpath("//div[@class='walkme-items-usage__overview']"),
                                                 By.xpath("//div[@class='walkme-items-usage__chart ']"),
                                                 By.xpath("//div[@class='bubble-chart']"),
-                                                By.xpath("//div[@class='walkme-items-usage__table']")
+                                                By.xpath("//div[@class='walkme-items-usage__table']"),
+                                                By.xpath("//div[text()='Item Type']/ancestor::div[@class='react-bs-container-header table-header-wrapper report-list-view__header']"),
+                                                By.xpath("//tr[@class='report-list-view__row'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][3]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][4]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][5]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][6]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][7]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][8]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][9]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][10]")
                                         ),
                                         true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']/following::div[@class='no-data-card__text' and text()='No WalkMe activity found'][1]",
+                                        asList(
+                                                By.xpath("//div[@class='no-data-card'][1]"),
+                                                By.xpath("//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']/following::div[@class='no-data-card__img'][1]"),
+                                                By.xpath("//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']/following::div[@class='no-data-card__text' and text()='No WalkMe activity found'][1]")
+                                        ),
                                         false
                                 )
                                 ,
