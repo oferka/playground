@@ -25,7 +25,7 @@ public enum Pages {
 //                            "All Sessions",
 //                            "need training visits",
 //                            "Chrome users",
-                            "Accessed PPS+ Article"
+//                            "Accessed PPS+ Article"
                     ),
                     asList(
 //                            "All Sessions",
@@ -53,7 +53,7 @@ public enum Pages {
 //                            "Last 3 Months",
 //                            "Last 30 Days",
 //                            "Last 90 Days",
-                            "Custom Dates"
+//                            "Custom Dates"
                     )
             ),
             asList(

@@ -147,8 +147,12 @@
                                         "Success",
                                         "//div[@class='result-bar-label']",
                                         asList(
-                                                By.xpath("//div[@class='result-bar-label']"),
                                                 By.xpath("//div[text()='Sessions Duration Breakdown']/following::div[@class='card-state-wrapper'][1]"),
+                                                By.xpath("//div[@class='result-bar-label']"),
+                                                By.xpath("//div[@class='result-bar-label-text-wrapper']"),
+                                                By.xpath("//div[@class='tooltip help-tooltip__img']"),
+                                                By.xpath("//div[@class='result-text' and text()='Average Session Duration']"),
+                                                By.xpath("//div[@class='result-value defaultColor']"),
                                                 By.xpath("//div[@class='report-pie-chart-wrapper']"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][1]"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][2]"),
