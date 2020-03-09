@@ -22,7 +22,7 @@ public enum Pages {
             By.xpath("//div[@class='report-header__page-name' and text()='Overview']"),
             new TimePeriodInstructions(
                     asList(
-                            "Today"//,
+//                            "Today",
 //                            "Yesterday",
 //                            "Last Week",
 //                            "Last Month",
