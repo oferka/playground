@@ -1,18 +1,19 @@
 package com.example;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
-@Data
 @AllArgsConstructor
 public class PageScrollInstructions {
 
+    @Getter
     private ScrollDirections direction;
 
+    @Getter
     private int pixels;
 
+    @Getter
     private ScrollSpeeds speed;
 
     @ToString

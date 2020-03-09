@@ -1,15 +1,13 @@
 package com.example;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import java.util.List;
 
-@Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class WidgetBodyInstructions {
 
+    @Getter
     private List<WidgetBodyStateInstructions> widgetBodyStateInstructions;
 }
