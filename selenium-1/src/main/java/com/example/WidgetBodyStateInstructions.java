@@ -2,13 +2,11 @@ package com.example;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.openqa.selenium.By;
 
 import java.util.List;
 
 @AllArgsConstructor
-@NoArgsConstructor
 public class WidgetBodyStateInstructions {
 
     @Getter
