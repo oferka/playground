@@ -24,23 +24,6 @@ public class DefaultPageFilterController implements PageFilterController {
     @Autowired
     private ExecutionPauser executionPauser;
 
-//    @Override
-//    public List<String> getFilterValues(WebDriver driver, Pages page) {
-//        log.debug("Get filter values in page {} started", page.getName());
-//        openFilterList(driver, page);
-//        executionPauser.pause();
-//        List<String> result = new ArrayList<>();
-//        List<WebElement> valueElements = driver.findElements(By.xpath("//span[@class='suggestion-highlight-container']"));
-//        for(WebElement valueElement : valueElements) {
-//            if(!result.contains(valueElement.getText())) {
-//                result.add(valueElement.getText());
-//            }
-//        }
-//        closeFilterList(driver, page);
-//        log.debug("Get filter values in page {} completed. Result is: {}", page.getName(), result);
-//        return result;
-//    }
-
     @Override
     public List<String> getFilterValues(WebDriver driver, Pages page) {
         log.debug("Get filter values for page {} started", page.getName());

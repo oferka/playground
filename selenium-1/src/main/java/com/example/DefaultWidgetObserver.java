@@ -14,10 +14,10 @@ import java.util.List;
 public class DefaultWidgetObserver implements WidgetObserver {
 
     @Autowired
-    private WidgetTitleObserver widgetTitleObserver;
+    private WidgetBorderObserver widgetBorderObserver;
 
     @Autowired
-    private WidgetBorderRetriever widgetBorderRetriever;
+    private WidgetTitleObserver widgetTitleObserver;
 
     @Autowired
     private WidgetBodyRetriever widgetBodyRetriever;
@@ -37,7 +37,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
     @Override
     public void observe(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget started", widget.getName());
-        observeWidgetBorder(driver, widget);
+        widgetBorderObserver.observe(driver, widget);
         executionPauser.pause();
         widgetTitleObserver.observe(driver, widget);
         executionPauser.pause();
@@ -47,17 +47,6 @@ public class DefaultWidgetObserver implements WidgetObserver {
             executeViewStateChangeInstructions(driver, widget);
         }
         log.debug("Observe {} widget completed", widget.getName());
-    }
-
-    private void observeWidgetBorder(WebDriver driver, Widgets widget) {
-        log.debug("Observe {} widget border started", widget.getName());
-        By borderLocator = widget.getBorderLocator();
-        if(borderLocator != null) {
-            WebElement borderElement = widgetBorderRetriever.retrieve(driver, borderLocator);
-            log.debug("Found widget border element");
-            elementHighlighter.highlight(driver, borderElement);
-        }
-        log.debug("Observe {} widget border completed", widget.getName());
     }
 
     private WidgetBodyStateInstructions observeWidgetBody(WebDriver driver, Widgets widget) {
