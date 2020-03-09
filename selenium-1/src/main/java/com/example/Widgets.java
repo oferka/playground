@@ -9,6 +9,7 @@
     import java.util.List;
 
     import static java.util.Arrays.asList;
+    import static java.util.Collections.emptyList;
     import static java.util.Collections.singletonList;
 
     @ToString
@@ -37,18 +38,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -89,9 +86,7 @@
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -133,7 +128,7 @@
                                 new ViewState(
                                         "MAP",
                                         By.xpath("//div[text()='MAP']"),
-                                        asList(
+                                        singletonList(
                                                 By.xpath("//div[@id='GeoChart']")
                                         )
                                 )
@@ -174,9 +169,7 @@
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -239,9 +232,7 @@
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -305,9 +296,7 @@
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -341,18 +330,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -381,18 +366,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -419,18 +400,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -458,18 +435,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -502,18 +475,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
@@ -544,18 +513,14 @@
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         null,
-                                        asList(
-
-                                        ),
+                                        emptyList(),
                                         false
                                 )
                         )
