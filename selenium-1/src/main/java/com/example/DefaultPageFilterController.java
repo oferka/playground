@@ -24,9 +24,35 @@ public class DefaultPageFilterController implements PageFilterController {
     @Autowired
     private ExecutionPauser executionPauser;
 
+//    @Override
+//    public List<String> getFilterValues(WebDriver driver, Pages page) {
+//        log.debug("Get filter values in page {} started", page.getName());
+//        openFilterList(driver, page);
+//        executionPauser.pause();
+//        List<String> result = new ArrayList<>();
+//        List<WebElement> valueElements = driver.findElements(By.xpath("//span[@class='suggestion-highlight-container']"));
+//        for(WebElement valueElement : valueElements) {
+//            if(!result.contains(valueElement.getText())) {
+//                result.add(valueElement.getText());
+//            }
+//        }
+//        closeFilterList(driver, page);
+//        log.debug("Get filter values in page {} completed. Result is: {}", page.getName(), result);
+//        return result;
+//    }
+
     @Override
     public List<String> getFilterValues(WebDriver driver, Pages page) {
-        log.debug("Get filter values in page {} started", page.getName());
+        log.debug("Get filter values for page {} started", page.getName());
+        List<String> result = getFilterValuesFromPage(driver, page);
+        retainOnlyIncludedFilters(result, page);
+        removeAllExcludedFilters(result, page);
+        log.debug("Get filter values for page {} completed. Result is: {}", page.getName(), result);
+        return result;
+    }
+
+    private List<String> getFilterValuesFromPage(WebDriver driver, Pages page) {
+        log.debug("Get filter values from page {} started", page.getName());
         openFilterList(driver, page);
         executionPauser.pause();
         List<String> result = new ArrayList<>();
@@ -37,8 +63,26 @@ public class DefaultPageFilterController implements PageFilterController {
             }
         }
         closeFilterList(driver, page);
-        log.debug("Get filter values in page {} completed. Result is: {}", page.getName(), result);
+        log.debug("Get filter values from page {} completed. Result is: {}", page.getName(), result);
         return result;
+    }
+
+    private void retainOnlyIncludedFilters(List<String> filters, Pages page) {
+        log.debug("Retain only included filter values for page {} started", page.getName());
+        List<String> include = page.getFilterInstructions().getInclude();
+        if((include != null) && (!include.isEmpty())) {
+            filters.retainAll(include);
+        }
+        log.debug("Retain only included filter values for page {} completed. Result is: {}", page.getName(), filters);
+    }
+
+    private void removeAllExcludedFilters(List<String> filters, Pages page) {
+        log.debug("Remove all excluded filter values for page {} started", page.getName());
+        List<String> exclude = page.getFilterInstructions().getExclude();
+        if((exclude != null) && (!exclude.isEmpty())) {
+            filters.removeAll(exclude);
+        }
+        log.debug("Remove all excluded filter values for page {} completed. Result is: {}", page.getName(), filters);
     }
 
     @Override

@@ -296,7 +296,7 @@
                                         "//div[text()='No goals reached']",
                                         asList(
                                                 By.xpath("//div[text()='No goals reached']/ancestor::div[@class='react-bs-table-container']"),
-                                                By.xpath("/div[text()='No goals reached']/preceding-sibling::div[@class='no-data-card__img']"),
+                                                By.xpath("//div[text()='No goals reached']/preceding-sibling::div[@class='no-data-card__img']"),
                                                 By.xpath("//div[text()='No goals reached']")
                                         ),
                                         false
