@@ -20,6 +20,28 @@ public enum Pages {
             OVERVIEW_NAVIGATION_ELEMET,
             "Overview",
             By.xpath("//div[@class='report-header__page-name' and text()='Overview']"),
+            new TimePeriodInstructions(
+                    asList(
+                            "Today"//,
+//                            "Yesterday",
+//                            "Last Week",
+//                            "Last Month",
+//                            "Last 3 Months",
+//                            "Last 30 Days",
+//                            "Last 90 Days",
+//                            "Custom Dates"
+                    ),
+                    asList(
+//                            "Today",
+//                            "Yesterday",
+//                            "Last Week",
+//                            "Last Month",
+//                            "Last 3 Months",
+//                            "Last 30 Days",
+//                            "Last 90 Days",
+                            "Custom Dates"
+                    )
+            ),
             asList(
                     OVERVIEW_PAGE_GROUP_1,
                     OVERVIEW_PAGE_GROUP_2,
@@ -31,6 +53,14 @@ public enum Pages {
             APPS_OVERVIEW_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
                     APPS_OVERVIEW_PAGE_GROUP_1,
                     APPS_OVERVIEW_PAGE_GROUP_2,
@@ -42,6 +72,14 @@ public enum Pages {
             SMART_WALK_THRUS_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Smart Walk-Thrus']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
                     SMART_WALK_THRUS_GROUP_1,
                     SMART_WALK_THRUS_GROUP_2
@@ -52,6 +90,14 @@ public enum Pages {
             WALK_THRUS_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Walk-Thrus']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -61,6 +107,14 @@ public enum Pages {
             ONBOARDING_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Onboarding Tasks']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -70,6 +124,14 @@ public enum Pages {
             SHOUT_OUTS_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='ShoutOuts']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -79,6 +141,14 @@ public enum Pages {
             LAUNCHERS_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Launchers']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -88,6 +158,14 @@ public enum Pages {
             RESOURCES_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Resources']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -97,6 +175,14 @@ public enum Pages {
             SHUTTLES_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Shuttles']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -106,6 +192,14 @@ public enum Pages {
             SURVEYS_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Surveys']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -115,6 +209,14 @@ public enum Pages {
             SMART_TIPS_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='SmartTips']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -124,6 +226,14 @@ public enum Pages {
             MENU_AND_SEARCH_NAVIGATION_ELEMET,
             "Apps",
             By.xpath("//div[@class='report-header__page-name' and text()='Menu & Search']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -133,6 +243,14 @@ public enum Pages {
             USERS_NAVIGATION_ELEMET,
             "Users",
             By.xpath("//div[@class='report-header__page-name' and text()='Users']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -142,6 +260,14 @@ public enum Pages {
             SESSION_PLAYBACK_NAVIGATION_ELEMET,
             "Session Playback",
             By.xpath("//div[@class='enable-sessions-empty-state__title' and text()='Watch Session Playback']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -151,6 +277,14 @@ public enum Pages {
             FEATURES_NAVIGATION_ELEMET,
             "Features",
             By.xpath("//div[@class='report-header__page-name' and text()='Features']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -160,6 +294,14 @@ public enum Pages {
             FUNNELS_NAVIGATION_ELEMET,
             "Funnels",
             By.xpath("//div[@class='report-header__page-name' and text()='Funnels']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -169,6 +311,14 @@ public enum Pages {
             TRACKED_EVENTS_ANALYTICS_NAVIGATION_ELEMET,
             "Tracked Events",
             By.xpath("//div[@class='report-header__page-name' and text()='Tracked Events Analytics']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -178,6 +328,14 @@ public enum Pages {
             TRACKED_EVENTS_SETUP_NAVIGATION_ELEMET,
             "Tracked Events",
             By.xpath("//div[@class='tracked-events-report__header__page-name' and text()='Tracked Events Setup']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -187,6 +345,14 @@ public enum Pages {
             REPORTS_NAVIGATION_ELEMET,
             "Reports",
             By.xpath("//div[@class='reports-page__page-name' and text()='Reports']"),
+            new TimePeriodInstructions(
+                    asList(
+
+                    ),
+                    asList(
+
+                    )
+            ),
             asList(
 
             )
@@ -203,6 +369,9 @@ public enum Pages {
 
     @Getter
     private By pageHeaderLocator;
+
+    @Getter
+    private TimePeriodInstructions timePeriodInstructions;
 
     @Getter
     private List<WidgetGroups> widgetGroups;

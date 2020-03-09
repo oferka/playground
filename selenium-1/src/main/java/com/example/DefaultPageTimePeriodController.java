@@ -27,6 +27,15 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
     @Override
     public List<String> getTimePeriodValues(WebDriver driver, Pages page) {
         log.debug("Get time period values for page {} started", page.getName());
+        List<String> result = getTimePeriodValuesFromPage(driver, page);
+        retainOnlyIncludedTimePeriods(result, page);
+        removeAllExcludedTimePeriods(result, page);
+        log.debug("Get time period values for page {} completed. Result is: {}", page.getName(), result);
+        return result;
+    }
+
+    private List<String> getTimePeriodValuesFromPage(WebDriver driver, Pages page) {
+        log.debug("Get time period values from page {} started", page.getName());
         openTimePeriodList(driver, page);
         executionPauser.pause();
         List<String> result = new ArrayList<>();
@@ -37,12 +46,26 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
             }
         }
         closeTimePeriodList(driver, page);
-        log.debug("Get time period values for page {} completed. Result is: {}", page.getName(), result);
+        log.debug("Get time period values from page {} completed. Result is: {}", page.getName(), result);
         return result;
+    }
 
-//        return asList(
-//                "Today"
-//        );
+    private void retainOnlyIncludedTimePeriods(List<String> timePeriods, Pages page) {
+        log.debug("Retain only included time period values for page {} started", page.getName());
+        List<String> include = page.getTimePeriodInstructions().getInclude();
+        if((include != null) && (!include.isEmpty())) {
+            timePeriods.retainAll(include);
+        }
+        log.debug("Retain only included time period values for page {} completed. Result is: {}", page.getName(), timePeriods);
+    }
+
+    private void removeAllExcludedTimePeriods(List<String> timePeriods, Pages page) {
+        log.debug("Remove all excluded time period values for page {} started", page.getName());
+        List<String> exclude = page.getTimePeriodInstructions().getExclude();
+        if((exclude != null) && (!exclude.isEmpty())) {
+            timePeriods.removeAll(exclude);
+        }
+        log.debug("Remove all excluded time period values for page {} completed. Result is: {}", page.getName(), timePeriods);
     }
 
     @Override
