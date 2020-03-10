@@ -84,8 +84,8 @@ public enum Pages {
             new TimePeriodInstructions(
                     asList(
                             "Today",
-                            "Yesterday"//,
-//                            "Last Week",
+                            "Yesterday",
+                            "Last Week"//,
 //                            "Last Month",
 //                            "Last 3 Months",
 //                            "Last 30 Days",

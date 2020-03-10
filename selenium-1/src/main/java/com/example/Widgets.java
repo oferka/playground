@@ -365,16 +365,66 @@
                                                 By.xpath("//div[@class='bubble-chart']"),
                                                 By.xpath("//div[@class='walkme-items-usage__table']"),
                                                 By.xpath("//div[text()='Item Type']/ancestor::div[@class='react-bs-container-header table-header-wrapper report-list-view__header']"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][1]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][1]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][1]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][1]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][2]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][2]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][2]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][2]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][3]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][3]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][3]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][3]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][3]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][4]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][4]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][4]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][4]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][4]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][5]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][5]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][5]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][5]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][5]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][6]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][6]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][6]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][6]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][6]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][7]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][7]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][7]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][7]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][7]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][8]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][8]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][8]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][8]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][8]/descendant::div[@class='report-list-view__cell'][3]"),
+
                                                 By.xpath("//tr[@class='report-list-view__row'][9]"),
-                                                By.xpath("//tr[@class='report-list-view__row'][10]")
+                                                By.xpath("//tr[@class='report-list-view__row'][9]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][9]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][9]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][9]/descendant::div[@class='report-list-view__cell'][3]"),
+
+                                                By.xpath("//tr[@class='report-list-view__row'][10]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][10]/descendant::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][10]/descendant::div[@class='report-list-view__cell'][1]/span[2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][10]/descendant::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//tr[@class='report-list-view__row'][10]/descendant::div[@class='report-list-view__cell'][3]")
                                         ),
                                         true
                                 ),
