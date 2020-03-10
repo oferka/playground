@@ -22,10 +22,10 @@ public enum Pages {
             By.xpath("//div[@class='report-header__page-name' and text()='Overview']"),
             new FilterInstructions(
                     asList(
-                            "All Sessions",
+//                            "All Sessions",
 //                            "need training visits",
 //                            "Chrome users",
-                            "Accessed PPS+ Article"
+//                            "Accessed PPS+ Article"
                     ),
                     asList(
 //                            "All Sessions",
@@ -36,8 +36,8 @@ public enum Pages {
             ),
             new TimePeriodInstructions(
                     asList(
-                            "Today",
-                            "Yesterday"//,
+//                            "Today",
+//                            "Yesterday",
 //                            "Last Week",
 //                            "Last Month",
 //                            "Last 3 Months",
@@ -71,8 +71,8 @@ public enum Pages {
                     asList(
 //                            "All Sessions",
 //                            "need training visits",
-                            "Chrome users",
-                            "Accessed PPS+ Article"
+//                            "Chrome users",
+//                            "Accessed PPS+ Article"
                     ),
                     asList(
 //                            "All Sessions",
@@ -83,9 +83,9 @@ public enum Pages {
             ),
             new TimePeriodInstructions(
                     asList(
-                            "Today",
+//                            "Today",
 //                            "Yesterday",
-                            "Last Week"//,
+//                            "Last Week",
 //                            "Last Month",
 //                            "Last 3 Months",
 //                            "Last 30 Days",
