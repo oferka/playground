@@ -160,7 +160,7 @@
                                                 By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][4]"),
 
                                                 By.xpath("//div[text()='Country']/following::tr[@class='report-list-view__row'][5]"),
-                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][5]]"),
+                                                By.xpath("//div[text()='Country']/following::img[@class='sessions-by-country__flag'][5]"),
                                                 By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__country-name'][5]"),
                                                 By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__count'][5]"),
                                                 By.xpath("//div[text()='Country']/following::div[@class='sessions-by-country__sessions-value-cell__percent'][5]")
@@ -242,7 +242,7 @@
         ),
         OVERVIEW_TOP_WALKME_ITEMS(
                 "Overview Top WalkMe Items",
-                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']"),
+                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']"),
                 asList(
                         By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
@@ -301,23 +301,23 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']]/descendant::div[@class='error-card__text_small']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
                                         false,
                                         false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Stuck",
-                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']]/descendant::div[@class='long-load-message__description']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
                                         ),
                                         false,
                                         true
@@ -328,7 +328,7 @@
         ),
         OVERVIEW_TOP_GOALS_REACHED(
                 "Overview Top Goals Reached",
-                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']"),
+                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']"),
                 asList(
                         By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
@@ -388,23 +388,23 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
                                         false,
                                         false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Stuck",
-                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
                                         ),
                                         false,
                                         true
@@ -593,7 +593,7 @@
         ),
         APPS_OVERVIEW_TOP_WALKME_ITEMS(
                 "Apps Overview Top WalkMe Items",
-                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']"),
+                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']"),
                 asList(
                         By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']"),
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__walkme-items-icon']")
@@ -652,23 +652,23 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
                                         false,
                                         false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Stuck",
-                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
                                         ),
                                         false,
                                         true
@@ -679,7 +679,7 @@
         ),
         APPS_OVERVIEW_TOP_GOALS_REACHED(
                 "Apps Overview Top Goals Reached",
-                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']"),
+                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']"),
                 asList(
                         By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']"),
                         By.xpath("//div[@class='overview-walkme-report__icon overview-walkme-reports__goals-reached-icon']"),
@@ -739,23 +739,23 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
                                         false,
                                         false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Stuck",
-                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
-                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
                                         ),
                                         false,
                                         true

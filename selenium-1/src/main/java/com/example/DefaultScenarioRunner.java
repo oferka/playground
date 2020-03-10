@@ -31,9 +31,9 @@ public class DefaultScenarioRunner implements ScenarioRunner {
         testPages(
                 driver,
                 asList(
-                        OVERVIEW_PAGE,
-                        APPS_OVERVIEW_PAGE,
-                        SMART_WALK_THRUS_PAGE//,
+                        OVERVIEW_PAGE//,
+//                        APPS_OVERVIEW_PAGE,
+//                        SMART_WALK_THRUS_PAGE,
 //                        WALK_THRUS_PAGE,
 //                        ONBOARDING_PAGE,
 //                        SHOUT_OUTS_PAGE,
