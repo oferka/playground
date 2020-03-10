@@ -18,7 +18,7 @@
 
         UNIQUE_USER_AND_SESSIONS(
                 "Unique User and Sessions",
-                By.xpath("//div[@class='highlights-with-graph']"),
+                By.xpath("//div[@class='highlights-with-graph-container']"),
                 asList(
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Unique Users']"),
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Sessions']")
@@ -44,8 +44,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -85,8 +89,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='sessions-by-country']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -177,8 +185,12 @@
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -245,8 +257,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']]/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -314,8 +330,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -324,7 +344,7 @@
         ),
         USERS_WALKME_WAS_AVAILABLE_TO_AND_USERS_WHO_INTERACTED_AND_AVG_USER_INTERACTION(
                 "Users WalkMe was available to and Users who Interacted with WalkMe and Avg. user interactions with WalkMe",
-                By.xpath("//div[@class='highlights-with-graph']"),
+                By.xpath("//div[@class='highlights-with-graph-container']"),
                 asList(
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Users WalkMe was available to']"),
                         By.xpath("//div[@class='walkme-app-highlight__title' and text()='Users who Interacted with WalkMe']"),
@@ -355,8 +375,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -456,8 +480,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -524,8 +552,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -593,8 +625,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -633,8 +669,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
@@ -671,8 +711,12 @@
                                 ,
                                 new WidgetBodyStateInstructions(
                                         "Error",
-                                        null,
-                                        emptyList(),
+                                        "//div[@class='insights-table__container']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='error-card__small']"),
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='error-card__img_small']"),
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='error-card__text_small']")
+                                        ),
                                         false
                                 )
                         )
