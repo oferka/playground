@@ -14,6 +14,6 @@ public class DefaultWidgetTitleRetriever implements WidgetTitleRetriever {
 
      @Override
     public WebElement retrieve(WebDriver driver, By locator) {
-        return new WebDriverWait(driver, 60).until(ExpectedConditions.presenceOfElementLocated(locator));
+        return new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 }

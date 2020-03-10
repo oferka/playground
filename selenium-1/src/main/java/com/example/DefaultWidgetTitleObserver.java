@@ -30,11 +30,16 @@ public class DefaultWidgetTitleObserver implements WidgetTitleObserver {
         log.debug("Observe {} widget title started", widget.getName());
         List<By> titleLocators = widget.getTitleLocators();
         for(By titleLocator : titleLocators) {
-            WebElement titleElement = widgetTitleRetriever.retrieve(driver, titleLocator);
-            log.debug("Found widget title element");
-            elementHighlighter.highlight(driver, titleElement);
-            elementMouseHoverer.hover(driver, titleElement);
-            executionPauser.pause();
+            try {
+                WebElement titleElement = widgetTitleRetriever.retrieve(driver, titleLocator);
+                log.debug("Found widget title element");
+                elementHighlighter.highlight(driver, titleElement);
+                elementMouseHoverer.hover(driver, titleElement);
+                executionPauser.pause();
+            }
+            catch (Exception e) {
+                log.debug("Failed to find widget title element. Message is {}", e.getMessage());
+            }
         }
         log.debug("Observe {} widget title completed", widget.getName());
     }

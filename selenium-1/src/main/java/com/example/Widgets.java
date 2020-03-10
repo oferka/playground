@@ -33,15 +33,16 @@
                                                 By.xpath("//div[contains(@data-tip,'single visit of a user')]"),
                                                 By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
                                         emptyList(),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
@@ -50,6 +51,19 @@
                                                 By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
+                                        false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
+                                        asList(
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        true,
                                         false
                                 )
                         )
@@ -74,7 +88,8 @@
                                                 By.xpath("//div[@class='sessions-by-country__map']"),
                                                 By.xpath("//div[@id='GeoChart']")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -84,9 +99,9 @@
                                                 By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__img'][1]"),
                                                 By.xpath("//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]")
                                         ),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[@class='sessions-by-country']/descendant::div[@class='error-card__small']",
@@ -95,7 +110,20 @@
                                                 By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='sessions-by-country']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='sessions-by-country']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -171,7 +199,8 @@
                                                 By.xpath("//div[@class='pie-chart-legend-item'][2]"),
                                                 By.xpath("//div[@class='pie-chart-legend-item'][3]")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -181,6 +210,7 @@
                                                 By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__img'][1]"),
                                                 By.xpath("//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']")
                                         ),
+                                        false,
                                         false
                                 ),
                                 new WidgetBodyStateInstructions(
@@ -191,7 +221,20 @@
                                                 By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='sessions-time-breakdown']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='sessions-time-breakdown']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -242,7 +285,8 @@
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][19]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][20]")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -252,9 +296,9 @@
                                                 By.xpath("//div[text()='No WalkMe activity found']/preceding-sibling::div[@class='no-data-card__img']"),
                                                 By.xpath("//div[text()='No WalkMe activity found']")
                                         ),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
@@ -263,7 +307,20 @@
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']]/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']]/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -315,7 +372,8 @@
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][19]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][20]")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -325,9 +383,9 @@
                                                 By.xpath("//div[text()='No goals reached']/preceding-sibling::div[@class='no-data-card__img']"),
                                                 By.xpath("//div[text()='No goals reached']")
                                         ),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
@@ -336,7 +394,20 @@
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -364,15 +435,16 @@
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'more than once')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                 By.xpath("//*[@class='recharts-layer recharts-line']/ancestor::*[@class='recharts-surface']")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
                                         emptyList(),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
@@ -381,7 +453,20 @@
                                                 By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='highlights-with-graph-container']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='highlights-with-graph-container']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -465,7 +550,8 @@
                                                 By.xpath("//tr[@class='report-list-view__row'][10]/descendant::div[@class='report-list-view__cell'][2]"),
                                                 By.xpath("//tr[@class='report-list-view__row'][10]/descendant::div[@class='report-list-view__cell'][3]")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -475,9 +561,9 @@
                                                 By.xpath("//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']/following::div[@class='no-data-card__img'][1]"),
                                                 By.xpath("//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']/following::div[@class='no-data-card__text' and text()='No WalkMe activity found'][1]")
                                         ),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__small']",
@@ -486,7 +572,20 @@
                                                 By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -537,7 +636,8 @@
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][19]"),
                                                 By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][20]")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -547,9 +647,9 @@
                                                 By.xpath("//div[text()='Type']/following::div[text()='No WalkMe activity found']/preceding-sibling::div[@class='no-data-card__img']"),
                                                 By.xpath("//div[text()='Type']/following::div[text()='No WalkMe activity found']")
                                         ),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
@@ -558,7 +658,20 @@
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -610,7 +723,8 @@
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][19]"),
                                                 By.xpath("//div[text()='Goal']/following::div[@class='report-list-view__cell'][20]")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
@@ -620,9 +734,9 @@
                                                 By.xpath("//div[text()='No goals reached']/preceding-sibling::div[@class='no-data-card__img']"),
                                                 By.xpath("//div[text()='No goals reached']")
                                         ),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
@@ -631,7 +745,20 @@
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[text()='Goal']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -658,15 +785,16 @@
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays per user')]/ancestor::div[@class='walkme-app-highlight__subtitle']"),
                                                 By.xpath("//div[@class='walkme-app-highlight__subtitle-text' and contains(text(), 'plays resulted in')]/ancestor::div[@class='walkme-app-highlight__subtitle']")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
                                         emptyList(),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__small']",
@@ -675,7 +803,20 @@
                                                 By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
                                         false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        false,
+                                        true
                                 )
                         )
                 ),
@@ -700,15 +841,16 @@
                                                 By.xpath("//div[@class='reports-table__pagination-text']"),
                                                 By.xpath("//div[@class='reports-table__pagination']")
                                         ),
-                                        true
+                                        true,
+                                        false
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
                                         null,
                                         emptyList(),
+                                        false,
                                         false
-                                )
-                                ,
+                                ),
                                 new WidgetBodyStateInstructions(
                                         "Error",
                                         "//div[@class='insights-table__container']/descendant::div[@class='error-card__small']",
@@ -717,6 +859,19 @@
                                                 By.xpath("//div[@class='insights-table__container']/descendant::div[@class='error-card__img_small']"),
                                                 By.xpath("//div[@class='insights-table__container']/descendant::div[@class='error-card__text_small']")
                                         ),
+                                        false,
+                                        false
+                                ),
+                                new WidgetBodyStateInstructions(
+                                        "Stuck",
+                                        "//div[@class='insights-table__container']/descendant::div[@class='long-load-message__message']",
+                                        asList(
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='card-state-wrapper']"),
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='loading-spinner ']"),
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='long-load-message__message']"),
+                                                By.xpath("//div[@class='insights-table__container']/descendant::div[@class='long-load-message__description']")
+                                        ),
+                                        true,
                                         false
                                 )
                         )

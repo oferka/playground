@@ -28,14 +28,18 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
     @Override
     public WidgetBodyStateInstructions observe(WebDriver driver, Widgets widget) {
         log.debug("Observe {} widget body started", widget.getName());
-        WebElement displayedBodyElement = widgetBodyRetriever.retrieve(driver, generateMultiStateBodyLocator(widget));
-        log.debug("Body element for widget {} was retrieved", widget.getName());
+        try {
+            widgetBodyRetriever.retrieve(driver, generateMultiStateBodyLocator(widget));
+            log.debug("Body element for widget {} was retrieved", widget.getName());
+        }
+        catch (Exception e) {
+            log.debug("Failed to retrieve body element for widget {}", widget.getName());
+        }
         WidgetBodyStateInstructions widgetBodyStateInstructions = getDisplayedState(driver, widget);
         List<By> bodyLocators = widgetBodyStateInstructions.getLocators();
         for(By bodyLocator : bodyLocators) {
             if(widgetBodyRetriever.isDisplayed(driver, bodyLocator)) {
                 WebElement bodyElement = widgetBodyRetriever.retrieve(driver, bodyLocator);
-                log.debug("Found widget body element");
                 elementHighlighter.highlight(driver, bodyElement);
                 elementMouseHoverer.hover(driver, bodyElement);
                 executionPauser.pause();
@@ -52,7 +56,7 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
         String xpath = "";
         for(WidgetBodyStateInstructions instructions : widgetBodyStateInstructions) {
             String indicatorXPath = instructions.getIndicatorXPath();
-            if(indicatorXPath != null) {
+            if((!instructions.isUnexpected()) && (indicatorXPath != null)) {
                 xpath = xpath.concat(indicatorXPath);
                 xpath = xpath.concat(" | ");
             }
@@ -70,10 +74,13 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
         WidgetBodyInstructions widgetBodyInstructions = widget.getWidgetBodyInstructions();
         List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
         for(WidgetBodyStateInstructions instructions : widgetBodyStateInstructions) {
-            By locator = By.xpath(instructions.getIndicatorXPath());
-            if(widgetBodyRetriever.isDisplayed(driver, locator)) {
-                result = instructions;
-                break;
+            String indicatorXPath = instructions.getIndicatorXPath();
+            if(indicatorXPath != null) {
+                By locator = By.xpath(indicatorXPath);
+                if (widgetBodyRetriever.isDisplayed(driver, locator)) {
+                    result = instructions;
+                    break;
+                }
             }
         }
         log.debug("Get displayed state for widget {} completed. Result is {}", widget.getName(), result.getName());

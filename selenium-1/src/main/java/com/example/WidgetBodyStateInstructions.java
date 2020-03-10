@@ -20,4 +20,7 @@ public class WidgetBodyStateInstructions {
 
     @Getter
     private boolean success;
+
+    @Getter
+    private boolean unexpected;
 }
