@@ -460,16 +460,45 @@
                         asList(
                                 new WidgetBodyStateInstructions(
                                         "Success",
-                                        "//div[text()='Type']/ancestor::div[@class='react-bs-table-container']",
-                                        singletonList(
-                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']")
+                                        "//div[text()='Type']/following::div[@class='report-list-view__cell'][1]",
+                                        asList(
+                                                By.xpath("//div[text()='Type']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][1]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][1]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][2]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][3]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][4]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][2]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][5]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][6]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][7]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][8]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][3]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][9]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][10]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][11]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][12]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][4]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][13]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][14]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][15]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][16]"),
+                                                By.xpath("//div[text()='Type']/following::tr[@class='report-list-view__row'][5]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][17]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][18]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][19]"),
+                                                By.xpath("//div[text()='Type']/following::div[@class='report-list-view__cell'][20]")
                                         ),
                                         true
                                 ),
                                 new WidgetBodyStateInstructions(
                                         "No Data",
-                                        null,
-                                        emptyList(),
+                                        "//div[text()='Type']/following::div[text()='No WalkMe activity found']",
+                                        asList(
+                                                By.xpath("//div[text()='No WalkMe activity found']/ancestor::div[@class='react-bs-table-container']"),
+                                                By.xpath("//div[text()='Type']/following::div[text()='No WalkMe activity found']/preceding-sibling::div[@class='no-data-card__img']"),
+                                                By.xpath("//div[text()='Type']/following::div[text()='No WalkMe activity found']")
+                                        ),
                                         false
                                 )
                                 ,
