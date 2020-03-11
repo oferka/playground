@@ -31,8 +31,8 @@ public class DefaultWidgetObserver implements WidgetObserver {
         executionPauser.pause();
         widgetTitleObserver.observe(driver, widget);
         executionPauser.pause();
-        WidgetBodyStateInstructions widgetBodyStateInstructions = widgetBodyObserver.observe(driver, widget);
-        if(widgetBodyStateInstructions.isSuccess()) {
+        WidgetBodyState widgetBodyState = widgetBodyObserver.observe(driver, widget);
+        if(widgetBodyState.isSuccess()) {
             executionPauser.pause();
             executeViewStateChangeInstructions(driver, widget);
         }

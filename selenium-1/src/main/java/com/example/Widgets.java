@@ -25,7 +25,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[contains(@data-tip,'count of users who visited')]",
                                         asList(
@@ -36,14 +36,14 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         null,
                                         emptyList(),
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -54,7 +54,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -81,7 +81,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[@class='sessions-by-country__map']",
                                         asList(
@@ -91,7 +91,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[@class='sessions-by-country__header-title' and text()='Where are users accessing your site from?']/following::div[@class='no-data-card__text' and text()='No sessions found'][1]",
                                         asList(
@@ -102,7 +102,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='sessions-by-country']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -113,7 +113,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='sessions-by-country']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -184,7 +184,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[@class='result-bar-label']",
                                         asList(
@@ -202,7 +202,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[@class='sessions-time-breakdown__header' and text()='Sessions Duration Breakdown']/following::div[@class='no-data-card__text' and text()='No sessions found']",
                                         asList(
@@ -213,7 +213,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='sessions-time-breakdown']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -224,7 +224,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='sessions-time-breakdown']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -249,7 +249,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[text()='Type']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
@@ -288,7 +288,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[text()='No WalkMe activity found']",
                                         asList(
@@ -299,7 +299,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -310,7 +310,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -336,7 +336,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
@@ -375,7 +375,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[text()='No goals reached']",
                                         asList(
@@ -386,7 +386,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -397,7 +397,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -423,7 +423,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[contains(@data-tip,'Users who had any WalkMe content visible')]",
                                         asList(
@@ -438,14 +438,14 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         null,
                                         emptyList(),
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='highlights-with-graph-container']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -456,7 +456,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='highlights-with-graph-container']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -480,7 +480,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[@class='bubble-chart']",
                                         asList(
@@ -553,7 +553,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[@class='walkme-items-usage__title' and text()='WalkMe Usage by Item Type']/following::div[@class='no-data-card__text' and text()='No WalkMe activity found'][1]",
                                         asList(
@@ -564,7 +564,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -575,7 +575,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='report-card walkme-overview-page__report-card walkme-overview-page__report-card--usage']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -600,7 +600,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[text()='Type']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
@@ -639,7 +639,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[text()='Type']/following::div[text()='No WalkMe activity found']",
                                         asList(
@@ -650,7 +650,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -661,7 +661,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='overview-walkme-report__title' and text()='Top WalkMe Items']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -687,7 +687,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[text()='Goal']/following::div[@class='report-list-view__cell'][1]",
                                         asList(
@@ -726,7 +726,7 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         "//div[text()='No goals reached']",
                                         asList(
@@ -737,7 +737,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -748,7 +748,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='overview-walkme-report__title' and text()='Top Goals Reached']/ancestor::div[@class='overview-walkme-report']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -774,7 +774,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[contains(@data-tip,'The total count of users who played Smart Walk-Thrus')]",
                                         asList(
@@ -788,14 +788,14 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         null,
                                         emptyList(),
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -806,7 +806,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='walkme-app-highlights walkme-app-highlights__triple-mode']/descendant::div[@class='long-load-message__message']",
                                         asList(
@@ -832,7 +832,7 @@
                 ),
                 new WidgetBodyInstructions(
                         asList(
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Success",
                                         "//div[@class='react-bs-table-container']",
                                         asList(
@@ -844,14 +844,14 @@
                                         true,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "No Data",
                                         null,
                                         emptyList(),
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Error",
                                         "//div[@class='insights-table__container']/descendant::div[@class='error-card__small']",
                                         asList(
@@ -862,7 +862,7 @@
                                         false,
                                         false
                                 ),
-                                new WidgetBodyStateInstructions(
+                                new WidgetBodyState(
                                         "Stuck",
                                         "//div[@class='insights-table__container']/descendant::div[@class='long-load-message__message']",
                                         asList(

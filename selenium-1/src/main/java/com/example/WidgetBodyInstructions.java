@@ -9,5 +9,5 @@ import java.util.List;
 public class WidgetBodyInstructions {
 
     @Getter
-    private List<WidgetBodyStateInstructions> widgetBodyStateInstructions;
+    private List<WidgetBodyState> widgetBodyStateInstructions;
 }

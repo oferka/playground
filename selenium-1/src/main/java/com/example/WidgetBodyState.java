@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import java.util.List;
 
 @AllArgsConstructor
-public class WidgetBodyStateInstructions {
+public class WidgetBodyState {
 
     @Getter
     private String name;
@@ -16,7 +16,7 @@ public class WidgetBodyStateInstructions {
     private String indicatorXPath;
 
     @Getter
-    private List<By> locators;
+    private List<By> bodyElementLocators;
 
     @Getter
     private boolean success;
