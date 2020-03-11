@@ -18,9 +18,9 @@ public class DefaultPageTester implements PageTester {
     @Override
     public void test(WebDriver driver, Pages page) {
         String pageName = page.getName();
-        log.debug("Test '{}' page started", pageName);
+        log.info("Test page '{}' started", pageName);
         pageOpener.open(driver, page);
         pageObserver.observe(driver, page);
-        log.debug("Test '{}' page completed", page.getName());
+        log.info("Test page '{}' completed", page.getName());
     }
 }

@@ -19,12 +19,12 @@ public class DefaultWidgetBorderObserver implements WidgetBorderObserver {
 
     @Override
     public void observe(WebDriver driver, Widgets widget) {
-        log.debug("Observe '{}' widget border started", widget.getName());
+        log.info("Observe widget border for widget '{}' started", widget.getName());
         By borderLocator = widget.getBorderLocator();
         if(borderLocator != null) {
             WebElement borderElement = widgetBorderRetriever.retrieve(driver, borderLocator);
             elementHighlighter.highlight(driver, borderElement);
         }
-        log.debug("Observe '{}' widget border completed", widget.getName());
+        log.info("Observe widget border for widget '{}' completed", widget.getName());
     }
 }

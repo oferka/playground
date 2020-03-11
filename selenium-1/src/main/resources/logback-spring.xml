@@ -27,8 +27,8 @@
         <appender-ref ref="RollingFile"/>
         <appender-ref ref="Console" />
     </root>
-    <!-- LOG "com.example" at DEBUG level -->
-    <logger name="com.example" level="debug" additivity="false">
+    <!-- LOG "com.example" level -->
+    <logger name="com.example" level="info" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>

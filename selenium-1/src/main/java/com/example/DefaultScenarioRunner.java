@@ -25,7 +25,7 @@ public class DefaultScenarioRunner implements ScenarioRunner {
 
     @Override
     public void runScenario() {
-        log.debug("Run scenario started");
+        log.info("Run scenario started");
         WebDriver driver =  browserProvider.open();
         landingPageOpener.open(driver);
         testPages(
@@ -53,21 +53,21 @@ public class DefaultScenarioRunner implements ScenarioRunner {
                 )
         );
         closeBrowser(driver);
-        log.debug("Run scenario completed");
+        log.info("Run scenario completed");
     }
 
     private void testPages(WebDriver driver, List<Pages> pages) {
-        log.debug("Test '{}' pages started", pages.size());
+        log.info("Test '{}' pages started", pages.size());
         for(Pages page : pages) {
             pageTester.test(driver, page);
         }
-        log.debug("Test '{}' pages completed", pages.size());
+        log.info("Test '{}' pages completed", pages.size());
     }
 
     public void closeBrowser(WebDriver driver) {
-        log.debug("Close browser started");
+        log.info("Close browser started");
         driver.close();
         driver.quit();
-        log.debug("Close browser started");
+        log.info("Close browser started");
     }
 }

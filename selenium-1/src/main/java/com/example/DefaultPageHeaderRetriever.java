@@ -19,17 +19,19 @@ public class DefaultPageHeaderRetriever implements PageHeaderRetriever {
 
     @Override
     public boolean isDisplayed(WebDriver driver, By locator) {
-        log.debug("Check if page header is currently displayed using locator '{}' started", locator.toString());
+        log.info("Check if page header is currently displayed started");
         boolean result;
         try {
+            log.debug("Using locator '{}'", locator.toString());
             WebElement element = driver.findElement(locator);
             log.debug("Found page header element with text '{}'", element.getText());
             result = true;
         }
         catch (Exception e) {
+            log.debug("Failed to find page header element. Error message was '{}'", e.getMessage());
             result = false;
         }
-        log.debug("Check if page header is currently displayed using locator '{}' completed. result is: {}", locator.toString(), result);
+        log.info("Check if page header is currently displayed completed. result is: {}", result);
         return result;
     }
 }

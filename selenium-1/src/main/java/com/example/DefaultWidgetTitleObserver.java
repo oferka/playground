@@ -27,7 +27,7 @@ public class DefaultWidgetTitleObserver implements WidgetTitleObserver {
 
     @Override
     public void observe(WebDriver driver, Widgets widget) {
-        log.debug("Observe '{}' widget title started", widget.getName());
+        log.info("Observe widget title for widget '{}' started", widget.getName());
         List<By> titleLocators = widget.getTitleLocators();
         for(By titleLocator : titleLocators) {
             try {
@@ -40,6 +40,6 @@ public class DefaultWidgetTitleObserver implements WidgetTitleObserver {
                 log.debug("Failed to find widget title element. Message is '{}'", e.getMessage());
             }
         }
-        log.debug("Observe '{}' widget title completed", widget.getName());
+        log.info("Observe widget title for widget '{}' completed", widget.getName());
     }
 }

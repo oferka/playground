@@ -31,33 +31,33 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
 
     @Override
     public void open(WebDriver driver) {
-        log.debug("Open landing page started");
+        log.info("Open landing page started");
         navigateToPage(driver);
         login(driver);
         impersonate(driver);
-        log.debug("Open landing page completed");
+        log.info("Open landing page completed");
     }
 
     private void navigateToPage(WebDriver driver) {
         String address = landingPageConfiguration.getAddress();
-        log.debug("Navigate to page '{}' started", address);
+        log.info("Navigate to page '{}' started", address);
         driver.get(address);
-        log.debug("Navigate to page '{}' completed", address);
+        log.info("Navigate to page '{}' completed", address);
     }
 
     private void login(WebDriver driver) {
-        log.debug("Login started");
+        log.info("Login started");
         enterText(driver, By.id("username"), loginConfiguration.getUsername());
         enterText(driver, By.id("password"), loginConfiguration.getPassword());
-        log.debug("Login completed");
+        log.info("Login completed");
     }
 
     private void impersonate(WebDriver driver) {
         String impersonateUserName = loginConfiguration.getImpersonateUsername();
-        log.debug("Impersonate to user '{}' started", impersonateUserName);
+        log.info("Impersonate to user '{}' started", impersonateUserName);
         enterText(driver, By.className("react-autosuggest__input"), impersonateUserName);
         new WebDriverWait(driver, landingPageConfiguration.getTimeOutInSeconds()).until(ExpectedConditions.titleContains(landingPageConfiguration.getTitleContains()));
-        log.debug("Impersonate to user '{}' completed", impersonateUserName);
+        log.info("Impersonate to user '{}' completed", impersonateUserName);
     }
 
     private void enterText(WebDriver driver, By locator, String text) {
@@ -65,13 +65,13 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
     }
 
     private void enterText(WebDriver driver, WebElement element, String text) {
-        log.debug("Enter text '{}' to element started", text);
+        log.info("Enter text '{}' to element started", text);
         elementHighlighter.highlight(driver, element);
         elementMouseHoverer.hover(driver, element);
         executionPauser.pause();
         element.sendKeys(text);
         element.sendKeys(Keys.ENTER);
-        log.debug("Enter text '{}' to element completed", text);
+        log.info("Enter text '{}' to element completed", text);
     }
 
     private WebElement waitForAndGetElement(WebDriver driver, By locator) {

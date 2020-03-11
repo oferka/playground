@@ -25,17 +25,17 @@ public class DefaultViewStateChangeExecutor implements ViewStateChangeExecutor {
 
     @Override
     public void execute(WebDriver driver, ViewStateChangeInstructions viewStateChangeInstructions) {
-        log.debug("View state change executor started");
+        log.info("View state change executor started");
         List<ViewState> viewStates = viewStateChangeInstructions.getViewStates();
         for(ViewState viewState : viewStates) {
             execute(driver, viewState);
             executionPauser.pause();
         }
-        log.debug("View state change executor completed");
+        log.info("View state change executor completed");
     }
 
     private void execute(WebDriver driver, ViewState viewState) {
-        log.debug("View state change for view state '{}' started", viewState.getName());
+        log.info("View state change for view state '{}' started", viewState.getName());
         By controlLocator = viewState.getControlLocator();
         WebElement controlElement = elementRetriever.retrieve(driver, controlLocator);
         elementHighlighter.highlight(driver, controlElement);
@@ -48,6 +48,6 @@ public class DefaultViewStateChangeExecutor implements ViewStateChangeExecutor {
                 executionPauser.pause();
             }
         }
-        log.debug("View state change for view state '{}' completed", viewState.getName());
+        log.info("View state change for view state '{}' completed", viewState.getName());
     }
 }

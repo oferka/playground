@@ -22,7 +22,7 @@ public class DefaultWidgetsGroupObserver implements WidgetsGroupObserver {
 
     @Override
     public void observe(WebDriver driver, WidgetGroups widgetGroup) {
-        log.debug("Observe widgets group '{}' started", widgetGroup.getName());
+        log.info("Observe widgets group '{}' started", widgetGroup.getName());
         List<Widgets> widgets = widgetGroup.getWidgets();
         for(Widgets widget : widgets) {
             widgetObserver.observe(driver, widget);
@@ -32,6 +32,6 @@ public class DefaultWidgetsGroupObserver implements WidgetsGroupObserver {
         if(pageScrollInstructions != null) {
             pageScroller.scroll(driver, pageScrollInstructions);
         }
-        log.debug("Observe widgets group '{}' completed", widgetGroup.getName());
+        log.info("Observe widgets group '{}' completed", widgetGroup.getName());
     }
 }

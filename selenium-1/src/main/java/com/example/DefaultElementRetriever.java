@@ -19,16 +19,19 @@ public class DefaultElementRetriever implements ElementRetriever {
 
     @Override
     public boolean isDisplayed(WebDriver driver, By locator) {
-        log.debug("Check if element is currently displayed using locator '{}' started", locator.toString());
+        log.info("Check if element is currently displayed started");
         boolean result;
         try {
-            WebElement element = driver.findElement(locator);
+            log.debug("Trying to find element using locator '{}'", locator.toString());
+            driver.findElement(locator);
+            log.debug("Element found");
             result = true;
         }
         catch (Exception e) {
+            log.debug("Element was not found");
             result = false;
         }
-        log.debug("Check if element is currently displayed using locator '{}' completed. result is: {}", locator.toString(), result);
+        log.info("Check if element is currently displayed completed. result is: {}", result);
         return result;
     }
 }

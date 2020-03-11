@@ -22,14 +22,14 @@ public class DefaultExecutionPauser implements ExecutionPauser {
     public void pause(Duration duration) {
         if(executionPauserConfiguration.isEnabled()) {
             long delayInMillis = duration.toMillis();
-//            log.debug("Pause execution for {} milliseconds started", delayInMillis);
+            log.debug("Pause execution for '{}' milliseconds started", delayInMillis);
             try {
                 Thread.sleep(delayInMillis);
             }
             catch (InterruptedException e) {
-                log.error("Failed to pause execution. error message is {}", e.getMessage());
+                log.error("Failed to pause execution. error message is '{}'", e.getMessage());
             }
-//            log.debug("Pause execution for {} milliseconds completed", delayInMillis);
+            log.debug("Pause execution for '{}' milliseconds completed", delayInMillis);
         }
     }
 }

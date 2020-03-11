@@ -16,26 +16,26 @@ public class ChromeBrowserOpener implements BrowserOpener {
 
     @Override
     public WebDriver open() {
-        log.debug("Open chrome browser started");
+        log.info("Open chrome browser started");
         WebDriver driver = createDriver();
         if(chromeBrowserConfiguration.isMaximize()) {
             maximizeWindow(driver);
         }
-        log.debug("Open chrome browser completed");
+        log.info("Open chrome browser completed");
         return driver;
     }
 
     private WebDriver createDriver() {
-        log.debug("Chrome driver creation started");
+        log.info("Chrome driver creation started");
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
-        log.debug("Chrome driver creation completed");
+        log.info("Chrome driver creation completed");
         return driver;
     }
 
     private void maximizeWindow(WebDriver driver) {
-        log.debug("Browser window maximize started");
+        log.info("Browser window maximize started");
         driver.manage().window().maximize();
-        log.debug("Browser window maximize completed");
+        log.info("Browser window maximize completed");
     }
 }

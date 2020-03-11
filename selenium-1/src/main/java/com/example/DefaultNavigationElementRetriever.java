@@ -19,9 +19,10 @@ public class DefaultNavigationElementRetriever implements NavigationElementRetri
 
     @Override
     public boolean isDisplayed(WebDriver driver, By locator) {
-        log.debug("Check if navigation element identified by locator '{}' is displayed started", locator);
+        log.info("Check if navigation element is displayed started");
+        log.debug("Using locator '{}'", locator.toString());
         boolean result = getElement(driver, locator).isDisplayed();
-        log.debug("Check if navigation element identified by locator '{}' is displayed completed. Result is '{}'", locator, result);
+        log.info("Check if navigation element is displayed completed. Result is '{}'", result);
         return result;
     }
 

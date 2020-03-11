@@ -19,16 +19,19 @@ public class DefaultWidgetBodyRetriever implements WidgetBodyRetriever {
 
     @Override
     public boolean isDisplayed(WebDriver driver, By locator) {
-        log.debug("Check if widget body is currently displayed using locator '{}' started", locator.toString());
+        log.info("Check if widget body is currently displayed started");
         boolean result;
         try {
-            WebElement element = driver.findElement(locator);
+            log.debug("Trying to find element using locator '{}'", locator.toString());
+            driver.findElement(locator);
+            log.debug("Element found");
             result = true;
         }
         catch (Exception e) {
+            log.debug("Element not found. Error message is: '{}'", e.getMessage()   );
             result = false;
         }
-        log.debug("Check if widget body is currently displayed using locator '{}' completed. result is: {}", locator.toString(), result);
+        log.info("Check if widget body is currently displayed completed. result is: {}", result);
         return result;
     }
 }
