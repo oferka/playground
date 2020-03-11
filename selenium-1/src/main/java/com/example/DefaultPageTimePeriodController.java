@@ -26,16 +26,16 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
 
     @Override
     public List<String> getTimePeriodValues(WebDriver driver, Pages page) {
-        log.debug("Get time period values for page {} started", page.getName());
+        log.debug("Get time period values for page '{}' started", page.getName());
         List<String> result = getTimePeriodValuesFromPage(driver, page);
         retainOnlyIncludedTimePeriods(result, page);
         removeAllExcludedTimePeriods(result, page);
-        log.debug("Get time period values for page {} completed. Result is: {}", page.getName(), result);
+        log.debug("Get time period values for page '{}' completed. Result is: '{}'", page.getName(), result);
         return result;
     }
 
     private List<String> getTimePeriodValuesFromPage(WebDriver driver, Pages page) {
-        log.debug("Get time period values from page {} started", page.getName());
+        log.debug("Get time period values from page '{}' started", page.getName());
         openTimePeriodList(driver, page);
         executionPauser.pause();
         List<String> result = new ArrayList<>();
@@ -46,31 +46,31 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
             }
         }
         closeTimePeriodList(driver, page);
-        log.debug("Get time period values from page {} completed. Result is: {}", page.getName(), result);
+        log.debug("Get time period values from page '{}' completed. Result is: '{}'", page.getName(), result);
         return result;
     }
 
     private void retainOnlyIncludedTimePeriods(List<String> timePeriods, Pages page) {
-        log.debug("Retain only included time period values for page {} started", page.getName());
+        log.debug("Retain only included time period values for page '{}' started", page.getName());
         List<String> include = page.getTimePeriodInstructions().getInclude();
         if((include != null) && (!include.isEmpty())) {
             timePeriods.retainAll(include);
         }
-        log.debug("Retain only included time period values for page {} completed. Result is: {}", page.getName(), timePeriods);
+        log.debug("Retain only included time period values for page '{}' completed. Result is: '{}'", page.getName(), timePeriods);
     }
 
     private void removeAllExcludedTimePeriods(List<String> timePeriods, Pages page) {
-        log.debug("Remove all excluded time period values for page {} started", page.getName());
+        log.debug("Remove all excluded time period values for page '{}' started", page.getName());
         List<String> exclude = page.getTimePeriodInstructions().getExclude();
         if((exclude != null) && (!exclude.isEmpty())) {
             timePeriods.removeAll(exclude);
         }
-        log.debug("Remove all excluded time period values for page {} completed. Result is: {}", page.getName(), timePeriods);
+        log.debug("Remove all excluded time period values for page '{}' completed. Result is: '{}'", page.getName(), timePeriods);
     }
 
     @Override
     public void setTimePeriodValue(WebDriver driver, Pages page, String timePeriodValue) {
-        log.debug("Set time period value to {} in page {} started", timePeriodValue, page.getName());
+        log.debug("Set time period value to '{}' in page '{}' started", timePeriodValue, page.getName());
         WebElement timePeriodContainerElement = waitForAndGetElement(
                 driver,
                 By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']")
@@ -78,7 +78,7 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
         elementHighlighter.highlight(driver, timePeriodContainerElement);
         String currentTimePeriodValue = getCurrentTimePeriodValue(driver, page);
         if(currentTimePeriodValue.equals(timePeriodValue)) {
-            log.debug("Time period value {} is already selected in page {}", timePeriodValue, page.getName());
+            log.debug("Time period value '{}' is already selected in page '{}'", timePeriodValue, page.getName());
         }
         else {
             openTimePeriodList(driver, page);
@@ -86,35 +86,35 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
             selectTimePeriodValue(driver, page, timePeriodValue);
             executionPauser.pause();
         }
-        log.debug("Set time period value to {} on page {} completed", timePeriodValue, page.getName());
+        log.debug("Set time period value to '{}' on page '{}' completed", timePeriodValue, page.getName());
     }
 
     private void closeTimePeriodList(WebDriver driver, Pages page) {
-        log.debug("Close time period list in page {} started", page.getName());
+        log.debug("Close time period list in page '{}' started", page.getName());
         WebElement timePeriodContainerElement = waitForAndGetElement(
                 driver,
                 By.xpath("//div[@class='dropdown-toggle dropdown-toggle--enabled report-header__datepicker-toggle report-header__datepicker-toggle--selected']")
         );
         elementHighlighter.highlight(driver, timePeriodContainerElement);
         timePeriodContainerElement.click();
-        log.debug("Close time period list in page {} completed", page.getName());
+        log.debug("Close time period list in page '{}' completed", page.getName());
     }
 
     private String getCurrentTimePeriodValue(WebDriver driver, Pages page) {
-        log.debug("Get current time period value in page {} started", page.getName());
+        log.debug("Get current time period value in page '{}' started", page.getName());
         WebElement timePeriodValueElement = waitForAndGetElement(
                 driver,
                 By.xpath("//div[@class='datepicker__dropdown-toggle__title']")
         );
         String result = timePeriodValueElement.getText();
-        log.debug("Get current time period value in page {} completed. Result is {}", page.getName(), result);
+        log.debug("Get current time period value in page '{}' completed. Result is {}", page.getName(), result);
         return result;
     }
 
     private void openTimePeriodList(WebDriver driver, Pages page) {
-        log.debug("Open time period list in page {} started", page.getName());
+        log.debug("Open time period list in page '{}' started", page.getName());
         if(isTimePeriodListDisplayed(driver, page)) {
-            log.debug("Time period list is already displayed in page {}", page.getName());
+            log.debug("Time period list is already displayed in page '{}'", page.getName());
         }
         else {
             WebElement timePeriodTextElement = waitForAndGetElement(
@@ -124,22 +124,22 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
             elementHighlighter.highlight(driver, timePeriodTextElement);
             timePeriodTextElement.click();
         }
-        log.debug("Open time period list in page {} completed", page.getName());
+        log.debug("Open time period list in page '{}' completed", page.getName());
     }
 
     private boolean isTimePeriodListDisplayed(WebDriver driver, Pages page) {
-        log.debug("Check if time period list is displayed in page {} started", page.getName());
+        log.debug("Check if time period list is displayed in page '{}' started", page.getName());
         boolean result = false;
         List<WebElement> valueElements = driver.findElements(By.xpath("//div[@class='dropdown-menu-item']"));
         if(!valueElements.isEmpty()) {
             result = true;
         }
-        log.debug("Check if time period list is displayed in page {} completed. Result is {}", page.getName(), result);
+        log.debug("Check if time period list is displayed in page '{}' completed. Result is '{}'", page.getName(), result);
         return result;
     }
 
     private void selectTimePeriodValue(WebDriver driver, Pages page, String timePeriodValue) {
-        log.debug("Select time period value {} in page {} started", timePeriodValue, page.getName());
+        log.debug("Select time period value '{}' in page '{}' started", timePeriodValue, page.getName());
         String xpath = format("//div[@class='dropdown-menu-item' and text()='%s']", timePeriodValue);
         WebElement timePeriodValueElement = waitForAndGetElement(
                 driver,
@@ -157,7 +157,7 @@ public class DefaultPageTimePeriodController implements PageTimePeriodController
             executionPauser.pause();
             applyButton.click();
         }
-        log.debug("Select time period value {} in page {} completed", timePeriodValue, page.getName());
+        log.debug("Select time period value '{}' in page '{}' completed", timePeriodValue, page.getName());
     }
 
     private WebElement waitForAndGetElement(WebDriver driver, By locator) {

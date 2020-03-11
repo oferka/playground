@@ -47,10 +47,10 @@ public class DefaultPageScroller implements PageScroller {
     }
 
     private void scroll(WebDriver driver, int signedPixels) {
-//        log.debug("Scroll by {} started", signedPixels);
+//        log.debug("Scroll by '{}' started", signedPixels);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String script = format("window.scrollBy(0,%s)", signedPixels);
         js.executeScript(script, "");
-//        log.debug("Scroll by {} completed", signedPixels);
+//        log.debug("Scroll by '{}' completed", signedPixels);
     }
 }

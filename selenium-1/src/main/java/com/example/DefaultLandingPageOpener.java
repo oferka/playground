@@ -40,9 +40,9 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
 
     private void navigateToPage(WebDriver driver) {
         String address = landingPageConfiguration.getAddress();
-        log.debug("Navigate to page {} started", address);
+        log.debug("Navigate to page '{}' started", address);
         driver.get(address);
-        log.debug("Navigate to page {} completed", address);
+        log.debug("Navigate to page '{}' completed", address);
     }
 
     private void login(WebDriver driver) {
@@ -54,10 +54,10 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
 
     private void impersonate(WebDriver driver) {
         String impersonateUserName = loginConfiguration.getImpersonateUsername();
-        log.debug("Impersonate to user {} started", impersonateUserName);
+        log.debug("Impersonate to user '{}' started", impersonateUserName);
         enterText(driver, By.className("react-autosuggest__input"), impersonateUserName);
         new WebDriverWait(driver, landingPageConfiguration.getTimeOutInSeconds()).until(ExpectedConditions.titleContains(landingPageConfiguration.getTitleContains()));
-        log.debug("Impersonate to user {} completed", impersonateUserName);
+        log.debug("Impersonate to user '{}' completed", impersonateUserName);
     }
 
     private void enterText(WebDriver driver, By locator, String text) {
@@ -65,11 +65,13 @@ public class DefaultLandingPageOpener implements LandingPageOpener {
     }
 
     private void enterText(WebDriver driver, WebElement element, String text) {
+        log.debug("Enter text '{}' to element started", text);
         elementHighlighter.highlight(driver, element);
         elementMouseHoverer.hover(driver, element);
         executionPauser.pause();
         element.sendKeys(text);
         element.sendKeys(Keys.ENTER);
+        log.debug("Enter text '{}' to element completed", text);
     }
 
     private WebElement waitForAndGetElement(WebDriver driver, By locator) {

@@ -69,8 +69,8 @@ public enum Pages {
             By.xpath("//div[@class='report-header__page-name' and text()='Apps Overview']"),
             new FilterInstructions(
                     asList(
-//                            "All Sessions",
-//                            "need training visits",
+                            "All Sessions",
+                            "need training visits"//,
 //                            "Chrome users",
 //                            "Accessed PPS+ Article"
                     ),

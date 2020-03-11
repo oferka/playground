@@ -23,7 +23,7 @@ public class DefaultPageObserver implements PageObserver {
     @Override
     public void observe(WebDriver driver, Pages page) {
         String pageName = page.getName();
-        log.debug("Observe {} page started", pageName);
+        log.debug("Observe '{}' page started", pageName);
         List<String> filterValues = pageFilterController.getFilterValues(driver, page);
         List<String> timePeriodValues = pageTimePeriodController.getTimePeriodValues(driver, page);
         for(String filterValue : filterValues) {
@@ -31,16 +31,16 @@ public class DefaultPageObserver implements PageObserver {
                 observe(driver, page, filterValue, timePeriodValue);
             }
         }
-        log.debug("Observe {} page completed", pageName);
+        log.debug("Observe '{}' page completed", pageName);
     }
 
     private void observe(WebDriver driver, Pages page, String filterValue, String timePeriodValue) {
         String pageName = page.getName();
-        log.debug("Observe {} page with filter {} and time period {} started", pageName, filterValue, timePeriodValue);
+        log.debug("Observe '{}' page with filter '{}' and time period '{}' started", pageName, filterValue, timePeriodValue);
         pageFilterController.setFilterValue(driver, page, filterValue);
         pageTimePeriodController.setTimePeriodValue(driver, page, timePeriodValue);
         observerWidgetGroup(driver, page.getWidgetGroups());
-        log.debug("Observe {} page with filter {} and time period {} completed", pageName, filterValue, timePeriodValue);
+        log.debug("Observe '{}' page with filter '{}' and time period '{}' completed", pageName, filterValue, timePeriodValue);
     }
 
     private void observerWidgetGroup(WebDriver driver, List<WidgetGroups> widgetGroups) {

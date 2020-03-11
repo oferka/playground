@@ -27,13 +27,13 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
 
     @Override
     public WidgetBodyStateInstructions observe(WebDriver driver, Widgets widget) {
-        log.debug("Observe {} widget body started", widget.getName());
+        log.debug("Observe '{}' widget body started", widget.getName());
         try {
             widgetBodyRetriever.retrieve(driver, generateMultiStateBodyLocator(widget));
-            log.debug("Body element for widget {} was retrieved", widget.getName());
+            log.debug("Body element for widget '{}' was retrieved", widget.getName());
         }
         catch (Exception e) {
-            log.debug("Failed to retrieve body element for widget {}", widget.getName());
+            log.debug("Failed to retrieve body element for widget '{}'", widget.getName());
         }
         WidgetBodyStateInstructions widgetBodyStateInstructions = getDisplayedState(driver, widget);
         List<By> bodyLocators = widgetBodyStateInstructions.getLocators();
@@ -45,12 +45,12 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
                 executionPauser.pause();
             }
         }
-        log.debug("Observe {} widget body completed", widget.getName());
+        log.debug("Observe '{}' widget body completed", widget.getName());
         return widgetBodyStateInstructions;
     }
 
     private By generateMultiStateBodyLocator(Widgets widget) {
-        log.debug("Generate multi state body locator for widget {} started", widget.getName());
+        log.debug("Generate multi state body locator for widget '{}' started", widget.getName());
         WidgetBodyInstructions widgetBodyInstructions = widget.getWidgetBodyInstructions();
         List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
         String xpath = "";
@@ -64,12 +64,12 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
         if(xpath.endsWith(" | ")) {
             xpath = xpath.substring(0, xpath.lastIndexOf( " | "));
         }
-        log.debug("Generate multi state body locator for widget {} completed. Result is {}", widget.getName(), xpath);
+        log.debug("Generate multi state body locator for widget '{}' completed. Result is '{}'", widget.getName(), xpath);
         return By.xpath(xpath);
     }
 
     private WidgetBodyStateInstructions getDisplayedState(WebDriver driver, Widgets widget) {
-        log.debug("Get displayed state for widget {} started", widget.getName());
+        log.debug("Get displayed state for widget '{}' started", widget.getName());
         WidgetBodyStateInstructions result = null;
         WidgetBodyInstructions widgetBodyInstructions = widget.getWidgetBodyInstructions();
         List<WidgetBodyStateInstructions> widgetBodyStateInstructions = widgetBodyInstructions.getWidgetBodyStateInstructions();
@@ -83,7 +83,7 @@ public class DefaultWidgetBodyObserver implements WidgetBodyObserver {
                 }
             }
         }
-        log.debug("Get displayed state for widget {} completed. Result is {}", widget.getName(), result.getName());
+        log.debug("Get displayed state for widget '{}' completed. Result is '{}'", widget.getName(), result.getName());
         return result;
     }
 }

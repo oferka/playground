@@ -28,9 +28,9 @@ public class DefaultPageOpener implements PageOpener {
     @Override
     public void open(WebDriver driver, Pages page) {
         String pageName = page.getName();
-        log.debug("Open {} page started", page.getName());
+        log.debug("Open '{}' page started", page.getName());
         if(!isPageDisplayed(driver, page)) {
-            log.debug("Page {} is currently not displayed. Going to use navigation bar to open it", pageName);
+            log.debug("Page '{}' is currently not displayed. Going to use navigation bar to open it", pageName);
             WebElement navigationElement = getNavigationElement(driver, page);
             elementHighlighter.highlight(driver, navigationElement);
             navigationElement.click();
@@ -38,50 +38,50 @@ public class DefaultPageOpener implements PageOpener {
             highlightPageHeader(driver, page);
         }
         else {
-            log.debug("Page {} is currently displayed", pageName);
+            log.debug("Page '{}' is currently displayed", pageName);
             elementHighlighter.highlight(driver, pageHeaderRetriever.retrieve(driver, page.getPageHeaderLocator()));
         }
-        log.debug("Open {} page completed", pageName);
+        log.debug("Open '{}' page completed", pageName);
     }
 
     private WebElement getNavigationElement(WebDriver driver, Pages page) {
         String pageName = page.getName();
-        log.debug("Get navigation element for page {} started", pageName);
+        log.debug("Get navigation element for page '{}' started", pageName);
         NavigationBarElements navigationBarElement = page.getNavigationBarElement();
         By navigationElementLocator = page.getNavigationBarElement().getNavigationElementLocator();
         if (!navigationElementRetriever.isDisplayed(driver, navigationElementLocator)) {
             NavigationBarElementGroups navigationBarElementGroup = page.getNavigationBarElement().getNavigationBarElementGroup();
-            log.debug("Navigation element {} is not currently displayed. Going to expand navigation elements group {}", navigationBarElement.getName(), navigationBarElementGroup.getName());
+            log.debug("Navigation element '{}' is not currently displayed. Going to expand navigation elements group '{}'", navigationBarElement.getName(), navigationBarElementGroup.getName());
             expandNavigationElement(driver, navigationBarElementGroup);
         }
         WebElement result = navigationElementRetriever.retrieve(driver, navigationElementLocator);
-        log.debug("Get navigation element for page {} completed. Element text is {}", pageName, result.getText());
+        log.debug("Get navigation element for page '{}' completed. Element text is '{}'", pageName, result.getText());
         return result;
     }
 
     private void expandNavigationElement(WebDriver driver, NavigationBarElementGroups navigationBarElementGroup) {
         String navigationBarElementGroupName = navigationBarElementGroup.getName();
-        log.debug("Expand {} navigation element started", navigationBarElementGroupName);
+        log.debug("Expand '{}' navigation element started", navigationBarElementGroupName);
         By navigationElementLocator = navigationBarElementGroup.getNavigationElementLocator();
         WebElement navigationElement = navigationElementRetriever.retrieve(driver, navigationElementLocator);
         elementHighlighter.highlight(driver, navigationElement);
         navigationElement.click();
-        log.debug("Expand {} navigation element completed", navigationBarElementGroupName);
+        log.debug("Expand '{}' navigation element completed", navigationBarElementGroupName);
     }
 
     private void highlightPageHeader(WebDriver driver, Pages page) {
         String pageName = page.getName();
-        log.debug("Highlight page header for page {} started", pageName);
+        log.debug("Highlight page header for page '{}' started", pageName);
         WebElement pageHeaderElement = pageHeaderRetriever.retrieve(driver, page.getPageHeaderLocator());
         elementHighlighter.highlight(driver, pageHeaderElement);
-        log.debug("Highlight page header for page {} completed", pageName);
+        log.debug("Highlight page header for page '{}' completed", pageName);
     }
 
     private boolean isPageDisplayed(WebDriver driver, Pages page) {
         String pageName = page.getName();
-        log.debug("Check if page {} is displayed started", pageName);
+        log.debug("Check if page '{}' is displayed started", pageName);
         boolean result = pageHeaderRetriever.isDisplayed(driver, page.getPageHeaderLocator());
-        log.debug("Check if page {} is displayed completed. Result is {}", pageName, result);
+        log.debug("Check if page '{}' is displayed completed. Result is '{}'", pageName, result);
         return result;
     }
 }

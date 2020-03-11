@@ -26,7 +26,7 @@ public class DefaultWidgetObserver implements WidgetObserver {
 
     @Override
     public void observe(WebDriver driver, Widgets widget) {
-        log.debug("Observe {} widget started", widget.getName());
+        log.debug("Observe '{}' widget started", widget.getName());
         widgetBorderObserver.observe(driver, widget);
         executionPauser.pause();
         widgetTitleObserver.observe(driver, widget);
@@ -36,15 +36,15 @@ public class DefaultWidgetObserver implements WidgetObserver {
             executionPauser.pause();
             executeViewStateChangeInstructions(driver, widget);
         }
-        log.debug("Observe {} widget completed", widget.getName());
+        log.debug("Observe '{}' widget completed", widget.getName());
     }
 
     private void executeViewStateChangeInstructions(WebDriver driver, Widgets widget) {
-        log.debug("Execute view state change instructions for widget {} started", widget.getName());
+        log.debug("Execute view state change instructions for widget '{}' started", widget.getName());
         ViewStateChangeInstructions viewStateChangeInstructions = widget.getViewStateChangeInstructions();
         if(viewStateChangeInstructions != null) {
             viewStateChangeExecutor.execute(driver, viewStateChangeInstructions);
         }
-        log.debug("Execute view state change instructions for widget {} completed", widget.getName());
+        log.debug("Execute view state change instructions for widget '{}' completed", widget.getName());
     }
 }

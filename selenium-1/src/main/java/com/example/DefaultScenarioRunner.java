@@ -31,8 +31,8 @@ public class DefaultScenarioRunner implements ScenarioRunner {
         testPages(
                 driver,
                 asList(
-                        OVERVIEW_PAGE//,
-//                        APPS_OVERVIEW_PAGE,
+//                        OVERVIEW_PAGE,
+                        APPS_OVERVIEW_PAGE//,
 //                        SMART_WALK_THRUS_PAGE,
 //                        WALK_THRUS_PAGE,
 //                        ONBOARDING_PAGE,
@@ -57,11 +57,11 @@ public class DefaultScenarioRunner implements ScenarioRunner {
     }
 
     private void testPages(WebDriver driver, List<Pages> pages) {
-        log.debug("Test {} pages started", pages.size());
+        log.debug("Test '{}' pages started", pages.size());
         for(Pages page : pages) {
             pageTester.test(driver, page);
         }
-        log.debug("Test {} pages completed", pages.size());
+        log.debug("Test '{}' pages completed", pages.size());
     }
 
     public void closeBrowser(WebDriver driver) {
